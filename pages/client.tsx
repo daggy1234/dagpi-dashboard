@@ -1,4 +1,4 @@
-import Layout from '../components/layout.jsx';
+import Layout from '../components/layout.tsx';
 
 export default function Page() {
     return (

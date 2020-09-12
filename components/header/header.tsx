@@ -1,7 +1,7 @@
 import { useDisclosure } from '@chakra-ui/core';
 
-import AppBar from './app-bar.jsx';
-import MyDrawer from './drawer.jsx';
+import AppBar from './app-bar.tsx';
+import MyDrawer from './drawer.tsx';
 
 export default function Header() {
     const { isOpen, onOpen, onClose } = useDisclosure();

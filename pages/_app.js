@@ -1,6 +1,6 @@
 import './styles.scss';
 
-import { CSSReset, theme, ThemeProvider } from '@chakra-ui/core';
+import { ChakraProvider, CSSReset, theme } from '@chakra-ui/core';
 import { Provider } from 'next-auth/client';
 
 const breakpoints = ['360px', '768px', '1024px', '1440px'];
@@ -17,9 +17,9 @@ const newTheme = {
 export default function App({ Component, pageProps }) {
     return (
         <Provider options={{ clientMaxAge: 0, keepAlive: 0 }} session={pageProps.session}>
-            <ThemeProvider theme={newTheme}>
+            <ChakraProvider ResetCSS theme={newTheme}>
                 <Component {...pageProps} />
-            </ThemeProvider>
+            </ChakraProvider>
         </Provider>
     );
 }
