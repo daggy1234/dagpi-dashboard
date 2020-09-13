@@ -1,5 +1,4 @@
-import { Box, Button, Flex, Heading, Text } from '@chakra-ui/core';
-import {FaChevronDown} from "react-icons/fa";
+import { Box, Button, Flex, Heading } from '@chakra-ui/core';
 import {
     Image,
     Menu,
@@ -7,14 +6,24 @@ import {
     MenuDivider,
     MenuGroup,
     MenuItem,
-    MenuItemOption,
-    MenuList,
-    MenuOptionGroup
+    MenuList
 } from '@chakra-ui/core';
 import { signIn, signOut, useSession } from 'next-auth/client';
+import Link from 'next/link';
+import { FaChevronDown } from 'react-icons/fa';
+import { MdDashboard } from 'react-icons/md';
 
+import ExtLink from '../Link';
+import NextLink from '../NextLink';
 const MenuItems = ({ children }) => (
-    <Heading as="h2" size="md" mt={{ base: 4, md: 0 }} mr={6} display="block" textAlign="center">
+    <Heading
+        as="h2"
+        size="md"
+        mt={{ base: 4, md: 0 }}
+        mr={6}
+        display="block"
+        textAlign="center"
+        color="white">
         {children}
     </Heading>
 );
@@ -29,7 +38,7 @@ export default function AppBar({ onOpen, ...rest }) {
             wrap="wrap"
             alignItems="center"
             padding="1.5rem"
-            bg="#9F7AEA"
+            bg="purple.500"
             color="white"
             {...rest}>
             <Flex align="left" mr={5}>
@@ -52,49 +61,76 @@ export default function AppBar({ onOpen, ...rest }) {
                 width={{ sm: 'full', md: 'auto' }}
                 alignItems="center"
                 flexShrink={1}>
-                <MenuItems>Home</MenuItems>
-                <MenuItems>Docs</MenuItems>
-                <MenuItems>Discord</MenuItems>
-                <MenuItems>Github</MenuItems>
+                <NextLink url="/">
+                    <MenuItems>Home</MenuItems>
+                </NextLink>
+                <ExtLink url="https://dagpi.tk">
+                    <MenuItems>Docs</MenuItems>
+                </ExtLink>
+                <ExtLink url="https://server.daggy.tech">
+                    <MenuItems>Discord</MenuItems>
+                </ExtLink>
+                <ExtLink url="https://github.com/Daggy1234/dagpi">
+                    <MenuItems>Docs</MenuItems>
+                </ExtLink>
                 <MenuItems>
                     <Box display={{ sm: 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
-                        <Button variant="outline" borderColor="white" color="#9F7AEA" border="1px">
-                            Dashboard
-                        </Button>
+                        <Link href="/protected">
+                            <Button
+                                variant="outline"
+                                borderColor="white"
+                                leftIcon={<MdDashboard />}
+                                color="purple.500"
+                                border="1px">
+                                Dashboard
+                            </Button>
+                        </Link>
                     </Box>
                 </MenuItems>
 
                 {session && (
-                    
+                    <MenuItems>
                         <Menu>
-                            <MenuButton as={Button} borderColor="purple.400" variant="outline" color="white" colorScheme="purple" rightIcon={<FaChevronDown />}>
+                            <MenuButton
+                                as={Button}
+                                borderColor="purple.500"
+                                variant="outline"
+                                color="white"
+                                colorScheme="purple"
+                                rightIcon={<FaChevronDown />}>
                                 <Image
                                     boxSize="2rem"
                                     borderRadius="full"
                                     src={session.user.image}
                                     alt={session.user.name}
-                                    
                                 />
                             </MenuButton>
                             <MenuList>
-                                <MenuItem>{session.user.name}</MenuItem>
-                                <MenuItem>{session.user.email}</MenuItem>
-                                <MenuItem>
-                                    <Button
-                                        colorScheme="pink"
-                                        variant="solid"
-                                        bg="transparent"
-                                        border="1px"
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            signOut();
-                                        }}>
-                                        Logout
-                                    </Button>
+                                <MenuGroup textAlign="left" color="black" title="Profile">
+                                    <MenuItem bg="transparent" color="black" borderColor="white">
+                                        {session.user.name}
+                                    </MenuItem>
+                                </MenuGroup>
+                                <MenuGroup textAlign="left" color="black" title="Email">
+                                    <MenuItem bg="transparent" color="black" borderColor="white">
+                                        {session.user.email}
+                                    </MenuItem>
+                                </MenuGroup>
+                                <MenuDivider />
+                                <MenuItem
+                                    as={Button}
+                                    colorScheme="pink"
+                                    variant="solid"
+                                    border="1px"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        signOut();
+                                    }}>
+                                    Logout
                                 </MenuItem>
                             </MenuList>
                         </Menu>
-                   
+                    </MenuItems>
                 )}
                 {!session && (
                     <MenuItems>
@@ -104,7 +140,7 @@ export default function AppBar({ onOpen, ...rest }) {
                                 border="1px"
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    signIn();
+                                    signIn('discord');
                                 }}>
                                 Login
                             </Button>

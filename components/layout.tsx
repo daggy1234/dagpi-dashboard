@@ -1,16 +1,15 @@
-import { Container } from '@chakra-ui/core';
+import { Box } from '@chakra-ui/core';
 
-import Footer from './footer.jsx';
-import Header from './header/header.tsx';
-import Indicator from './signed_in.jsx';
+import Footer from './footer';
+import Header from './header/header';
 
 export default function Layout({ children }) {
     return (
         <>
             <Header />
-            <Container>
+            <Box>
                 <main>{children}</main>
-            </Container>
+            </Box>
             <Footer />
         </>
     );

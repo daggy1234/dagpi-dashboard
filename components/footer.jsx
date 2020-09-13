@@ -23,6 +23,11 @@ export default function Footer() {
                     </Link>
                 </li>
                 <li className={styles.navItem}>
+                    <Link href="/api-example">
+                        <a>API</a>
+                    </Link>
+                </li>
+                <li className={styles.navItem}>
                     <em>{version}</em>
                 </li>
             </ul>

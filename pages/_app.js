@@ -1,6 +1,6 @@
 import './styles.scss';
 
-import { ChakraProvider, CSSReset, theme } from '@chakra-ui/core';
+import { ChakraProvider, theme } from '@chakra-ui/core';
 import { Provider } from 'next-auth/client';
 
 const breakpoints = ['360px', '768px', '1024px', '1440px'];
@@ -11,7 +11,10 @@ breakpoints.xl = breakpoints[3];
 
 const newTheme = {
     ...theme,
-    breakpoints
+    breakpoints,
+    sixes: {
+        container: 100
+    }
 };
 
 export default function App({ Component, pageProps }) {
