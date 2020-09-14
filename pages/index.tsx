@@ -1,18 +1,49 @@
-import { Box, BoxProps, Button, Container, Flex, Heading, Stack, Text } from '@chakra-ui/core';
+import {
+    Box,
+    BoxProps,
+    Button,
+    Container,
+    Flex,
+    Grid,
+    Heading,
+    Icon,
+    Stack,
+    Text
+} from '@chakra-ui/core';
 import Head from 'next/head';
 import React from 'react';
-import { AiOutlineUser } from 'react-icons/ai';
-import { BsCodeSlash } from 'react-icons/bs';
+import { AiFillHeart, AiOutlineUser } from 'react-icons/ai';
+import { BiCodeCurly } from 'react-icons/bi';
+import { BsCodeSlash, BsLightningFill } from 'react-icons/bs';
 import { DiGithubBadge } from 'react-icons/di';
 import { FaArrowRight, FaDiscord } from 'react-icons/fa';
 import { IoIosSpeedometer } from 'react-icons/io';
+import { RiSecurePaymentLine } from 'react-icons/ri';
+import { TiSpanner } from 'react-icons/ti';
 
 import DiscordStrip from '../components/discord';
 import Layout from '../components/layout';
+import styles from '../styles/feature.model.scss';
+
 type StatBoxProps = BoxProps & {
     icon?: React.ElementType;
     title: string;
     description: string;
+};
+const Feature = ({ title, icon, children, ...props }) => {
+    return (
+        <Box bg="white" rounded="12px" shadow="base" p="40px" className={styles.feature} {...props}>
+            <Flex rounded="full" w="12" h="12" bg="purple.300" align="center" justify="center">
+                <Icon fontSize="24px" color="white" as={icon} />
+            </Flex>
+            <Heading as="h3" size="md" fontWeight="semibold" mt="1em" mb="0.5em">
+                {title}
+            </Heading>
+            <Text fontSize="lg" opacity={0.7}>
+                {children}
+            </Text>
+        </Box>
+    );
 };
 
 const StatBox = (props: StatBoxProps) => {
@@ -99,7 +130,43 @@ export default function Page() {
                     </Button>
                 </Stack>
             </Flex>
-
+            <Box pb="50px" mt="100px" as="section" pt="50px" bg="gray.50">
+                <Container mb="100px" maxW="1280px">
+                    <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
+                        <Heading as="h2" mb="5">
+                            All the characteristics of a Mordern API
+                        </Heading>
+                    </Box>
+                    <Grid
+                        templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }}
+                        gap={10}
+                        px={{ md: 12 }}>
+                        <Feature icon={BsLightningFill} title="Fast">
+                            Using the Fastest Web Framework for all languages dagpi is blazingly
+                            fast.
+                        </Feature>
+                        <Feature icon={RiSecurePaymentLine} title="Secure">
+                            We use Cloudflare HTTPS for secure and Industry Standard Security.
+                        </Feature>
+                        <Feature icon={TiSpanner} title="Easy To Use">
+                            With Wrappers and excellent documentation, Dagpi is Easy to use.
+                        </Feature>
+                        <Feature icon={DiGithubBadge} title="Open-Source">
+                            All of the code used is publicly available. Feel Free to contribute{' '}
+                            <Text color="pink.500">
+                                <AiFillHeart />
+                            </Text>
+                        </Feature>
+                        <Feature icon={BiCodeCurly} title="Wrappers in Major Languages">
+                            We have easy to use API Wrappers, adding further abstraction.
+                        </Feature>
+                        <Feature icon={FaDiscord} title="Active Community">
+                            Our active discord community is always ready to help. It also handles
+                            Token Apps.
+                        </Feature>
+                    </Grid>
+                </Container>
+            </Box>
             <br />
             <Box mt="100px" as="section" bg="purple.600">
                 <Container py="7.5rem" maxW="1280px" color="white">

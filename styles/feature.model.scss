@@ -1,0 +1,14 @@
+.feature {
+    z-index: 1;
+    box-shadow: 10px  black;
+    &:hover {
+        border-style: solid;
+        border-width: 2px;
+        border-color:#6B46C1;
+        transform: translateY(-10px);
+        //transform: scale(1.15);
+        
+    }
+}
+
+
