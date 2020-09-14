@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import AccessDenied from '../components/access-denied';
 import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 export default function Page() {
     const [session, loading] = useSession();
@@ -34,11 +35,14 @@ export default function Page() {
 
     // If session exists, display content
     return (
-        <Layout>
-            <h1>Protected Page</h1>
-            <p>
-                <strong>{content}</strong>
-            </p>
-        </Layout>
+        <>
+            <SEO title="Dashboard" description="Your Dagpi Management Console" />
+            <Layout>
+                <h1>Protected Page</h1>
+                <p>
+                    <strong>{content}</strong>
+                </p>
+            </Layout>
+        </>
     );
 }

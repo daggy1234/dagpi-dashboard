@@ -20,9 +20,11 @@ import { FaArrowRight, FaDiscord } from 'react-icons/fa';
 import { IoIosSpeedometer } from 'react-icons/io';
 import { RiSecurePaymentLine } from 'react-icons/ri';
 import { TiSpanner } from 'react-icons/ti';
+import Particles from 'react-tsparticles';
 
 import DiscordStrip from '../components/discord';
 import Layout from '../components/layout';
+import SEO from '../components/seo';
 import styles from '../styles/feature.model.scss';
 
 type StatBoxProps = BoxProps & {
@@ -70,123 +72,226 @@ const StatBox = (props: StatBoxProps) => {
 
 export default function Page() {
     return (
-        <Layout>
-            <Head>
-                <title>Dagpi</title>
-                <meta property="og:title" content="Dagpi" key="title" />
-            </Head>
-            <Flex
-                maxW="760px"
-                mx="auto"
-                align="center"
-                justify="center"
-                direction="column"
-                textAlign="center">
-                <Heading
-                    fontSize={{ base: '2.25rem', sm: '3rem', lg: '3.75rem' }}
-                    letterSpacing="tight"
-                    fontWeight="bold"
-                    mb="16px"
-                    lineHeight="1.2">
-                    A
-                    <Box as="span" color="purple.500">
-                        {' '}
-                        Powerful and Fast{' '}
-                    </Box>
-                    api that can Do Amazing Things.
-                </Heading>
-
-                <Text opacity={0.7} fontSize={{ base: 'lg', lg: 'xl' }} mt="6">
-                    Built with a variety of languages to maximise performance, it is fast,reliable
-                    and gets the job done
-                </Text>
-
-                <Stack
-                    mt="10"
-                    spacing="4"
+        <>
+            <SEO
+                title="Dagpi: A simple,fast and easy to use API"
+                description="A simple,fast and easy to use API"
+            />
+            <Layout>
+                <Head>
+                    <title>Dagpi</title>
+                    <meta property="og:title" content="Dagpi" key="title" />
+                </Head>
+                <Flex
+                    maxW="760px"
+                    mx="auto"
+                    align="center"
                     justify="center"
-                    direction={{ base: 'column', lg: 'row' }}>
-                    <Button
-                        h="4rem"
-                        px="40px"
-                        fontSize="1.2rem"
-                        as="a"
-                        size="lg"
-                        colorScheme="purple"
-                        rightIcon={<FaArrowRight fontSize="0.8em" />}>
-                        Get Started
-                    </Button>
+                    direction="column"
+                    textAlign="center">
+                    <Heading
+                        fontSize={{ base: '2.25rem', sm: '3rem', lg: '3.75rem' }}
+                        letterSpacing="tight"
+                        fontWeight="bold"
+                        mb="16px"
+                        lineHeight="1.2">
+                        A
+                        <Box as="span" color="purple.500">
+                            {' '}
+                            Powerful and Fast{' '}
+                        </Box>
+                        api that can Do Amazing Things.
+                    </Heading>
 
-                    <Button
-                        as="a"
-                        size="lg"
-                        h="4rem"
-                        px="40px"
-                        fontSize="1.2rem"
-                        href="https://github.com/Daggy1234/dagpi"
-                        target="__blank"
-                        leftIcon={<DiGithubBadge size="1.5em" />}>
-                        GitHub
-                    </Button>
-                </Stack>
-            </Flex>
-            <Box pb="50px" mt="100px" as="section" pt="50px" bg="gray.50">
-                <Container mb="100px" maxW="1280px">
-                    <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
-                        <Heading as="h2" mb="5">
-                            All the characteristics of a Mordern API
-                        </Heading>
-                    </Box>
-                    <Grid
-                        templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }}
-                        gap={10}
-                        px={{ md: 12 }}>
-                        <Feature icon={BsLightningFill} title="Fast">
-                            Using the Fastest Web Framework for all languages dagpi is blazingly
-                            fast.
-                        </Feature>
-                        <Feature icon={RiSecurePaymentLine} title="Secure">
-                            We use Cloudflare HTTPS for secure and Industry Standard Security.
-                        </Feature>
-                        <Feature icon={TiSpanner} title="Easy To Use">
-                            With Wrappers and excellent documentation, Dagpi is Easy to use.
-                        </Feature>
-                        <Feature icon={DiGithubBadge} title="Open-Source">
-                            All of the code used is publicly available. Feel Free to contribute{' '}
-                            <Text color="pink.500">
-                                <AiFillHeart />
-                            </Text>
-                        </Feature>
-                        <Feature icon={BiCodeCurly} title="Wrappers in Major Languages">
-                            We have easy to use API Wrappers, adding further abstraction.
-                        </Feature>
-                        <Feature icon={FaDiscord} title="Active Community">
-                            Our active discord community is always ready to help. It also handles
-                            Token Apps.
-                        </Feature>
-                    </Grid>
-                </Container>
-            </Box>
-            <br />
-            <Box mt="100px" as="section" bg="purple.600">
-                <Container py="7.5rem" maxW="1280px" color="white">
-                    <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
-                        <Heading as="h3" size="2xl" textStyle="heading" mb="5">
-                            Some Stats....
-                        </Heading>
-                        <Text opacity={0.7} fontSize="lg">
-                            And we keep growing
-                        </Text>
-                    </Box>
-                    <Stack direction={{ base: 'column', lg: 'row' }}>
-                        <StatBox icon={AiOutlineUser} title="30+" description="Active Users" />
-                        <StatBox icon={IoIosSpeedometer} title="<50ms" description="Ping" />
-                        <StatBox icon={BsCodeSlash} title="5000+" description="Lines of Code" />
-                        <StatBox icon={FaDiscord} title="70+" description="Discord members" />
+                    <Text opacity={0.7} fontSize={{ base: 'lg', lg: 'xl' }} mt="6">
+                        Built with a variety of languages to maximise performance, it is
+                        fast,reliable and gets the job done
+                    </Text>
+
+                    <Stack
+                        mt="10"
+                        spacing="4"
+                        justify="center"
+                        direction={{ base: 'column', lg: 'row' }}>
+                        <Button
+                            h="4rem"
+                            px="40px"
+                            fontSize="1.2rem"
+                            as="a"
+                            size="lg"
+                            colorScheme="purple"
+                            rightIcon={<FaArrowRight fontSize="0.8em" />}>
+                            Get Started
+                        </Button>
+
+                        <Button
+                            as="a"
+                            size="lg"
+                            h="4rem"
+                            px="40px"
+                            fontSize="1.2rem"
+                            href="https://github.com/Daggy1234/dagpi"
+                            target="__blank"
+                            leftIcon={<DiGithubBadge size="1.5em" />}>
+                            GitHub
+                        </Button>
                     </Stack>
-                </Container>
-            </Box>
-            <DiscordStrip mt="100px" />
-        </Layout>
+                </Flex>
+                <Box pb="50px" mt="100px" as="section" pt="50px" bg="gray.50">
+                    <Container mb="100px" maxW="1280px">
+                        <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
+                            <Heading as="h2" mb="5">
+                                All the characteristics of a Mordern API
+                            </Heading>
+                        </Box>
+                        <Grid
+                            templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }}
+                            gap={10}
+                            px={{ md: 12 }}>
+                            <Feature icon={BsLightningFill} title="Fast">
+                                Using the Fastest Web Framework for all languages dagpi is blazingly
+                                fast.
+                            </Feature>
+                            <Feature icon={RiSecurePaymentLine} title="Secure">
+                                We use Cloudflare HTTPS for secure and Industry Standard Security.
+                            </Feature>
+                            <Feature icon={TiSpanner} title="Easy To Use">
+                                With Wrappers and excellent documentation, Dagpi is Easy to use.
+                            </Feature>
+                            <Feature icon={DiGithubBadge} title="Open-Source">
+                                All of the code used is publicly available. Feel Free to contribute{' '}
+                                <Text color="pink.500">
+                                    <AiFillHeart />
+                                </Text>
+                            </Feature>
+                            <Feature icon={BiCodeCurly} title="Wrappers in Major Languages">
+                                We have easy to use API Wrappers, adding further abstraction.
+                            </Feature>
+                            <Feature icon={FaDiscord} title="Active Community">
+                                Our active discord community is always ready to help. It also
+                                handles Token Apps.
+                            </Feature>
+                        </Grid>
+                    </Container>
+                </Box>
+                <Particles
+                    id="tsparticles"
+                    options={{
+                        background: {
+                            color: {
+                                value: '#CBD5E0'
+                            }
+                        },
+                        fpsLimit: 60,
+                        interactivity: {
+                            detectsOn: 'canvas',
+                            events: {
+                                onClick: {
+                                    enable: true,
+                                    mode: 'push'
+                                },
+                                onHover: {
+                                    enable: true,
+                                    mode: 'repulse'
+                                },
+                                resize: true
+                            },
+                            modes: {
+                                bubble: {
+                                    distance: 400,
+                                    duration: 2,
+                                    opacity: 0.8,
+                                    size: 40
+                                },
+                                push: {
+                                    quantity: 4
+                                },
+                                repulse: {
+                                    distance: 200,
+                                    duration: 0.4
+                                }
+                            }
+                        },
+                        particles: {
+                            collisions: {
+                                enable: true
+                            },
+                            move: {
+                                direction: 'none',
+                                enable: true,
+                                outMode: 'bounce',
+                                random: false,
+                                speed: 6,
+                                straight: false
+                            },
+                            number: {
+                                density: {
+                                    enable: true,
+                                    value_area: 800
+                                },
+                                value: 20
+                            },
+                            opacity: {
+                                value: 0.9
+                            },
+                            shape: {
+                                image: [
+                                    {
+                                        height: 500,
+                                        width: 500,
+                                        src: '/Tech/docker.png'
+                                    },
+                                    {
+                                        height: 500,
+                                        width: 500,
+                                        src: '/Tech/python.png'
+                                    },
+                                    {
+                                        height: 500,
+                                        width: 500,
+                                        src: '/Tech/rust.png'
+                                    },
+                                    {
+                                        height: 500,
+                                        width: 500,
+                                        src: '/Tech/react.png'
+                                    },
+                                    {
+                                        height: 500,
+                                        width: 500,
+                                        src: '/Tech/postgres.png'
+                                    }
+                                ],
+                                type: 'image'
+                            },
+                            size: {
+                                value: 50
+                            }
+                        },
+                        detectRetina: true
+                    }}>
+                    <Text>SOME TEXT</Text>
+                </Particles>
+                <Box mt="100px" as="section" bg="purple.600">
+                    <Container py="7.5rem" maxW="1280px" color="white">
+                        <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
+                            <Heading as="h3" size="2xl" textStyle="heading" mb="5">
+                                Some Stats....
+                            </Heading>
+                            <Text opacity={0.7} fontSize="lg">
+                                And we keep growing
+                            </Text>
+                        </Box>
+                        <Stack direction={{ base: 'column', lg: 'row' }}>
+                            <StatBox icon={AiOutlineUser} title="30+" description="Active Users" />
+                            <StatBox icon={IoIosSpeedometer} title="<50ms" description="Ping" />
+                            <StatBox icon={BsCodeSlash} title="5000+" description="Lines of Code" />
+                            <StatBox icon={FaDiscord} title="70+" description="Discord members" />
+                        </Stack>
+                    </Container>
+                </Box>
+                <DiscordStrip mt="100px" />
+            </Layout>
+        </>
     );
 }

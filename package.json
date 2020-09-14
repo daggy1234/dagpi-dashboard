@@ -29,12 +29,14 @@
         "@zeit/next-sass": "^1.0.1",
         "next": "^9.5.0",
         "next-auth": "^3.1.0",
+        "next-seo": "^4.7.3",
         "node-sass": "^4.14.1",
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-icons": "^3.11.0",
         "react-particles-js": "2.4.0",
+        "react-tsparticles": "^1.17.10",
         "sqlite3": "^5.0.0"
     },
     "devDependencies": {
