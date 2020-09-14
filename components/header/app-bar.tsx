@@ -138,6 +138,8 @@ export default function AppBar({ onOpen, ...rest }) {
                             <Button
                                 bg="transparent"
                                 border="1px"
+                                color="white"
+                                borderColor="white"
                                 onClick={(e) => {
                                     e.preventDefault();
                                     signIn('discord');

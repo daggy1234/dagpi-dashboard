@@ -4,9 +4,10 @@ import { ChakraProvider, theme } from '@chakra-ui/core';
 import { Provider } from 'next-auth/client';
 import { DefaultSeo } from 'next-seo';
 import { AppProps } from 'next/app';
-import Head from 'next/head';
+import Router from 'next/router';
 
 import siteConfig from '../config/site-config';
+import { trackPageview } from '../lib/track';
 interface BaseBreakpointConfig extends Record<string, string> {
     sm: string;
     md: string;
@@ -37,17 +38,13 @@ const newTheme = {
     }
 };
 
+Router.events.on('routeChangeComplete', (url) => {
+    trackPageview(url);
+});
+
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
-            <Head>
-                <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-                <meta content="width=device-width, initial-scale=1" name="viewport" />
-                <link rel="icon" type="image/png" sizes="96x96" href="/dagpi.png" />
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://static.cloudflareinsights.com" />
-                <meta name="theme-color" content="#9F7AEA" />
-            </Head>
             <Provider options={{ clientMaxAge: 0, keepAlive: 0 }} session={pageProps.session}>
                 <ChakraProvider theme={newTheme}>
                     <DefaultSeo {...siteConfig.seo} />

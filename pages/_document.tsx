@@ -1,34 +1,26 @@
 import { ColorModeScript } from '@chakra-ui/core';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
-import { GA_TRACKING_ID } from '../lib/analytics';
-
+import GAScript from '../lib/analytics';
 export default class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
                 <Head>
-                    <script
-                        async
-                        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-                    />
-                    <script
-                        dangerouslySetInnerHTML={{
-                            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-          `
-                        }}
-                    />
+                    <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
+                    <meta content="width=device-width, initial-scale=1" name="viewport" />
+                    <meta content="A fast,accesible and easy to use api" name="description" />
+                    <meta name="theme-color" content="#9F7AEA" />
+                    <link rel="icon" type="image/png" href="/dagpi.png" />
+                    <link rel="apple-touch-icon" href="/dagpi.png" />
+                    <link rel="preconnect" href="https://fonts.googleapis.com" />
+                    <link rel="preconnect" href="https://static.cloudflareinsights.com" />
                 </Head>
                 <body>
                     <ColorModeScript />
                     <Main />
                     <NextScript />
+                    <GAScript />
                 </body>
             </Html>
         );
