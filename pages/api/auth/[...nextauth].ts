@@ -7,10 +7,6 @@ import Providers from 'next-auth/providers';
 const options = {
     // https://next-auth.js.org/configuration/providers
     providers: [
-        Providers.GitHub({
-            clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_SECRET
-        }),
         {
             id: 'discord',
             name: 'Discord',
