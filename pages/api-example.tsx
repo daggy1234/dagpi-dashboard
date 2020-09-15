@@ -9,7 +9,7 @@ export default function Page() {
         <Layout>
             <SEO title="API" description="Dagpi Testing API Routes" />
             <Box>
-                <h1>API Example</h1>
+                <h1>API Examples</h1>
                 <p>The examples below show responses from the example API endpoints.</p>
                 <p>
                     <em>You must be signed in to see responses.</em>
