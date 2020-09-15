@@ -8,7 +8,6 @@ export default class MyDocument extends Document {
             <Html lang="en">
                 <Head>
                     <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-                    <meta content="width=device-width, initial-scale=1" name="viewport" />
                     <meta content="A fast,accesible and easy to use api" name="description" />
                     <meta name="theme-color" content="#9F7AEA" />
                     <link rel="icon" type="image/png" href="/dagpi.png" />

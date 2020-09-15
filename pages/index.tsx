@@ -174,104 +174,129 @@ export default function Page() {
                         </Grid>
                     </Container>
                 </Box>
-                <Particles
-                    id="tsparticles"
-                    options={{
-                        background: {
-                            color: {
-                                value: '#CBD5E0'
-                            }
-                        },
-                        fpsLimit: 60,
-                        interactivity: {
-                            detectsOn: 'canvas',
-                            events: {
-                                onClick: {
-                                    enable: true,
-                                    mode: 'push'
-                                },
-                                onHover: {
-                                    enable: true,
-                                    mode: 'repulse'
-                                },
-                                resize: true
-                            },
-                            modes: {
-                                bubble: {
-                                    distance: 400,
-                                    duration: 2,
-                                    opacity: 0.8,
-                                    size: 40
-                                },
-                                push: {
-                                    quantity: 4
-                                },
-                                repulse: {
-                                    distance: 200,
-                                    duration: 0.4
+                <div className={styles.container}>
+                    <Particles
+                        id="tsparticles"
+                        options={{
+                            background: {
+                                color: {
+                                    value: '#CBD5E0'
                                 }
-                            }
-                        },
-                        particles: {
-                            collisions: {
-                                enable: true
                             },
-                            move: {
-                                direction: 'none',
-                                enable: true,
-                                outMode: 'bounce',
-                                random: false,
-                                speed: 6,
-                                straight: false
-                            },
-                            number: {
-                                density: {
-                                    enable: true,
-                                    value_area: 800
+                            fpsLimit: 60,
+                            interactivity: {
+                                detectsOn: 'canvas',
+                                events: {
+                                    onClick: {
+                                        enable: true,
+                                        mode: 'push'
+                                    },
+                                    onHover: {
+                                        enable: true,
+                                        mode: 'repulse'
+                                    },
+                                    resize: true
                                 },
-                                value: 20
-                            },
-                            opacity: {
-                                value: 0.9
-                            },
-                            shape: {
-                                image: [
-                                    {
-                                        height: 500,
-                                        width: 500,
-                                        src: '/Tech/docker.png'
+                                modes: {
+                                    bubble: {
+                                        distance: 400,
+                                        duration: 2,
+                                        opacity: 0.8,
+                                        size: 40
                                     },
-                                    {
-                                        height: 500,
-                                        width: 500,
-                                        src: '/Tech/python.png'
+                                    push: {
+                                        quantity: 4
                                     },
-                                    {
-                                        height: 500,
-                                        width: 500,
-                                        src: '/Tech/rust.png'
-                                    },
-                                    {
-                                        height: 500,
-                                        width: 500,
-                                        src: '/Tech/react.png'
-                                    },
-                                    {
-                                        height: 500,
-                                        width: 500,
-                                        src: '/Tech/postgres.png'
+                                    repulse: {
+                                        distance: 200,
+                                        duration: 0.4
                                     }
-                                ],
-                                type: 'image'
+                                }
                             },
-                            size: {
-                                value: 50
-                            }
-                        },
-                        detectRetina: true
-                    }}>
-                    <Text>SOME TEXT</Text>
-                </Particles>
+                            particles: {
+                                collisions: {
+                                    enable: true
+                                },
+                                move: {
+                                    direction: 'none',
+                                    enable: true,
+                                    outMode: 'bounce',
+                                    random: false,
+                                    speed: 6,
+                                    straight: false
+                                },
+                                number: {
+                                    density: {
+                                        enable: true,
+                                        value_area: 800
+                                    },
+                                    value: 20
+                                },
+                                opacity: {
+                                    value: 0.4
+                                },
+                                shape: {
+                                    image: [
+                                        {
+                                            height: 500,
+                                            width: 500,
+                                            src: '/Tech/docker.png'
+                                        },
+                                        {
+                                            height: 500,
+                                            width: 500,
+                                            src: '/Tech/python.png'
+                                        },
+                                        {
+                                            height: 500,
+                                            width: 500,
+                                            src: '/Tech/rust.png'
+                                        },
+                                        {
+                                            height: 500,
+                                            width: 500,
+                                            src: '/Tech/react.png'
+                                        },
+                                        {
+                                            height: 500,
+                                            width: 500,
+                                            src: '/Tech/postgres.png'
+                                        },
+                                        {
+                                            height: 500,
+                                            width: 500,
+                                            src: '/Tech/scsssvg.svg'
+                                        },
+                                        {
+                                            height: 500,
+                                            width: 500,
+                                            src: '/Tech/ts.png'
+                                        },
+                                        {
+                                            height: 500,
+                                            width: 500,
+                                            src: '/Tech/denosvg.svg'
+                                        },
+
+                                        {
+                                            height: 500,
+                                            width: 500,
+                                            src: '/Tech/chkara.png'
+                                        }
+                                    ],
+                                    type: 'image'
+                                },
+                                size: {
+                                    value: 50
+                                }
+                            },
+                            detectRetina: true
+                        }}
+                    />
+                    <Heading size="2xl" color="black" className={styles.containerText}>
+                        Powered by the Technology of the Future
+                    </Heading>
+                </div>
                 <Box mt="100px" as="section" bg="purple.600">
                     <Container py="7.5rem" maxW="1280px" color="white">
                         <Box maxW="760px" mx="auto" textAlign="center" mb="56px">

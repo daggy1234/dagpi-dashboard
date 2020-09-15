@@ -4,6 +4,7 @@ import { ChakraProvider, theme } from '@chakra-ui/core';
 import { Provider } from 'next-auth/client';
 import { DefaultSeo } from 'next-seo';
 import { AppProps } from 'next/app';
+import Head from 'next/head';
 import Router from 'next/router';
 
 import siteConfig from '../config/site-config';
@@ -45,6 +46,9 @@ Router.events.on('routeChangeComplete', (url) => {
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
+            <Head>
+                <meta content="width=device-width, initial-scale=1" name="viewport" />
+            </Head>
             <Provider options={{ clientMaxAge: 0, keepAlive: 0 }} session={pageProps.session}>
                 <ChakraProvider theme={newTheme}>
                     <DefaultSeo {...siteConfig.seo} />

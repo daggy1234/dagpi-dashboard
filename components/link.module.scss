@@ -1,10 +1,15 @@
 
 .link {
     text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 50ms linear 0s;
 }
 
 .link:hover {
-    transform: scale(1.5,1.5);
+    transform: translateY(-1px);
+    border-bottom-color: white;
+    border-bottom-width: 50%;
+    
 }
 
 .link:visited {
