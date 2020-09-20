@@ -15,10 +15,10 @@ function DiscordStrip(props: BoxProps) {
                             <FaDiscord />
                         </Box>
                         <Box>
-                            <Heading size="md" lineHeight="1.2" mb="1">
+                            <Heading size="md" lineHeight="1.2" mb="1" color="white">
                                 Official Server
                             </Heading>
-                            <Text opacity={0.7}>Acquire Tokens, Seek Help and get Updates</Text>
+                            <Text color="white">Acquire Tokens, Seek Help and get Updates</Text>
                         </Box>
                     </Flex>
                     <chakra.button

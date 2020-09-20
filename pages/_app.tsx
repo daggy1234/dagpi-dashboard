@@ -6,9 +6,11 @@ import { DefaultSeo } from 'next-seo';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
+import { useEffect } from 'react';
 
 import siteConfig from '../config/site-config';
-import { trackPageview } from '../lib/track';
+import * as gtag from '../lib/analytics';
+
 interface BaseBreakpointConfig extends Record<string, string> {
     sm: string;
     md: string;
@@ -39,15 +41,34 @@ const newTheme = {
     }
 };
 
-Router.events.on('routeChangeComplete', (url) => {
-    trackPageview(url);
-});
-
 export default function App({ Component, pageProps }: AppProps) {
+    useEffect(() => {
+        const handleRouteChange = (url) => {
+            gtag.pageview(url);
+        };
+        Router.events.on('routeChangeComplete', handleRouteChange);
+        return () => {
+            Router.events.off('routeChangeComplete', handleRouteChange);
+        };
+    }, []);
+
     return (
         <>
             <Head>
+                <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
+                <meta content="A fast,accesible and easy to use api" name="description" />
+                <meta name="theme-color" content="#9F7AEA" />
+                <meta charSet="utf-8" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
+                <link rel="icon" type="image/png" href="/dagpi.png" />
+                <link rel="apple-touch-icon" href="/dagpi.png" />
+                <link rel="shortcut icon" type="image/png" href="/dagpi.png" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="manifest" href="/manifest.json" />
+                <meta name="format-detection" content="telephone=no" />
+                <meta name="mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
             </Head>
             <Provider options={{ clientMaxAge: 0, keepAlive: 0 }} session={pageProps.session}>
                 <ChakraProvider theme={newTheme}>

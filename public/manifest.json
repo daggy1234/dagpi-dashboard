@@ -1,0 +1,17 @@
+{
+    "name": "Dagpi",
+    "short_name": "Dagpi",
+    "theme_color": "#9F7AEA",
+    "background_color": "#fff",
+    "display": "fullscreen",
+    "orientation": "potrait",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+            "src":"dagpi.png",
+            "type":"image/png"
+        }
+    ],
+    "splash_pages": null
+}

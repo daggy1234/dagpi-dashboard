@@ -6,9 +6,10 @@
 }
 
 .link:hover {
-    transform: translateY(-1px);
+    transform: translateY(-3px);
     border-bottom-color: white;
     border-bottom-width: 50%;
+    transition: .2s;
     
 }
 

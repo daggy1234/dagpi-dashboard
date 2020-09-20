@@ -6,7 +6,8 @@ import {
     MenuDivider,
     MenuGroup,
     MenuItem,
-    MenuList
+    MenuList,
+    Skeleton
 } from '@chakra-ui/core';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
@@ -89,48 +90,56 @@ export default function AppBar({ onOpen, ...rest }) {
                 </MenuItems>
 
                 {session && (
-                    <MenuItems>
-                        <Menu>
-                            <MenuButton
-                                as={Button}
-                                borderColor="purple.500"
-                                variant="outline"
-                                color="white"
-                                colorScheme="purple"
-                                rightIcon={<FaChevronDown />}>
-                                <Image
-                                    boxSize="2rem"
-                                    borderRadius="full"
-                                    src={session.user.image}
-                                    alt={session.user.name}
-                                />
-                            </MenuButton>
-                            <MenuList>
-                                <MenuGroup textAlign="left" color="black" title="Profile">
-                                    <MenuItem bg="transparent" color="black" borderColor="white">
-                                        {session.user.name}
-                                    </MenuItem>
-                                </MenuGroup>
-                                <MenuGroup textAlign="left" color="black" title="Email">
-                                    <MenuItem bg="transparent" color="black" borderColor="white">
-                                        {session.user.email}
-                                    </MenuItem>
-                                </MenuGroup>
-                                <MenuDivider />
-                                <MenuItem
+                    <Skeleton isLoaded={!loading}>
+                        <MenuItems>
+                            <Menu>
+                                <MenuButton
                                     as={Button}
-                                    colorScheme="pink"
-                                    variant="solid"
-                                    border="1px"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        signOut();
-                                    }}>
-                                    Logout
-                                </MenuItem>
-                            </MenuList>
-                        </Menu>
-                    </MenuItems>
+                                    borderColor="purple.500"
+                                    variant="outline"
+                                    color="white"
+                                    colorScheme="purple"
+                                    rightIcon={<FaChevronDown />}>
+                                    <Image
+                                        boxSize="2rem"
+                                        borderRadius="full"
+                                        src={session.user.image}
+                                        alt={session.user.name}
+                                    />
+                                </MenuButton>
+                                <MenuList>
+                                    <MenuGroup textAlign="left" color="black" title="Profile">
+                                        <MenuItem
+                                            bg="transparent"
+                                            color="black"
+                                            borderColor="white">
+                                            {session.user.name}
+                                        </MenuItem>
+                                    </MenuGroup>
+                                    <MenuGroup textAlign="left" color="black" title="Email">
+                                        <MenuItem
+                                            bg="transparent"
+                                            color="black"
+                                            borderColor="white">
+                                            {session.user.email}
+                                        </MenuItem>
+                                    </MenuGroup>
+                                    <MenuDivider />
+                                    <MenuItem
+                                        as={Button}
+                                        colorScheme="pink"
+                                        variant="solid"
+                                        border="1px"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            signOut();
+                                        }}>
+                                        Logout
+                                    </MenuItem>
+                                </MenuList>
+                            </Menu>
+                        </MenuItems>
+                    </Skeleton>
                 )}
                 {!session && (
                     <MenuItems>

@@ -8,7 +8,8 @@ import {
     Heading,
     Icon,
     Stack,
-    Text
+    Text,
+    useBreakpointValue
 } from '@chakra-ui/core';
 import Head from 'next/head';
 import React from 'react';
@@ -22,11 +23,12 @@ import { RiSecurePaymentLine } from 'react-icons/ri';
 import { TiSpanner } from 'react-icons/ti';
 import Particles from 'react-tsparticles';
 
+import Cards from '../components/cards/cards';
 import DiscordStrip from '../components/discord';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import styles from '../styles/feature.model.scss';
-
+import textstyle from '../styles/gradient.model.scss';
 type StatBoxProps = BoxProps & {
     icon?: React.ElementType;
     title: string;
@@ -71,6 +73,7 @@ const StatBox = (props: StatBoxProps) => {
 };
 
 export default function Page() {
+    const mobile = useBreakpointValue({ base: true, sm: true, lg: false, xl: false });
     return (
         <>
             <SEO
@@ -96,7 +99,11 @@ export default function Page() {
                         mb="16px"
                         lineHeight="1.2">
                         A
-                        <Box as="span" color="purple.500">
+                        <Box
+                            as="span"
+                            backgroundColor="#1fd1f9"
+                            backgroundImage="linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%)"
+                            className={textstyle.text}>
                             {' '}
                             Powerful and Fast{' '}
                         </Box>
@@ -119,6 +126,7 @@ export default function Page() {
                             fontSize="1.2rem"
                             as="a"
                             size="lg"
+                            href="https://docs.dagpi.tk"
                             colorScheme="purple"
                             rightIcon={<FaArrowRight fontSize="0.8em" />}>
                             Get Started
@@ -174,138 +182,139 @@ export default function Page() {
                         </Grid>
                     </Container>
                 </Box>
-                <div className={styles.container}>
-                    <Particles
-                        id="tsparticles"
-                        options={{
-                            background: {
-                                color: {
-                                    value: '#CBD5E0'
-                                }
-                            },
-                            fpsLimit: 60,
-                            interactivity: {
-                                detectsOn: 'canvas',
-                                events: {
-                                    onClick: {
-                                        enable: true,
-                                        mode: 'push'
-                                    },
-                                    onHover: {
-                                        enable: true,
-                                        mode: 'repulse'
-                                    },
-                                    resize: true
-                                },
-                                modes: {
-                                    bubble: {
-                                        distance: 400,
-                                        duration: 2,
-                                        opacity: 0.8,
-                                        size: 40
-                                    },
-                                    push: {
-                                        quantity: 4
-                                    },
-                                    repulse: {
-                                        distance: 200,
-                                        duration: 0.4
+                {!mobile ? (
+                    <div className={styles.container}>
+                        <Particles
+                            id="tsparticles"
+                            options={{
+                                background: {
+                                    color: {
+                                        value: '#CBD5E0'
                                     }
-                                }
-                            },
-                            particles: {
-                                collisions: {
-                                    enable: true
                                 },
-                                move: {
-                                    direction: 'none',
-                                    enable: true,
-                                    outMode: 'bounce',
-                                    random: false,
-                                    speed: 6,
-                                    straight: false
-                                },
-                                number: {
-                                    density: {
-                                        enable: true,
-                                        value_area: 800
+                                fpsLimit: 60,
+                                interactivity: {
+                                    detectsOn: 'canvas',
+                                    events: {
+                                        onClick: {
+                                            enable: true,
+                                            mode: 'push'
+                                        },
+                                        onHover: {
+                                            enable: true,
+                                            mode: 'repulse'
+                                        },
+                                        resize: true
                                     },
-                                    value: 20
-                                },
-                                opacity: {
-                                    value: 0.4
-                                },
-                                shape: {
-                                    image: [
-                                        {
-                                            height: 500,
-                                            width: 500,
-                                            src: '/Tech/docker.png'
+                                    modes: {
+                                        bubble: {
+                                            distance: 400,
+                                            duration: 2,
+                                            opacity: 0.8,
+                                            size: 40
                                         },
-                                        {
-                                            height: 500,
-                                            width: 500,
-                                            src: '/Tech/python.png'
+                                        push: {
+                                            quantity: 4
                                         },
-                                        {
-                                            height: 500,
-                                            width: 500,
-                                            src: '/Tech/rust.png'
-                                        },
-                                        {
-                                            height: 500,
-                                            width: 500,
-                                            src: '/Tech/react.png'
-                                        },
-                                        {
-                                            height: 500,
-                                            width: 500,
-                                            src: '/Tech/postgres.png'
-                                        },
-                                        {
-                                            height: 500,
-                                            width: 500,
-                                            src: '/Tech/scsssvg.svg'
-                                        },
-                                        {
-                                            height: 500,
-                                            width: 500,
-                                            src: '/Tech/ts.png'
-                                        },
-                                        {
-                                            height: 500,
-                                            width: 500,
-                                            src: '/Tech/denosvg.svg'
-                                        },
-
-                                        {
-                                            height: 500,
-                                            width: 500,
-                                            src: '/Tech/chkara.png'
+                                        repulse: {
+                                            distance: 200,
+                                            duration: 0.4
                                         }
-                                    ],
-                                    type: 'image'
+                                    }
                                 },
-                                size: {
-                                    value: 50
-                                }
-                            },
-                            detectRetina: true
-                        }}
-                    />
-                    <Heading size="2xl" color="black" className={styles.containerText}>
-                        Powered by the Technology of the Future
-                    </Heading>
-                </div>
+                                particles: {
+                                    collisions: {
+                                        enable: true
+                                    },
+                                    move: {
+                                        direction: 'none',
+                                        enable: true,
+                                        outMode: 'bounce',
+                                        random: false,
+                                        speed: 6,
+                                        straight: false
+                                    },
+                                    number: {
+                                        density: {
+                                            enable: true,
+                                            value_area: 800
+                                        },
+                                        value: 20
+                                    },
+                                    opacity: {
+                                        value: 0.4
+                                    },
+                                    shape: {
+                                        image: [
+                                            {
+                                                height: 500,
+                                                width: 500,
+                                                src: '/Tech/docker.png'
+                                            },
+                                            {
+                                                height: 500,
+                                                width: 500,
+                                                src: '/Tech/python.png'
+                                            },
+                                            {
+                                                height: 500,
+                                                width: 500,
+                                                src: '/Tech/rust.png'
+                                            },
+                                            {
+                                                height: 500,
+                                                width: 500,
+                                                src: '/Tech/react.png'
+                                            },
+                                            {
+                                                height: 500,
+                                                width: 500,
+                                                src: '/Tech/postgres.png'
+                                            },
+                                            {
+                                                height: 500,
+                                                width: 500,
+                                                src: '/Tech/scsssvg.svg'
+                                            },
+                                            {
+                                                height: 500,
+                                                width: 500,
+                                                src: '/Tech/ts.png'
+                                            },
+                                            {
+                                                height: 500,
+                                                width: 500,
+                                                src: '/Tech/denosvg.svg'
+                                            },
+
+                                            {
+                                                height: 500,
+                                                width: 500,
+                                                src: '/Tech/chakra.png'
+                                            }
+                                        ],
+                                        type: 'image'
+                                    },
+                                    size: {
+                                        value: 50
+                                    }
+                                },
+                                detectRetina: true
+                            }}
+                        />
+                        <Heading size="2xl" color="black" className={styles.containerText}>
+                            Powered by the Technology of the Future
+                        </Heading>
+                    </div>
+                ) : (
+                    <br />
+                )}
                 <Box mt="100px" as="section" bg="purple.600">
                     <Container py="7.5rem" maxW="1280px" color="white">
                         <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
                             <Heading as="h3" size="2xl" textStyle="heading" mb="5">
                                 Some Stats....
                             </Heading>
-                            <Text opacity={0.7} fontSize="lg">
-                                And we keep growing
-                            </Text>
                         </Box>
                         <Stack direction={{ base: 'column', lg: 'row' }}>
                             <StatBox icon={AiOutlineUser} title="30+" description="Active Users" />
@@ -315,6 +324,12 @@ export default function Page() {
                         </Stack>
                     </Container>
                 </Box>
+                <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
+                    <Heading as="h3" size="2xl" textStyle="heading" mb="5">
+                        API Wrappers
+                    </Heading>
+                </Box>
+                <Cards />
                 <DiscordStrip mt="100px" />
             </Layout>
         </>
