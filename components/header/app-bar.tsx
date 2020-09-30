@@ -72,11 +72,11 @@ export default function AppBar({ onOpen, ...rest }) {
                     <MenuItems>Discord</MenuItems>
                 </ExtLink>
                 <ExtLink url="https://github.com/Daggy1234/dagpi">
-                    <MenuItems>Docs</MenuItems>
+                    <MenuItems>Github</MenuItems>
                 </ExtLink>
                 <MenuItems>
                     <Box display={{ sm: 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
-                        <Link href="/protected">
+                        <Link href="/dashboard">
                             <Button
                                 variant="outline"
                                 borderColor="white"

@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { Avatar } from '@chakra-ui/core';
+import { url } from 'inspector';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 
@@ -19,12 +21,20 @@ const options = {
                 'https://discord.com/api/oauth2/authorize?response_type=code&prompt=none',
             profileUrl: 'https://discord.com/api/users/@me',
             profile: (profile) => {
+                if (profile.avatar === null) {
+                    const default_avatar_num = parseInt(profile.discriminator) % 5;
+                    profile.image_url = `https://cdn.discordapp.com/embed/avatars/${default_avatar_num}.png`;
+                } else {
+                    const format =
+                        profile.premium_type === 1 || profile.premium_type === 2 ? 'gif' : 'png';
+                    profile.image_url = `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.${format}`;
+                }
                 return {
                     id: profile.id,
                     user_id: profile.id,
                     bot: profile.bot,
                     name: profile.username,
-                    image: `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`,
+                    image: profile.image_url,
                     email: profile.email
                 };
             },
@@ -75,15 +85,15 @@ const options = {
             }
             return Promise.resolve(token);
         }
-    },
+    }
 
     // Events are useful for logging
     // https://next-auth.js.org/configuration/events
-    events: {
-        signIn: async (message) => {
-            console.log(message);
-        }
-    }
+    // events: {
+    //     signIn: async (message) => {
+    //         console.log(message);
+    //     }
+    // }
 
     // Enable debug messages in the console if you are having problems
     //debug: true

@@ -45,11 +45,11 @@ export default function MyDrawer({ isOpen, onClose }) {
                             align="stretch"
                             textAlign="center">
                             <NextLink url="/">Home</NextLink>
-                            <ExtLink url="https://dagpi.tk">Docs</ExtLink>
+                            <ExtLink url="https://docs.dagpi.tk">Docs</ExtLink>
                             <ExtLink url="https://server.daggy.tech">Discord</ExtLink>
                             <ExtLink url="https://github.com/Daggy1234/dagpi">Github</ExtLink>
 
-                            <Link href="/protected">
+                            <Link href="/dashboard">
                                 <Button
                                     variant="outline"
                                     borderColor="white"

@@ -1,0 +1,19 @@
+.apptable {
+    border-collapse: collapse;
+    width: 100%;
+    th,td {
+        padding: 1%;
+    }
+    
+    th {
+        color: black;
+        text-align: left;
+        border-bottom: 5px solid gray;
+    }
+    td {
+        text-align: left;
+        align-items: left;
+    }
+    
+}
+
