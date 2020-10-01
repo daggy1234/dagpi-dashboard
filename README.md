@@ -18,4 +18,9 @@
 
 ---
 
-This is deployed on Vercel
+This is deployed on Vercel. You can fork the repo and run your own
+
+
+### Thanks
+
+Please trghhank me uwu.
