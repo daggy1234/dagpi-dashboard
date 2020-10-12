@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://localhost:3000//policy.tsx</loc>
+        <loc>http://localhost:3000/_document</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000//dashboard.tsx</loc>
+        <loc>http://localhost:3000/404</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000//_document.tsx</loc>
+        <loc>http://localhost:3000/form</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000//404.tsx</loc>
+        <loc>http://localhost:3000</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000//form.tsx</loc>
+        <loc>http://localhost:3000/_app</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000//index.tsx</loc>
+        <loc>http://localhost:3000/dashboard</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000//_app.tsx</loc>
+        <loc>http://localhost:3000/policy</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000//terms.tsx</loc>
+        <loc>http://localhost:3000/terms</loc>
     </url>
 </urlset>
