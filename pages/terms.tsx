@@ -1,9 +1,11 @@
 import { Box, Text } from '@chakra-ui/core';
 
 import Layout from '../components/layout';
+import SEO from '../components/seo';
 export default function Page() {
     return (
         <Layout>
+            <SEO title="Terms" description="Dagpi Terms and Conditions" />
             <Box padding="5%">
                 <Text>
                     TERMS AND CONDITIONS Last updated September 29, 2020 1. Agreement to Terms 1.1

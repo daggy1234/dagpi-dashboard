@@ -316,7 +316,7 @@ export default function Page() {
                                             <BsPencilSquare /> Approved
                                         </Heading>
                                         <Heading color="white" size="md">
-                                            ago
+                                            {formatDistanceToNow(Date.parse(data.createdAt))} ago
                                         </Heading>
                                     </VStack>
                                 </StatBox>

@@ -1,9 +1,11 @@
 import { Box, Text } from '@chakra-ui/core';
 
 import Layout from '../components/layout';
+import SEO from '../components/seo';
 export default function Page() {
     return (
         <Layout>
+            <SEO title="Privacy Policy" description="Dagpi Privacy Policy" />
             <Box padding="5%">
                 <Text>
                     PRIVACY NOTICE Last updated September 29, 2020 Thank you for choosing to be part
