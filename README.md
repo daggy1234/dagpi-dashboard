@@ -4,27 +4,23 @@
 
 ---
 
-- NextJs
+-   NextJs
 
-- NextAuth
+-   NextAuth
 
-- Chakra-Ui
+-   Chakra-Ui
 
-- Eslint
+-   Eslint
 
-- Prettier
+-   Prettier
 
 ### Deploy
 
 ---
 
-<<<<<<< Updated upstream
-This is deployed on Vercel
-=======
 This is deployed on Vercel. You can fork the repo and run your own
 
 
 ### Thanks
 
-Please thank me uwu.
->>>>>>> Stashed changes
+Please trghhank me uwu.
