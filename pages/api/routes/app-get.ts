@@ -7,7 +7,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         return res.send(JSON.stringify({ Error: 'Not signed in' }, null, 2));
     }
     const id = session.user.id;
-    const resp = await fetch(`https://central.dagpi.tk/userapp/${id}/`, {
+    const resp = await fetch(`https://central.dagpi.xyz/userapp/${id}/`, {
         method: 'GET',
         headers: { Authorization: process.env.TOKEN }
     });

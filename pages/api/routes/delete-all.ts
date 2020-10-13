@@ -8,7 +8,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (!session) {
         return res.send({ status: 400 });
     }
-    const resp = await fetch(`https://central.dagpi.tk/deleteapp/${req.body.appid}/`, {
+    const resp = await fetch(`https://central.dagpi.xyz/deleteapp/${req.body.appid}/`, {
         method: 'DELETE',
         headers: {
             Authorization: process.env.TOKEN,
@@ -17,7 +17,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         body: JSON.stringify(req.body)
     });
     if (resp.status === 200) {
-        const respa = await fetch(`https://central.dagpi.tk/deletetoken/${session.user.id}/`, {
+        const respa = await fetch(`https://central.dagpi.xyz/deletetoken/${session.user.id}/`, {
             method: 'DELETE',
             headers: {
                 Authorization: process.env.TOKEN,

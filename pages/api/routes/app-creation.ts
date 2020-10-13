@@ -5,7 +5,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (!session) {
         return res.send({ status: 400 });
     }
-    const resp = await fetch('https://central.dagpi.tk/addapp', {
+    const resp = await fetch('https://central.dagpi.xyz/addapp', {
         method: 'POST',
         headers: {
             Authorization: process.env.TOKEN,
