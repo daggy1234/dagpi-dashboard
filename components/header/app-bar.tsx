@@ -65,7 +65,7 @@ export default function AppBar({ onOpen, ...rest }) {
                 <NextLink url="/">
                     <MenuItems>Home</MenuItems>
                 </NextLink>
-                <ExtLink url="https://dagpi.tk">
+                <ExtLink url="https://docs.dagpi.xyz">
                     <MenuItems>Docs</MenuItems>
                 </ExtLink>
                 <ExtLink url="https://server.daggy.tech">

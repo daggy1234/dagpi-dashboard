@@ -26,14 +26,17 @@ import Particles from 'react-tsparticles';
 import Cards from '../components/cards/cards';
 import DiscordStrip from '../components/discord';
 import Layout from '../components/layout';
+import Rounder from '../components/rounder';
 import SEO from '../components/seo';
 import styles from '../styles/feature.model.scss';
 import textstyle from '../styles/gradient.model.scss';
+
 type StatBoxProps = BoxProps & {
     icon?: React.ElementType;
     title: string;
     description: string;
 };
+
 const Feature = ({ title, icon, children, ...props }) => {
     return (
         <Box bg="white" rounded="12px" shadow="base" p="40px" className={styles.feature} {...props}>
@@ -126,7 +129,7 @@ export default function Page() {
                             fontSize="1.2rem"
                             as="a"
                             size="lg"
-                            href="https://docs.dagpi.tk"
+                            href="https://docs.dagpi.xyz"
                             colorScheme="purple"
                             rightIcon={<FaArrowRight fontSize="0.8em" />}>
                             Get Started
@@ -181,6 +184,10 @@ export default function Page() {
                             </Feature>
                         </Grid>
                     </Container>
+                    <Box mt="100px" textAlign="center" alignItems="center">
+                        <Heading>Cool Features</Heading>
+                        <Rounder />
+                    </Box>
                 </Box>
                 {!mobile ? (
                     <div className={styles.container}>

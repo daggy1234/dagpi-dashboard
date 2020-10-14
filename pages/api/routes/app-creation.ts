@@ -34,6 +34,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                         name: 'Url',
                         value: `[Link](${t.app.appurl})`,
                         inline: true
+                    },
+                    {
+                        name: 'email',
+                        value: session.user.email,
+                        inline: true
                     }
                 ],
                 author: {
