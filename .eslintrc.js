@@ -32,6 +32,7 @@ module.exports = {
         'prettier/prettier': ['error', { ' endOfLine': 'auto' }, { usePrettierrc: true }],
         'react/react-in-jsx-scope': 'off',
         'react/prop-types': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         'simple-import-sort/sort': 'error',

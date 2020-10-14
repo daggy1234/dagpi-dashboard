@@ -2,8 +2,6 @@ import { Badge, Box, Container, Flex, Heading, Image, Text } from '@chakra-ui/co
 import { AutoPlay, Fade } from '@egjs/flicking-plugins';
 import Flicking from '@egjs/react-flicking';
 
-import Cards from './cards/cards';
-
 const Card = (props) => {
     return (
         <Container>
