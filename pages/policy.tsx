@@ -5,7 +5,10 @@ import SEO from '../components/seo';
 export default function Page() {
     return (
         <Layout>
-            <SEO title="Privacy Policy" description="Dagpi Privacy Policy" />
+            <SEO
+                title="Privacy Policy"
+                description="Dagpi Privacy Policy. This is the policy we adhere to with your data."
+            />
             <Box padding="5%">
                 <Text>
                     PRIVACY NOTICE Last updated September 29, 2020 Thank you for choosing to be part

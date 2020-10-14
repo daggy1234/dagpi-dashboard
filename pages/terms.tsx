@@ -5,7 +5,7 @@ import SEO from '../components/seo';
 export default function Page() {
     return (
         <Layout>
-            <SEO title="Terms" description="Dagpi Terms and Conditions" />
+            <SEO title="Terms and Conditions" description="Dagpi Terms and Conditions" />
             <Box padding="5%">
                 <Text>
                     TERMS AND CONDITIONS Last updated September 29, 2020 1. Agreement to Terms 1.1
