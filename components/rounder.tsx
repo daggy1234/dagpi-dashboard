@@ -58,6 +58,7 @@ interface Obj {
 }
 
 export default function Rounder() {
+    // @ts-ignore
     const plugins = [new Fade(), new AutoPlay(2000, 'NEXT')];
     const titles: Array<Obj> = [
         {
