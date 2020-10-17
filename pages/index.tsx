@@ -80,8 +80,8 @@ export default function Page() {
     return (
         <>
             <SEO
-                title="Dagpi: A simple,fast and easy to use API"
-                description="A simple,fast and easy to use API"
+                title="Dagpi: A simple, fast and easy to use API"
+                description="A simple, fast and easy to use API"
             />
             <Layout>
                 <Head>
@@ -110,12 +110,12 @@ export default function Page() {
                             {' '}
                             Powerful and Fast{' '}
                         </Box>
-                        api that can Do Amazing Things.
+                        API that can do amazing things
                     </Heading>
 
                     <Text opacity={0.7} fontSize={{ base: 'lg', lg: 'xl' }} mt="6">
-                        Built with a variety of languages to maximise performance, it is
-                        fast,reliable and gets the job done
+                        Built with a variety of languages to maximise performance, Dagpi is
+                        fast and reliable
                     </Text>
 
                     <Stack
@@ -160,32 +160,32 @@ export default function Page() {
                             gap={10}
                             px={{ md: 12 }}>
                             <Feature icon={BsLightningFill} title="Fast">
-                                Using the Fastest Web Framework for all languages dagpi is blazingly
-                                fast.
+                                Dagpi is lightning quick, using the fasted web development framework
+                                available
                             </Feature>
                             <Feature icon={RiSecurePaymentLine} title="Secure">
-                                We use Cloudflare HTTPS for secure and Industry Standard Security.
+                                Cloudflare HTTPS is used for top-tier, industry standard security
                             </Feature>
-                            <Feature icon={TiSpanner} title="Easy To Use">
-                                With Wrappers and excellent documentation, Dagpi is Easy to use.
+                            <Feature icon={TiSpanner} title="Easy to Use">
+                                With plenty of documentation, Dagpi is a breeze to
+                                implement
                             </Feature>
-                            <Feature icon={DiGithubBadge} title="Open-Source">
-                                All of the code used is publicly available. Feel Free to contribute{' '}
+                            <Feature icon={DiGithubBadge} title="Open Source">
+                                All source code is publicly available for viewing and contributions{' '}
                                 <Text color="pink.500">
                                     <AiFillHeart />
                                 </Text>
                             </Feature>
                             <Feature icon={BiCodeCurly} title="Wrappers in Major Languages">
-                                We have easy to use API Wrappers, adding further abstraction.
+                                API wrappers are provided in numerous major languages for user convenience
                             </Feature>
                             <Feature icon={FaDiscord} title="Active Community">
-                                Our active discord community is always ready to help. It also
-                                handles Token Apps.
+                                Dagpi boasts an active community on Discord that's always willing to lend a hand
                             </Feature>
                         </Grid>
                     </Container>
                     <Box mt="100px" textAlign="center" alignItems="center">
-                        <Heading>Cool Features</Heading>
+                        <Heading>Features</Heading>
                         <Rounder />
                     </Box>
                 </Box>
@@ -320,14 +320,14 @@ export default function Page() {
                     <Container py="7.5rem" maxW="1280px" color="white">
                         <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
                             <Heading as="h3" size="2xl" textStyle="heading" mb="5">
-                                Some Stats....
+                                The Numbers
                             </Heading>
                         </Box>
                         <Stack direction={{ base: 'column', lg: 'row' }}>
                             <StatBox icon={AiOutlineUser} title="30+" description="Active Users" />
                             <StatBox icon={IoIosSpeedometer} title="<50ms" description="Ping" />
                             <StatBox icon={BsCodeSlash} title="5000+" description="Lines of Code" />
-                            <StatBox icon={FaDiscord} title="70+" description="Discord members" />
+                            <StatBox icon={FaDiscord} title="70+" description="Discord Members" />
                         </Stack>
                     </Container>
                 </Box>

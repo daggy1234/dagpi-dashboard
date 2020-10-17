@@ -46,7 +46,7 @@ export default function Cards() {
                 link="https://pypi.org/p/asyncdagpi"
             />
             <Card
-                title="Dagpi"
+                title="Dagpi [WIP]"
                 author="Daggy1234"
                 async={true}
                 language="TypeScript"
@@ -55,7 +55,7 @@ export default function Cards() {
                 link="https://mpmjs.org/Dagpi"
             />
             <Card
-                title="DagpiRust"
+                title="DagpiRust [WIP]"
                 author="Daggy1234"
                 async={true}
                 language="rust"
@@ -64,7 +64,7 @@ export default function Cards() {
                 link="https://crates.io/DagpiRust"
             />
             <Card
-                title="DagpiDeno"
+                title="DagpiDeno [WIP]"
                 author="Daggy1234"
                 async={true}
                 language="Deno (Ts)"

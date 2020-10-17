@@ -18,7 +18,7 @@ function DiscordStrip(props: BoxProps) {
                             <Heading size="md" lineHeight="1.2" mb="1" color="white">
                                 Official Server
                             </Heading>
-                            <Text color="white">Acquire Tokens, Seek Help and get Updates</Text>
+                            <Text color="white">Get support from experienced users, and stay up to date with the latest and greatest of Dagpi</Text>
                         </Box>
                     </Flex>
                     <chakra.button

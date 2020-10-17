@@ -62,33 +62,33 @@ export default function Rounder() {
         {
             title: 'Amazing Datasets',
             api: 'data',
-            body: 'High quality jokes,roasts and pickup lines available',
+            body: 'Fun jokes, roasts and pickup lines are provided through Dagpi\'s expansive datasets',
             url: '/Example/data.png'
         },
         {
             title: 'Innovative Games',
             api: 'data',
             body:
-                'Break away from overused game, and add fun games like Whose that Pokemon to your arsenal',
+                'Stray away from common games, and add titles such as "Who\'s that Pokemon?" to your arsenal',
             url: '/Example/Wtp.png'
         },
         {
             title: 'GIF Manipulation',
             api: 'image',
-            body: 'Manipulate not only Static images but GIF Image Sequences',
+            body: 'Soar above the competition by taking advantage of Dagpi\'s tools on static images AND animated GIFs',
             url: '/Example/Edited.gif'
         },
         {
             title: 'Wide array of filters',
             api: 'image',
-            body: 'Lots of fun image effects and filters available  to use',
+            body: 'Lots of fun image effects and filters at the user\'s disposal',
             url: '/Example/filtered.png'
         },
         {
             title: 'Meme Creation Tool',
             api: 'image',
             body:
-                'We pride ourselves on our versatile meme generator that allows freestyle meme creation in a variety of styles.',
+                'Dagpi\'s flagship meme generator accomodates quality content creation in an ever-increasing array of styles',
             url: '/Example/meme.png'
         }
     ];
