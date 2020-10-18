@@ -38,7 +38,7 @@ export default function MyDrawer({ isOpen, onClose }) {
                     <DrawerCloseButton />
                     <DrawerHeader>NavBar</DrawerHeader>
 
-                    <DrawerBody>
+                    <DrawerBody mr="30px">
                         <VStack
                             divider={<StackDivider borderColor="gray.200" />}
                             spacing={4}

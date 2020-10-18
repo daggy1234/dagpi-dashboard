@@ -13,10 +13,6 @@
     </url>
 
     <url>
-        <loc>http://localhost:3000</loc>
-    </url>
-
-    <url>
         <loc>http://localhost:3000/_app</loc>
     </url>
 
@@ -30,5 +26,9 @@
 
     <url>
         <loc>http://localhost:3000/terms</loc>
+    </url>
+
+    <url>
+        <loc>http://localhost:3000</loc>
     </url>
 </urlset>

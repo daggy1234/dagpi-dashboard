@@ -41,7 +41,7 @@ export default function Cards() {
                 author="Daggy1234"
                 async={true}
                 language="python"
-                coverage="70%"
+                coverage="100%"
                 image="/Tech/python.png"
                 link="https://pypi.org/p/asyncdagpi"
             />
@@ -68,9 +68,27 @@ export default function Cards() {
                 author="Daggy1234"
                 async={true}
                 language="Deno (Ts)"
-                coverage="100%"
+                coverage="50%"
                 image="/Tech/denosvg.svg"
                 link="https://deno.land/x/DagpiDeno"
+            />
+            <Card
+                title="aiodagpi"
+                author="DevilJamJar"
+                async={true}
+                language="python"
+                coverage="80%"
+                image="/Tech/python.png"
+                link="https://pypi.org/p/aiodagpi"
+            />
+            <Card
+                title="Dagpipy"
+                author="Niztg"
+                async={false}
+                language="python"
+                coverage="100%"
+                image="/Tech/python.png"
+                link="https://github.com/niztg/dagpipy/"
             />
         </section>
     );

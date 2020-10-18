@@ -208,38 +208,40 @@ export default function Page() {
         } else {
             const Table = () => {
                 return (
-                    <table className={styles.apptable}>
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Url</th>
-                                <th>Approved</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{app.uu}</td>
-                                <td>{app.appname}</td>
-                                <td>{app.appurl}</td>
-                                <td>
-                                    {app.approved ? (
-                                        <IconButton
-                                            aria-label="approved"
-                                            colorScheme="green"
-                                            icon={<TiTick />}
-                                        />
-                                    ) : (
-                                        <IconButton
-                                            aria-label="approved"
-                                            colorScheme="red"
-                                            icon={<TiTimes />}
-                                        />
-                                    )}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className={styles.tablediv}>
+                        <table className={styles.apptable}>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Url</th>
+                                    <th>Approved</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{app.uu}</td>
+                                    <td>{app.appname}</td>
+                                    <td>{app.appurl}</td>
+                                    <td>
+                                        {app.approved ? (
+                                            <IconButton
+                                                aria-label="approved"
+                                                colorScheme="green"
+                                                icon={<TiTick />}
+                                            />
+                                        ) : (
+                                            <IconButton
+                                                aria-label="approved"
+                                                colorScheme="red"
+                                                icon={<TiTimes />}
+                                            />
+                                        )}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 );
             };
             if (data.data === false) {

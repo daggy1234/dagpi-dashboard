@@ -15,6 +15,7 @@ import { FaChevronDown } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md';
 
 import ExtLink from '../Link';
+import styles from '../link.module.scss';
 import NextLink from '../NextLink';
 const MenuItems = ({ children }) => (
     <Heading
@@ -43,8 +44,16 @@ export default function AppBar({ onOpen, ...rest }) {
             color="white"
             {...rest}>
             <Flex align="left" mr={5}>
-                <Heading as="h1" size="xl" letterSpacing={'-.1rem'}>
-                    Dagpi
+                <Image mt={{ base: '0px', sm: '17px' }} boxSize="20" alt="Dagpi" src="/dagpi.png" />
+                <Heading
+                    ml="-10px"
+                    mt={{ base: '32px', md: '25px' }}
+                    as="h1"
+                    size="xl"
+                    letterSpacing={'-.1rem'}>
+                    <Link href="/">
+                        <a className={styles.nodec}>agpi</a>
+                    </Link>
                 </Heading>
             </Flex>
             <Box display={{ sm: 'block', md: 'none' }} onClick={onOpen}>

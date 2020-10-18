@@ -114,8 +114,8 @@ export default function Page() {
                     </Heading>
 
                     <Text opacity={0.7} fontSize={{ base: 'lg', lg: 'xl' }} mt="6">
-                        Built with a variety of languages to maximise performance, Dagpi is
-                        fast and reliable
+                        Built with a variety of languages to maximise performance, Dagpi is fast and
+                        reliable
                     </Text>
 
                     <Stack
@@ -149,41 +149,46 @@ export default function Page() {
                     </Stack>
                 </Flex>
                 <Box pb="50px" mt="100px" as="section" pt="50px" bg="gray.50">
-                    <Container mb="100px" maxW="1280px">
-                        <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
-                            <Heading as="h2" mb="5">
-                                All the characteristics of a Mordern API
-                            </Heading>
+                    <Flex justifyContent="center">
+                        <Box mb="100px" maxW="1280px">
+                            <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
+                                <Heading as="h2" mb="5">
+                                    All the characteristics of a Mordern API
+                                </Heading>
+                            </Box>
+                            <Grid
+                                templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }}
+                                gap={10}
+                                px={{ md: 12 }}>
+                                <Feature icon={BsLightningFill} title="Fast">
+                                    Dagpi is lightning quick, using the fasted web development
+                                    framework available
+                                </Feature>
+                                <Feature icon={RiSecurePaymentLine} title="Secure">
+                                    Cloudflare HTTPS is used for top-tier, industry standard
+                                    security
+                                </Feature>
+                                <Feature icon={TiSpanner} title="Easy to Use">
+                                    With plenty of documentation, Dagpi is a breeze to implement
+                                </Feature>
+                                <Feature icon={DiGithubBadge} title="Open Source">
+                                    All source code is publicly available for viewing and
+                                    contributions{' '}
+                                    <Text color="pink.500">
+                                        <AiFillHeart />
+                                    </Text>
+                                </Feature>
+                                <Feature icon={BiCodeCurly} title="Wrappers in Major Languages">
+                                    API wrappers are provided in numerous major languages for user
+                                    convenience
+                                </Feature>
+                                <Feature icon={FaDiscord} title="Active Community">
+                                    Dagpi boasts an active community on Discord that&apos;s always
+                                    willing to lend a hand
+                                </Feature>
+                            </Grid>
                         </Box>
-                        <Grid
-                            templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }}
-                            gap={10}
-                            px={{ md: 12 }}>
-                            <Feature icon={BsLightningFill} title="Fast">
-                                Dagpi is lightning quick, using the fasted web development framework
-                                available
-                            </Feature>
-                            <Feature icon={RiSecurePaymentLine} title="Secure">
-                                Cloudflare HTTPS is used for top-tier, industry standard security
-                            </Feature>
-                            <Feature icon={TiSpanner} title="Easy to Use">
-                                With plenty of documentation, Dagpi is a breeze to
-                                implement
-                            </Feature>
-                            <Feature icon={DiGithubBadge} title="Open Source">
-                                All source code is publicly available for viewing and contributions{' '}
-                                <Text color="pink.500">
-                                    <AiFillHeart />
-                                </Text>
-                            </Feature>
-                            <Feature icon={BiCodeCurly} title="Wrappers in Major Languages">
-                                API wrappers are provided in numerous major languages for user convenience
-                            </Feature>
-                            <Feature icon={FaDiscord} title="Active Community">
-                                Dagpi boasts an active community on Discord that's always willing to lend a hand
-                            </Feature>
-                        </Grid>
-                    </Container>
+                    </Flex>
                     <Box mt="100px" textAlign="center" alignItems="center">
                         <Heading>Features</Heading>
                         <Rounder />
@@ -246,7 +251,7 @@ export default function Page() {
                                             enable: true,
                                             value_area: 800
                                         },
-                                        value: 20
+                                        value: 60
                                     },
                                     opacity: {
                                         value: 0.4
@@ -316,8 +321,8 @@ export default function Page() {
                 ) : (
                     <br />
                 )}
-                <Box mt="100px" as="section" bg="purple.600">
-                    <Container py="7.5rem" maxW="1280px" color="white">
+                <Flex justifyContent="center" mt="100px" as="section" bg="purple.600">
+                    <Box py="7.5rem" maxW="1280px" color="white">
                         <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
                             <Heading as="h3" size="2xl" textStyle="heading" mb="5">
                                 The Numbers
@@ -329,8 +334,8 @@ export default function Page() {
                             <StatBox icon={BsCodeSlash} title="5000+" description="Lines of Code" />
                             <StatBox icon={FaDiscord} title="70+" description="Discord Members" />
                         </Stack>
-                    </Container>
-                </Box>
+                    </Box>
+                </Flex>
                 <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
                     <Heading as="h3" size="2xl" textStyle="heading" mb="5">
                         API Wrappers
