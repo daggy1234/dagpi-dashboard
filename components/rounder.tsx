@@ -1,4 +1,13 @@
-import { Badge, Box, Container, Flex, Heading, Image, Text } from '@chakra-ui/core';
+import {
+    Badge,
+    Box,
+    Container,
+    Flex,
+    Heading,
+    Image,
+    Text,
+    useColorModeValue
+} from '@chakra-ui/core';
 import { AutoPlay, Fade } from '@egjs/flicking-plugins';
 import Flicking from '@egjs/react-flicking';
 
@@ -6,19 +15,16 @@ const Card = (props) => {
     return (
         <Container>
             <Flex
-                _hover={{ transform: 'translateY(-10px)', transition: '.2s' }}
-                borderColor="black"
                 maxW="lg"
                 direction="column"
-                bg="gray.100"
+                bg={useColorModeValue('gray.100', 'gray.600')}
                 pl="20"
                 pr="20"
                 pb="20"
-                borderWidth="3px"
                 borderRadius="lg"
                 textAlign="justify"
                 overflow="hidden">
-                <Box display="flex" flexDirection="column" mr="20px">
+                <Box display="flex" flexDirection="column" mt="20px" mr="20px">
                     <Heading size="lg" isTruncated>
                         {props.title}
                         <Box pl="5">
@@ -62,7 +68,8 @@ export default function Rounder() {
         {
             title: 'Amazing Datasets',
             api: 'data',
-            body: 'Fun jokes, roasts and pickup lines are provided through Dagpi\'s expansive datasets',
+            body:
+                "Fun jokes, roasts and pickup lines are provided through Dagpi's expansive datasets",
             url: '/Example/data.png'
         },
         {
@@ -75,20 +82,21 @@ export default function Rounder() {
         {
             title: 'GIF Manipulation',
             api: 'image',
-            body: 'Soar above the competition by taking advantage of Dagpi\'s tools on static images AND animated GIFs',
+            body:
+                "Soar above the competition by taking advantage of Dagpi's tools on static images AND animated GIFs",
             url: '/Example/Edited.gif'
         },
         {
             title: 'Wide array of filters',
             api: 'image',
-            body: 'Lots of fun image effects and filters at the user\'s disposal',
+            body: "Lots of fun image effects and filters at the user's disposal",
             url: '/Example/filtered.png'
         },
         {
             title: 'Meme Creation Tool',
             api: 'image',
             body:
-                'Dagpi\'s flagship meme generator accomodates quality content creation in an ever-increasing array of styles',
+                "Dagpi's flagship meme generator accomodates quality content creation in an ever-increasing array of styles",
             url: '/Example/meme.png'
         }
     ];

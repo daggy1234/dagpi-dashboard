@@ -1,7 +1,11 @@
 import {
+    Accordion,
+    AccordionButton,
+    AccordionIcon,
+    AccordionItem,
+    AccordionPanel,
     Box,
     Button,
-    Collapse,
     Drawer,
     DrawerBody,
     DrawerCloseButton,
@@ -9,14 +13,20 @@ import {
     DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
+    IconButton,
     Image,
     StackDivider,
+    Text,
+    useColorMode,
+    useColorModeValue,
     VStack
 } from '@chakra-ui/core';
+import { Collapse } from '@chakra-ui/transition';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
 import React from 'react';
-import { FaChevronDown } from 'react-icons/fa';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md';
 
 import ExtLink from '../Link';
@@ -26,8 +36,10 @@ export default function MyDrawer({ isOpen, onClose }) {
     const btnRef = React.useRef();
     const [session, loading] = useSession();
     const [show, setShow] = React.useState(false);
+    const { toggleColorMode: toggleMode } = useColorMode();
+    const text = useColorModeValue('dark', 'light');
+    const SwitchIcon = useColorModeValue(FaMoon, FaSun);
     const handleToggle = () => {
-        console.log('click');
         setShow(!show);
     };
     return (
@@ -44,8 +56,19 @@ export default function MyDrawer({ isOpen, onClose }) {
                             spacing={4}
                             align="stretch"
                             textAlign="center">
+                            <IconButton
+                                size="md"
+                                fontSize="lg"
+                                aria-label={`Switch to ${text} mode`}
+                                variant="solid"
+                                color={useColorModeValue('white', 'yellow.400')}
+                                bg={useColorModeValue('gray.600', 'blue.400')}
+                                mr="3"
+                                onClick={toggleMode}
+                                icon={<SwitchIcon />}
+                            />
                             <NextLink url="/">Home</NextLink>
-                            <ExtLink url="https://docs.dagpi.xyz">Docs</ExtLink>
+                            <ExtLink url="https://docs.dagpi.apiary.io">Docs</ExtLink>
                             <ExtLink url="https://server.daggy.tech">Discord</ExtLink>
                             <ExtLink url="https://github.com/Daggy1234/dagpi">Github</ExtLink>
 
@@ -55,6 +78,8 @@ export default function MyDrawer({ isOpen, onClose }) {
                                     borderColor="white"
                                     leftIcon={<MdDashboard />}
                                     color="purple.500"
+                                    bg="purple.100"
+                                    _hover={{ bg: 'purple.500', color: 'white' }}
                                     border="1px">
                                     Dashboard
                                 </Button>
@@ -62,24 +87,19 @@ export default function MyDrawer({ isOpen, onClose }) {
 
                             {session && (
                                 <>
-                                    <Button
-                                        borderColor="white"
-                                        variant="outline"
-                                        color="purple"
-                                        colorScheme="white"
-                                        rightIcon={<FaChevronDown />}
-                                        onClick={handleToggle}>
+                                    <Button colorScheme="purple" onClick={handleToggle}>
                                         <Image
                                             boxSize="2rem"
                                             borderRadius="full"
                                             src={session.user.image}
                                             alt={session.user.name}
-                                            mr="50px"
+                                            mr="60px"
                                         />
+                                        {show ? <FaChevronUp /> : <FaChevronDown />}
                                     </Button>
-                                    <Collapse isOpen={show}>
-                                        <VStack spacing="30px" bg="gray.50" textAlign="left">
-                                            <Box mt="30px">User: {session.user.name}</Box>
+                                    <Collapse in={show} animateOpacity>
+                                        <VStack spacing="30px">
+                                            <Box>User: {session.user.name}</Box>
                                             <Box>Email: {session.user.email}</Box>
                                         </VStack>
                                         <Button

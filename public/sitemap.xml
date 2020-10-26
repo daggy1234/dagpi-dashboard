@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://localhost:3000/_document</loc>
-    </url>
-
-    <url>
         <loc>http://localhost:3000/404</loc>
-    </url>
-
-    <url>
-        <loc>http://localhost:3000/form</loc>
     </url>
 
     <url>
@@ -17,18 +9,26 @@
     </url>
 
     <url>
+        <loc>http://localhost:3000/_document</loc>
+    </url>
+
+    <url>
         <loc>http://localhost:3000/dashboard</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/policy</loc>
-    </url>
-
-    <url>
-        <loc>http://localhost:3000/terms</loc>
+        <loc>http://localhost:3000/form</loc>
     </url>
 
     <url>
         <loc>http://localhost:3000</loc>
+    </url>
+
+    <url>
+        <loc>http://localhost:3000/privacy</loc>
+    </url>
+
+    <url>
+        <loc>http://localhost:3000/terms</loc>
     </url>
 </urlset>
