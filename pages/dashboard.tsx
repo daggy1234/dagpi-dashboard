@@ -60,12 +60,12 @@ const Alert = ({ isOpen, cancelRef, onClose, isSuccess, setdes }) => {
                     <AlertDialogHeader fontSize="lg" fontWeight="bold">
                         {isSuccess
                             ? 'Are you sure you want to Reset?'
-                            : 'Are you SURE you wnat to DELETE?'}
+                            : 'Are you SURE you want to DELETE?'}
                     </AlertDialogHeader>
                     <AlertDialogBody>
                         {isSuccess
                             ? 'This is an irreversible reaction. Your token will be reset and will not be useable. The old token will not work.'
-                            : 'Post deleteion you will loose all of your data INCLUDING Apps and Tokens. You will have to redo all of our application process and all of you data will be DELETED.'}
+                            : 'Post deleteion you will loose all of your data INCLUDING Apps and Tokens. You will have to redo all of our application process and all of your data will be DELETED.'}
                     </AlertDialogBody>
                     <AlertDialogFooter>
                         <Button onClick={onClose} colorScheme="white" ref={cancelRef}>

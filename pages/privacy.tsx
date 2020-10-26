@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/core';
+import { Box, Heading, Text } from '@chakra-ui/core';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -11,8 +11,9 @@ export default function Page() {
             />
             <Box padding="5%">
                 <Text>
-                    PRIVACY NOTICE Last updated September 29, 2020 Thank you for choosing to be part
-                    of our community at Dagpi (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;,
+                    <Heading>PRIVACY NOTICE</Heading>
+                    Last updated September 29, 2020 Thank you for choosing to be part of our
+                    community at Dagpi (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;,
                     &quot;our&quot;). We are committed to protecting your personal information and
                     your right to privacy. If you have any questions or concerns about this privacy
                     notice, or our practices with regards to your personal information, please
@@ -28,9 +29,10 @@ export default function Page() {
                     applies to all information collected through our Services (which, as described
                     above, includes our Website), as well as, any related services, sales, marketing
                     or events. Please read this privacy notice carefully as it will help you
-                    understand what we do with the information that we collect. TABLE OF CONTENTS 1.
-                    WHAT INFORMATION DO WE COLLECT? 2. HOW DO WE USE YOUR INFORMATION? 3. WILL YOUR
-                    INFORMATION BE SHARED WITH ANYONE? 4. DO WE USE COOKIES AND OTHER TRACKING
+                    understand what we do with the information that we collect.
+                    <Heading>TABLE OF CONTENTS</Heading>
+                    1.WHAT INFORMATION DO WE COLLECT? 2. HOW DO WE USE YOUR INFORMATION? 3. WILL
+                    YOUR INFORMATION BE SHARED WITH ANYONE? 4. DO WE USE COOKIES AND OTHER TRACKING
                     TECHNOLOGIES? 5. HOW DO WE HANDLE YOUR SOCIAL LOGINS? 6. IS YOUR INFORMATION
                     TRANSFERRED INTERNATIONALLY? 7. HOW LONG DO WE KEEP YOUR INFORMATION? 8. HOW DO
                     WE KEEP YOUR INFORMATION SAFE? 9. WHAT ARE YOUR PRIVACY RIGHTS? 10. CONTROLS FOR
@@ -156,9 +158,9 @@ export default function Page() {
                     YOUR SOCIAL LOGINS? In Short: If you choose to register or log in to our
                     services using a social media account, we may have access to certain information
                     about you. Our Website offers you the ability to register and login using your
-                    third-party social media account details (like your Facebook or Twitter logins).
-                    Where you choose to do this, we will receive certain profile information about
-                    you from your social media provider. The profile Information we receive may vary
+                    third-party social media account details (like your Discord logins). Where you
+                    choose to do this, we will receive certain profile information about you from
+                    your social media provider. The profile Information we receive may vary
                     depending on the social media provider concerned, but will often include your
                     name, email address, friends list, profile picture as well as other information
                     you choose to make public on such social media platform. We will use the
@@ -221,32 +223,31 @@ export default function Page() {
                     prevent fraud, troubleshoot problems, assist with any investigations, enforce
                     our Terms of Use and/or comply with applicable legal requirements. Cookies and
                     similar technologies: Most Web browsers are set to accept cookies by default. If
-                    you prefer, you can usually choose to set your browser to remove cookies and to
-                    reject cookies. If you choose to remove cookies or reject cookies, this could
-                    affect certain features or services of our Website. To opt-out of interest-based
-                    advertising by advertisers on our Website visit
-                    http://www.aboutads.info/choices/. Opting out of email marketing: You can
-                    unsubscribe from our marketing email list at any time by clicking on the
-                    unsubscribe link in the emails that we send or by contacting us using the
-                    details provided below. You will then be removed from the marketing email list —
-                    however, we may still communicate with you, for example to send you
-                    service-related emails that are necessary for the administration and use of your
-                    account, to respond to service requests, or for other non-marketing purposes. To
-                    otherwise opt-out, you may: Access your account settings and update your
-                    preferences. Contact us using the contact information provided. Discord Servee
-                    10. CONTROLS FOR DO-NOT-TRACK FEATURES Most web browsers and some mobile
-                    operating systems and mobile applications include a Do-Not-Track
-                    (&quot;DNT&quot;) feature or setting you can activate to signal your privacy
-                    preference not to have data about your online browsing activities monitored and
-                    collected. At this stage no uniform technology standard for recognizing and
-                    implementing DNT signals has been finalized. As such, we do not currently
-                    respond to DNT browser signals or any other mechanism that automatically
-                    communicates your choice not to be tracked online. If a standard for online
-                    tracking is adopted that we must follow in the future, we will inform you about
-                    that practice in a revised version of this privacy notice. 11. DO CALIFORNIA
-                    RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS? In Short: Yes, if you are a resident of
-                    California, you are granted specific rights regarding access to your personal
-                    information. California Civil Code Section 1798.83, also known as the
+                    you prefer, you can usually choose to set your browser to remove cookiess. If
+                    you choose to remove cookies or reject cookies, this could affect certain
+                    features or services of our Website. To opt-out of interest-based advertising by
+                    advertisers on our Website visit http://www.aboutads.info/choices/. Opting out
+                    of email marketing: You can unsubscribe from our marketing email list at any
+                    time by clicking on the unsubscribe link in the emails that we send or by
+                    contacting us using the details provided below. You will then be removed from
+                    the marketing email list — however, we may still communicate with you, for
+                    example to send you service-related emails that are necessary for the
+                    administration and use of your account, to respond to service requests, or for
+                    other non-marketing purposes. To otherwise opt-out, you may: Access your account
+                    settings and update your preferences. Contact us using the contact information
+                    provided. Discord Servee 10. CONTROLS FOR DO-NOT-TRACK FEATURES Most web
+                    browsers and some mobile operating systems and mobile applications include a
+                    Do-Not-Track (&quot;DNT&quot;) feature or setting you can activate to signal
+                    your privacy preference not to have data about your online browsing activities
+                    monitored and collected. At this stage no uniform technology standard for
+                    recognizing and implementing DNT signals has been finalized. As such, we do not
+                    currently respond to DNT browser signals or any other mechanism that
+                    automatically communicates your choice not to be tracked online. If a standard
+                    for online tracking is adopted that we must follow in the future, we will inform
+                    you about that practice in a revised version of this privacy notice. 11. DO
+                    CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS? In Short: Yes, if you are a
+                    resident of California, you are granted specific rights regarding access to your
+                    personal information. California Civil Code Section 1798.83, also known as the
                     &quot;Shine The Light&quot; law, permits our users who are California residents
                     to request and obtain from us, once a year and free of charge, information about
                     categories of personal information (if any) we disclosed to third parties for
@@ -271,14 +272,13 @@ export default function Page() {
                     sending you a notification. We encourage you to review this privacy notice
                     frequently to be informed of how we are protecting your information. 13. HOW CAN
                     YOU CONTACT US ABOUT THIS NOTICE? If you have questions or comments about this
-                    notice, you may email us at data@dagpi.xyz or by post to: Dagpi __________
-                    __________ 14. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM
-                    YOU? Based on the applicable laws of your country, you may have the right to
-                    request access to the personal information we collect from you, change that
-                    information, or delete it in some circumstances. To request to review, update,
-                    or delete your personal information, please submit a request form by clicking
-                    here. We will respond to your request within 30 days. This privacy policy was
-                    created using Termly’s Privacy Policy Generator.
+                    notice, you may email us at data@dagpi.xyz. 14. HOW CAN YOU REVIEW, UPDATE, OR
+                    DELETE THE DATA WE COLLECT FROM YOU? Based on the applicable laws of your
+                    country, you may have the right to request access to the personal information we
+                    collect from you, change that information, or delete it in some circumstances.
+                    To request to review, update, or delete your personal information, please submit
+                    a request form by clicking here. We will respond to your request within 30 days.
+                    This privacy policy was created using Termly’s Privacy Policy Generator.
                 </Text>
             </Box>
         </Layout>

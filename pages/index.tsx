@@ -129,7 +129,7 @@ export default function Page() {
                             fontSize="1.2rem"
                             as="a"
                             size="lg"
-                            href="https://docs.dagpi.xyz"
+                            href="https://docs.dagpi.apiary.io"
                             colorScheme="purple"
                             rightIcon={<FaArrowRight fontSize="0.8em" />}>
                             Get Started

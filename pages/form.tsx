@@ -163,7 +163,8 @@ export default function FormikExample() {
                                         <FormControl
                                             isInvalid={form.errors.url && form.touched.url}>
                                             <FormLabel htmlFor="url">
-                                                A url to locate the app
+                                                A url to locate the app. This can be a website, bot
+                                                listing or invite link.
                                             </FormLabel>
                                             <Input
                                                 {...field}

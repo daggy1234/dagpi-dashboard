@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/core';
+import { Box, Heading, Text } from '@chakra-ui/core';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -7,18 +7,18 @@ export default function Page() {
         <Layout>
             <SEO title="Terms and Conditions" description="Dagpi Terms and Conditions" />
             <Box padding="5%">
+                <Heading>TERMS AND CONDITIONS</Heading>
                 <Text>
-                    TERMS AND CONDITIONS Last updated September 29, 2020 1. Agreement to Terms 1.1
-                    These Terms and Conditions constitute a legally binding agreement made between
-                    you, whether personally or on behalf of an entity (you), and Dagpi, located at
-                    __________, __________, __________, __________ (we, us), concerning your access
-                    to and use of the Dagpi (https://dagpi.xyz) website as well as any related
-                    applications (the Site). The Site provides the following services: The Service
-                    API provides content we do not own. We also provide services to allow you to
-                    integrate features into your apps (Services). You agree that by accessing the
-                    Site and/or Services, you have read, understood, and agree to be bound by all of
-                    these Terms and Conditions. If you do not agree with all of these Terms and
-                    Conditions, then you are prohibited from using the Site and Services and you
+                    Last updated September 29, 2020 1. Agreement to Terms 1.1These Terms and
+                    Conditions constitute a legally binding agreement made between you, whether
+                    personally or on behalf of an entity (you), and Dagpi(we, us), concerning your
+                    access to and use of the Dagpi (https://dagpi.xyz) website as well as any
+                    related applications (the Site). The Site provides the following services: The
+                    Service API provides content we do not own. We also provide services to allow
+                    you to integrate features into your apps (Services). You agree that by accessing
+                    the Site and/or Services, you have read, understood, and agree to be bound by
+                    all of these Terms and Conditions. If you do not agree with all of these Terms
+                    and Conditions, then you are prohibited from using the Site and Services and you
                     must discontinue use immediately. We recommend that you print a copy of these
                     Terms and Conditions for future reference. 1.2 The supplemental policies set out
                     in Section 1.7 below, as well as any supplemental terms and condition or
@@ -35,53 +35,51 @@ export default function Page() {
                     distribution to or use by any person or entity in any jurisdiction or country
                     where such distribution or use would be contrary to law or regulation or which
                     would subject us to any registration requirement within such jurisdiction or
-                    country. 1.6 The Site is intended for users who are at least 18 years old. If
-                    you are under the age of 18, you are not permitted to register for the Site or
-                    use the Services without parental permission. 1.7 Additional policies which also
-                    apply to your use of the Site include: Our Privacy Notice
-                    https://dagpi.xyz/privacy, which sets out the terms on which we process any
-                    personal data we collect from you, or that you provide to us. By using the Site,
-                    you consent to such processing and you warrant that all data provided by you is
-                    accurate. If you purchase services, software, and/or content from the Site, our
-                    terms and conditions of supply https://www.gnu.org/licenses/agpl-3.0.en.html
-                    will apply to thesales, use, and licence. 2. Acceptable Use 2.1 You may not
-                    access or use the Site for any purpose other than that for which we make the
-                    site and our services available. The Site may not be used in connection with any
-                    commercial endeavors except those that are specifically endorsed or approved by
-                    us. 2.2 As a user of this Site, you agree not to: Make any unauthorized use of
-                    the Site, including collecting usernames and/or email addresses of users to send
-                    unsolicited email or creating user accounts under false pretenses Use a buying
-                    agent or purchasing agent to make purchases on the Site Use the Site to
-                    advertise or sell goods and services Circumvent, disable, or otherwise interfere
-                    with security-related features of the Site, including features that prevent or
-                    restrict the use or copying of any content or enforce limitations on the use
-                    Engage in unauthorized framing of or linking to the Site Trick, defraud, or
-                    mislead us and other users, especially in any attempt to learn sensitive account
-                    information such as user passwords Make improper use of our support services, or
-                    submit false reports of abuse or misconduct Engage in any automated use of the
-                    system, such as using scripts to send comments or messages, or using any data
-                    mining, robots, or similar data gathering and extraction tools Interfere with,
-                    disrupt, or create an undue burden on the Site or the networks and services
-                    connected to the Site Attempt to impersonate another user or person, or use the
-                    username of another user Sell or otherwise transfer your profile Use any
-                    information obtained from the Site in order to harass, abuse, or harm another
-                    person Use the Site or our content as part of any effort to compete with us or
-                    to create a revenue-generating endeavor or commercial enterprise Decipher,
-                    decompile, disassemble, or reverse engineer any of the software comprising or in
-                    any way making up a part of the Site Attempt to access any portions of the Site
-                    that you are restricted from accessing Harass, annoy, intimidate, or threaten
-                    any of our employees, agents, or other users Delete the copyright or other
-                    proprietary rights notice from any of the content Upload or transmit (or attempt
-                    to upload or to transmit) viruses, Trojan horses, or other material that
-                    interferes with any party’s uninterrupted use and enjoyment of the Site, or any
-                    material that acts as a passive or active information collection or transmission
-                    mechanism Use, launch, or engage in any automated use of the system, such as
-                    using scripts to send comments or messages, robots, scrapers, offline readers,
-                    or similar data gathering and extraction tools Disparage, tarnish, or otherwise
-                    harm, in our opinion, us and/or the Site Use the Site in a manner inconsistent
-                    with any applicable laws or regulations Threaten users with negative feedback or
-                    offering services solely to give positive feedback to users Advertise products
-                    or services not intended by us Misrepresent experience, skills, or information
+                    country. 1.7 Additional policies which also apply to your use of the Site
+                    include: Our Privacy Notice https://dagpi.xyz/privacy, which sets out the terms
+                    on which we process any personal data we collect from you, or that you provide
+                    to us. By using the Site, you consent to such processing and you warrant that
+                    all data provided by you is accurate. If you purchase services, software, and/or
+                    content from the Site, our terms and conditions of supply
+                    https://www.gnu.org/licenses/agpl-3.0.en.html will apply to thesales, use, and
+                    licence. 2. Acceptable Use 2.1 You may not access or use the Site for any
+                    purpose other than that for which we make the site and our services available.
+                    The Site may not be used in connection with any commercial endeavors except
+                    those that are specifically endorsed or approved by us. 2.2 As a user of this
+                    Site, you agree not to: Make any unauthorized use of the Site, including
+                    collecting usernames and/or email addresses of users to send unsolicited email
+                    or creating user accounts under false pretenses Use a buying agent or purchasing
+                    agent to make purchases on the Site Use the Site to advertise or sell goods and
+                    services Circumvent, disable, or otherwise interfere with security-related
+                    features of the Site, including features that prevent or restrict the use or
+                    copying of any content or enforce limitations on the use Engage in unauthorized
+                    framing of or linking to the Site Trick, defraud, or mislead us and other users,
+                    especially in any attempt to learn sensitive account information such as user
+                    passwords Make improper use of our support services, or submit false reports of
+                    abuse or misconduct Engage in any automated use of the system, such as using
+                    scripts to send comments or messages, or using any data mining, robots, or
+                    similar data gathering and extraction tools Interfere with, disrupt, or create
+                    an undue burden on the Site or the networks and services connected to the Site
+                    Attempt to impersonate another user or person, or use the username of another
+                    user Sell or otherwise transfer your profile Use any information obtained from
+                    the Site in order to harass, abuse, or harm another person Use the Site or our
+                    content as part of any effort to compete with us or to create a
+                    revenue-generating endeavor or commercial enterprise Decipher, decompile,
+                    disassemble, or reverse engineer any of the software comprising or in any way
+                    making up a part of the Site Attempt to access any portions of the Site that you
+                    are restricted from accessing Harass, annoy, intimidate, or threaten any of our
+                    employees, agents, or other users Delete the copyright or other proprietary
+                    rights notice from any of the content Upload or transmit (or attempt to upload
+                    or to transmit) viruses, Trojan horses, or other material that interferes with
+                    any party’s uninterrupted use and enjoyment of the Site, or any material that
+                    acts as a passive or active information collection or transmission mechanism
+                    Use, launch, or engage in any automated use of the system, such as using scripts
+                    to send comments or messages, robots, scrapers, offline readers, or similar data
+                    gathering and extraction tools Disparage, tarnish, or otherwise harm, in our
+                    opinion, us and/or the Site Use the Site in a manner inconsistent with any
+                    applicable laws or regulations Threaten users with negative feedback or offering
+                    services solely to give positive feedback to users Advertise products or
+                    services not intended by us Misrepresent experience, skills, or information
                     about a User Spam/ Misuse our Discord Servers Use our platforms for illegal
                     activities. Falsely imply a relationship with us or another company with whom
                     you do not have a relationship 3. Information you provide to us 3.1 You
@@ -181,19 +179,19 @@ export default function Page() {
                     systems; and (4) otherwise manage the Site in a manner designed to protect our
                     rights and property and to facilitate the proper functioning of the Site and
                     Services. 6.2 We do not guarantee that the Site will be secure or free from bugs
-                    or viruses. 6.3 You are responsible for configuring your information technology,
-                    computer programs and platform to access the Site and you should use your own
-                    virus protection software. 7. Modifications to and availability of the Site 7.1
-                    We reserve the right to change, modify, or remove the contents of the Site at
-                    any time or for any reason at our sole discretion without notice. We also
-                    reserve the right to modify or discontinue all or part of the Services without
-                    notice at any time. 7.2 We cannot guarantee the Site and Services will be
-                    available at all times. We may experience hardware, software, or other problems
-                    or need to perform maintenance related to the Site, resulting in interruptions,
-                    delays, or errors. You agree that we have no liability whatsoever for any loss,
-                    damage, or inconvenience caused by your inability to access or use the Site or
-                    Services during any downtime or discontinuance of the Site or Services. We are
-                    not obliged to maintain and support the Site or Services or to supply any
+                    6.3 You are responsible for configuring your information technology, computer
+                    programs and platform to access the Site and you should use your own virus
+                    protection software. 7. Modifications to and availability of the Site 7.1 We
+                    reserve the right to change, modify, or remove the contents of the Site at any
+                    time or for any reason at our sole discretion without notice. We also reserve
+                    the right to modify or discontinue all or part of the Services without notice at
+                    any time. 7.2 We cannot guarantee the Site and Services will be available at all
+                    times. We may experience hardware, software, or other problems or need to
+                    perform maintenance related to the Site, resulting in interruptions, delays, or
+                    errors. You agree that we have no liability whatsoever for any loss, damage, or
+                    inconvenience caused by your inability to access or use the Site or Services
+                    during any downtime or discontinuance of the Site or Services. We are not
+                    obliged to maintain and support the Site or Services or to supply any
                     corrections, updates, or releases. 7.3 There may be information on the Site that
                     contains typographical errors, inaccuracies, or omissions that may relate to the
                     Services, including descriptions, pricing, availability, and various other
@@ -225,15 +223,9 @@ export default function Page() {
                     Terms and Conditions, we will be responsible for loss or damage you suffer that
                     is a foreseeable result of our breach of these Terms and Conditions, but we
                     would not be responsible for any loss or damage that were not foreseeable at the
-                    time you started using the Site/Services. Notwithstanding anything to the
-                    contrary contained in the Disclaimer/Limitation of Liability section, our
-                    liability to you for any cause whatsoever and regardless of the form of the
-                    action, will at all times be limited to a total aggregate amount equal to the
-                    greater of (a) the sum of £5000 or (b) the amount paid, if any, by you to us for
-                    the Services/Site during the six (6) month period prior to any cause of action
-                    arising. Different limitations and exclusions of liability will apply to
-                    liability arising as a result of the supply of any products to you, which will
-                    be set out in our Terms and conditions of supply
+                    time you started using the Site/Services. Different limitations and exclusions
+                    of liability will apply to liability arising as a result of the supply of any
+                    products to you, which will be set out in our Terms and conditions of supply
                     https://www.gnu.org/licenses/agpl-3.0.en.html. If you are a business user: We
                     will not be liable to you for any loss or damage, whether in contract, tort
                     (including negligence), breach of statutory duty, or otherwise, even if
