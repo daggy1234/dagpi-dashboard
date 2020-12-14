@@ -27,7 +27,7 @@
     "dependencies": {
         "@chakra-ui/core": "^1.0.0-rc.3",
         "@egjs/flicking-plugins": "^3.3.0",
-        "@egjs/react-flicking": "^3.3.1",
+        "@egjs/react-flicking": "^3.5.1",
         "@zeit/next-sass": "^1.0.1",
         "date-fns": "^2.16.1",
         "formik": "^2.1.5",
