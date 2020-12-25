@@ -26,7 +26,7 @@ function Card(props) {
 
             <div className={styles.tags}>
                 <a>{props.language}</a>
-                <a>{props.async ? 'async' : 'Blocking'}</a>
+                <a>{props.async}</a>
                 <a>coverage: {props.coverage}</a>
             </div>
         </Box>
@@ -39,34 +39,34 @@ export default function Cards() {
             <Card
                 title="asyncdagpi"
                 author="Daggy1234"
-                async={true}
+                async="async"
                 language="python"
                 coverage="100%"
                 image="/Tech/python.png"
                 link="https://pypi.org/p/asyncdagpi"
             />
             <Card
-                title="Dagpi [WIP]"
+                title="dagpijs"
                 author="Daggy1234"
-                async={true}
+                async="Promise Based"
                 language="TypeScript"
-                coverage="10%"
+                coverage="100%"
                 image="/Tech/ts.png"
-                link="https://mpmjs.org/Dagpi"
+                link="https://npmjs.com/package/dagpijs"
             />
             <Card
-                title="DagpiRust [WIP]"
-                author="Daggy1234"
-                async={true}
-                language="rust"
-                coverage="20%"
-                image="/Tech/rust.png"
-                link="https://crates.io/DagpiRust"
+                title="dagpirb"
+                author="mischievousdev"
+                async="sync"
+                language="ruby"
+                coverage="100%"
+                image="/Tech/ruby.png"
+                link="https://github.com/mischievousdev/dagpirb"
             />
             <Card
                 title="DagpiDeno [WIP]"
                 author="Daggy1234"
-                async={true}
+                async="Prmomise Based"
                 language="Deno (Ts)"
                 coverage="50%"
                 image="/Tech/denosvg.svg"
@@ -75,7 +75,7 @@ export default function Cards() {
             <Card
                 title="aiodagpi"
                 author="DevilJamJar"
-                async={true}
+                async="async"
                 language="python"
                 coverage="80%"
                 image="/Tech/python.png"
@@ -84,11 +84,20 @@ export default function Cards() {
             <Card
                 title="Dagpipy"
                 author="Niztg"
-                async={false}
+                async="sync"
                 language="python"
                 coverage="100%"
                 image="/Tech/python.png"
                 link="https://github.com/niztg/dagpipy/"
+            />
+            <Card
+                title="DagpiRust [WIP]"
+                author="Daggy1234"
+                async="async"
+                language="rust"
+                coverage="20%"
+                image="/Tech/rust.png"
+                link="https://crates.io/DagpiRust"
             />
         </section>
     );
