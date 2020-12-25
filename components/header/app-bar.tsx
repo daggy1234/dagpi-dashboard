@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Heading } from '@chakra-ui/core';
 import {
+    IconButton,
     Image,
     Menu,
     MenuButton,
@@ -7,11 +8,14 @@ import {
     MenuGroup,
     MenuItem,
     MenuList,
-    Skeleton
+    Skeleton,
+    useColorMode,
+    useColorModeValue
 } from '@chakra-ui/core';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
 import { FaChevronDown } from 'react-icons/fa';
+import { FaMoon, FaSun } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md';
 
 import ExtLink from '../Link';
@@ -32,6 +36,10 @@ const MenuItems = ({ children }) => (
 
 export default function AppBar({ onOpen, ...rest }) {
     const [session, loading] = useSession();
+    const { toggleColorMode: toggleMode } = useColorMode();
+    const text = useColorModeValue('dark', 'light');
+    const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+    const bw = useColorModeValue('black', 'white');
     return (
         <Flex
             as="nav"
@@ -40,14 +48,14 @@ export default function AppBar({ onOpen, ...rest }) {
             wrap="wrap"
             alignItems="center"
             padding="1.5rem"
-            bg="purple.500"
+            bg={useColorModeValue('purple.500', 'purple.900')}
             color="white"
             {...rest}>
             <Flex align="left" mr={5}>
                 <Image mt={{ base: '0px', sm: '17px' }} boxSize="20" alt="Dagpi" src="/dagpi.png" />
                 <Heading
                     ml="-10px"
-                    mt={{ base: '32px', md: '25px' }}
+                    mt={{ base: '24px', md: '32px' }}
                     as="h1"
                     size="xl"
                     letterSpacing={'-.1rem'}>
@@ -67,14 +75,25 @@ export default function AppBar({ onOpen, ...rest }) {
                 </svg>
             </Box>
             <Box
-                display={{ sm: 'none', md: 'flex' }}
-                width={{ sm: 'full', md: 'auto' }}
+                display={{ base: 'none', md: 'flex' }}
+                width={{ base: 'full', md: 'auto' }}
                 alignItems="center"
                 flexShrink={1}>
+                <IconButton
+                    size="md"
+                    fontSize="lg"
+                    aria-label={`Switch to ${text} mode`}
+                    variant="solid"
+                    color={useColorModeValue('white', 'yellow.400')}
+                    bg={useColorModeValue('gray.600', 'blue.400')}
+                    mr="3"
+                    onClick={toggleMode}
+                    icon={<SwitchIcon />}
+                />
                 <NextLink url="/">
                     <MenuItems>Home</MenuItems>
                 </NextLink>
-                <ExtLink url="https://docs.dagpi.xyz">
+                <ExtLink url="https://dagpi.docs.apiary.io">
                     <MenuItems>Docs</MenuItems>
                 </ExtLink>
                 <ExtLink url="https://server.daggy.tech">
@@ -90,7 +109,8 @@ export default function AppBar({ onOpen, ...rest }) {
                                 variant="outline"
                                 borderColor="white"
                                 leftIcon={<MdDashboard />}
-                                color="purple.500"
+                                color="white"
+                                _hover={{ color: 'purple.500', bg: 'white' }}
                                 border="1px">
                                 Dashboard
                             </Button>
@@ -104,7 +124,7 @@ export default function AppBar({ onOpen, ...rest }) {
                             <Menu>
                                 <MenuButton
                                     as={Button}
-                                    borderColor="purple.500"
+                                    borderColor="transparent"
                                     variant="outline"
                                     color="white"
                                     colorScheme="purple"
@@ -117,21 +137,11 @@ export default function AppBar({ onOpen, ...rest }) {
                                     />
                                 </MenuButton>
                                 <MenuList>
-                                    <MenuGroup textAlign="left" color="black" title="Profile">
-                                        <MenuItem
-                                            bg="transparent"
-                                            color="black"
-                                            borderColor="white">
-                                            {session.user.name}
-                                        </MenuItem>
+                                    <MenuGroup textAlign="left" color={bw} title="Profile">
+                                        <MenuItem color={bw}>{session.user.name}</MenuItem>
                                     </MenuGroup>
-                                    <MenuGroup textAlign="left" color="black" title="Email">
-                                        <MenuItem
-                                            bg="transparent"
-                                            color="black"
-                                            borderColor="white">
-                                            {session.user.email}
-                                        </MenuItem>
+                                    <MenuGroup textAlign="left" color={bw} title="Email">
+                                        <MenuItem color={bw}>{session.user.email}</MenuItem>
                                     </MenuGroup>
                                     <MenuDivider />
                                     <MenuItem

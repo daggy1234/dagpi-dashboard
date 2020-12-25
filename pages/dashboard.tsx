@@ -7,12 +7,13 @@ import {
     AlertDialogOverlay,
     Box,
     Button,
+    Divider,
     Flex,
     Heading,
     IconButton,
     Input,
-    Text,
     useClipboard,
+    useColorModeValue,
     useToast,
     VStack
 } from '@chakra-ui/core';
@@ -60,12 +61,12 @@ const Alert = ({ isOpen, cancelRef, onClose, isSuccess, setdes }) => {
                     <AlertDialogHeader fontSize="lg" fontWeight="bold">
                         {isSuccess
                             ? 'Are you sure you want to Reset?'
-                            : 'Are you SURE you wnat to DELETE?'}
+                            : 'Are you SURE you want to DELETE?'}
                     </AlertDialogHeader>
                     <AlertDialogBody>
                         {isSuccess
                             ? 'This is an irreversible reaction. Your token will be reset and will not be useable. The old token will not work.'
-                            : 'Post deleteion you will loose all of your data INCLUDING Apps and Tokens. You will have to redo all of our application process and all of you data will be DELETED.'}
+                            : 'Post deleteion you will loose all of your data INCLUDING Apps and Tokens. You will have to redo all of our application process and all of your data will be DELETED.'}
                     </AlertDialogBody>
                     <AlertDialogFooter>
                         <Button onClick={onClose} colorScheme="white" ref={cancelRef}>
@@ -95,6 +96,7 @@ export default function Page() {
     const [destruction, setdes] = React.useState(false);
     const onClose = () => setIsOpen(false);
     const cancelRef = React.useRef();
+    const [isShown, setIsShown] = useState(false);
     const isFirstRender = React.useRef(true);
     const toast = useToast();
     const { hasCopied, onCopy } = useClipboard(data ? data.apikey : 'Waiting');
@@ -258,6 +260,7 @@ export default function Page() {
                                         Discord
                                     </Button>
                                 </Link>
+                                <Divider mt={10} />
                                 <Heading size="lg" alignSelf="left">
                                     Your Apps
                                 </Heading>
@@ -280,15 +283,18 @@ export default function Page() {
                     <Layout>
                         <Box padding="5%">
                             <Heading size="2xl">Dashboard</Heading>
+                            <Divider mt={10} mb={7} />
                             <Heading size="lg">Token</Heading>
-                            <Flex mb={2}>
+                            <Flex mb={5} mt={5}>
                                 <Input
                                     variant="filled"
-                                    bg="gray.300"
+                                    bg={useColorModeValue('gray.300', 'gray.700')}
                                     color="red"
-                                    value={data.apikey}
+                                    value={isShown ? data.apikey : '[Hover to reveal API token]'}
                                     isReadOnly
                                     placeholder="Welcome"
+                                    onMouseEnter={() => setIsShown(true)}
+                                    onMouseLeave={() => setIsShown(false)}
                                 />
                                 <Button
                                     colorScheme="purple"
@@ -306,7 +312,7 @@ export default function Page() {
                                 wrap="wrap"
                                 alignItems="center"
                                 marginTop="5%">
-                                <StatBox color="blue.300">
+                                <StatBox color="blue.300" padding="1.5em">
                                     <VStack padding="1.5rem">
                                         <Heading size="sm">
                                             <AiOutlineEnter /> Created
@@ -322,8 +328,8 @@ export default function Page() {
                                         </Heading>
                                     </VStack>
                                 </StatBox>
-                                <StatBox color="green.300">
-                                    <VStack padding="1.5rem">
+                                <StatBox color="green.300" padding="1.5em">
+                                    <VStack padding="1.5em">
                                         <Heading size="sm">
                                             <AiFillDollarCircle /> Premium User?
                                         </Heading>
@@ -338,8 +344,8 @@ export default function Page() {
                                         </Heading>
                                     </VStack>
                                 </StatBox>
-                                <StatBox color="red.300">
-                                    <VStack padding="1.5rem">
+                                <StatBox color="red.300" padding="1.5em">
+                                    <VStack padding="1.5em">
                                         <Heading size="sm">
                                             <FaMousePointer /> Total Uses
                                         </Heading>
@@ -354,11 +360,14 @@ export default function Page() {
                                         </Heading>
                                     </VStack>
                                 </StatBox>
-                                <StatBox color="gray.200" spacing={4}>
-                                    <VStack padding="1.5rem">
-                                        <Heading size="md">Danger Zone</Heading>
+                                <StatBox
+                                    color={useColorModeValue('gray.200', 'gray.700')}
+                                    padding="1.5em">
+                                    <VStack padding="1.5em">
+                                        <Heading size="lg">Danger Zone</Heading>
                                         <Button
-                                            variant="outline"
+                                            size="lg"
+                                            variant="solid"
                                             colorScheme="orange"
                                             onClick={() => {
                                                 setIsOpen(true);
@@ -366,7 +375,8 @@ export default function Page() {
                                             Reset Token
                                         </Button>
                                         <Button
-                                            variant="outline"
+                                            variant="solid"
+                                            size="lg"
                                             colorScheme="red"
                                             onClick={() => {
                                                 setSuccess(false);
@@ -379,6 +389,7 @@ export default function Page() {
                             </Flex>
                             <br />
                             <Heading size="lg">Apps</Heading>
+                            <Divider mt={10} mb={7} />
                             <Table />
                         </Box>
                     </Layout>

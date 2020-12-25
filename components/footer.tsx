@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from '@chakra-ui/core';
+import { Box, Stack, Text, useColorModeValue } from '@chakra-ui/core';
 import { IconContext } from 'react-icons';
 import { AiFillGithub, AiOutlineMail } from 'react-icons/ai';
 import { FaDiscord, FaPatreon } from 'react-icons/fa';
@@ -19,15 +19,12 @@ const Icon = (props) => {
 export const Footer = () => (
     <Box as="footer" mt={12} textAlign="center" mb={6}>
         <Text fontSize="sm">
-            <span>
-                Proudly made in <GiIndianPalace /> by
-            </span>
-            <strong> Daggy</strong>
+            By <strong> Daggy</strong>
         </Text>
         <Stack mt={4} direction="row" spacing="12px" justify="center">
             <span>
                 <Link url="https://github.com/daggy1234/dagpi">
-                    <Icon color="black" name="github">
+                    <Icon color={useColorModeValue('black', 'white')} name="github">
                         <AiFillGithub />
                     </Icon>
                 </Link>
@@ -55,7 +52,7 @@ export const Footer = () => (
             </span>
             <span>
                 <NextLink url="/terms">
-                    <Icon color="yellow" name="terms">
+                    <Icon color="pink.300" name="terms">
                         <GrDocument />
                     </Icon>
                 </NextLink>
