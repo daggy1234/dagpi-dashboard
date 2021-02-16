@@ -771,10 +771,10 @@
   resolved "https://registry.yarnpkg.com/@egjs/list-differ/-/list-differ-1.0.0.tgz#2277aff52e3e4bd9318d5c30ffc3ba3b6216f05e"
   integrity sha512-HsbMKc0ZAQH+EUeCmI/2PvTYSybmkaWwakU8QGDYYgMVIg9BQ5sM0A0Nnombjxo2+JzXHxmH+jw//yGX+y6GYw==
 
-"@egjs/react-flicking@^3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@egjs/react-flicking/-/react-flicking-3.5.1.tgz#c202448d7f00bfbfa8cbef0c4f33b6f81da611b5"
-  integrity sha512-LkNCGLqA1aVurbPPuery+yXEHsF1JC2tKZYSySjzAnxTYk+4fqvrahYR9nmMnTu7BNvdpHpDnpiCJY3kdzpArQ==
+"@egjs/react-flicking@^3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@egjs/react-flicking/-/react-flicking-3.5.2.tgz#636b72971fcbcef739b47afe122449fde54a2a66"
+  integrity sha512-9/NKf5wLXhjQHW3cjGWft6fd01nSNP7sHSjxL+egv5li8nsEkjY1fvmwBYmVHCRF10NLwdcecSpifZGHRCcaFQ==
   dependencies:
     "@egjs/children-differ" "^1.0.1"
     "@egjs/flicking" "^3.7.0"
