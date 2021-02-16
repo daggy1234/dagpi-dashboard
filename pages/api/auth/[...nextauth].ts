@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Avatar } from '@chakra-ui/core';
+import { Avatar } from '@chakra-ui/react';
 import { url } from 'inspector';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';

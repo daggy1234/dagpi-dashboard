@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading } from '@chakra-ui/core';
+import { Box, Button, Flex, Heading } from '@chakra-ui/react';
 import {
     IconButton,
     Image,
@@ -11,9 +11,9 @@ import {
     Skeleton,
     useColorMode,
     useColorModeValue
-} from '@chakra-ui/core';
-import { signIn, signOut, useSession } from 'next-auth/client';
+} from '@chakra-ui/react';
 import Link from 'next/link';
+import { signIn, signOut, useSession } from 'next-auth/client';
 import { FaChevronDown } from 'react-icons/fa';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md';
@@ -64,6 +64,18 @@ export default function AppBar({ onOpen, ...rest }) {
                     </Link>
                 </Heading>
             </Flex>
+            <IconButton
+                size="md"
+                fontSize="lg"
+                mr="-75px"
+                display={{ base: 'inline-flex', md: 'none' }}
+                aria-label={`Switch to ${text} mode`}
+                variant="solid"
+                color={useColorModeValue('white', 'yellow.400')}
+                bg={useColorModeValue('gray.600', 'blue.400')}
+                onClick={toggleMode}
+                icon={<SwitchIcon />}
+            />
             <Box display={{ sm: 'block', md: 'none' }} onClick={onOpen}>
                 <svg
                     fill="white"
@@ -82,11 +94,12 @@ export default function AppBar({ onOpen, ...rest }) {
                 <IconButton
                     size="md"
                     fontSize="lg"
+                    display={{ base: 'none', md: 'inline-flex' }}
                     aria-label={`Switch to ${text} mode`}
                     variant="solid"
+                    mr={3}
                     color={useColorModeValue('white', 'yellow.400')}
                     bg={useColorModeValue('gray.600', 'blue.400')}
-                    mr="3"
                     onClick={toggleMode}
                     icon={<SwitchIcon />}
                 />

@@ -1,11 +1,11 @@
 import './styles.scss';
 
-import { ChakraProvider, theme } from '@chakra-ui/core';
-import { Provider } from 'next-auth/client';
-import { DefaultSeo } from 'next-seo';
+import { ChakraProvider } from '@chakra-ui/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
+import { Provider } from 'next-auth/client';
+import { DefaultSeo } from 'next-seo';
 import { useEffect } from 'react';
 
 import siteConfig from '../config/site-config';

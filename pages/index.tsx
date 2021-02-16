@@ -11,16 +11,18 @@ import {
     Text,
     useBreakpointValue,
     useColorModeValue
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import Head from 'next/head';
+import Link from 'next/link';
 import React from 'react';
 import { AiFillHeart, AiOutlineUser } from 'react-icons/ai';
-import { BiCodeCurly } from 'react-icons/bi';
-import { BsCodeSlash, BsLightningFill } from 'react-icons/bs';
+import { BiCodeCurly, BiTime } from 'react-icons/bi';
+import { BsLightningFill } from 'react-icons/bs';
 import { DiGithubBadge } from 'react-icons/di';
 import { FaArrowRight, FaDiscord } from 'react-icons/fa';
 import { IoIosSpeedometer } from 'react-icons/io';
 import { RiSecurePaymentLine } from 'react-icons/ri';
+import { SiReadthedocs } from 'react-icons/si';
 import { TiSpanner } from 'react-icons/ti';
 import Particles from 'react-tsparticles';
 
@@ -28,9 +30,8 @@ import Cards from '../components/cards/cards';
 import DiscordStrip from '../components/discord';
 import Layout from '../components/layout';
 import Rounder from '../components/rounder';
-import SEO from '../components/seo';
-import styles from '../styles/feature.model.scss';
-import textstyle from '../styles/gradient.model.scss';
+import styles from '../styles/feature.module.scss';
+import textstyle from '../styles/gradient.module.scss';
 
 type StatBoxProps = BoxProps & {
     icon?: React.ElementType;
@@ -71,7 +72,7 @@ const StatBox = (props: StatBoxProps) => {
             borderLeftColor="white"
             mr={{ base: '0px', lg: '40px' }}
             {...rest}>
-            <Box fontSize={{ base: '4rem', md: '6.75rem' }} lineHeight="1em" mb="20px">
+            <Box fontSize={{ base: '4rem', md: '6.25rem' }} lineHeight="1em" mb="20px">
                 {title}
             </Box>
             <Stack isInline align="center">
@@ -87,10 +88,6 @@ export default function Page() {
     const partcolor = useColorModeValue('#CBD5E0', '#4A5568');
     return (
         <>
-            <SEO
-                title="Dagpi: A simple, fast and easy to use API"
-                description="A simple, fast and easy to use API"
-            />
             <Layout>
                 <Head>
                     <title>Dagpi</title>
@@ -132,29 +129,27 @@ export default function Page() {
                         spacing="4"
                         justify="center"
                         direction={{ base: 'column', sm: 'row' }}>
+                        <Link href="/dashboard">
+                            <Button
+                                h="4rem"
+                                px="40px"
+                                fontSize="1.2rem"
+                                size="lg"
+                                colorScheme="purple"
+                                rightIcon={<FaArrowRight fontSize="0.8em" />}>
+                                Get Started
+                            </Button>
+                        </Link>
                         <Button
-                            h="4rem"
-                            px="40px"
-                            fontSize="1.2rem"
-                            as="a"
-                            size="lg"
-                            href="https://dagpi.docs.apiary.io"
-                            colorScheme="purple"
-                            rightIcon={<FaArrowRight fontSize="0.8em" />}>
-                            Get Started
-                        </Button>
-
-                        <Button
-                            as="a"
                             size="lg"
                             ml={{ base: '0px', sm: '20px' }}
                             h="4rem"
+                            as="a"
                             px="40px"
+                            href="https://dagpi.docs.apiary.io"
                             fontSize="1.2rem"
-                            href="https://github.com/Daggy1234/dagpi"
-                            target="__blank"
-                            leftIcon={<DiGithubBadge size="1.5em" />}>
-                            GitHub
+                            leftIcon={<SiReadthedocs size="1.5em" />}>
+                            Docs
                         </Button>
                     </Stack>
                 </Flex>
@@ -166,7 +161,7 @@ export default function Page() {
                     <Container py="120px" maxW="1280px">
                         <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
                             <Heading as="h2" mb="5" pt="5">
-                                All the characteristics of a Mordern API
+                                All the characteristics of a Modern API
                             </Heading>
                         </Box>
                         <SimpleGrid columns={{ base: 1, md: 3 }} gap={10} spacingX={{ md: 12 }}>
@@ -337,10 +332,10 @@ export default function Page() {
                             </Heading>
                         </Box>
                         <Stack direction={{ base: 'column', lg: 'row' }}>
-                            <StatBox icon={AiOutlineUser} title="30+" description="Active Users" />
+                            <StatBox icon={AiOutlineUser} title="100+" description="Active Users" />
                             <StatBox icon={IoIosSpeedometer} title="<50ms" description="Ping" />
-                            <StatBox icon={BsCodeSlash} title="5000+" description="Lines of Code" />
-                            <StatBox icon={FaDiscord} title="70+" description="Discord Members" />
+                            <StatBox icon={BiTime} title="99%" description="Uptime" />
+                            <StatBox icon={FaDiscord} title="120+" description="Discord Members" />
                         </Stack>
                     </Box>
                 </Flex>

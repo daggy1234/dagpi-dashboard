@@ -6,14 +6,16 @@ const siteConfig = {
     seo: {
         title: 'Dagpi',
         titleTemplate: '%s | Dagpi',
-        description: 'A fast, and easy to use API.',
-        siteUrl: 'https://dagpi.tk',
+        description:
+            'A fast, and easy to use API. Enjoy powerful image manipulation, high quality datasets with reliability and security.',
+        siteUrl: 'https://dagpi.xyz',
         openGraph: {
             type: 'website',
             locale: 'en_US',
-            url: 'https://dagpi.tk',
+            url: 'https://dagpi.xyz',
             title: 'Dagpi',
-            description: 'A fast, and easy to use API.',
+            description:
+                'A fast, and easy to use API. Enjoy powerful image manipulation, high quality datasets with reliability and security.',
             site_name: 'Dagpi: A fast and easy to use API',
             images: [
                 {

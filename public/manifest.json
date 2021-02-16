@@ -9,8 +9,8 @@
     "start_url": "/",
     "icons": [
         {
-            "src":"dagpi.png",
-            "type":"image/png"
+            "src": "dagpi.png",
+            "type": "image/png"
         }
     ],
     "splash_pages": null

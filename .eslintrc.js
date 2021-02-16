@@ -35,7 +35,7 @@ module.exports = {
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
-        'simple-import-sort/sort': 'error',
+        'simple-import-sort/imports': 'error',
         'jsx-a11y/anchor-is-valid': [
             'error',
             {

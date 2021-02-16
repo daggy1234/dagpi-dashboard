@@ -1,4 +1,4 @@
-import { Box, Button, Heading } from '@chakra-ui/core';
+import { Box, Button, Heading } from '@chakra-ui/react';
 import { signIn } from 'next-auth/client';
 
 import SEO from './seo';

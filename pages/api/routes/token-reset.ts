@@ -1,8 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/client';
 
-const secret = process.env.SECRET;
-
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const session = await getSession({ req });
     if (!session) {
@@ -13,6 +11,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         method: 'PATCH',
         headers: { Authorization: process.env.TOKEN }
     });
-    const js = await resp.json();
+    await resp.json();
     return res.send(JSON.stringify({ status: resp.status }, null, 2));
 };

@@ -11,10 +11,11 @@
     &::-webkit-scrollbar-thumb {
         background: white;
         border-radius: 10px;
-        box-shadow: inset 2px 2px 2px rgb(255, 255, 255), inset -2px -2px 2px rgba(255, 255, 255, 0.651);
+        box-shadow: inset 2px 2px 2px rgb(255, 255, 255),
+            inset -2px -2px 2px rgba(255, 255, 255, 0.651);
     }
     &::-webkit-scrollbar-track {
-        background: linear-gradient(90deg,#e3e2e4,#e7e7e7 1px,#d7d6d8 0,#dbdadd);
+        background: linear-gradient(90deg, #e3e2e4, #e7e7e7 1px, #d7d6d8 0, #dbdadd);
     }
 }
 
@@ -31,17 +32,16 @@
     background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
 
     box-shadow: -1rem 0 3rem gray;
-    transition: .2s;
+    transition: 0.2s;
     &:hover {
         transform: translateY(-1rem);
     }
-    &:hover~.card {
+    &:hover ~ .card {
         transform: translateX(130px);
     }
     &:not(:first-child) {
         margin-left: -130px;
     }
-
 }
 
 .cardAuthor {
@@ -87,7 +87,7 @@
     }
     h2 {
         font-size: 2rem;
-        margin: .25rem 0 auto;
+        margin: 0.25rem 0 auto;
         text-decoration: none;
         cursor: pointer;
         background: white;
@@ -98,28 +98,24 @@
         box-decoration-break: clone;
         background-clip: text;
         border-color: black;
-        
     }
-
 }
 
 .tags {
     margin: 1rem 0 2rem;
-    padding: .5rem 0 1rem;
+    padding: 0.5rem 0 1rem;
     line-height: 2;
     margin-bottom: 0;
     a {
         font-style: normal;
         font-weight: 700;
-        font-size: .5rem;
+        font-size: 0.5rem;
         color: white;
         text-transform: uppercase;
-        font-size: .66rem;
+        font-size: 0.66rem;
         border: 3px solid whitesmoke;
         border-radius: 2rem;
-        padding: .2rem .85rem .25rem;
+        padding: 0.2rem 0.85rem 0.25rem;
         position: relative;
-        
     }
-
 }

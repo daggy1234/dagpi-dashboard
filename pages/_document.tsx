@@ -1,4 +1,4 @@
-import { ColorModeScript } from '@chakra-ui/core';
+import { ColorModeScript } from '@chakra-ui/react';
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 
 import { GA_TRACKING_ID } from '../lib/analytics';

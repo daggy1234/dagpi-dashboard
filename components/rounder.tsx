@@ -7,7 +7,7 @@ import {
     Image,
     Text,
     useColorModeValue
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { AutoPlay, Fade } from '@egjs/flicking-plugins';
 import Flicking from '@egjs/react-flicking';
 

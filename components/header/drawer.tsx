@@ -1,9 +1,4 @@
 import {
-    Accordion,
-    AccordionButton,
-    AccordionIcon,
-    AccordionItem,
-    AccordionPanel,
     Box,
     Button,
     Drawer,
@@ -13,19 +8,13 @@ import {
     DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
-    IconButton,
     Image,
-    StackDivider,
-    Text,
-    useColorMode,
-    useColorModeValue,
     VStack
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { Collapse } from '@chakra-ui/transition';
-import { signIn, signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
+import { signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
-import { FaMoon, FaSun } from 'react-icons/fa';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md';
 
@@ -36,9 +25,6 @@ export default function MyDrawer({ isOpen, onClose }) {
     const btnRef = React.useRef();
     const [session, loading] = useSession();
     const [show, setShow] = React.useState(false);
-    const { toggleColorMode: toggleMode } = useColorMode();
-    const text = useColorModeValue('dark', 'light');
-    const SwitchIcon = useColorModeValue(FaMoon, FaSun);
     const handleToggle = () => {
         setShow(!show);
     };
@@ -51,22 +37,7 @@ export default function MyDrawer({ isOpen, onClose }) {
                     <DrawerHeader>NavBar</DrawerHeader>
 
                     <DrawerBody mr="30px">
-                        <VStack
-                            divider={<StackDivider borderColor="gray.200" />}
-                            spacing={4}
-                            align="stretch"
-                            textAlign="center">
-                            <IconButton
-                                size="md"
-                                fontSize="lg"
-                                aria-label={`Switch to ${text} mode`}
-                                variant="solid"
-                                color={useColorModeValue('white', 'yellow.400')}
-                                bg={useColorModeValue('gray.600', 'blue.400')}
-                                mr="3"
-                                onClick={toggleMode}
-                                icon={<SwitchIcon />}
-                            />
+                        <VStack spacing={5} align="stretch" textAlign="center">
                             <NextLink url="/">Home</NextLink>
                             <ExtLink url="https://docs.dagpi.apiary.io">Docs</ExtLink>
                             <ExtLink url="https://server.daggy.tech">Discord</ExtLink>
@@ -84,7 +55,11 @@ export default function MyDrawer({ isOpen, onClose }) {
                                     Dashboard
                                 </Button>
                             </Link>
-
+                            {loading && (
+                                <Button border="1px" colorScheme="purple" isLoading>
+                                    Loading..
+                                </Button>
+                            )}
                             {session && (
                                 <>
                                     <Button colorScheme="purple" onClick={handleToggle}>

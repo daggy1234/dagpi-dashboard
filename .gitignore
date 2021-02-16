@@ -108,3 +108,4 @@ dist
 .env.local
 .idea
 .DS_Store
+index.html

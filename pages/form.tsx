@@ -17,10 +17,10 @@ import {
     Input,
     Textarea,
     VStack
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
-import { useSession } from 'next-auth/client';
 import Router from 'next/router';
+import { useSession } from 'next-auth/client';
 import React from 'react';
 import * as Yup from 'yup';
 
@@ -34,14 +34,23 @@ interface App {
     name: string;
     url: string;
     description: string;
+    prefix: string;
     terms: boolean;
 }
 
 const validation = Yup.object().shape({
     user: Yup.string().length(18, 'Userid must be proper').required('Req'),
     name: Yup.string().required('Required'),
-    url: Yup.string().required('Required'),
-    description: Yup.string().required('Required'),
+    url: Yup.string()
+        .required('Required')
+        .matches(
+            /^((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)$/,
+            'Inavlid url. Please provide a proper url'
+        ),
+    description: Yup.string()
+        .required('Required')
+        .min(20, 'Please enter a description that is at least 20 characters long'),
+    prefix: Yup.string().max(10, 'Prefix Cannot be longer than 10 characters'),
     terms: Yup.boolean().required().oneOf([true], 'Please accept our terms')
 });
 
@@ -86,7 +95,7 @@ export default function FormikExample() {
     return (
         <>
             <Alert isOpen={isOpen} onClose={onClose} cancelRef={cancelRef} isSuccess={success} />
-            <Flex direction="column" w="100%" justifyContent="center">
+            <Flex padding="5%" direction="column" w="100%" justifyContent="center">
                 <VStack spacing={3} alignItems="center">
                     <Heading>Submit this form to add an app!</Heading>
                     <Formik
@@ -95,6 +104,7 @@ export default function FormikExample() {
                             name: '',
                             url: '',
                             description: '',
+                            prefix: '',
                             terms: false
                         }}
                         validationSchema={validation}
@@ -196,6 +206,28 @@ export default function FormikExample() {
                                             />
                                             <FormErrorMessage>
                                                 {form.errors.description}
+                                            </FormErrorMessage>
+                                        </FormControl>
+                                    )}
+                                </Field>
+                                <Field name="prefix">
+                                    {({ field, form }) => (
+                                        <FormControl
+                                            isInvalid={form.errors.prefix && form.touched.prefix}>
+                                            <FormLabel htmlFor="prefix">
+                                                if your app is a bot, state it&apos;s prefix. This
+                                                is optional
+                                            </FormLabel>
+                                            <Input
+                                                {...field}
+                                                id="prefix"
+                                                placeholder="prefix"
+                                                size="md"
+                                                errorBorderColor="crimson"
+                                                focusBorderColor="purple.400"
+                                            />
+                                            <FormErrorMessage>
+                                                {form.errors.prefix}
                                             </FormErrorMessage>
                                         </FormControl>
                                     )}

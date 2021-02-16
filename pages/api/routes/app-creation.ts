@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/client';
+
+import sendEmailText from '../../../lib/email';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const session = await getSession({ req });
     if (!session) {
@@ -39,6 +41,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                         name: 'email',
                         value: session.user.email,
                         inline: true
+                    },
+                    {
+                        name: 'prefix',
+                        value: t.app.prefix ? t.app.prefix : 'Nan',
+                        inline: true
                     }
                 ],
                 author: {
@@ -59,5 +66,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
         body: JSON.stringify(pjso)
     });
+    sendEmailText(
+        session.user.email,
+        'Dagpi app Created',
+        `Dear ${session.user.name}\n\nYour dagpi app was created. We succesfully managed to create a dagpi app for your token.Your App will be approved soon.Join the discord server for updates: https://server.daggy.tech\n\nFrom:\nDagpi team`
+    );
     res.send({ data: 'kk', status: resp.status });
 };

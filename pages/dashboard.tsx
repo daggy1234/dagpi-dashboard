@@ -12,29 +12,37 @@ import {
     Heading,
     IconButton,
     Input,
+    Table,
+    Tbody,
+    Td,
+    Text,
+    Th,
+    Thead,
+    Tr,
     useClipboard,
     useColorModeValue,
     useToast,
     VStack
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import fromUnixTime from 'date-fns/fromUnixTime';
+import * as NextLink from 'next/link';
 import { useSession } from 'next-auth/client';
 import { useEffect, useState } from 'react';
 import React from 'react';
-import { AiFillDollarCircle, AiOutlineEnter } from 'react-icons/ai';
+import { IconContext } from 'react-icons';
+import { AiFillDollarCircle, AiFillWarning, AiOutlineEnter } from 'react-icons/ai';
 import { BiGitMerge } from 'react-icons/bi';
 import { BsGraphUp, BsPencilSquare } from 'react-icons/bs';
 import { FaClipboard, FaMousePointer } from 'react-icons/fa';
+import { FiRefreshCcw } from 'react-icons/fi';
 import { TiTick, TiTimes } from 'react-icons/ti';
 
 import AccessDenied from '../components/access-denied';
 import Layout from '../components/layout';
 import Link from '../components/Link';
 import Loading from '../components/loading';
-import NextLink from '../components/NextLink';
 import SEO from '../components/seo';
-import styles from '../styles/table.model.scss';
+import styles from '../styles/table.module.scss';
 
 const StatBox = (props) => {
     return (
@@ -69,7 +77,7 @@ const Alert = ({ isOpen, cancelRef, onClose, isSuccess, setdes }) => {
                             : 'Post deleteion you will loose all of your data INCLUDING Apps and Tokens. You will have to redo all of our application process and all of your data will be DELETED.'}
                     </AlertDialogBody>
                     <AlertDialogFooter>
-                        <Button onClick={onClose} colorScheme="white" ref={cancelRef}>
+                        <Button onClick={onClose} colorScheme="whatsapp" ref={cancelRef}>
                             Cancel
                         </Button>
                         <Button
@@ -142,7 +150,10 @@ export default function Page() {
                     ResetTok();
                 } else {
                     const DeleteTok = async () => {
-                        const res = await fetch('/api/routes/delete-all');
+                        const res = await fetch('/api/routes/delete-all', {
+                            method: 'POST',
+                            body: JSON.stringify(app)
+                        });
                         if (res.status === 200) {
                             window.location.reload();
                         } else {
@@ -186,14 +197,14 @@ export default function Page() {
     if (app.data === false) {
         return (
             <Layout>
-                <Flex padding="5%" justifyContent="center">
+                <Flex padding="5%" m="5%" justifyContent="center">
                     <VStack spacing={3}>
                         <Heading>Please create an application</Heading>
-                        <NextLink url="/form">
-                            <Button variant="outline" colorScheme="pink">
+                        <Link url="/form">
+                            <Button variant="outline" size="lg" colorScheme="pink">
                                 Create App
                             </Button>
-                        </NextLink>
+                        </Link>
                     </VStack>
                 </Flex>
             </Layout>
@@ -208,24 +219,24 @@ export default function Page() {
                 </Layout>
             );
         } else {
-            const Table = () => {
+            const TableComp = () => {
                 return (
                     <div className={styles.tablediv}>
-                        <table className={styles.apptable}>
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Url</th>
-                                    <th>Approved</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{app.uu}</td>
-                                    <td>{app.appname}</td>
-                                    <td>{app.appurl}</td>
-                                    <td>
+                        <Table variant="simple" style={{ overflowX: 'auto' }}>
+                            <Thead>
+                                <Tr>
+                                    <Th>Id</Th>
+                                    <Th>Name</Th>
+                                    <Th>Url</Th>
+                                    <Th>Approved</Th>
+                                </Tr>
+                            </Thead>
+                            <Tbody>
+                                <Tr>
+                                    <Td>{app.uu}</Td>
+                                    <Td>{app.appname}</Td>
+                                    <Td>{app.appurl}</Td>
+                                    <Td>
                                         {app.approved ? (
                                             <IconButton
                                                 aria-label="approved"
@@ -239,34 +250,41 @@ export default function Page() {
                                                 icon={<TiTimes />}
                                             />
                                         )}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </Td>
+                                </Tr>
+                            </Tbody>
+                        </Table>
                     </div>
                 );
             };
             if (data.data === false) {
                 return (
                     <Layout>
-                        <Flex padding="5%" justifyContent="center" textAlign="left">
+                        <Box padding="5%">
                             <VStack spacing={3}>
-                                <Heading size="lg">
-                                    We are in the process of approving your app. Join the discord
-                                    for updates
-                                </Heading>
-                                <Link url="https://server.daggy.tech">
-                                    <Button size="lg" variant="outline" colorScheme="pink">
-                                        Discord
-                                    </Button>
-                                </Link>
+                                <Box m={3} justifyContent="center" textAlign="center">
+                                    <Heading size="lg" m={2}>
+                                        We are in the process of approving your app.
+                                    </Heading>
+                                    <Text m={2}>
+                                        {' '}
+                                        Join the discord for news, and answering updates.
+                                    </Text>
+                                    <Link url="https://server.daggy.tech">
+                                        <Button size="lg" variant="outline" colorScheme="pink">
+                                            Discord
+                                        </Button>
+                                    </Link>
+                                </Box>
                                 <Divider mt={10} />
-                                <Heading size="lg" alignSelf="left">
-                                    Your Apps
-                                </Heading>
-                                <Table />
+                                <Box>
+                                    <Heading size="lg" marginY={2}>
+                                        Your Apps
+                                    </Heading>
+                                    <TableComp />
+                                </Box>
                             </VStack>
-                        </Flex>
+                        </Box>
                     </Layout>
                 );
             }
@@ -289,7 +307,6 @@ export default function Page() {
                                 <Input
                                     variant="filled"
                                     bg={useColorModeValue('gray.300', 'gray.700')}
-                                    color="red"
                                     value={isShown ? data.apikey : '[Hover to reveal API token]'}
                                     isReadOnly
                                     placeholder="Welcome"
@@ -305,92 +322,112 @@ export default function Page() {
                                     {hasCopied ? 'Copied' : 'Copy'}
                                 </Button>
                             </Flex>
-                            <Flex
-                                direction={{ base: 'column', md: 'row' }}
-                                align="center"
-                                justify="space-between"
-                                wrap="wrap"
-                                alignItems="center"
-                                marginTop="5%">
-                                <StatBox color="blue.300" padding="1.5em">
-                                    <VStack padding="1.5rem">
-                                        <Heading size="sm">
-                                            <AiOutlineEnter /> Created
-                                        </Heading>
-                                        <Heading color="white" size="md">
-                                            {formatDistanceToNow(Date.parse(app.createdAt))} ago
-                                        </Heading>
-                                        <Heading size="sm">
-                                            <BsPencilSquare /> Approved
-                                        </Heading>
-                                        <Heading color="white" size="md">
-                                            {formatDistanceToNow(Date.parse(data.createdAt))} ago
-                                        </Heading>
-                                    </VStack>
-                                </StatBox>
-                                <StatBox color="green.300" padding="1.5em">
-                                    <VStack padding="1.5em">
-                                        <Heading size="sm">
-                                            <AiFillDollarCircle /> Premium User?
-                                        </Heading>
-                                        <Heading color="white" size="md">
-                                            {data.enhanced ? 'Yes!' : 'NO'}
-                                        </Heading>
-                                        <Heading size="sm">
-                                            <BiGitMerge /> Contributor
-                                        </Heading>
-                                        <Heading color="white" size="md">
-                                            {isContrib(session.user.id) ? 'Yes!' : 'NO'}
-                                        </Heading>
-                                    </VStack>
-                                </StatBox>
-                                <StatBox color="red.300" padding="1.5em">
-                                    <VStack padding="1.5em">
-                                        <Heading size="sm">
-                                            <FaMousePointer /> Total Uses
-                                        </Heading>
-                                        <Heading color="white" size="md">
-                                            {data.totaluses}
-                                        </Heading>
-                                        <Heading size="sm">
-                                            <BsGraphUp /> Detailed Stats
-                                        </Heading>
-                                        <Heading color="white" size="md">
-                                            Coming Soon
-                                        </Heading>
-                                    </VStack>
-                                </StatBox>
-                                <StatBox
-                                    color={useColorModeValue('gray.200', 'gray.700')}
-                                    padding="1.5em">
-                                    <VStack padding="1.5em">
-                                        <Heading size="lg">Danger Zone</Heading>
-                                        <Button
-                                            size="lg"
-                                            variant="solid"
-                                            colorScheme="orange"
-                                            onClick={() => {
-                                                setIsOpen(true);
-                                            }}>
-                                            Reset Token
-                                        </Button>
-                                        <Button
-                                            variant="solid"
-                                            size="lg"
-                                            colorScheme="red"
-                                            onClick={() => {
-                                                setSuccess(false);
-                                                setIsOpen(true);
-                                            }}>
-                                            Delete App
-                                        </Button>
-                                    </VStack>
-                                </StatBox>
-                            </Flex>
+                            <IconContext.Provider
+                                value={{ style: { display: 'inline' }, size: '1.5em' }}>
+                                <Flex
+                                    direction={{ base: 'column', md: 'row' }}
+                                    align="center"
+                                    justify="space-between"
+                                    wrap="wrap"
+                                    alignItems="center"
+                                    marginTop="5%">
+                                    <StatBox color="blue.300" padding="2em">
+                                        <VStack padding="2rem">
+                                            <Heading size="sm">
+                                                <AiOutlineEnter /> Created
+                                            </Heading>
+                                            <Heading color="white" size="md">
+                                                {formatDistanceToNow(Date.parse(app.createdAt))} ago
+                                            </Heading>
+                                            <Heading size="sm">
+                                                <BsPencilSquare /> Approved
+                                            </Heading>
+                                            <Heading color="white" size="md">
+                                                {formatDistanceToNow(Date.parse(data.createdAt))}{' '}
+                                                ago
+                                            </Heading>
+                                        </VStack>
+                                    </StatBox>
+                                    <StatBox color="green.300" padding="2em">
+                                        <VStack padding="2em">
+                                            <Heading size="sm">
+                                                <AiFillDollarCircle /> Premium User?
+                                            </Heading>
+                                            <Heading color="white" size="md">
+                                                {data.enhanced ? (
+                                                    <Text>Yes</Text>
+                                                ) : (
+                                                    <NextLink.default href="/premium">
+                                                        <Button colorScheme="blackAlpha">
+                                                            Get Premium
+                                                        </Button>
+                                                    </NextLink.default>
+                                                )}
+                                            </Heading>
+                                            <Heading size="sm">
+                                                <BiGitMerge /> Contributor
+                                            </Heading>
+                                            <Heading color="white" size="md">
+                                                {isContrib(session.user.id) ? 'Yes!' : 'NO'}
+                                            </Heading>
+                                        </VStack>
+                                    </StatBox>
+                                    <StatBox color="red.300" padding="2em">
+                                        <VStack padding="2em">
+                                            <Heading size="sm">
+                                                <FaMousePointer /> Ratelimit
+                                            </Heading>
+                                            <Heading color="white" size="md">
+                                                {data.ratelimit}
+                                            </Heading>
+                                            <Heading size="sm">
+                                                <BsGraphUp /> Detailed Stats
+                                            </Heading>
+                                            <NextLink.default
+                                                href={{
+                                                    pathname: '/stats/[token]',
+                                                    query: { token: data.apikey }
+                                                }}>
+                                                <Button colorScheme="blackAlpha">
+                                                    Stat Dashboard
+                                                </Button>
+                                            </NextLink.default>
+                                        </VStack>
+                                    </StatBox>
+                                    <StatBox
+                                        color={useColorModeValue('gray.200', 'gray.700')}
+                                        padding="2em">
+                                        <VStack padding="2em">
+                                            <Heading size="lg">Danger Zone</Heading>
+                                            <Button
+                                                size="lg"
+                                                variant="solid"
+                                                leftIcon={<FiRefreshCcw />}
+                                                colorScheme="orange"
+                                                onClick={() => {
+                                                    setIsOpen(true);
+                                                }}>
+                                                Reset Token
+                                            </Button>
+                                            <Button
+                                                variant="solid"
+                                                size="lg"
+                                                colorScheme="red"
+                                                leftIcon={<AiFillWarning />}
+                                                onClick={() => {
+                                                    setSuccess(false);
+                                                    setIsOpen(true);
+                                                }}>
+                                                Delete App
+                                            </Button>
+                                        </VStack>
+                                    </StatBox>
+                                </Flex>
+                            </IconContext.Provider>
                             <br />
                             <Heading size="lg">Apps</Heading>
                             <Divider mt={10} mb={7} />
-                            <Table />
+                            <TableComp />
                         </Box>
                     </Layout>
                 </>

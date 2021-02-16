@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://localhost:3000/404</loc>
-    </url>
-
-    <url>
-        <loc>http://localhost:3000/_app</loc>
-    </url>
-
-    <url>
-        <loc>http://localhost:3000/_document</loc>
+        <loc>http://localhost:3000/</loc>
     </url>
 
     <url>
@@ -21,7 +13,7 @@
     </url>
 
     <url>
-        <loc>http://localhost:3000</loc>
+        <loc>http://localhost:3000/premium</loc>
     </url>
 
     <url>

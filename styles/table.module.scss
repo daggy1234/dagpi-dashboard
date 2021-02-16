@@ -1,10 +1,11 @@
 .apptable {
     border-collapse: collapse;
     width: 100%;
-    th,td {
+    th,
+    td {
         padding: 1%;
     }
-    
+
     th {
         color: black;
         text-align: left;
@@ -14,10 +15,8 @@
         text-align: left;
         align-items: left;
     }
-    
 }
 
 .tablediv {
     overflow-x: auto;
 }
-
