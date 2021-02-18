@@ -742,14 +742,14 @@
   dependencies:
     "@egjs/flicking" "^3.1.1"
 
-"@egjs/flicking@^3.1.1", "@egjs/flicking@^3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@egjs/flicking/-/flicking-3.7.0.tgz#60d5b2a61bdad49ae12922269e9c3e3a1a91a125"
-  integrity sha512-NFrsnrSbkVrdiaJGhrbh0iE51v/5OMZD83e9qEPbObsZ/xn2AbCJRHbDnPRT0zDx8nb8Y8gC4+9j/DAMnVjG4g==
+"@egjs/flicking@^3.1.1", "@egjs/flicking@^3.7.1":
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/@egjs/flicking/-/flicking-3.7.2.tgz#06966a906cb17df043f2e71d5e814e4e1d21d97d"
+  integrity sha512-rFiGlSC5WDs/9L+f28vUmPANtomJzDuBjFdnWj4v12ddlgd5SLlUw0rQQqYg78drOM+t545uL+HquMVqmklbgw==
   dependencies:
     "@egjs/axes" "^2.7.0"
     "@egjs/component" "^2.2.2"
-    "@egjs/imready" "^1.1.0"
+    "@egjs/imready" "^1.1.2"
     "@egjs/list-differ" "^1.0.0"
 
 "@egjs/hammerjs@^2.0.15":
@@ -759,10 +759,10 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
-"@egjs/imready@^1.1.0":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@egjs/imready/-/imready-1.1.1.tgz#013a1f302ea6766a7432bc50a95812e0503fdb3b"
-  integrity sha512-RdIo0ji1ckJzPUO0T6+uKzSXGGuS1EIOoVOWXReVk5MhHp/C22Cs/BjOj/BjlGMOUpVgvxsWVicnP/UJZUx4zA==
+"@egjs/imready@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@egjs/imready/-/imready-1.1.2.tgz#91f727426fe67654e0a8ad347fc4688d9925d060"
+  integrity sha512-spvuv/hNoyWYdpgYCGt4JIDk0e+3Ce5XcXazSTcF4xBuYKLeKp9tqRRORsPYsaiAfvZR0FKYG8haq0Sx2k+cqQ==
   dependencies:
     "@egjs/component" "^2.2.2"
 
@@ -771,13 +771,13 @@
   resolved "https://registry.yarnpkg.com/@egjs/list-differ/-/list-differ-1.0.0.tgz#2277aff52e3e4bd9318d5c30ffc3ba3b6216f05e"
   integrity sha512-HsbMKc0ZAQH+EUeCmI/2PvTYSybmkaWwakU8QGDYYgMVIg9BQ5sM0A0Nnombjxo2+JzXHxmH+jw//yGX+y6GYw==
 
-"@egjs/react-flicking@^3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@egjs/react-flicking/-/react-flicking-3.5.1.tgz#c202448d7f00bfbfa8cbef0c4f33b6f81da611b5"
-  integrity sha512-LkNCGLqA1aVurbPPuery+yXEHsF1JC2tKZYSySjzAnxTYk+4fqvrahYR9nmMnTu7BNvdpHpDnpiCJY3kdzpArQ==
+"@egjs/react-flicking@^3.5.3":
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/@egjs/react-flicking/-/react-flicking-3.5.3.tgz#25dbeb16e87f010c333d0488a20264bdab0272bc"
+  integrity sha512-wG3pqLoVhP8oWFxUsQVoX4+iUuRD9150igu+ALa5MBp8ErFr8LBfRBeYOCOp2LnNChvwywY5wRLbKpY0IGP4eQ==
   dependencies:
     "@egjs/children-differ" "^1.0.1"
-    "@egjs/flicking" "^3.7.0"
+    "@egjs/flicking" "^3.7.1"
     "@egjs/list-differ" "^1.0.0"
 
 "@emotion/babel-plugin@^11.1.2":

@@ -27,7 +27,7 @@
     "dependencies": {
         "@chakra-ui/react": "^1.3.2",
         "@egjs/flicking-plugins": "^3.3.0",
-        "@egjs/react-flicking": "^3.5.1",
+        "@egjs/react-flicking": "^3.5.3",
         "@emotion/react": "^11.1.5",
         "@emotion/styled": "^11.1.5",
         "@zeit/next-sass": "^1.0.1",
