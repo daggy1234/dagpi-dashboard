@@ -39,6 +39,8 @@ export default function MyDrawer({ isOpen, onClose }) {
                     <DrawerBody mr="30px">
                         <VStack spacing={5} align="stretch" textAlign="center">
                             <NextLink url="/">Home</NextLink>
+                            <NextLink url="/playground">Home</NextLink>
+                            <NextLink url="/premium">Premium</NextLink>
                             <ExtLink url="https://docs.dagpi.apiary.io">Docs</ExtLink>
                             <ExtLink url="https://server.daggy.tech">Discord</ExtLink>
                             <ExtLink url="https://github.com/Daggy1234/dagpi">Github</ExtLink>

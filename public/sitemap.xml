@@ -13,11 +13,19 @@
     </url>
 
     <url>
+        <loc>http://localhost:3000/playground</loc>
+    </url>
+
+    <url>
         <loc>http://localhost:3000/premium</loc>
     </url>
 
     <url>
         <loc>http://localhost:3000/privacy</loc>
+    </url>
+
+    <url>
+        <loc>http://localhost:3000/success</loc>
     </url>
 
     <url>

@@ -386,7 +386,7 @@ export default function Page() {
                                             <NextLink.default
                                                 href={{
                                                     pathname: '/stats/[token]',
-                                                    query: { token: data.apikey }
+                                                    query: { token: data.apikey, tp: 1 }
                                                 }}>
                                                 <Button colorScheme="blackAlpha">
                                                     Stat Dashboard

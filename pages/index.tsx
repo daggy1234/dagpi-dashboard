@@ -28,6 +28,7 @@ import Particles from 'react-tsparticles';
 
 import Cards from '../components/cards/cards';
 import DiscordStrip from '../components/discord';
+import Gallery from '../components/galleryCard';
 import Layout from '../components/layout';
 import Rounder from '../components/rounder';
 import styles from '../styles/feature.module.scss';
@@ -153,10 +154,48 @@ export default function Page() {
                         </Button>
                     </Stack>
                 </Flex>
+                <Box mt="200px">
+                    <Flex
+                        px={{ base: 5, md: 20 }}
+                        w="full"
+                        justifyContent="center"
+                        alignItems="center">
+                        <Box
+                            bg={useColorModeValue('white', 'gray.800')}
+                            px={{ base: 2, md: 8 }}
+                            py={{ base: 5, md: 0 }}
+                            mx="auto">
+                            <Gallery
+                                image="/svg/photo.svg"
+                                title="Easiest Image Manipulation Ever"
+                                description="Powered by powerful networked api's, dagpi saves you having to run resource intensive image manipulation on your own hardware. Simply utilise our services and our sdk's for single lined image manipulation. No Assembly required"
+                                reverse={false}
+                                buttonLink="/playground"
+                                buttonText="Image Playground"
+                            />
+                            <Gallery
+                                image="/svg/collection.svg"
+                                title="A curated collection of data at your fingertips"
+                                description="From roasts, jokes and pikcup lines, to entire countries, waifu's and full fledged game data. Add a new degree of user engagement with our vast data archive."
+                                reverse={true}
+                                buttonLink="/playground"
+                                buttonText="Data Playground"
+                            />
+                            <Gallery
+                                image="/svg/analytics.svg"
+                                title="Powerful Statistics"
+                                description="Our rich and informative dashboard features not only full administrative access, but also boasts of a wealth of metrics that are visualised for your understanding."
+                                reverse={false}
+                                buttonLink="/dashboard"
+                                buttonText="Dashboard"
+                            />
+                        </Box>
+                    </Flex>
+                </Box>
                 <Box
                     as="section"
                     pb="50px"
-                    mt="200px"
+                    mt="100px"
                     bg={useColorModeValue('gray.50', 'gray.600')}>
                     <Container py="120px" maxW="1280px">
                         <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
@@ -196,6 +235,28 @@ export default function Page() {
                     <Heading>Features</Heading>
                     <Rounder />
                 </Box>
+
+                <Flex
+                    justifyContent="center"
+                    mt="100px"
+                    mb="100px"
+                    as="section"
+                    bg={useColorModeValue('purple.600', 'purple.900')}>
+                    <Box py="7.5rem" maxW="1280px" color="white">
+                        <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
+                            <Heading as="h3" size="2xl" textStyle="heading" mb="5">
+                                The Numbers
+                            </Heading>
+                        </Box>
+                        <Stack direction={{ base: 'column', lg: 'row' }}>
+                            <StatBox icon={AiOutlineUser} title="200+" description="Active Users" />
+                            <StatBox icon={IoIosSpeedometer} title="<50ms" description="Ping" />
+                            <StatBox icon={BiTime} title="99%" description="Uptime" />
+                            <StatBox icon={FaDiscord} title="150+" description="Discord Members" />
+                        </Stack>
+                    </Box>
+                </Flex>
+
                 {!mobile ? (
                     <div className={styles.container}>
                         <Particles
@@ -320,25 +381,6 @@ export default function Page() {
                 ) : (
                     <br />
                 )}
-                <Flex
-                    justifyContent="center"
-                    mt="100px"
-                    as="section"
-                    bg={useColorModeValue('purple.600', 'purple.900')}>
-                    <Box py="7.5rem" maxW="1280px" color="white">
-                        <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
-                            <Heading as="h3" size="2xl" textStyle="heading" mb="5">
-                                The Numbers
-                            </Heading>
-                        </Box>
-                        <Stack direction={{ base: 'column', lg: 'row' }}>
-                            <StatBox icon={AiOutlineUser} title="100+" description="Active Users" />
-                            <StatBox icon={IoIosSpeedometer} title="<50ms" description="Ping" />
-                            <StatBox icon={BiTime} title="99%" description="Uptime" />
-                            <StatBox icon={FaDiscord} title="120+" description="Discord Members" />
-                        </Stack>
-                    </Box>
-                </Flex>
                 <Box maxW="760px" mt="200px" mx="auto" textAlign="center" mb="56px">
                     <Heading as="h3" size="2xl" textStyle="heading" mb="5">
                         API Wrappers

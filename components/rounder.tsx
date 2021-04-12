@@ -36,7 +36,7 @@ const Card = (props) => {
                         </Box>
                     </Heading>
                     <Box display="flex" flexDirection="column">
-                        <Text mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
+                        <Text mt="1" fontWeight="semibold" lineHeight="tight">
                             {props.body}
                         </Text>
                     </Box>
@@ -71,6 +71,12 @@ export default function Rounder() {
             body:
                 "Fun jokes, roasts and pickup lines are provided through Dagpi's expansive datasets",
             url: '/Example/data.png'
+        },
+        {
+            title: 'We <3 Pride',
+            api: 'image',
+            body: 'Enjoy a wide variety of pride filters for images. Rep your sexuality!',
+            url: '/Example/pride.gif'
         },
         {
             title: 'Innovative Games',

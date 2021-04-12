@@ -1,10 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const sample = 600000;
-
-function genAll() {
+function genAll(sample: number, tp: number) {
     const n = new Date().getTime();
-    const fut = n - 24 * 60 * 60 * 1000;
+    const fut = n - tp;
     const ts = [];
     let lts = fut;
     let i;
@@ -22,7 +20,7 @@ function GenCounter(data) {
     return uas;
 }
 
-function GenCounterBub(data, obj) {
+function GenCounterBub(sample: number, data, obj) {
     const unique = [...new Set(data)];
     const uas = [];
     unique.map((elm) => {
@@ -55,50 +53,50 @@ function GenSplit(data) {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const bod = JSON.parse(req.body);
-    const resp = await fetch(`https://api.dagpi.xyz/auth/stats/${bod.token}`, {
+    let tp: number;
+    let url: string;
+    let sample: number;
+    const case_s: number = parseInt(bod.tp);
+    switch (case_s) {
+        case 1:
+            tp = 24 * 60 * 60 * 1000;
+            sample = 600000;
+            url = `https://api.dagpi.xyz/auth/stats/${bod.token}`;
+            break;
+        case 2:
+            tp = 7 * 24 * 60 * 60 * 1000;
+            sample = 3600000;
+            url = `https://api.dagpi.xyz/auth/stats/week/${bod.token}`;
+            break;
+        case 3:
+            tp = 30 * 24 * 60 * 60 * 1000;
+            sample = 21600000;
+            url = `https://api.dagpi.xyz/auth/stats/month/${bod.token}`;
+            break;
+        default:
+            tp = 4;
+            break;
+    }
+
+    if (tp == 4) {
+        return res.send({ data: 'no data', got: false, present: false });
+    }
+    const resp = await fetch(url, {
         headers: {
             Authorization: process.env.TOKEN,
             'Content-Type': 'application/json'
         }
     });
-    // const resp = {
-    //     status: 200
-    // };
-    // const js = {
-    //     total: 4,
-    //     data: [
-    //         {
-    //             user_agent:
-    //                 'AsyncDagpi v{__version__} Python/Python/         {sys.version_info[0]}.{sys.version_info[1]} aiohttp/{2}',
-    //             route: '/obama/',
-    //             api: 'image',
-    //             timestamp: 1613092658
-    //         },
-    //         {
-    //             user_agent:
-    //                 'AsyncDagpi v{__version__} Python/Python/         {sys.version_info[0]}.{sys.version_info[1]} aiohttp/{2}',
-    //             route: '/motiv/',
-    //             api: 'image',
-    //             timestamp: 1613089101
-    //         },
-    //         {
-    //             user_agent: 'dagpi',
-    //             route: '/roast',
-    //             api: 'data',
-    //             timestamp: 1613089101
-    //         },
-    //         {
-    //             user_agent: 'dagpi',
-    //             route: '/roast',
-    //             api: 'data',
-    //             timestamp: 1613089101
-    //         }
-    //     ]
-    // };
     if (resp.status == 200) {
         const js = await resp.json();
         if (js.data.length == 0) {
-            return res.send({ data: 'no data', got: true, present: false });
+            return res.send({
+                tp: bod.tp,
+                token: bod.token,
+                data: 'no data',
+                got: true,
+                present: false
+            });
         }
         const arr = js.data;
         const timea = arr.map((elm) =>
@@ -107,11 +105,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         const uas = GenCounter(arr.map((elm) => elm.user_agent));
         const routc = GenCounter(arr.map((elm) => elm.route));
         const bubd = GenCounterBub(
+            sample,
             arr.map((elm) => elm.route),
             arr
         );
         const routpref = GenSplit(arr.map((elm) => elm.api));
-        let times = GenCounter(timea.concat(genAll()));
+        let times = GenCounter(timea.concat(genAll(sample, tp)));
         const routes = [];
         const rout_num = [];
         const tarr = routc.map((elm) => {
@@ -124,6 +123,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         });
         times = times.map((elm) => [elm[0], elm[1] - 1]);
         res.send({
+            tp: bod.tp,
+            token: bod.token,
             data: {
                 raw: js,
                 pie: {
@@ -140,6 +141,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             present: true
         });
     } else {
-        res.send({ data: 'no data', got: false, present: false });
+        res.send({
+            data: 'no data',
+            got: false,
+            present: false
+        });
     }
 };

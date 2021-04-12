@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Heading } from '@chakra-ui/react';
 import {
+    HStack,
     IconButton,
     Image,
     Menu,
@@ -26,7 +27,6 @@ const MenuItems = ({ children }) => (
         as="h2"
         size="md"
         mt={{ base: 4, md: 0 }}
-        mr={6}
         display="block"
         textAlign="center"
         color="white">
@@ -68,7 +68,7 @@ export default function AppBar({ onOpen, ...rest }) {
                 size="md"
                 fontSize="lg"
                 mr="-75px"
-                display={{ base: 'inline-flex', md: 'none' }}
+                display={{ base: 'inline-flex', lg: 'none' }}
                 aria-label={`Switch to ${text} mode`}
                 variant="solid"
                 color={useColorModeValue('white', 'yellow.400')}
@@ -76,7 +76,7 @@ export default function AppBar({ onOpen, ...rest }) {
                 onClick={toggleMode}
                 icon={<SwitchIcon />}
             />
-            <Box display={{ sm: 'block', md: 'none' }} onClick={onOpen}>
+            <Box display={{ sm: 'block', lg: 'none' }} onClick={onOpen}>
                 <svg
                     fill="white"
                     width="12px"
@@ -86,15 +86,16 @@ export default function AppBar({ onOpen, ...rest }) {
                     <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
                 </svg>
             </Box>
-            <Box
-                display={{ base: 'none', md: 'flex' }}
-                width={{ base: 'full', md: 'auto' }}
+            <HStack
+                display={{ base: 'none', lg: 'flex' }}
+                width={{ base: 'full', lg: 'auto' }}
                 alignItems="center"
+                spacing={4}
                 flexShrink={1}>
                 <IconButton
                     size="md"
                     fontSize="lg"
-                    display={{ base: 'none', md: 'inline-flex' }}
+                    display={{ base: 'none', lg: 'inline-flex' }}
                     aria-label={`Switch to ${text} mode`}
                     variant="solid"
                     mr={3}
@@ -106,6 +107,12 @@ export default function AppBar({ onOpen, ...rest }) {
                 <NextLink url="/">
                     <MenuItems>Home</MenuItems>
                 </NextLink>
+                <NextLink url="/playground">
+                    <MenuItems>Playground</MenuItems>
+                </NextLink>
+                <NextLink url="/premium">
+                    <MenuItems>Premium</MenuItems>
+                </NextLink>
                 <ExtLink url="https://dagpi.docs.apiary.io">
                     <MenuItems>Docs</MenuItems>
                 </ExtLink>
@@ -116,7 +123,7 @@ export default function AppBar({ onOpen, ...rest }) {
                     <MenuItems>Github</MenuItems>
                 </ExtLink>
                 <MenuItems>
-                    <Box display={{ sm: 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
+                    <Box display={{ sm: 'none', lg: 'block' }} mt={{ base: 4, md: 0 }}>
                         <Link href="/dashboard">
                             <Button
                                 variant="outline"
@@ -175,7 +182,7 @@ export default function AppBar({ onOpen, ...rest }) {
                 )}
                 {!session && (
                     <MenuItems>
-                        <Box display={{ sm: 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
+                        <Box display={{ sm: 'none', lg: 'block' }} mt={{ base: 4, lg: 0 }}>
                             <Button
                                 bg="transparent"
                                 border="1px"
@@ -190,7 +197,7 @@ export default function AppBar({ onOpen, ...rest }) {
                         </Box>
                     </MenuItems>
                 )}
-            </Box>
+            </HStack>
         </Flex>
     );
 }

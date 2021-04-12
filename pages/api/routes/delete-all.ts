@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/client';
 
+import sendEmailText from '../../../lib/email';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const session = await getSession({ req });
     const bod = JSON.parse(req.body);
@@ -25,6 +26,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             body: JSON.stringify(req.body)
         });
         console.log(respa);
+        sendEmailText(
+            session.user.email,
+            'Dagpi Data Deleted',
+            `Dear ${session.user.name}\n\nAll of your dagpi data has been deleted. To deleted your browser cache logout and clear all cookies. To get a new dagpi token, please re-apply and issue a new one .Join the discord server for updates: https://server.daggy.tech\n\nFrom:\nDagpi team`
+        );
         res.send({ status: respa.status });
     } else {
         res.send({ status: resp.status });

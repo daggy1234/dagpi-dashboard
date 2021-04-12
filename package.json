@@ -30,9 +30,12 @@
         "@egjs/react-flicking": "^3.5.1",
         "@emotion/react": "^11.1.5",
         "@emotion/styled": "^11.1.5",
+        "@paypal/react-paypal-js": "^4.1.1",
+        "@stripe/stripe-js": "^1.12.1",
         "@zeit/next-sass": "^1.0.1",
         "apexcharts": "^3.24.0",
         "aws-sdk": "^2.842.0",
+        "dagpijs": "^1.1.3",
         "date-fns": "^2.16.1",
         "formik": "^2.1.5",
         "framer-motion": "^3.3.0",
@@ -45,8 +48,10 @@
         "react-apexcharts": "^1.3.7",
         "react-dom": "^16.13.1",
         "react-icons": "^4.1.0",
+        "react-syntax-highlighter": "^15.4.3",
         "react-tsparticles": "^1.18.7",
         "sqlite3": "^5.0.0",
+        "stripe": "^8.137.0",
         "yup": "^0.29.3"
     },
     "devDependencies": {
@@ -64,6 +69,7 @@
         "eslint-plugin-simple-import-sort": "^7.0.0",
         "husky": "^4.3.0",
         "lint-staged": "^10.3.0",
+        "moment": "^2.29.1",
         "prettier": "^2.2.1",
         "typescript": "^4.1.5",
         "webpack": "^5.19.0"
