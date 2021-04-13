@@ -139,7 +139,6 @@ export default function AppBar({ onOpen, ...rest }) {
                 </MenuItems>
 
                 {session && (
-                    <Skeleton isLoaded={!loading}>
                         <MenuItems>
                             <Menu>
                                 <MenuButton
@@ -178,7 +177,6 @@ export default function AppBar({ onOpen, ...rest }) {
                                 </MenuList>
                             </Menu>
                         </MenuItems>
-                    </Skeleton>
                 )}
                 {!session && (
                     <MenuItems>
