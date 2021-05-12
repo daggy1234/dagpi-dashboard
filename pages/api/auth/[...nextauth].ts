@@ -63,25 +63,44 @@ const options = {
     // when an action is performed.
     // https://next-auth.js.org/configuration/callbacks
     callbacks: {
-        // signIn: async (user, account, profile) => { return Promise.resolve(true) },
+        // signIn: async (user, account, profile) => {
+        // },
         // redirect: async (url, baseUrl) => { return Promise.resolve(baseUrl) },
         // session: async (session, user, sessionToken) => {
         //     console.log(sessionToken);
         //     session.bar = 'HILL';
         //     return Promise.resolve(session);
-        //},
+        // },
         session: async (session, user) => {
             session.user.name = `${user.name}#${user.profile.discriminator}`;
             session.user.id = user.profile.id;
             session.refreshToken = user.account.refreshToken;
             session.accessToken = user.account.accessToken;
+            session.client_id = user.client_id;
             return Promise.resolve(session);
         },
         jwt: async (token, user, account, profile, isNewUser) => {
             if (profile) {
-                token.profile = profile;
-                token.account = account;
+                const r = await fetch(`${process.env.NEXTAUTH_URL}/api/routes/user-create`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        user: profile.id,
+                        name: `${user.name}#${profile.discriminator}`,
+                        email: profile.email
+                    })
+                });
+                const js = await r.json();
+                if (js.status) {
+                    token.client_id = js.data.client_id;
+                    token.joined_dagpi = js.data.created_ad;
+                    token.profile = profile;
+                    token.account = account;
+                    return Promise.resolve(token);
+                } else {
+                    return Promise.resolve(false);
+                }
             }
+
             return Promise.resolve(token);
         }
     }

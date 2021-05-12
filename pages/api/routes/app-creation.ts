@@ -1,13 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/client';
 
-import sendEmailText from '../../../lib/email';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const session = await getSession({ req });
     if (!session) {
         return res.send({ status: 400 });
     }
-    const resp = await fetch('https://central.dagpi.xyz/addapp', {
+    const resp = await fetch(`${process.env.CENTRAL_SERVER}/app/`, {
         method: 'POST',
         headers: {
             Authorization: process.env.TOKEN,
@@ -44,7 +43,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     },
                     {
                         name: 'prefix',
-                        value: t.app.prefix ? t.app.prefix : 'Nan',
+                        value: req.body.prefix ? req.body.prefix : 'Nan',
                         inline: true
                     }
                 ],
@@ -66,10 +65,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
         body: JSON.stringify(pjso)
     });
-    sendEmailText(
-        session.user.email,
-        'Dagpi app Created',
-        `Dear ${session.user.name}\n\nYour dagpi app was created. We succesfully managed to create a dagpi app for your token.Your App will be approved soon.Join the discord server for updates: https://server.daggy.tech\n\nFrom:\nDagpi team`
-    );
     res.send({ data: 'kk', status: resp.status });
 };

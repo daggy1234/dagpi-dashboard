@@ -80,7 +80,10 @@ const ImagePlayground = ({ token }) => {
         'petpet',
         'sketch',
         'dissolve',
-        'comic'
+        'comic',
+        'bonk',
+        'spin',
+        'bomb'
     ];
     return (
         <Flex

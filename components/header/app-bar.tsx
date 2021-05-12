@@ -157,7 +157,10 @@ export default function AppBar({ onOpen, ...rest }) {
                                     />
                                 </MenuButton>
                                 <MenuList>
-                                    <MenuGroup textAlign="left" color={bw} title="Profile">
+                                    <MenuGroup isTruncated textAlign="left" color={bw} title="Id">
+                                        <MenuItem color={bw}>{session.user.id}</MenuItem>
+                                    </MenuGroup>
+                                    <MenuGroup textAlign="left" color={bw} title="Name">
                                         <MenuItem color={bw}>{session.user.name}</MenuItem>
                                     </MenuGroup>
                                     <MenuGroup textAlign="left" color={bw} title="Email">

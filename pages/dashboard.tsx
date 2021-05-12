@@ -237,7 +237,7 @@ export default function Page() {
                                     <Td>{app.appname}</Td>
                                     <Td>{app.appurl}</Td>
                                     <Td>
-                                        {app.approved ? (
+                                        {data.data ? (
                                             <IconButton
                                                 aria-label="approved"
                                                 colorScheme="green"
@@ -337,13 +337,14 @@ export default function Page() {
                                                 <AiOutlineEnter /> Created
                                             </Heading>
                                             <Heading color="white" size="md">
-                                                {formatDistanceToNow(Date.parse(app.createdAt))} ago
+                                                {formatDistanceToNow(Date.parse(app.created_at))}
+                                                ago
                                             </Heading>
                                             <Heading size="sm">
                                                 <BsPencilSquare /> Approved
                                             </Heading>
                                             <Heading color="white" size="md">
-                                                {formatDistanceToNow(Date.parse(data.createdAt))}{' '}
+                                                {formatDistanceToNow(Date.parse(data.created_at))}{' '}
                                                 ago
                                             </Heading>
                                         </VStack>

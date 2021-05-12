@@ -7,16 +7,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         return res.send(JSON.stringify({ Error: 'Not signed in' }, null, 2));
     }
     const id = session.user.id;
-    const resp = await fetch(`https://central.dagpi.xyz/usertoken/${id}/`, {
+    const resp = await fetch(`${process.env.CENTRAL_SERVER}/tokens/${id}`, {
         method: 'GET',
         headers: { Authorization: process.env.TOKEN }
     });
     const js = await resp.json();
-    const fjs = js.data[0];
-    try {
-        fjs.data = true;
-    } catch (err) {
-        js.data[0] = { data: false };
+    let response;
+    if (js.data) {
+        response = { data: true, ...js.data };
+    } else {
+        response = { data: false };
     }
-    res.send(JSON.stringify(js.data[0], null, 2));
+    res.send(JSON.stringify(response, null, 2));
 };
