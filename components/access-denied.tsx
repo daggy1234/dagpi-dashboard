@@ -6,6 +6,7 @@ export default function AccessDenied() {
     return (
         <Box textAlign="center">
             <SEO
+                url="https://dagpi.xyz"
                 title="Access Denied"
                 description="Please login to continue and access your portal"
             />
