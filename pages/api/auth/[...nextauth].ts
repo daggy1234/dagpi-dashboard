@@ -74,6 +74,7 @@ const options = {
         session: async (session, user) => {
             session.user.name = `${user.name}#${user.profile.discriminator}`;
             session.user.id = user.profile.id;
+            session.joined_dagpi = user.joined_dagpi;
             session.refreshToken = user.account.refreshToken;
             session.accessToken = user.account.accessToken;
             session.client_id = user.client_id;
@@ -90,9 +91,10 @@ const options = {
                     })
                 });
                 const js = await r.json();
+                console.log(js);
                 if (js.status) {
                     token.client_id = js.data.client_id;
-                    token.joined_dagpi = js.data.created_ad;
+                    token.joined_dagpi = js.data.created_at;
                     token.profile = profile;
                     token.account = account;
                     return Promise.resolve(token);

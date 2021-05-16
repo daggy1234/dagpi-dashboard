@@ -86,24 +86,11 @@ const ImagePlayground = ({ token }) => {
         'bomb'
     ];
     return (
-        <Flex
-            w="100%"
-            direction={{ base: 'column', md: 'row' }}
-            px={4}
-            paddingTop={10}
-            paddingEnd={32}>
+        <Flex w="100%" direction={{ base: 'column', md: 'row' }} px={4}>
             <Flex direction="column" w={{ base: '100%', md: '70%', xl: '40%' }}>
-                <chakra.p
-                    mb={2}
-                    fontSize="xs"
-                    fontWeight="semibold"
-                    letterSpacing="wide"
-                    color="gray.400"
-                    textTransform="uppercase">
-                    Playground
-                </chakra.p>
                 <chakra.h1
                     mb={3}
+                    mt={3}
                     fontSize={{ base: '3xl', md: '4xl' }}
                     fontWeight="bold"
                     lineHeight="shorter"
@@ -115,7 +102,7 @@ const ImagePlayground = ({ token }) => {
                     wanted to let you experiment freely with dagpi, and realise the positive impact
                     it may have.
                 </chakra.p>
-                <Box p={10}>
+                <Box p={{ base: 2, md: 10 }}>
                     <Box>
                         <Box mt={[5, null, 0]} colSpan={{ md: 2 }}>
                             <Formik

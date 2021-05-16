@@ -9,6 +9,10 @@
     </url>
 
     <url>
+        <loc>http://localhost:3000/donate</loc>
+    </url>
+
+    <url>
         <loc>http://localhost:3000/form</loc>
     </url>
 
@@ -30,5 +34,9 @@
 
     <url>
         <loc>http://localhost:3000/terms</loc>
+    </url>
+
+    <url>
+        <loc>http://localhost:3000/tokens</loc>
     </url>
 </urlset>

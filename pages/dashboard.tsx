@@ -10,8 +10,10 @@ import {
     Divider,
     Flex,
     Heading,
+    Icon,
     IconButton,
     Input,
+    Stack,
     Table,
     Tbody,
     Td,
@@ -26,6 +28,7 @@ import {
 } from '@chakra-ui/react';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import * as NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
 import { useEffect, useState } from 'react';
 import React from 'react';
@@ -33,7 +36,7 @@ import { IconContext } from 'react-icons';
 import { AiFillDollarCircle, AiFillWarning, AiOutlineEnter } from 'react-icons/ai';
 import { BiGitMerge } from 'react-icons/bi';
 import { BsGraphUp, BsPencilSquare } from 'react-icons/bs';
-import { FaClipboard, FaMousePointer } from 'react-icons/fa';
+import { FaClipboard, FaMousePointer, FaTerminal, FaWallet } from 'react-icons/fa';
 import { FiRefreshCcw } from 'react-icons/fi';
 import { TiTick, TiTimes } from 'react-icons/ti';
 
@@ -42,6 +45,7 @@ import Layout from '../components/layout';
 import Link from '../components/Link';
 import Loading from '../components/loading';
 import SEO from '../components/seo';
+import UseCard from '../components/user-card';
 import styles from '../styles/table.module.scss';
 
 const StatBox = (props) => {
@@ -99,6 +103,7 @@ export default function Page() {
     const [session, loading] = useSession();
     const [data, SetData] = useState(null);
     const [app, SetApp] = useState(null);
+    const router = useRouter();
     const [isOpen, setIsOpen] = React.useState(false);
     const [success, setSuccess] = React.useState(true);
     const [destruction, setdes] = React.useState(false);
@@ -111,15 +116,27 @@ export default function Page() {
     // Fetch content from protected route
     useEffect(() => {
         const json = async () => {
-            const appd = await fetch('/api/routes/app-get');
+            const appd = await fetch('/api/routes/user-profile');
             const appobj = await appd.json();
-            if (appobj.data != undefined) {
-                SetApp(appobj);
-                const resp = await fetch('/api/routes/token');
-                const obj = await resp.json();
-                if (obj.data != undefined) {
-                    SetData(obj);
+            if (appobj.app != null) {
+                SetApp({
+                    data: true,
+                    ...appobj.app
+                });
+                if (appobj.token != null) {
+                    SetData({
+                        data: true,
+                        ...appobj.token
+                    });
+                } else {
+                    SetData({
+                        data: false
+                    });
                 }
+            } else {
+                SetApp({
+                    data: false
+                });
             }
         };
         json();
@@ -194,7 +211,7 @@ export default function Page() {
             </Layout>
         );
     }
-    if (app.data === false) {
+    if (!app.data) {
         return (
             <Layout>
                 <Flex padding="5%" m="5%" justifyContent="center">
@@ -257,7 +274,7 @@ export default function Page() {
                     </div>
                 );
             };
-            if (data.data === false) {
+            if (!data.data) {
                 return (
                     <Layout>
                         <Box padding="5%">
@@ -302,6 +319,48 @@ export default function Page() {
                         <Box padding="5%">
                             <Heading size="2xl">Dashboard</Heading>
                             <Divider mt={10} mb={7} />
+                            <Flex direction={{ base: 'column', md: 'row' }}>
+                                <Box w={{ base: '100%', md: '25%', lg: '40%' }}>
+                                    <Box py="14" px={{ base: '12', md: '24' }}>
+                                        <Stack spacing={3} maxW="md" direction="column">
+                                            <Button
+                                                leftIcon={<Icon as={FaTerminal} />}
+                                                colorScheme="twitter"
+                                                onClick={() => router.push('/tokens')}
+                                                size="lg">
+                                                CLI Tokens
+                                            </Button>
+                                            <Button
+                                                leftIcon={<Icon as={FaWallet} />}
+                                                onClick={() => router.push('/success')}
+                                                colorScheme="whatsapp"
+                                                size="lg">
+                                                Billing
+                                            </Button>
+                                            <Button
+                                                colorScheme="pink"
+                                                leftIcon={<Icon as={FaWallet} />}
+                                                onClick={() => router.push('/success')}
+                                                size="lg">
+                                                test
+                                            </Button>
+                                        </Stack>
+                                    </Box>
+                                </Box>
+                                <Box>
+                                    <UseCard
+                                        name={session.user.name}
+                                        created={formatDistanceToNow(
+                                            Date.parse(session.joined_dagpi)
+                                        )}
+                                        image={session.user.image}
+                                        client_id={session.client_id}
+                                        discord_id={session.user.id}
+                                        email={session.user.email}
+                                    />
+                                </Box>
+                            </Flex>
+                            <Divider mt={10} mb={7} />
                             <Heading size="lg">Token</Heading>
                             <Flex mb={5} mt={5}>
                                 <Input
@@ -337,8 +396,9 @@ export default function Page() {
                                                 <AiOutlineEnter /> Created
                                             </Heading>
                                             <Heading color="white" size="md">
-                                                {formatDistanceToNow(Date.parse(app.created_at))}
-                                                ago
+                                                {`${formatDistanceToNow(
+                                                    Date.parse(app.created_at)
+                                                )} ago`}
                                             </Heading>
                                             <Heading size="sm">
                                                 <BsPencilSquare /> Approved
@@ -426,8 +486,10 @@ export default function Page() {
                                 </Flex>
                             </IconContext.Provider>
                             <br />
-                            <Heading size="lg">Apps</Heading>
                             <Divider mt={10} mb={7} />
+                            <Heading mb={4} size="lg">
+                                Apps
+                            </Heading>
                             <TableComp />
                         </Box>
                     </Layout>

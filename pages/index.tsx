@@ -28,6 +28,7 @@ import Particles from 'react-tsparticles';
 
 import Cards from '../components/cards/cards';
 import DiscordStrip from '../components/discord';
+import CallToActionWithAnnotation from '../components/fancy-cta';
 import Gallery from '../components/galleryCard';
 import Layout from '../components/layout';
 import Rounder from '../components/rounder';
@@ -381,7 +382,14 @@ export default function Page() {
                 ) : (
                     <br />
                 )}
-                <Box maxW="760px" mt="200px" mx="auto" textAlign="center" mb="56px">
+                <CallToActionWithAnnotation
+                    title="Extras for"
+                    color="Power Users"
+                    fancy="Starts at only $1"
+                    description="jiedjeid uededhud heudheu"
+                    button="Get Premium"
+                />
+                <Box maxW="760px" mt="50px" mx="auto" textAlign="center" mb="56px">
                     <Heading as="h3" size="2xl" textStyle="heading" mb="5">
                         API Wrappers
                     </Heading>
