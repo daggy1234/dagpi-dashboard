@@ -159,7 +159,11 @@ export default function Stats({
 
     return (
         <>
-            <SEO title="Stats" description="Dagpi stat dashbaord. View detailed user statistics." />
+            <SEO
+                url="https://dagpi.xyz/dashboard"
+                title="Stats"
+                description="Dagpi stat dashbaord. View detailed user statistics."
+            />
             <Layout>
                 <Box m="5%">
                     <Flex direction="row">
