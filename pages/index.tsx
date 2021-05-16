@@ -32,6 +32,7 @@ import CallToActionWithAnnotation from '../components/fancy-cta';
 import Gallery from '../components/galleryCard';
 import Layout from '../components/layout';
 import Rounder from '../components/rounder';
+import SEO from '../components/seo';
 import styles from '../styles/feature.module.scss';
 import textstyle from '../styles/gradient.module.scss';
 
@@ -95,6 +96,11 @@ export default function Page() {
                     <title>Dagpi</title>
                     <meta property="og:title" content="Dagpi" key="title" />
                 </Head>
+                <SEO
+                    title="Dagpi"
+                    url="https://dagpi.xyz"
+                    description="A fast, and easy to use API. Enjoy powerful image manipulation, high quality datasets with reliability and security."
+                />
                 <Flex
                     maxW="760px"
                     mx="auto"

@@ -178,8 +178,9 @@ export default function Page() {
     return (
         <Layout>
             <SEO
-                title="Premium"
-                description="Dagpi Premium dashbaord. View pricing, billing and deals."
+                title="Donate"
+                url="https://dagpi.xyz/donate"
+                description="Dagpi Donation dashbaord. Help donate to keep dagpi running smoothly <3"
             />
             <PayPalScriptProvider options={{ 'client-id': 'sb' }}>
                 <Modal isOpen={isOpen} onClose={onClose}>

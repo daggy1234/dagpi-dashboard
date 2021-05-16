@@ -9,7 +9,7 @@ const NotFoundPage = () => {
     const color = useColorModeValue('black', 'white');
     return (
         <>
-            <SEO title="404: Not found" description="Does Not exist" />
+            <SEO url="https://dagpi.xyz" title="404: Not found" description="Does Not exist" />
             <Box
                 alignItems="center"
                 justifyContent="center"

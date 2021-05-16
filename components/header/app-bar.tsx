@@ -139,47 +139,47 @@ export default function AppBar({ onOpen, ...rest }) {
                 </MenuItems>
 
                 {session && (
-                        <MenuItems>
-                            <Menu>
-                                <MenuButton
+                    <MenuItems>
+                        <Menu>
+                            <MenuButton
+                                as={Button}
+                                borderColor="transparent"
+                                variant="outline"
+                                color="white"
+                                colorScheme="purple"
+                                rightIcon={<FaChevronDown />}>
+                                <Image
+                                    boxSize="2rem"
+                                    borderRadius="full"
+                                    src={session.user.image}
+                                    alt={session.user.name}
+                                />
+                            </MenuButton>
+                            <MenuList>
+                                <MenuGroup isTruncated textAlign="left" color={bw} title="Id">
+                                    <MenuItem color={bw}>{session.user.id}</MenuItem>
+                                </MenuGroup>
+                                <MenuGroup textAlign="left" color={bw} title="Name">
+                                    <MenuItem color={bw}>{session.user.name}</MenuItem>
+                                </MenuGroup>
+                                <MenuGroup textAlign="left" color={bw} title="Email">
+                                    <MenuItem color={bw}>{session.user.email}</MenuItem>
+                                </MenuGroup>
+                                <MenuDivider />
+                                <MenuItem
                                     as={Button}
-                                    borderColor="transparent"
-                                    variant="outline"
-                                    color="white"
-                                    colorScheme="purple"
-                                    rightIcon={<FaChevronDown />}>
-                                    <Image
-                                        boxSize="2rem"
-                                        borderRadius="full"
-                                        src={session.user.image}
-                                        alt={session.user.name}
-                                    />
-                                </MenuButton>
-                                <MenuList>
-                                    <MenuGroup isTruncated textAlign="left" color={bw} title="Id">
-                                        <MenuItem color={bw}>{session.user.id}</MenuItem>
-                                    </MenuGroup>
-                                    <MenuGroup textAlign="left" color={bw} title="Name">
-                                        <MenuItem color={bw}>{session.user.name}</MenuItem>
-                                    </MenuGroup>
-                                    <MenuGroup textAlign="left" color={bw} title="Email">
-                                        <MenuItem color={bw}>{session.user.email}</MenuItem>
-                                    </MenuGroup>
-                                    <MenuDivider />
-                                    <MenuItem
-                                        as={Button}
-                                        colorScheme="pink"
-                                        variant="solid"
-                                        border="1px"
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            signOut();
-                                        }}>
-                                        Logout
-                                    </MenuItem>
-                                </MenuList>
-                            </Menu>
-                        </MenuItems>
+                                    colorScheme="pink"
+                                    variant="solid"
+                                    border="1px"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        signOut();
+                                    }}>
+                                    Logout
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </MenuItems>
                 )}
                 {!session && (
                     <MenuItems>

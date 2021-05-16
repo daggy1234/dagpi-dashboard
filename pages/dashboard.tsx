@@ -307,7 +307,11 @@ export default function Page() {
             }
             return (
                 <>
-                    <SEO title="Dashboard" description="Your Dagpi Management Console" />
+                    <SEO
+                        title="Dashboard"
+                        url="https://dagpi.xyz/dashboard"
+                        description="Your Dagpi Management Console"
+                    />
                     <Alert
                         isOpen={isOpen}
                         onClose={onClose}

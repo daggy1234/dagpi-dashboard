@@ -30,6 +30,7 @@ import { atomOneDark, docco } from 'react-syntax-highlighter/dist/cjs/styles/hlj
 import * as Yup from 'yup';
 
 import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 interface Request {
     url: string;
@@ -497,50 +498,57 @@ export default function Playground() {
     const [token, setToken] = useState('');
     const handleChange = (event) => setToken(event.target.value);
     return (
-        <Layout>
-            <Flex m={{ base: '1', md: '5%' }} direction="column">
-                <Flex mb={1} direction="column">
-                    <Flex mb={4}>
-                        <Heading>Dagpi Playground</Heading>
-                        <Spacer />
-                        <RadioGroup
-                            size="lg"
-                            onChange={(v) => {
-                                setValue(v.toString());
-                            }}
-                            value={value}>
-                            <Stack direction="row">
-                                <Radio value="1">Image</Radio>
-                                <Radio value="2">Data</Radio>
-                            </Stack>
-                        </RadioGroup>
-                    </Flex>
+        <>
+            <SEO
+                url="https://dagpi.xyz/playground"
+                title="Playground"
+                description="Dagpi Playground. Test API endpoints and manipulate images with our web playground, to try dagpi yourself."
+            />
+            <Layout>
+                <Flex m={{ base: '1', md: '5%' }} direction="column">
+                    <Flex mb={1} direction="column">
+                        <Flex mb={4}>
+                            <Heading>Dagpi Playground</Heading>
+                            <Spacer />
+                            <RadioGroup
+                                size="lg"
+                                onChange={(v) => {
+                                    setValue(v.toString());
+                                }}
+                                value={value}>
+                                <Stack direction="row">
+                                    <Radio value="1">Image</Radio>
+                                    <Radio value="2">Data</Radio>
+                                </Stack>
+                            </RadioGroup>
+                        </Flex>
 
+                        <Divider />
+                        <Flex
+                            w={{ base: '100%', md: '60%' }}
+                            mb={5}
+                            mt={5}
+                            direction={{ base: 'column', md: 'row' }}>
+                            <FormLabel>
+                                Enter your token if you have one! Othewrise you will have a heavily
+                                ratelimited playground.
+                            </FormLabel>
+                            <Input
+                                value={token}
+                                onChange={handleChange}
+                                placeholder="enter your own token"
+                            />
+                        </Flex>
+                    </Flex>
                     <Divider />
-                    <Flex
-                        w={{ base: '100%', md: '60%' }}
-                        mb={5}
-                        mt={5}
-                        direction={{ base: 'column', md: 'row' }}>
-                        <FormLabel>
-                            Enter your token if you have one! Othewrise you will have a heavily
-                            ratelimited playground.
-                        </FormLabel>
-                        <Input
-                            value={token}
-                            onChange={handleChange}
-                            placeholder="enter your own token"
-                        />
-                    </Flex>
-                </Flex>
-                <Divider />
 
-                {value === '1' ? (
-                    <ImagePlayground token={token} />
-                ) : (
-                    <DataPlayground token={token} />
-                )}
-            </Flex>
-        </Layout>
+                    {value === '1' ? (
+                        <ImagePlayground token={token} />
+                    ) : (
+                        <DataPlayground token={token} />
+                    )}
+                </Flex>
+            </Layout>
+        </>
     );
 }

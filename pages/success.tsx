@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { HiCheckCircle } from 'react-icons/hi';
 
 import Layout from '../components/layout';
+import SEO from '../components/seo';
+
 export default function Page({ id }) {
     const BilUrl = async () => {
         // const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUB);
@@ -26,6 +28,11 @@ export default function Page({ id }) {
     console.log(id);
     return (
         <Layout>
+            <SEO
+                title="Success"
+                description="Dagpi Payment Successfully completed"
+                url="https://dagpi.xyz/dashboard"
+            />
             <Container my="5%" mx="auto" textAlign="center" justifySelf="center">
                 <Heading size="2xl" m="2%">
                     <Icon color="green" as={HiCheckCircle} /> <br />

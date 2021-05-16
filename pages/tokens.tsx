@@ -61,6 +61,7 @@ import * as Yup from 'yup';
 import AccessDenied from '../components/access-denied';
 import Layout from '../components/layout';
 import Loading from '../components/loading';
+import SEO from '../components/seo';
 
 interface CliToken {
     id: number;
@@ -519,6 +520,11 @@ export default function Page({ cli_redirect }) {
 
     return (
         <>
+            <SEO
+                title="Tokens"
+                url="https://dagpi.xyz/tokens"
+                description="Manage your dagpi admin tokens here."
+            />
             <CreateTokenModal
                 user={session.user.id}
                 isOpen={discolosure.isOpen}

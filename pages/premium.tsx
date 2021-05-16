@@ -44,7 +44,8 @@ export default function Page() {
         <Layout>
             <SEO
                 title="Premium"
-                description="Dagpi Premium dashbaord. View pricing, billing and deals."
+                url="https://dagpi.xyz/premium"
+                description="Dagpi Premium . View pricing, billing and deals."
             />
             <Box padding="5%" textAlign="center" alignContent="center" alignItems="center">
                 <Heading m={10} size="3xl">
@@ -135,16 +136,17 @@ export default function Page() {
     );
 }
 
-function Temp() {
-    return (
-        <Layout>
-            <SEO
-                title="Premium"
-                description="Dagpi Premium dashbaord. View pricing, billing and deals."
-            />
-            <Box padding="5%" textAlign="center" alignContent="center" alignItems="center">
-                <Heading>Coming Soon</Heading>
-            </Box>
-        </Layout>
-    );
-}
+// function Temp() {
+//     return (
+//         <Layout>
+//             <SEO
+//                 u
+//                 title="Premium"
+//                 description="Dagpi Premium dashbaord. View pricing, billing and deals."
+//             />
+//             <Box padding="5%" textAlign="center" alignContent="center" alignItems="center">
+//                 <Heading>Coming Soon</Heading>
+//             </Box>
+//         </Layout>
+//     );
+// }

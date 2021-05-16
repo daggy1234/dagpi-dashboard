@@ -7,6 +7,7 @@ export default function Page() {
         <Layout>
             <SEO
                 title="Privacy Policy"
+                url="https://dagpi.xyz/privacy"
                 description="Dagpi Privacy Policy. This is the policy we adhere to with your data."
             />
             <Box padding="5%">
