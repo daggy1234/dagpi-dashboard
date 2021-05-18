@@ -10,9 +10,9 @@ const Card = (props) => {
                 maxW="lg"
                 direction="column"
                 bg={useColorModeValue('gray.200', 'gray.600')}
-                pl={{base: '10', md: "20"}}
-                pr={{base: '10', md: "20"}}
-                pb={{base: '10', md: "20"}}
+                pl={{ base: '10', md: '20' }}
+                pr={{ base: '10', md: '20' }}
+                pb={{ base: '10', md: '20' }}
                 borderRadius="lg"
                 textAlign="justify"
                 overflow="hidden">
@@ -51,7 +51,7 @@ interface Obj {
 
 export default function Rounder() {
     // @ts-ignore
-    const plugins = [new Fade(), new AutoPlay(2000, "NEXT")];
+    const plugins = [new Fade(), new AutoPlay(2000, 'NEXT')];
     const titles: Array<Obj> = [
         {
             title: 'Amazing Datasets',

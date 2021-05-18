@@ -2,12 +2,12 @@
 import { Avatar } from '@chakra-ui/react';
 import { url } from 'inspector';
 import NextAuth from 'next-auth';
-import Providers, {ProviderType} from 'next-auth/providers';
+import Providers, { ProviderType } from 'next-auth/providers';
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 
-const provider: ProviderType = "oauth"
+const provider: ProviderType = 'oauth';
 
 const options = {
     // https://next-auth.js.org/configuration/providers
