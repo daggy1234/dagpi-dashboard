@@ -45,6 +45,7 @@ import Layout from '../components/layout';
 import Link from '../components/Link';
 import Loading from '../components/loading';
 import SEO from '../components/seo';
+import DiscordLogo from '../components/svg/discord-logo';
 import UseCard from '../components/user-card';
 import styles from '../styles/table.module.scss';
 
@@ -342,11 +343,14 @@ export default function Page() {
                                                 Billing
                                             </Button>
                                             <Button
-                                                colorScheme="pink"
-                                                leftIcon={<Icon as={FaWallet} />}
-                                                onClick={() => router.push('/success')}
+                                                bg="#5865F2"
+                                                color="white"
+                                                leftIcon={<DiscordLogo color="#fff" size="1.5em" />}
+                                                onClick={() =>
+                                                    router.push('https://server.daggy.tech')
+                                                }
                                                 size="lg">
-                                                test
+                                                Discord Server
                                             </Button>
                                         </Stack>
                                     </Box>

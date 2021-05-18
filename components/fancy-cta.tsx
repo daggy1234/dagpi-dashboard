@@ -70,18 +70,14 @@ const CallToActionWithAnnotation: React.FC<FancyCtaProps> = (props) => {
                         alignSelf={'center'}
                         position={'relative'}>
                         <Button
-                            colorScheme={'purple'}
-                            bg={'purple.400'}
+                            colorScheme="purple"
                             onClick={() => {
                                 router.push('/premium');
                             }}
                             rounded={'full'}
                             fontSize={{ base: 15, md: 20 }}
                             px={{ base: 6, md: 12 }}
-                            py={2}
-                            _hover={{
-                                bg: 'purple.500'
-                            }}>
+                            py={2}>
                             {props.button}
                         </Button>
                         <Box>

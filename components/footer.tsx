@@ -1,12 +1,12 @@
-import { Box, Stack, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Stack, Text, useColorModeValue, VisuallyHidden } from '@chakra-ui/react';
 import { IconContext } from 'react-icons';
 import { AiFillGithub, AiOutlineMail } from 'react-icons/ai';
 import { BsFillLockFill } from 'react-icons/bs';
-import { FaDiscord } from 'react-icons/fa';
 import { FaMoneyBillWaveAlt } from 'react-icons/fa';
 import { TiDocument } from 'react-icons/ti';
 
 import Link from './Link';
+import DiscordLogo from './svg/discord-logo';
 
 function BiSvg(props) {
     return (
@@ -84,6 +84,7 @@ export const Footer = () => (
         <Stack mt={4} direction="row" spacing="12px" justify="center">
             <span>
                 <Link url="https://github.com/daggy1234/dagpi">
+                    <VisuallyHidden>Github</VisuallyHidden>
                     <Icon color={useColorModeValue('black', 'white')} name="github">
                         <AiFillGithub />
                     </Icon>
@@ -91,13 +92,13 @@ export const Footer = () => (
             </span>
             <span>
                 <Link url="https://server.daggy.tech">
-                    <Icon color="#7289DA" name="discord">
-                        <FaDiscord />
-                    </Icon>
+                    <VisuallyHidden>Discord</VisuallyHidden>
+                    <DiscordLogo size="2em" color="#5865F2" />
                 </Link>
             </span>
             <span>
                 <NextLink url="/premium">
+                    <VisuallyHidden>Premium</VisuallyHidden>
                     <Icon color="#48BB78" name="patreon">
                         <FaMoneyBillWaveAlt />
                     </Icon>
@@ -105,6 +106,7 @@ export const Footer = () => (
             </span>
             <span>
                 <Link url="mailto:contact@dagpi.xyz">
+                    <VisuallyHidden>Email</VisuallyHidden>
                     <Icon color="#1da1f2" name="patreon">
                         <AiOutlineMail />
                     </Icon>
@@ -112,6 +114,7 @@ export const Footer = () => (
             </span>
             <span>
                 <NextLink url="/terms">
+                    <VisuallyHidden>Tos</VisuallyHidden>
                     <Icon color="#ff4f00" name="terms">
                         <TiDocument />
                     </Icon>
@@ -119,6 +122,7 @@ export const Footer = () => (
             </span>
             <span>
                 <NextLink url="/privacy">
+                    <VisuallyHidden>Privacy Policy</VisuallyHidden>
                     <Icon color="#D69E2E" name="privacy">
                         <BsFillLockFill />
                     </Icon>

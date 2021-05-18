@@ -55,9 +55,7 @@
 
 .authorAvatarImg {
     display: block;
-    width: 40px;
     font-weight: bold;
-    height: 40px;
     border-radius: 50%;
     margin: 16px 10px;
 }
@@ -76,7 +74,7 @@
 
 .cardHeader {
     margin-bottom: auto;
-    a {
+    span {
         text-decoration: none;
         font-weight: bold;
     }
@@ -106,7 +104,7 @@
     padding: 0.5rem 0 1rem;
     line-height: 2;
     margin-bottom: 0;
-    a {
+    span {
         font-style: normal;
         font-weight: 700;
         font-size: 0.5rem;

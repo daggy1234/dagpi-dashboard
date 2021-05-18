@@ -1,4 +1,5 @@
-import { Box, Button, chakra, Image, SimpleGrid, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, chakra, SimpleGrid, useColorModeValue } from '@chakra-ui/react';
+import Image from 'next/image';
 import React from 'react';
 
 interface GalleryProps {
@@ -48,7 +49,9 @@ const Gallery: React.FC<GalleryProps> = (props) => {
                         {buttonText}
                     </Button>
                 </Box>
-                <Image alt={title} src={image} py={{ base: 20, md: 48 }} />
+                <Box py={{ base: 20, md: 10 }}>
+                    <Image width={300} height={300} alt={title} src={image} />
+                </Box>
             </SimpleGrid>
         </Box>
     );

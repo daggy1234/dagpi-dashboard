@@ -25,11 +25,10 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
-        'prettier/@typescript-eslint',
-        'plugin:prettier/recommended'
+        'prettier'
     ],
     rules: {
-        'prettier/prettier': ['error', { ' endOfLine': 'auto' }, { usePrettierrc: true }],
+        // 'prettier': ['error', { ' endOfLine': 'auto' }, { usePrettierrc: true }],
         'react/react-in-jsx-scope': 'off',
         'react/prop-types': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',

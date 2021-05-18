@@ -2,25 +2,28 @@
 import { Avatar } from '@chakra-ui/react';
 import { url } from 'inspector';
 import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import Providers, {ProviderType} from 'next-auth/providers';
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
+
+const provider: ProviderType = "oauth"
+
 const options = {
     // https://next-auth.js.org/configuration/providers
     providers: [
         {
             id: 'discord',
             name: 'Discord',
-            type: 'oauth',
             version: '2.0',
+            type: provider,
             scope: 'identify email',
             params: { grant_type: 'authorization_code' },
             accessTokenUrl: 'https://discord.com/api/oauth2/token',
             authorizationUrl:
                 'https://discord.com/api/oauth2/authorize?response_type=code&prompt=none',
             profileUrl: 'https://discord.com/api/users/@me',
-            profile: (profile) => {
+            async profile(profile, tokens) {
                 if (profile.avatar === null) {
                     const default_avatar_num = parseInt(profile.discriminator) % 5;
                     profile.image_url = `https://cdn.discordapp.com/embed/avatars/${default_avatar_num}.png`;

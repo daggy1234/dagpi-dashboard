@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react';
+import Image from 'next/image';
 
 import styles from './card.module.scss';
 function Card(props) {
@@ -11,9 +12,16 @@ function Card(props) {
             </header>
 
             <div className={styles.cardAuthor}>
-                <a>
-                    <img className={styles.authorAvatarImg} src={props.image} alt={props.title} />
-                </a>
+                <span>
+                    <img
+                        loading="lazy"
+                        height="40px"
+                        width="40px"
+                        className={styles.authorAvatarImg}
+                        src={props.image}
+                        alt={props.title}
+                    />
+                </span>
                 <svg className={styles.halfCircle} viewBox="0 0 106 57">
                     <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
                 </svg>
@@ -25,9 +33,9 @@ function Card(props) {
             </div>
 
             <div className={styles.tags}>
-                <a>{props.language}</a>
-                <a>{props.async}</a>
-                <a>coverage: {props.coverage}</a>
+                <span>{props.language}</span>
+                <span>{props.async}</span>
+                <span>coverage: {props.coverage}</span>
             </div>
         </Box>
     );

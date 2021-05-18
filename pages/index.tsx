@@ -34,7 +34,7 @@ import Layout from '../components/layout';
 import Rounder from '../components/rounder';
 import SEO from '../components/seo';
 import styles from '../styles/feature.module.scss';
-import textstyle from '../styles/gradient.module.scss';
+// import textstyle from '../styles/gradient.module.scss';
 
 type StatBoxProps = BoxProps & {
     icon?: React.ElementType;
@@ -118,9 +118,8 @@ export default function Page() {
                         A
                         <Box
                             as="span"
-                            backgroundColor="#1fd1f9"
-                            backgroundImage="linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%)"
-                            className={textstyle.text}>
+                            bgClip="text"
+                            bgGradient="linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%)">
                             {' '}
                             Powerful and Fast{' '}
                         </Box>
@@ -392,7 +391,7 @@ export default function Page() {
                     title="Extras for"
                     color="Power Users"
                     fancy="Starts at only $1"
-                    description="jiedjeid uededhud heudheu"
+                    description="Are the free tier limits preventing you from scaling your application. With our various premium tiers, we have the right tier for your current useage."
                     button="Get Premium"
                 />
                 <Box maxW="760px" mt="50px" mx="auto" textAlign="center" mb="56px">

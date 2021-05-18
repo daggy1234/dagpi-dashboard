@@ -1,18 +1,21 @@
-import { Box, Button, Flex, Heading } from '@chakra-ui/react';
 import {
+    Box,
+    Button,
+    Flex,
+    Heading,
     HStack,
     IconButton,
-    Image,
+    Image as CImage,
     Menu,
     MenuButton,
     MenuDivider,
     MenuGroup,
     MenuItem,
     MenuList,
-    Skeleton,
     useColorMode,
     useColorModeValue
 } from '@chakra-ui/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { FaChevronDown } from 'react-icons/fa';
@@ -52,10 +55,12 @@ export default function AppBar({ onOpen, ...rest }) {
             color="white"
             {...rest}>
             <Flex align="left" mr={5}>
-                <Image mt={{ base: '0px', sm: '17px' }} boxSize="20" alt="Dagpi" src="/dagpi.png" />
+                <Box mt={{ base: '0px', sm: '0px' }} boxSize="20">
+                    <Image priority={true} height={120} width={100} alt="Dagpi" src="/dagpi.png" />
+                </Box>
                 <Heading
                     ml="-10px"
-                    mt={{ base: '24px', md: '32px' }}
+                    mt={{ base: '20px', md: '20px' }}
                     as="h1"
                     size="xl"
                     letterSpacing={'-.1rem'}>
@@ -67,6 +72,10 @@ export default function AppBar({ onOpen, ...rest }) {
             <IconButton
                 size="md"
                 fontSize="lg"
+                _hover={{}}
+                _selected={{}}
+                _highlighted={{}}
+                _focus={{}}
                 mr="-75px"
                 display={{ base: 'inline-flex', lg: 'none' }}
                 aria-label={`Switch to ${text} mode`}
@@ -94,6 +103,10 @@ export default function AppBar({ onOpen, ...rest }) {
                 flexShrink={1}>
                 <IconButton
                     size="md"
+                    _hover={{}}
+                    _selected={{}}
+                    _highlighted={{}}
+                    _focus={{}}
                     fontSize="lg"
                     display={{ base: 'none', lg: 'inline-flex' }}
                     aria-label={`Switch to ${text} mode`}
@@ -145,10 +158,12 @@ export default function AppBar({ onOpen, ...rest }) {
                                 as={Button}
                                 borderColor="transparent"
                                 variant="outline"
+                                _focus={{}}
+                                _hover={{}}
                                 color="white"
                                 colorScheme="purple"
                                 rightIcon={<FaChevronDown />}>
-                                <Image
+                                <CImage
                                     boxSize="2rem"
                                     borderRadius="full"
                                     src={session.user.image}
