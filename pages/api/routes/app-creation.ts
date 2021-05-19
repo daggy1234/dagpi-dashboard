@@ -52,7 +52,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     icon_url: session.user.image
                 },
                 footer: {
-                    text: session.user.id
+                    text: `daggy dagpi approve ${session.user.id} ${t.app.uu}`
                 },
                 timestamp: t.app.createdAt
             }
