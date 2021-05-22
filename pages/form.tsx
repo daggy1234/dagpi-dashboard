@@ -49,7 +49,8 @@ const validation = Yup.object().shape({
         ),
     description: Yup.string()
         .required('Required')
-        .min(20, 'Please enter a description that is at least 20 characters long'),
+        .min(20, 'Please enter a description that is at least 20 characters long')
+        .max(254, 'Description cannot be longer than 255 characters'),
     prefix: Yup.string().max(10, 'Prefix Cannot be longer than 10 characters'),
     terms: Yup.boolean().required().oneOf([true], 'Please accept our terms')
 });
