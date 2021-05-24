@@ -418,12 +418,7 @@ const Table: React.FC<TableProps> = (props) => {
                                                             })
                                                         }
                                                     } catch(err) {
-                                                        toast({
-                                                                title: `Error Occured`,
-                                                                status: 'error',
-                                                                isClosable: true,
-                                                                description: err.stack
-                                                            })
+                                                        alert(err.stack)
                                                     }
                                                     }}
                                                     variant="solid"
