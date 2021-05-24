@@ -422,7 +422,7 @@ const Table: React.FC<TableProps> = (props) => {
                                                                 title: `Error Occured`,
                                                                 status: 'error',
                                                                 isClosable: true,
-                                                                description: err.toString()
+                                                                description: err.stack
                                                             })
                                                     }
                                                     }}
