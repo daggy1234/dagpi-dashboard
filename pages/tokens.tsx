@@ -42,8 +42,8 @@ import {
     useBreakpointValue,
     useColorModeValue,
     useDisclosure,
-    useToast,
-    VisuallyHidden} from '@chakra-ui/react';
+    useToast
+} from '@chakra-ui/react';
 import copy from 'copy-to-clipboard';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { Field, Form, Formik } from 'formik';
@@ -402,23 +402,29 @@ const Table: React.FC<TableProps> = (props) => {
                                                             method: 'POST',
                                                             body: JSON.stringify(token)
                                                         });
+                                                        console.log(out.status);
                                                         if(out.status == 200) {
                                                             toast({
                                                                 title: `Successfully added token to cli.`,
                                                                 status: 'success',
                                                                 isClosable: true,
-                                                                description: JSON.stringify(token)
+                                                                description: 'Token was posted to CLI succesfully'
                                                             })
                                                         } else {
                                                             toast({
                                                                 title: `http ${out.status} returned`,
                                                                 status: 'error',
                                                                 isClosable: true,
-                                                                description: JSON.stringify(token)
+                                                                description: 'Error returned by CLI server. Pleace check terminal.'
                                                             })
                                                         }
                                                     } catch(err) {
-                                                        console.log(err);
+                                                        toast({
+                                                                title: `Request Failed`,
+                                                                status: 'error',
+                                                                isClosable: true,
+                                                                description: 'Unable to make request, if your terminal shows no error please report.'
+                                                            })
                                                     }
                                                     }}
                                                     variant="solid"
