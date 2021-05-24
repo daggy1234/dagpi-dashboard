@@ -33,7 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             metadata: {
                 ...session.user,
                 client_id: session.client_id,
-                donate: true
+                donate: 'true'
             }
         },
         line_items: [
