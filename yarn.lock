@@ -1678,6 +1678,11 @@ array.prototype.flatmap@^1.2.3:
     es-abstract "^1.17.0-next.1"
     function-bind "^1.1.1"
 
+asap@~2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
+  integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
+
 asn1.js@^5.2.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/asn1.js/-/asn1.js-5.4.1.tgz#11a980b84ebb91781ce35b0fdc2ee294e3783f07"
@@ -2278,6 +2283,17 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
+
+coinbase-commerce-node@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/coinbase-commerce-node/-/coinbase-commerce-node-1.0.4.tgz#8606aa571dd635c9c0efb1939bf6efcadbf3f865"
+  integrity sha512-sDUErRYbBn06aQh3KqdWqoN4OQQnYfGjjmUu/hpVcq9M6xj/UIgE5TPVnFH8WwQNNRK4iUXaUzmmGxqbB5fKzg==
+  dependencies:
+    lodash "4.17.15"
+    object-assign "2.0.0"
+    promise "^8.0.1"
+    request "^2.88.2"
+    secure-compare "^3.0.1"
 
 color-convert@^1.9.0:
   version "1.9.3"
@@ -4492,6 +4508,11 @@ lodash.tail@^4.1.1:
   resolved "https://registry.yarnpkg.com/lodash.tail/-/lodash.tail-4.1.1.tgz#d2333a36d9e7717c8ad2f7cacafec7c32b444664"
   integrity sha1-0jM6NtnncXyK0vfKyv7HwytERmQ=
 
+lodash@4.17.15:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
 lodash@^4.0.0, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@~4.17.10:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
@@ -5081,6 +5102,11 @@ oauth@^0.9.15:
   resolved "https://registry.yarnpkg.com/oauth/-/oauth-0.9.15.tgz#bd1fefaf686c96b75475aed5196412ff60cfb9c1"
   integrity sha1-vR/vr2hslrdUda7VGWQS/2DPucE=
 
+object-assign@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-2.0.0.tgz#f8309b09083b01261ece3ef7373f2b57b8dd7042"
+  integrity sha1-+DCbCQg7ASYezj73Nz8rV7jdcEI=
+
 object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
@@ -5640,6 +5666,13 @@ promise-polyfill@^8.2.0:
   resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-8.2.0.tgz#367394726da7561457aba2133c9ceefbd6267da0"
   integrity sha512-k/TC0mIcPVF6yHhUvwAp7cvL6I2fFV7TzF1DuGPI8mBh4QQazf36xCKEHKTZKRysEoTQoQdKyP25J8MPJp7j5g==
 
+promise@^8.0.1:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/promise/-/promise-8.1.0.tgz#697c25c3dfe7435dd79fcd58c38a135888eaf05e"
+  integrity sha512-W04AqnILOL/sPRXziNicCjSNRruLAuIHEOVBazepu0545DDNGYHz7ar9ZgZ1fMU8/MA4mVxp5rkBWRi6OXIy3Q==
+  dependencies:
+    asap "~2.0.6"
+
 prop-types@15.7.2, prop-types@^15.5.7, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
@@ -6158,6 +6191,11 @@ scss-tokenizer@^0.2.3:
   dependencies:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
+
+secure-compare@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/secure-compare/-/secure-compare-3.0.1.tgz#f1a0329b308b221fae37b9974f3d578d0ca999e3"
+  integrity sha1-8aAymzCLIh+uN7mXTz1XjQypmeM=
 
 select@^1.1.2:
   version "1.1.2"

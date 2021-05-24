@@ -54,7 +54,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
                     </ListItem>
                     <ListItem>
                         <ListIcon as={AiOutlineMail} />
-                        daggy@daggy.tech
+                        {props.email}
                     </ListItem>
                     <ListItem>
                         <ListIcon as={GoSignIn} />

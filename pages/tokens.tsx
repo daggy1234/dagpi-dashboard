@@ -42,19 +42,18 @@ import {
     useBreakpointValue,
     useColorModeValue,
     useDisclosure,
-    useToast
-} from '@chakra-ui/react';
+    useToast,
+    VisuallyHidden} from '@chakra-ui/react';
 import copy from 'copy-to-clipboard';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { Field, Form, Formik } from 'formik';
 import { GetServerSideProps } from 'next';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { AiFillEdit, AiTwotoneLock } from 'react-icons/ai';
-import { BsBoxArrowUpRight, BsFillTrashFill } from 'react-icons/bs';
+import { BsBoxArrowUpRight, BsFillTerminalFill,BsFillTrashFill } from 'react-icons/bs';
 import { GrAdd } from 'react-icons/gr';
 import * as Yup from 'yup';
 
@@ -76,6 +75,7 @@ interface TableProps {
     setEdit: React.Dispatch<React.SetStateAction<boolean>>;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     SetnumToProcess: React.Dispatch<number>;
+    cli_button: boolean;
 }
 
 interface CreateTokenModalProps {
@@ -216,6 +216,7 @@ const Table: React.FC<TableProps> = (props) => {
     const data = props.items;
     const [buttonText, setButtonText] = useState('Copy');
     const router = useRouter();
+    const toast = useToast();
     function handleClick() {
         if (buttonText === 'Copy') {
             setButtonText('Copied');
@@ -392,6 +393,46 @@ const Table: React.FC<TableProps> = (props) => {
                                                     <Icon as={BsFillTrashFill} />
                                                 </Button>
                                             </Tooltip>
+                                            {props.cli_button && (
+                                            <Tooltip label="Cli Export Token" aria-label="A tooltip">
+                                                <Button
+                                                    onClick={async () => {
+                                                        try {
+                                                        const out = await fetch('https://localhost:6000/cli_token', {
+                                                            method: 'POST',
+                                                            body: JSON.stringify(token)
+                                                        });
+                                                        if(out.status == 200) {
+                                                            toast({
+                                                                title: `Successfully added token to cli.`,
+                                                                status: 'success',
+                                                                isClosable: true,
+                                                                description: JSON.stringify(token)
+                                                            })
+                                                        } else {
+                                                            toast({
+                                                                title: `http ${out.status} returned`,
+                                                                status: 'error',
+                                                                isClosable: true,
+                                                                description: JSON.stringify(token)
+                                                            })
+                                                        }
+                                                    } catch(err) {
+                                                        toast({
+                                                                title: `Error Occured`,
+                                                                status: 'error',
+                                                                isClosable: true,
+                                                                description: err.toString()
+                                                            })
+                                                    }
+                                                    }}
+                                                    variant="solid"
+                                                    colorScheme="pink"
+                                                    size="sm">
+                                                    <Icon as={BsFillTerminalFill} />
+                                                </Button>
+                                            </Tooltip>
+                                            )}
                                         </Stack>
                                     </span>
                                 </SimpleGrid>
@@ -562,6 +603,7 @@ export default function Page({ cli_redirect }) {
                         items={data.items}
                         setIsOpen={setIsOpen}
                         setEdit={setEdit}
+                        cli_button={cli_redirect.cli_redirect}
                     />
                     {cli_redirect.cli_redirect
                         ? 'This will result in CLI redirect'
@@ -572,10 +614,11 @@ export default function Page({ cli_redirect }) {
     );
 }
 
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
     let q = context.query.cli_redirect;
     console.log(q);
-    let redirect;
+    let redirect: boolean;
     q = q ? q : null;
     if (q === 'true') {
         redirect = true;

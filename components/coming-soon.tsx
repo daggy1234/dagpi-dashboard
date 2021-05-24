@@ -1,26 +1,26 @@
 import { Box, Button, Heading } from '@chakra-ui/react';
-import { signIn } from 'next-auth/client';
+import {useRouter} from 'next/router';
 
 import SEO from './seo';
-export default function AccessDenied() {
+export default function ComingSoon() {
+    const router = useRouter();
     return (
         <Box textAlign="center">
             <SEO
                 url="https://dagpi.xyz"
-                title="Access Denied"
-                description="Please login to continue and access your portal"
+                title="Coming Soon"
+                description="This page is under maintanence. Stay tuned for more!"
             />
-            <Heading my={10} size="lg">Access Denied</Heading>
+            <Heading my={10} size="lg">Coming Soon</Heading>
 
             <Button
                 size="lg"
                 colorScheme="teal"
                 variant="outline"
                 onClick={(e) => {
-                    e.preventDefault();
-                    signIn('discord');
+                    router.push('/dashboard')
                 }}>
-                Sign In
+                Dashboard
             </Button>
         </Box>
     );

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schema   s/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>http://localhost:3000/</loc>
+    </url>
+
+    <url>
+        <loc>http://localhost:3000/billing</loc>
     </url>
 
     <url>
@@ -21,15 +25,15 @@
     </url>
 
     <url>
+        <loc>http://localhost:3000/post-payment</loc>
+    </url>
+
+    <url>
         <loc>http://localhost:3000/premium</loc>
     </url>
 
     <url>
         <loc>http://localhost:3000/privacy</loc>
-    </url>
-
-    <url>
-        <loc>http://localhost:3000/success</loc>
     </url>
 
     <url>

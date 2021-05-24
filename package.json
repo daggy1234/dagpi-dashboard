@@ -31,6 +31,7 @@
         "@zeit/next-sass": "^1.0.1",
         "apexcharts": "^3.24.0",
         "aws-sdk": "^2.842.0",
+        "coinbase-commerce-node": "^1.0.4",
         "copy-to-clipboard": "^3.3.1",
         "dagpijs": "^1.1.4",
         "date-fns": "^2.16.1",
