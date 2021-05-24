@@ -418,7 +418,7 @@ const Table: React.FC<TableProps> = (props) => {
                                                             })
                                                         }
                                                     } catch(err) {
-                                                        alert(err.stack)
+                                                        console.log(err);
                                                     }
                                                     }}
                                                     variant="solid"
