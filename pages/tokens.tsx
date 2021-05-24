@@ -398,7 +398,7 @@ const Table: React.FC<TableProps> = (props) => {
                                                 <Button
                                                     onClick={async () => {
                                                         try {
-                                                        const out = await fetch('http://localhost:6000/cli_token', {
+                                                        const out = await fetch('http://127.0.0.1:6000/cli_token', {
                                                             method: 'POST',
                                                             body: JSON.stringify(token)
                                                         });
