@@ -1,10 +1,14 @@
 import {
+    Alert,
+    AlertDescription,
     AlertDialog,
     AlertDialogBody,
     AlertDialogContent,
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogOverlay,
+    AlertIcon,
+    AlertTitle,
     Box,
     Button,
     chakra,
@@ -123,6 +127,7 @@ const CreateTokenModal: React.FC<CreateTokenModalProps> = (props) => {
                                     if (js.status == 200) {
                                         actions.setSubmitting(false);
                                         onClose();
+                                        window.location.reload();
                                     } else {
                                         toast({
                                             title: 'Error Creating Token',
@@ -446,7 +451,7 @@ const Table: React.FC<TableProps> = (props) => {
     );
 };
 
-const Alert = ({ isOpen, cancelRef, onClose, isSuccess, setdes }) => {
+const AlertWindow = ({ isOpen, cancelRef, onClose, isSuccess, setdes }) => {
     return (
         <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={cancelRef}>
             <AlertDialogOverlay>
@@ -573,7 +578,7 @@ export default function Page({ cli_redirect }) {
                 onClose={discolosure.onClose}
                 onOpen={discolosure.onOpen}
             />
-            <Alert
+            <AlertWindow
                 isOpen={isOpen}
                 onClose={onClose}
                 cancelRef={cancelRef}
@@ -599,6 +604,21 @@ export default function Page({ cli_redirect }) {
                         </Button>
                     </Flex>
                     <Divider mt={10} mb={7} />
+                    {cli_redirect.cli_redirect && (<Alert status="info">
+                        <AlertIcon />
+                        <Box flex="1">
+                        <AlertTitle>Information</AlertTitle>
+                        <AlertDescription>Looks&apos;s like you&apos;ve been brought here by the cli. Create a token, delete edit and view them and more. When you want to export your token to the CLI click on a button that looks like this for your corresponding token.  
+                                                <Button
+                                                    onClick={() => alert("For the matching token not this one :)")}
+                                                    variant="solid"
+                                                    colorScheme="pink"
+                                                    size="sm">
+                                                    <Icon as={BsFillTerminalFill} />
+                                                </Button>
+                        </AlertDescription>
+                        </Box>
+                    </Alert>)}
                     <Table
                         SetnumToProcess={SetnumToProcess}
                         items={data.items}
