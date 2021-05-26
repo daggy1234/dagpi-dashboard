@@ -14,6 +14,17 @@
 
 -   Prettier
 
+- 	Formik + Yup
+
+- Stripe CHeckout
+
+- PayPal Checkout
+
+- Google Analytics
+
+- Sentry 
+
+
 ## Testing
 
 `yarn dev`
