@@ -1,9 +1,6 @@
 import { Button, Container, Heading, Icon, Text } from '@chakra-ui/react';
-import { loadStripe } from '@stripe/stripe-js';
-import { constant } from 'lodash.mergewith/node_modules/@types/lodash';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
-import {useRouter} from 'next/router'
 import { HiCheckCircle } from 'react-icons/hi';
 import {RiErrorWarningFill} from 'react-icons/ri'
 import {TiCancel} from 'react-icons/ti'

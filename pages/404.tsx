@@ -2,14 +2,12 @@ import { Box, Button, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
 import { AiFillHome } from 'react-icons/ai';
 
-import SEO from '../components/seo';
 
 const NotFoundPage = () => {
     const router = useRouter();
     const color = useColorModeValue('black', 'white');
     return (
         <>
-            <SEO url="https://dagpi.xyz" title="404: Not found" description="Does Not exist" />
             <Box
                 alignItems="center"
                 justifyContent="center"

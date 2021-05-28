@@ -72,7 +72,7 @@ interface PricingCardProps extends CardProps {
 }
 
 export const PricingCard = (props: PricingCardProps) => {
-    const { data, icon, button, ...rest } = props;
+    const { data, button, ...rest } = props;
     const { features, price, name } = data;
     const accentColor = mode('purple.600', 'purple.200');
 

@@ -17,7 +17,7 @@ export default function ComingSoon() {
                 size="lg"
                 colorScheme="teal"
                 variant="outline"
-                onClick={(e) => {
+                onClick={() => {
                     router.push('/dashboard')
                 }}>
                 Dashboard

@@ -101,7 +101,7 @@ const validation = Yup.object().shape({
 
 const CreateTokenModal: React.FC<CreateTokenModalProps> = (props) => {
     const initialRef = React.useRef();
-    const { isOpen, onOpen, onClose, user } = props;
+    const { isOpen, onClose, user } = props;
     const toast = useToast();
     return (
         <>

@@ -1,10 +1,6 @@
 import {
-    Avatar,
     Box,
-    chakra,
-    Flex,
     Image,
-    Link,
     List,
     ListIcon,
     ListItem,
@@ -14,7 +10,7 @@ import React from 'react';
 import { AiFillTag, AiOutlineMail } from 'react-icons/ai';
 import { FaDiscord } from 'react-icons/fa';
 import { GoSignIn } from 'react-icons/go';
-import { MdCreate, MdPermIdentity } from 'react-icons/md';
+import { MdPermIdentity } from 'react-icons/md';
 
 interface UserCardProps {
     name: string;

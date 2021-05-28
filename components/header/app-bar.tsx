@@ -151,7 +151,7 @@ export default function AppBar({ onOpen, ...rest }) {
                     </Box>
                 </MenuItems>
 
-                {session && (
+                {session && !loading ?   (
                     <MenuItems>
                         <Menu>
                             <MenuButton
@@ -195,8 +195,7 @@ export default function AppBar({ onOpen, ...rest }) {
                             </MenuList>
                         </Menu>
                     </MenuItems>
-                )}
-                {!session && (
+                ) : (
                     <MenuItems>
                         <Box display={{ sm: 'none', lg: 'block' }} mt={{ base: 4, lg: 0 }}>
                             <Button

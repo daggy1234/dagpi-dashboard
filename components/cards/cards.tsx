@@ -1,5 +1,4 @@
 import { Box } from '@chakra-ui/react';
-import Image from 'next/image';
 
 import styles from './card.module.scss';
 function Card(props) {
