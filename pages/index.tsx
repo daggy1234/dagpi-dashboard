@@ -255,10 +255,10 @@ export default function Page() {
                             </Heading>
                         </Box>
                         <Stack direction={{ base: 'column', lg: 'row' }}>
-                            <StatBox icon={AiOutlineUser} title="200+" description="Active Users" />
+                            <StatBox icon={AiOutlineUser} title="250+" description="Active Users" />
                             <StatBox icon={IoIosSpeedometer} title="<50ms" description="Ping" />
                             <StatBox icon={BiTime} title="99%" description="Uptime" />
-                            <StatBox icon={FaDiscord} title="150+" description="Discord Members" />
+                            <StatBox icon={FaDiscord} title="200+" description="Discord Members" />
                         </Stack>
                     </Box>
                 </Flex>
