@@ -62,15 +62,6 @@ export default function Cards() {
                 link="https://npmjs.com/package/dagpijs"
             />
             <Card
-                title="dagpirb"
-                author="mischievousdev"
-                async="sync"
-                language="ruby"
-                coverage="70%"
-                image="/Tech/ruby.png"
-                link="https://github.com/mischievousdev/dagpirb"
-            />
-            <Card
                 title="Dagpirs"
                 author="Daggy1234"
                 async="async/sync"
@@ -78,6 +69,24 @@ export default function Cards() {
                 coverage="100%"
                 image="/Tech/rust.png"
                 link="https://crates.io/crates/dagpirs"
+            />
+            <Card
+                title="Dagpi.go"
+                author="clvrk"
+                async="concurent"
+                language="go"
+                coverage="100%"
+                image="/Tech/go.png"
+                link="https://github.com/clvrk/dagpi.go"
+            />
+            <Card
+                title="dagpirb"
+                author="mischievousdev"
+                async="sync"
+                language="ruby"
+                coverage="70%"
+                image="/Tech/ruby.png"
+                link="https://github.com/mischievousdev/dagpirb"
             />
             <Card
                 title="aiodagpi"

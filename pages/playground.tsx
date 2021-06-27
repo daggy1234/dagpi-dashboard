@@ -84,7 +84,7 @@ const ImagePlayground = ({ token }) => {
         'comic',
         'bonk',
         'spin',
-        'bomb'
+        'bomb',
     ];
     return (
         <Flex w="100%" direction={{ base: 'column', md: 'row' }} px={4}>
@@ -335,12 +335,14 @@ const DataPlayground = ({ token }) => {
         'joke',
         'waifu',
         'wtp',
-        'pickup_line',
+        'pickupline',
         'logo',
         'flag',
         'fact',
         'yomama',
-        'headline'
+        'headline',
+        'typeracer',
+        'captcha'
     ];
     return (
         <Flex
