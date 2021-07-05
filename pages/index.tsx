@@ -99,7 +99,7 @@ export default function Page() {
                 <SEO
                     title="Dagpi"
                     url="https://dagpi.xyz"
-                    description="A fast, and easy to use API. Enjoy powerful image manipulation, high quality datasets with reliability and security."
+                    description="A fast and easy to use API. Enjoy powerful image manipulation and high quality datasets with reliability and security."
                 />
                 <Flex
                     maxW="760px"
@@ -174,7 +174,7 @@ export default function Page() {
                             <Gallery
                                 image="/svg/photo.svg"
                                 title="Easiest Image Manipulation Ever"
-                                description="Powered by powerful networked api's, dagpi saves you having to run resource intensive image manipulation on your own hardware. Simply utilise our services and our sdk's for single lined image manipulation. No Assembly required"
+                                description="Powered by powerful networking APIs, Dagpi saves you from having to run resource intensive image manipulation on your own hardware. Simply utilise our services and our SDKs for easy image manipulation. No assembly required."
                                 reverse={false}
                                 buttonLink="/playground"
                                 buttonText="Image Playground"
@@ -182,7 +182,7 @@ export default function Page() {
                             <Gallery
                                 image="/svg/collection.svg"
                                 title="A curated collection of data at your fingertips"
-                                description="From roasts, jokes and pikcup lines, to entire countries, waifu's and full fledged game data. Add a new degree of user engagement with our vast data archive."
+                                description="From roasts, jokes, and pickup lines, to entire countries, waifus, and full fledged game data. Add a new degree of user engagement with our vast data archive."
                                 reverse={true}
                                 buttonLink="/playground"
                                 buttonText="Data Playground"
@@ -211,7 +211,7 @@ export default function Page() {
                         </Box>
                         <SimpleGrid columns={{ base: 1, md: 3 }} gap={10} spacingX={{ md: 12 }}>
                             <Feature icon={BsLightningFill} title="Fast">
-                                Dagpi is lightning quick, using the fasted web development framework
+                                Dagpi is lightning quick, using the fastest web development framework
                                 available
                             </Feature>
                             <Feature icon={RiSecurePaymentLine} title="Secure">
@@ -391,7 +391,7 @@ export default function Page() {
                     title="Extras for"
                     color="Power Users"
                     fancy="Starts at only $1"
-                    description="Are the free tier limits preventing you from scaling your application. With our various premium tiers, we have the right tier for your current useage."
+                    description="Are the free tier limits preventing you from scaling your application? With our various premium tiers, we have the right tier for your current useage."
                     button="Get Premium"
                 />
                 <Box maxW="760px" mt="50px" mx="auto" textAlign="center" mb="56px">

@@ -17,7 +17,7 @@ const NotFoundPage = () => {
                 <Heading py={4} as="h1" size="xl">
                     404: NOT FOUND
                 </Heading>
-                <Text py={4}>Stop poking around, smh. This does not exist you loser.</Text>
+                <Text py={4}>Stop poking around, this page does not exist.</Text>
                 <Button
                     onClick={() => {
                         router.push('/');

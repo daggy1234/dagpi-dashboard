@@ -49,14 +49,14 @@ export default function Page({ props }) {
                             <Icon color="yellow" as={TiCancel} fontSize="5em" /> <br />
                             Your payment was cancelled
                         </Heading>
-                        <Text m="2%">Thats okay. Whenever you would like to donate again, just visit the donate page.</Text>
+                        <Text m="2%">That's okay. Whenever you would like to donate again, just visit the donate page.</Text>
                         </>) : (
                         <>
                         <Heading size="2xl" m="2%">
                             <Icon color="red" as={RiErrorWarningFill} fontSize="5em" /> <br />
                             An Error Occured
                         </Heading>
-                        <Text m="2%">Something happened on our end. Do report it on our discord, especially if you were debited.</Text>
+                        <Text m="2%">Something happened on our end. Do report it on our Discord, especially if you were debited.</Text>
                         </>
                         )
 }

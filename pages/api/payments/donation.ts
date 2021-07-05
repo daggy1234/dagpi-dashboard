@@ -40,7 +40,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             {
                 name: 'Dagpi Donation',
                 description:
-                    'A donation to help dagpi continue to run and provide high quality services. This is a one time payment.',
+                    'A donation to help Dagpi continue to run and provide high quality services. This is a one time payment.',
                 currency: 'USD',
                 images: ['https://dagpi.xyz/dagpi.png'],
                 amount: Math.floor(amount * 100),

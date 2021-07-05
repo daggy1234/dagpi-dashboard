@@ -39,13 +39,13 @@ interface App {
 }
 
 const validation = Yup.object().shape({
-    user: Yup.string().length(18, 'Userid must be proper').required('Req'),
+    user: Yup.string().length(18, 'UserID must be proper').required('Req'),
     name: Yup.string().required('Required'),
     url: Yup.string()
         .required('Required')
         .matches(
             /^((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)$/,
-            'Inavlid url. Please provide a proper url'
+            'Inavlid URL. Please provide a proper URL'
         ),
     description: Yup.string()
         .required('Required')
@@ -174,13 +174,13 @@ export default function FormikExample() {
                                         <FormControl
                                             isInvalid={form.errors.url && form.touched.url}>
                                             <FormLabel htmlFor="url">
-                                                A url to locate the app. This can be a website, bot
+                                                A URL to locate the app. This can be a website, bot
                                                 listing or invite link.
                                             </FormLabel>
                                             <Input
                                                 {...field}
                                                 id="url"
-                                                placeholder="url"
+                                                placeholder="URL"
                                                 size="lg"
                                                 errorBorderColor="crimson"
                                                 focusBorderColor="purple.400"
@@ -222,7 +222,7 @@ export default function FormikExample() {
                                             <Input
                                                 {...field}
                                                 id="prefix"
-                                                placeholder="prefix"
+                                                placeholder="Prefix"
                                                 size="md"
                                                 errorBorderColor="crimson"
                                                 focusBorderColor="purple.400"
@@ -240,7 +240,7 @@ export default function FormikExample() {
                                             <HStack>
                                                 <Checkbox {...field} id="terms" />
                                                 <FormLabel htmlFor="terms">
-                                                    Accept our terms and Conditions Read them:{' '}
+                                                    Accept our terms and Conditions. Read them:{' '}
                                                     <NextLink url="/terms">Terms</NextLink>
                                                 </FormLabel>
                                             </HStack>
