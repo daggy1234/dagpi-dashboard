@@ -49,11 +49,11 @@ const validation = Yup.object().shape({
             /^((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)$/,
             'Inavlid URL. Please provide a proper URL'
         ),
-    feature: Yup.string().required('Chose a feature')
+    feature: Yup.string().required('Choose a feature')
 });
 
 const validationData = Yup.object().shape({
-    feature: Yup.string().required('Chose a feature')
+    feature: Yup.string().required('Choose a feature')
 });
 
 const ImagePlayground = ({ token }) => {
@@ -153,7 +153,7 @@ const ImagePlayground = ({ token }) => {
                                                         }
                                                         name="feature"
                                                         isRequired>
-                                                        <FormLabel>Chose API Feature</FormLabel>
+                                                        <FormLabel>Choose API Feature</FormLabel>
                                                         <FormErrorMessage>
                                                             {form.errors.feature}
                                                         </FormErrorMessage>
@@ -421,7 +421,7 @@ const DataPlayground = ({ token }) => {
                                                         }
                                                         name="feature"
                                                         isRequired>
-                                                        <FormLabel>Chose Api Feature</FormLabel>
+                                                        <FormLabel>Choose Api Feature</FormLabel>
                                                         <FormErrorMessage>
                                                             {form.errors.feature}
                                                         </FormErrorMessage>
