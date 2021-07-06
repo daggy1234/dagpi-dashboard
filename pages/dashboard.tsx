@@ -286,7 +286,7 @@ export default function Page() {
                                     </Heading>
                                     <Text m={2}>
                                         {' '}
-                                        Join the discord for news, and answering updates.
+                                        Join the Discord for news, and answering updates.
                                     </Text>
                                     <Link url="https://server.daggy.tech">
                                         <Button size="lg" variant="outline" colorScheme="pink">

@@ -47,13 +47,13 @@ const validation = Yup.object().shape({
         .matches(
             // eslint-disable-next-line no-useless-escape
             /^((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)$/,
-            'Inavlid url. Please provide a proper url'
+            'Inavlid URL. Please provide a proper URL'
         ),
-    feature: Yup.string().required('Chose a feature')
+    feature: Yup.string().required('Choose a feature')
 });
 
 const validationData = Yup.object().shape({
-    feature: Yup.string().required('Chose a feature')
+    feature: Yup.string().required('Choose a feature')
 });
 
 const ImagePlayground = ({ token }) => {
@@ -99,8 +99,8 @@ const ImagePlayground = ({ token }) => {
                     Image Playground
                 </chakra.h1>
                 <chakra.p mb={5} color="gray.500" fontSize={{ md: 'lg' }}>
-                    Everyone learns best when they get to experience and use dagpi first hand. We
-                    wanted to let you experiment freely with dagpi, and realise the positive impact
+                    Everyone learns best when they get to experience and use Dagpi first hand. We
+                    wanted to let you experiment freely with Dagpi, and realise the positive impact
                     it may have.
                 </chakra.p>
                 <Box p={{ base: 2, md: 10 }}>
@@ -153,7 +153,7 @@ const ImagePlayground = ({ token }) => {
                                                         }
                                                         name="feature"
                                                         isRequired>
-                                                        <FormLabel>Chose Api Feature</FormLabel>
+                                                        <FormLabel>Choose API Feature</FormLabel>
                                                         <FormErrorMessage>
                                                             {form.errors.feature}
                                                         </FormErrorMessage>
@@ -370,8 +370,8 @@ const DataPlayground = ({ token }) => {
                     Data Playground
                 </chakra.h1>
                 <chakra.p mb={5} color="gray.500" fontSize={{ md: 'lg' }}>
-                    Everyone learns best when they get to experience and use dagpi first hand. We
-                    wanted to let you experiment freely with dagpi, and realise the positive impact
+                    Everyone learns best when they get to experience and use Dagpi first hand. We
+                    wanted to let you experiment freely with Dagpi, and realise the positive impact
                     it may have.
                 </chakra.p>
                 <Box p={{ base: 0, md: 10 }}>
@@ -421,7 +421,7 @@ const DataPlayground = ({ token }) => {
                                                         }
                                                         name="feature"
                                                         isRequired>
-                                                        <FormLabel>Chose Api Feature</FormLabel>
+                                                        <FormLabel>Choose Api Feature</FormLabel>
                                                         <FormErrorMessage>
                                                             {form.errors.feature}
                                                         </FormErrorMessage>
@@ -504,7 +504,7 @@ export default function Playground() {
             <SEO
                 url="https://dagpi.xyz/playground"
                 title="Playground"
-                description="Dagpi Playground. Test API endpoints and manipulate images with our web playground, to try dagpi yourself."
+                description="Dagpi Playground. Test API endpoints and manipulate images with our web playground, to try Dagpi yourself."
             />
             <Layout>
                 <Flex m={{ base: '1', md: '5%' }} direction="column">

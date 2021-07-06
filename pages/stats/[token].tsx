@@ -107,7 +107,7 @@ export default function Stats({
             <Layout>
                 <Flex padding="5%" m="5%" justifyContent="center">
                     <VStack spacing={3}>
-                        <Heading>No Api requests have been made :(</Heading>
+                        <Heading>No API requests have been made :(</Heading>
                         <Link href="/dashboard">
                             <Button variant="outline" size="lg" colorScheme="pink">
                                 Dashboard
@@ -162,7 +162,7 @@ export default function Stats({
             <SEO
                 url="https://dagpi.xyz/dashboard"
                 title="Stats"
-                description="Dagpi stat dashbaord. View detailed user statistics."
+                description="Dagpi stat dashboard. View detailed user statistics."
             />
             <Layout>
                 <Box m="5%">
@@ -230,7 +230,7 @@ export default function Stats({
                             <StatGroup p={5}>
                                 <Stat size="lg" p={5}>
                                     <StatLabel fontSize="lg" fontWeight="bold">
-                                        Total Api Calls
+                                        Total API Calls
                                     </StatLabel>
                                     <StatNumber>{data.data.raw.total}</StatNumber>
                                     <StatHelpText>
@@ -240,7 +240,7 @@ export default function Stats({
                                 </Stat>
                                 <Stat size="lg" p={5}>
                                     <StatLabel fontSize="lg" fontWeight="bold">
-                                        Total {data.data.pie.labels[0]} Api Calls
+                                        Total {data.data.pie.labels[0]} API Calls
                                     </StatLabel>
                                     <StatNumber>{data.data.pie.series[0]}</StatNumber>
                                     <StatHelpText>
@@ -250,7 +250,7 @@ export default function Stats({
                                 </Stat>
                                 <Stat size="lg" p={5}>
                                     <StatLabel fontSize="lg" fontWeight="bold">
-                                        Total {data.data.pie.labels[1]} Api Calls
+                                        Total {data.data.pie.labels[1]} API Calls
                                     </StatLabel>
                                     <StatNumber>{data.data.pie.series[1]}</StatNumber>
                                     <StatHelpText>
@@ -274,7 +274,7 @@ export default function Stats({
                                         categories: data.data.routes.labels
                                     },
                                     title: {
-                                        text: `Api Routes over ${time_str}`,
+                                        text: `API Routes over ${time_str}`,
                                         align: 'left'
                                     },
                                     dataLabels: {

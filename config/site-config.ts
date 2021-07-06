@@ -7,7 +7,7 @@ const siteConfig = {
         title: 'Dagpi',
         titleTemplate: '%s | Dagpi',
         description:
-            'A fast, and easy to use API. Enjoy powerful image manipulation, high quality datasets with reliability and security.',
+            'A fast, and easy to use API. Enjoy powerful image manipulation and high quality datasets with reliability and security.',
         siteUrl: 'https://dagpi.xyz',
         openGraph: {
             type: 'website',
@@ -15,7 +15,7 @@ const siteConfig = {
             url: 'https://dagpi.xyz',
             title: 'Dagpi',
             description:
-                'A fast, and easy to use API. Enjoy powerful image manipulation, high quality datasets with reliability and security.',
+                'A fast, and easy to use API. Enjoy powerful image manipulation and high quality datasets with reliability and security.',
             site_name: 'Dagpi: A fast and easy to use API',
             images: [
                 {

@@ -131,7 +131,7 @@ const CreateTokenModal: React.FC<CreateTokenModalProps> = (props) => {
                                     } else {
                                         toast({
                                             title: 'Error Creating Token',
-                                            description: `Unable to create a new token. Http Status ${js.status}`,
+                                            description: `Unable to create a new token. HTTP Status ${js.status}`,
                                             status: 'error',
                                             duration: 9000,
                                             isClosable: true
@@ -357,7 +357,7 @@ const Table: React.FC<TableProps> = (props) => {
                                     </span>
                                     <span>
                                         <Stack direction="row" spacing={3}>
-                                            <Tooltip label="Export to Json" aria-label="A tooltip">
+                                            <Tooltip label="Export to JSON" aria-label="A tooltip">
                                                 <Button
                                                     onClick={() => {
                                                         router.push(
@@ -399,7 +399,7 @@ const Table: React.FC<TableProps> = (props) => {
                                                 </Button>
                                             </Tooltip>
                                             {props.cli_button && (
-                                            <Tooltip label="Cli Export Token" aria-label="A tooltip">
+                                            <Tooltip label="CLI Export Token" aria-label="A tooltip">
                                                 <Button
                                                     onClick={async () => {
                                                         try {
@@ -410,7 +410,7 @@ const Table: React.FC<TableProps> = (props) => {
                                                         console.log(out.status);
                                                         if(out.status == 200) {
                                                             toast({
-                                                                title: `Successfully added token to cli.`,
+                                                                title: `Successfully added token to CLI.`,
                                                                 status: 'success',
                                                                 isClosable: true,
                                                                 description: 'Token was posted to CLI succesfully'
@@ -570,7 +570,7 @@ export default function Page({ cli_redirect }) {
             <SEO
                 title="Tokens"
                 url="https://dagpi.xyz/tokens"
-                description="Manage your dagpi admin tokens here."
+                description="Manage your Dagpi admin tokens here."
             />
             <CreateTokenModal
                 user={session.user.id}
@@ -610,7 +610,7 @@ export default function Page({ cli_redirect }) {
                         <AlertTitle>Information</AlertTitle>
                         <AlertDescription>Looks&apos;s like you&apos;ve been brought here by the cli. Create a token, delete edit and view them and more. When you want to export your token to the CLI click on a button that looks like this for your corresponding token.  
                                                 <Button
-                                                    onClick={() => alert("For the matching token not this one :)")}
+                                                    onClick={() => alert("For the matching token, not this one :)")}
                                                     variant="solid"
                                                     colorScheme="pink"
                                                     size="sm">
