@@ -151,7 +151,7 @@ export default function AppBar({ onOpen, ...rest }) {
                     </Box>
                 </MenuItems>
 
-                {session && !loading ?   (
+                {session && !loading ? (
                     <MenuItems>
                         <Menu>
                             <MenuButton

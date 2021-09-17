@@ -14,7 +14,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const js = await resp.json();
     let response;
     if (js.data) {
-        response = { data: true, items: js.data };
+        const items = js.data;
+        const curr_data = await fetch('https://api.exchangerate.host/latest?base=USD');
+        const curr_json = await curr_data.json();
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            if (item.currency.toLowerCase() == 'usd') {
+                items[i].usdp = item.amount;
+            } else {
+                items[i].usdp = item.amount / curr_json.rates[item.currency.toUpperCase()];
+            }
+        }
+        console.log(items);
+        response = { data: true, items: items };
     } else {
         response = { data: false, items: [] };
     }

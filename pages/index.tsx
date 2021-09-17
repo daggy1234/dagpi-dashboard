@@ -211,8 +211,8 @@ export default function Page() {
                         </Box>
                         <SimpleGrid columns={{ base: 1, md: 3 }} gap={10} spacingX={{ md: 12 }}>
                             <Feature icon={BsLightningFill} title="Fast">
-                                Dagpi is lightning quick, using the fastest web development framework
-                                available
+                                Dagpi is lightning quick, using the fastest web development
+                                framework available
                             </Feature>
                             <Feature icon={RiSecurePaymentLine} title="Secure">
                                 Cloudflare HTTPS is used for top-tier, industry standard security
@@ -255,10 +255,10 @@ export default function Page() {
                             </Heading>
                         </Box>
                         <Stack direction={{ base: 'column', lg: 'row' }}>
-                            <StatBox icon={AiOutlineUser} title="250+" description="Active Users" />
+                            <StatBox icon={AiOutlineUser} title="300+" description="Active Users" />
                             <StatBox icon={IoIosSpeedometer} title="<50ms" description="Ping" />
                             <StatBox icon={BiTime} title="99%" description="Uptime" />
-                            <StatBox icon={FaDiscord} title="200+" description="Discord Members" />
+                            <StatBox icon={FaDiscord} title="250+" description="Discord Members" />
                         </Stack>
                     </Box>
                 </Flex>

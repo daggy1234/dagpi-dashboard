@@ -2,7 +2,6 @@ import { Box, Button, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
 import { AiFillHome } from 'react-icons/ai';
 
-
 const NotFoundPage = () => {
     const router = useRouter();
     const color = useColorModeValue('black', 'white');

@@ -3,12 +3,12 @@ import { getSession } from 'next-auth/client';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_KEY, {
-    apiVersion: '2020-08-27',
+    apiVersion: '2020-08-27'
 });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const session = await getSession({ req });
-    const { amount } = req.body;
+    const { amount, currency } = req.body;
     if (req.method != 'POST') {
         return res.status(405).send({ message: 'Not Posted' });
     }
@@ -41,7 +41,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 name: 'Dagpi Donation',
                 description:
                     'A donation to help Dagpi continue to run and provide high quality services. This is a one time payment.',
-                currency: 'USD',
+                currency: currency,
                 images: ['https://dagpi.xyz/dagpi.png'],
                 amount: Math.floor(amount * 100),
                 quantity: 1
@@ -57,4 +57,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     // res.send({
     //     message: 'soon'
     // });
-};  
+};

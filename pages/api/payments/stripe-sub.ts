@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/client';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_KEY, {
-    apiVersion: '2020-08-27',
+    apiVersion: '2020-08-27'
 });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -21,10 +21,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
     console.log(customers);
     const sp = [
-        'price_1IGh3zBUcmOIcKdwXadqVAhd',
-        'price_1IMud0BUcmOIcKdwN3GnzSHV',
-        'price_1IMuf3BUcmOIcKdwepFmFdXg'
+        process.env.BASE_PREMIUM_PROD,
+        process.env.MID_PREMIUM_PROD,
+        process.env.HIG_PREMIUM_PROD
     ][amount];
+
+    const rl = [60, 90, 120];
+
     console.log(sp);
     const customer = {};
     if (customers['data'].length === 0) {
@@ -35,6 +38,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const pi = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         mode: 'subscription',
+        subscription_data: {
+            metadata: {
+                ...session.user,
+                client_id: session.client_id,
+                donate: 'false',
+                plan: amount + 1,
+                rl: rl[amount]
+            }
+        },
         line_items: [
             {
                 quantity: 1,

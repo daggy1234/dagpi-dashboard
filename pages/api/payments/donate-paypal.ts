@@ -6,10 +6,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const payload = {
         client_id: session.client_id,
         amount: parseInt(req.body.purchase_units[0].amount.value),
+        currency: req.body.purchase_units[0].amount.currency_code,
         customer_id: req.body.payer.payer_id,
         capture_id: req.body.purchase_units[0].payments.captures[0].id,
         email: session.user.email
-    }
+    };
+    console.log(payload);
     const resp = await fetch(`${process.env.CENTRAL_SERVER}/payments/paypal`, {
         method: 'POST',
         headers: {
@@ -18,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
         body: JSON.stringify(payload)
     });
-    res.send({status: resp.status})
-   
+    res.send({ status: resp.status });
+
     // Post this payload to Central Server
 };

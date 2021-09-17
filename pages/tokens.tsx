@@ -57,7 +57,7 @@ import { useSession } from 'next-auth/client';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { AiFillEdit, AiTwotoneLock } from 'react-icons/ai';
-import { BsBoxArrowUpRight, BsFillTerminalFill,BsFillTrashFill } from 'react-icons/bs';
+import { BsBoxArrowUpRight, BsFillTerminalFill, BsFillTrashFill } from 'react-icons/bs';
 import { GrAdd } from 'react-icons/gr';
 import * as Yup from 'yup';
 
@@ -399,45 +399,53 @@ const Table: React.FC<TableProps> = (props) => {
                                                 </Button>
                                             </Tooltip>
                                             {props.cli_button && (
-                                            <Tooltip label="CLI Export Token" aria-label="A tooltip">
-                                                <Button
-                                                    onClick={async () => {
-                                                        try {
-                                                        const out = await fetch('http://127.0.0.1:3127/cli_token', {
-                                                            method: 'POST',
-                                                            body: JSON.stringify(token)
-                                                        });
-                                                        console.log(out.status);
-                                                        if(out.status == 200) {
-                                                            toast({
-                                                                title: `Successfully added token to CLI.`,
-                                                                status: 'success',
-                                                                isClosable: true,
-                                                                description: 'Token was posted to CLI succesfully'
-                                                            })
-                                                        } else {
-                                                            toast({
-                                                                title: `http ${out.status} returned`,
-                                                                status: 'error',
-                                                                isClosable: true,
-                                                                description: 'Error returned by CLI server. Pleace check terminal.'
-                                                            })
-                                                        }
-                                                    } catch(err) {
-                                                        toast({
-                                                                title: `Request Failed`,
-                                                                status: 'error',
-                                                                isClosable: true,
-                                                                description: 'Unable to make request, if your terminal shows no error please report.'
-                                                            })
-                                                    }
-                                                    }}
-                                                    variant="solid"
-                                                    colorScheme="pink"
-                                                    size="sm">
-                                                    <Icon as={BsFillTerminalFill} />
-                                                </Button>
-                                            </Tooltip>
+                                                <Tooltip
+                                                    label="CLI Export Token"
+                                                    aria-label="A tooltip">
+                                                    <Button
+                                                        onClick={async () => {
+                                                            try {
+                                                                const out = await fetch(
+                                                                    'http://127.0.0.1:3127/cli_token',
+                                                                    {
+                                                                        method: 'POST',
+                                                                        body: JSON.stringify(token)
+                                                                    }
+                                                                );
+                                                                console.log(out.status);
+                                                                if (out.status == 200) {
+                                                                    toast({
+                                                                        title: `Successfully added token to CLI.`,
+                                                                        status: 'success',
+                                                                        isClosable: true,
+                                                                        description:
+                                                                            'Token was posted to CLI succesfully'
+                                                                    });
+                                                                } else {
+                                                                    toast({
+                                                                        title: `http ${out.status} returned`,
+                                                                        status: 'error',
+                                                                        isClosable: true,
+                                                                        description:
+                                                                            'Error returned by CLI server. Pleace check terminal.'
+                                                                    });
+                                                                }
+                                                            } catch (err) {
+                                                                toast({
+                                                                    title: `Request Failed`,
+                                                                    status: 'error',
+                                                                    isClosable: true,
+                                                                    description:
+                                                                        'Unable to make request, if your terminal shows no error please report.'
+                                                                });
+                                                            }
+                                                        }}
+                                                        variant="solid"
+                                                        colorScheme="pink"
+                                                        size="sm">
+                                                        <Icon as={BsFillTerminalFill} />
+                                                    </Button>
+                                                </Tooltip>
                                             )}
                                         </Stack>
                                     </span>
@@ -604,21 +612,29 @@ export default function Page({ cli_redirect }) {
                         </Button>
                     </Flex>
                     <Divider mt={10} mb={7} />
-                    {cli_redirect.cli_redirect && (<Alert status="info">
-                        <AlertIcon />
-                        <Box flex="1">
-                        <AlertTitle>Information</AlertTitle>
-                        <AlertDescription>Looks&apos;s like you&apos;ve been brought here by the cli. Create a token, delete edit and view them and more. When you want to export your token to the CLI click on a button that looks like this for your corresponding token.  
-                                                <Button
-                                                    onClick={() => alert("For the matching token, not this one :)")}
-                                                    variant="solid"
-                                                    colorScheme="pink"
-                                                    size="sm">
-                                                    <Icon as={BsFillTerminalFill} />
-                                                </Button>
-                        </AlertDescription>
-                        </Box>
-                    </Alert>)}
+                    {cli_redirect.cli_redirect && (
+                        <Alert status="info">
+                            <AlertIcon />
+                            <Box flex="1">
+                                <AlertTitle>Information</AlertTitle>
+                                <AlertDescription>
+                                    Looks&apos;s like you&apos;ve been brought here by the cli.
+                                    Create a token, delete edit and view them and more. When you
+                                    want to export your token to the CLI click on a button that
+                                    looks like this for your corresponding token.
+                                    <Button
+                                        onClick={() =>
+                                            alert('For the matching token, not this one :)')
+                                        }
+                                        variant="solid"
+                                        colorScheme="pink"
+                                        size="sm">
+                                        <Icon as={BsFillTerminalFill} />
+                                    </Button>
+                                </AlertDescription>
+                            </Box>
+                        </Alert>
+                    )}
                     <Table
                         SetnumToProcess={SetnumToProcess}
                         items={data.items}
@@ -634,7 +650,6 @@ export default function Page({ cli_redirect }) {
         </>
     );
 }
-
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     let q = context.query.cli_redirect;

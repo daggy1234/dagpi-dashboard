@@ -94,7 +94,6 @@ const options = {
                     })
                 });
                 const js = await r.json();
-                console.log(js);
                 if (js.status) {
                     token.client_id = js.data.client_id;
                     token.joined_dagpi = js.data.created_at;
@@ -119,7 +118,6 @@ const options = {
     // }
 
     // Enable debug messages in the console if you are having problems
-    //debug: true
 };
 
 export default (req, res) => NextAuth(req, res, options);

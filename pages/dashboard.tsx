@@ -337,7 +337,7 @@ export default function Page() {
                                             </Button>
                                             <Button
                                                 leftIcon={<Icon as={FaWallet} />}
-                                                onClick={() => router.push('/success')}
+                                                onClick={() => router.push('/billing')}
                                                 colorScheme="whatsapp"
                                                 size="lg">
                                                 Billing
@@ -423,8 +423,12 @@ export default function Page() {
                                                 <AiFillDollarCircle /> Premium User?
                                             </Heading>
                                             <Heading color="white" size="md">
-                                                {data.enhanced ? (
-                                                    <Text>Yes</Text>
+                                                {app.premium ? (
+                                                    <NextLink.default href="/billing">
+                                                        <Button colorScheme="blackAlpha">
+                                                            Billing
+                                                        </Button>
+                                                    </NextLink.default>
                                                 ) : (
                                                     <NextLink.default href="/premium">
                                                         <Button colorScheme="blackAlpha">

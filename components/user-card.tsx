@@ -1,11 +1,4 @@
-import {
-    Box,
-    Image,
-    List,
-    ListIcon,
-    ListItem,
-    useColorModeValue
-} from '@chakra-ui/react';
+import { Box, Image, List, ListIcon, ListItem, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { AiFillTag, AiOutlineMail } from 'react-icons/ai';
 import { FaDiscord } from 'react-icons/fa';

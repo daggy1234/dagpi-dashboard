@@ -10,7 +10,9 @@ export default function AccessDenied() {
                 title="Access Denied"
                 description="Please login to continue and access your portal"
             />
-            <Heading my={10} size="lg">Access Denied</Heading>
+            <Heading my={10} size="lg">
+                Access Denied
+            </Heading>
 
             <Button
                 size="lg"

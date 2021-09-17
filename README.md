@@ -14,16 +14,15 @@
 
 -   Prettier
 
-- 	Formik + Yup
+-         Formik + Yup
 
-- Stripe CHeckout
+-   Stripe CHeckout
 
-- PayPal Checkout
+-   PayPal Checkout
 
-- Google Analytics
+-   Google Analytics
 
-- Sentry 
-
+-   Sentry
 
 ## Testing
 

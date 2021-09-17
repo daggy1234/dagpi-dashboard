@@ -84,7 +84,7 @@ const ImagePlayground = ({ token }) => {
         'comic',
         'bonk',
         'spin',
-        'bomb',
+        'bomb'
     ];
     return (
         <Flex w="100%" direction={{ base: 'column', md: 'row' }} px={4}>

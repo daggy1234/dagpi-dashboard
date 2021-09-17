@@ -1,6 +1,5 @@
 import {
     Box,
-    BoxProps,
     Flex,
     Heading,
     List,
@@ -67,7 +66,6 @@ export interface PricingCardData {
 
 interface PricingCardProps extends CardProps {
     data: PricingCardData;
-    icon: React.ElementType;
     button: React.ReactElement;
 }
 
@@ -93,7 +91,7 @@ export const PricingCard = (props: PricingCardProps) => {
                     {price}
                 </Heading>
                 <Text fontWeight="inherit" fontSize="2xl">
-                    / yr
+                    / mon
                 </Text>
             </Flex>
             <List spacing="4" textAlign="justify" mb="8" maxW="28ch" mx="auto">
