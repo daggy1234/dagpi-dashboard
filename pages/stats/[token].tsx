@@ -367,7 +367,6 @@ export default function Stats({
                                     },
                                     fill: {
                                         type: 'solid',
-                                        fillOpacity: 0.7
                                     }
                                 }}
                                 height="300px"

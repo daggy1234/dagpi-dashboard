@@ -71,6 +71,7 @@ export interface PricingCardData {
 interface PricingCardProps extends CardProps {
     data: PricingCardData;
     button: React.ReactElement;
+    icon: React.ElementType;
 }
 
 export const PricingCard = (props: PricingCardProps) => {
