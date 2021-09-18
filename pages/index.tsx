@@ -128,7 +128,7 @@ export default function Page() {
                             {' '}
                             Powerful and Fast{' '}
                         </Box>
-                        API that can do amazing things
+                        API that can do amazing things.
                     </Heading>
 
                     <Text opacity={0.7} fontSize={{ base: 'lg', lg: 'xl' }} mt="6">

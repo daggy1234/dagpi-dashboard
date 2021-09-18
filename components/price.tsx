@@ -1,5 +1,6 @@
 import {
     Box,
+    BoxProps,
     Flex,
     Heading,
     List,
