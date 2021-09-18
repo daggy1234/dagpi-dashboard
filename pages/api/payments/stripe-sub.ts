@@ -38,6 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const pi = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         mode: 'subscription',
+        allow_promotion_codes: true,
         subscription_data: {
             metadata: {
                 ...session.user,
