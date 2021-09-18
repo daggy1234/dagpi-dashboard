@@ -56,7 +56,8 @@ const StatBox = (props) => {
             h={{ base: '40%', md: '100%' }}
             bg={props.color}
             textAlign="center"
-            marginTop={{ base: '3rem', md: '1rem' }}>
+            marginTop={{ base: '3rem', md: '1rem' }}
+        >
             {props.children}
         </Box>
     );
@@ -90,7 +91,8 @@ const Alert = ({ isOpen, cancelRef, onClose, isSuccess, setdes }) => {
                                 setdes(true);
                                 onClose();
                             }}
-                            colorScheme="red">
+                            colorScheme="red"
+                        >
                             Proceed
                         </Button>
                     </AlertDialogFooter>
@@ -332,14 +334,16 @@ export default function Page() {
                                                 leftIcon={<Icon as={FaTerminal} />}
                                                 colorScheme="twitter"
                                                 onClick={() => router.push('/tokens')}
-                                                size="lg">
+                                                size="lg"
+                                            >
                                                 CLI Tokens
                                             </Button>
                                             <Button
                                                 leftIcon={<Icon as={FaWallet} />}
                                                 onClick={() => router.push('/billing')}
                                                 colorScheme="whatsapp"
-                                                size="lg">
+                                                size="lg"
+                                            >
                                                 Billing
                                             </Button>
                                             <Button
@@ -349,7 +353,8 @@ export default function Page() {
                                                 onClick={() =>
                                                     router.push('https://server.daggy.tech')
                                                 }
-                                                size="lg">
+                                                size="lg"
+                                            >
                                                 Discord Server
                                             </Button>
                                         </Stack>
@@ -385,19 +390,22 @@ export default function Page() {
                                     leftIcon={<FaClipboard />}
                                     onClick={onCopy}
                                     size="lg"
-                                    ml={2}>
+                                    ml={2}
+                                >
                                     {hasCopied ? 'Copied' : 'Copy'}
                                 </Button>
                             </Flex>
                             <IconContext.Provider
-                                value={{ style: { display: 'inline' }, size: '1.5em' }}>
+                                value={{ style: { display: 'inline' }, size: '1.5em' }}
+                            >
                                 <Flex
                                     direction={{ base: 'column', md: 'row' }}
                                     align="center"
                                     justify="space-between"
                                     wrap="wrap"
                                     alignItems="center"
-                                    marginTop="5%">
+                                    marginTop="5%"
+                                >
                                     <StatBox color="blue.300" padding="2em">
                                         <VStack padding="2rem">
                                             <Heading size="sm">
@@ -460,7 +468,8 @@ export default function Page() {
                                                 href={{
                                                     pathname: '/stats/[token]',
                                                     query: { token: data.apikey, tp: 1 }
-                                                }}>
+                                                }}
+                                            >
                                                 <Button colorScheme="blackAlpha">
                                                     Stat Dashboard
                                                 </Button>
@@ -469,7 +478,8 @@ export default function Page() {
                                     </StatBox>
                                     <StatBox
                                         color={useColorModeValue('gray.200', 'gray.700')}
-                                        padding="2em">
+                                        padding="2em"
+                                    >
                                         <VStack padding="2em">
                                             <Heading size="lg">Danger Zone</Heading>
                                             <Button
@@ -479,7 +489,8 @@ export default function Page() {
                                                 colorScheme="orange"
                                                 onClick={() => {
                                                     setIsOpen(true);
-                                                }}>
+                                                }}
+                                            >
                                                 Reset Token
                                             </Button>
                                             <Button
@@ -490,7 +501,8 @@ export default function Page() {
                                                 onClick={() => {
                                                     setSuccess(false);
                                                     setIsOpen(true);
-                                                }}>
+                                                }}
+                                            >
                                                 Delete App
                                             </Button>
                                         </VStack>

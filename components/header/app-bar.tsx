@@ -32,7 +32,8 @@ const MenuItems = ({ children }) => (
         mt={{ base: 4, md: 0 }}
         display="block"
         textAlign="center"
-        color="white">
+        color="white"
+    >
         {children}
     </Heading>
 );
@@ -53,7 +54,8 @@ export default function AppBar({ onOpen, ...rest }) {
             padding="1.5rem"
             bg={useColorModeValue('purple.500', 'purple.900')}
             color="white"
-            {...rest}>
+            {...rest}
+        >
             <Flex align="left" mr={5}>
                 <Box mt={{ base: '0px', sm: '0px' }} boxSize="20">
                     <Image priority={true} height={120} width={100} alt="Dagpi" src="/dagpi.png" />
@@ -63,7 +65,8 @@ export default function AppBar({ onOpen, ...rest }) {
                     mt={{ base: '20px', md: '20px' }}
                     as="h1"
                     size="xl"
-                    letterSpacing={'-.1rem'}>
+                    letterSpacing={'-.1rem'}
+                >
                     <Link href="/">
                         <a className={styles.nodec}>agpi</a>
                     </Link>
@@ -90,7 +93,8 @@ export default function AppBar({ onOpen, ...rest }) {
                     fill="white"
                     width="12px"
                     viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg"
+                >
                     <title>Menu</title>
                     <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
                 </svg>
@@ -100,7 +104,8 @@ export default function AppBar({ onOpen, ...rest }) {
                 width={{ base: 'full', lg: 'auto' }}
                 alignItems="center"
                 spacing={4}
-                flexShrink={1}>
+                flexShrink={1}
+            >
                 <IconButton
                     size="md"
                     _hover={{}}
@@ -144,7 +149,8 @@ export default function AppBar({ onOpen, ...rest }) {
                                 leftIcon={<MdDashboard />}
                                 color="white"
                                 _hover={{ color: 'purple.500', bg: 'white' }}
-                                border="1px">
+                                border="1px"
+                            >
                                 Dashboard
                             </Button>
                         </Link>
@@ -162,7 +168,8 @@ export default function AppBar({ onOpen, ...rest }) {
                                 _hover={{}}
                                 color="white"
                                 colorScheme="purple"
-                                rightIcon={<FaChevronDown />}>
+                                rightIcon={<FaChevronDown />}
+                            >
                                 <CImage
                                     boxSize="2rem"
                                     borderRadius="full"
@@ -189,7 +196,8 @@ export default function AppBar({ onOpen, ...rest }) {
                                     onClick={(e) => {
                                         e.preventDefault();
                                         signOut();
-                                    }}>
+                                    }}
+                                >
                                     Logout
                                 </MenuItem>
                             </MenuList>
@@ -206,7 +214,8 @@ export default function AppBar({ onOpen, ...rest }) {
                                 onClick={(e) => {
                                     e.preventDefault();
                                     signIn('discord');
-                                }}>
+                                }}
+                            >
                                 Login
                             </Button>
                         </Box>

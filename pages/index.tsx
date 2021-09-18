@@ -50,7 +50,8 @@ const Feature = ({ title, icon, children, ...props }) => {
             shadow="base"
             p="40px"
             className={styles.feature}
-            {...props}>
+            {...props}
+        >
             <Flex rounded="full" w="12" h="12" bg="purple.300" align="center" justify="center">
                 <Icon fontSize="24px" color="white" as={icon} />
             </Flex>
@@ -74,7 +75,8 @@ const StatBox = (props: StatBoxProps) => {
             borderLeft="2px solid"
             borderLeftColor="white"
             mr={{ base: '0px', lg: '40px' }}
-            {...rest}>
+            {...rest}
+        >
             <Box fontSize={{ base: '4rem', md: '6.25rem' }} lineHeight="1em" mb="20px">
                 {title}
             </Box>
@@ -108,18 +110,21 @@ export default function Page() {
                     align="center"
                     justify="center"
                     direction="column"
-                    textAlign="center">
+                    textAlign="center"
+                >
                     <Heading
                         size="3xl"
                         letterSpacing="tight"
                         fontWeight="bold"
                         mb="16px"
-                        lineHeight="1.2">
+                        lineHeight="1.2"
+                    >
                         A
                         <Box
                             as="span"
                             bgClip="text"
-                            bgGradient="linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%)">
+                            bgGradient="linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%)"
+                        >
                             {' '}
                             Powerful and Fast{' '}
                         </Box>
@@ -135,7 +140,8 @@ export default function Page() {
                         mt="10"
                         spacing="4"
                         justify="center"
-                        direction={{ base: 'column', sm: 'row' }}>
+                        direction={{ base: 'column', sm: 'row' }}
+                    >
                         <Link href="/dashboard">
                             <Button
                                 h="4rem"
@@ -143,7 +149,8 @@ export default function Page() {
                                 fontSize="1.2rem"
                                 size="lg"
                                 colorScheme="purple"
-                                rightIcon={<FaArrowRight fontSize="0.8em" />}>
+                                rightIcon={<FaArrowRight fontSize="0.8em" />}
+                            >
                                 Get Started
                             </Button>
                         </Link>
@@ -155,7 +162,8 @@ export default function Page() {
                             px="40px"
                             href="https://dagpi.docs.apiary.io"
                             fontSize="1.2rem"
-                            leftIcon={<SiReadthedocs size="1.5em" />}>
+                            leftIcon={<SiReadthedocs size="1.5em" />}
+                        >
                             Docs
                         </Button>
                     </Stack>
@@ -165,12 +173,14 @@ export default function Page() {
                         px={{ base: 5, md: 20 }}
                         w="full"
                         justifyContent="center"
-                        alignItems="center">
+                        alignItems="center"
+                    >
                         <Box
                             bg={useColorModeValue('white', 'gray.800')}
                             px={{ base: 2, md: 8 }}
                             py={{ base: 5, md: 0 }}
-                            mx="auto">
+                            mx="auto"
+                        >
                             <Gallery
                                 image="/svg/photo.svg"
                                 title="Easiest Image Manipulation Ever"
@@ -202,7 +212,8 @@ export default function Page() {
                     as="section"
                     pb="50px"
                     mt="100px"
-                    bg={useColorModeValue('gray.50', 'gray.600')}>
+                    bg={useColorModeValue('gray.50', 'gray.600')}
+                >
                     <Container py="120px" maxW="1280px">
                         <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
                             <Heading as="h2" mb="5" pt="5">
@@ -247,7 +258,8 @@ export default function Page() {
                     mt="100px"
                     mb="100px"
                     as="section"
-                    bg={useColorModeValue('purple.600', 'purple.900')}>
+                    bg={useColorModeValue('purple.600', 'purple.900')}
+                >
                     <Box py="7.5rem" maxW="1280px" color="white">
                         <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
                             <Heading as="h3" size="2xl" textStyle="heading" mb="5">
@@ -380,7 +392,8 @@ export default function Page() {
                         <Heading
                             size="2xl"
                             color={useColorModeValue('black', 'white')}
-                            className={styles.containerText}>
+                            className={styles.containerText}
+                        >
                             Powered by the Technology of the Future
                         </Heading>
                     </div>

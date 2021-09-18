@@ -10,7 +10,8 @@ function DiscordStrip(props: BoxProps) {
                 <Flex
                     direction={{ base: 'column', md: 'row' }}
                     align="center"
-                    justify="space-between">
+                    justify="space-between"
+                >
                     <Flex color="white" mx="30px">
                         <Box fontSize={{ base: '2rem', md: '3rem' }}>
                             <DiscordLogo size="2em" color="#fff" />
@@ -42,7 +43,8 @@ function DiscordStrip(props: BoxProps) {
                         px="24px"
                         h="56px"
                         rounded="lg"
-                        fontSize="md">
+                        fontSize="md"
+                    >
                         Join DaggyTech
                     </chakra.button>
                 </Flex>

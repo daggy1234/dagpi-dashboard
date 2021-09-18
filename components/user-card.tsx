@@ -23,7 +23,8 @@ const UserCard: React.FC<UserCardProps> = (props) => {
             borderWidth="2px"
             borderRadius="lg"
             maxW={{ md: '2xl' }}
-            rounded={{ md: 'lg' }}>
+            rounded={{ md: 'lg' }}
+        >
             <Box w={{ md: '40%' }}>
                 <Box height={64} rounded={{ md: 'lg' }} bgSize="cover">
                     <Image

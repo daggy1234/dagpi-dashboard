@@ -120,7 +120,8 @@ export default function Stats({
                                 rightIcon={<FiChevronDown />}
                                 mr={2}
                                 size="lg"
-                                as={Button}>
+                                as={Button}
+                            >
                                 Time Period
                             </MenuButton>
                             <MenuList>
@@ -176,7 +177,8 @@ export default function Stats({
                                 rightIcon={<FiChevronDown />}
                                 mr={2}
                                 size="lg"
-                                as={Button}>
+                                as={Button}
+                            >
                                 Time Period
                             </MenuButton>
                             <MenuList>
@@ -190,7 +192,8 @@ export default function Stats({
                                 alignSelf="flex-end"
                                 colorScheme="purple"
                                 size="lg"
-                                leftIcon={<BiArrowBack />}>
+                                leftIcon={<BiArrowBack />}
+                            >
                                 Dashboard
                             </Button>
                         </Link>
@@ -202,7 +205,8 @@ export default function Stats({
                             flexWrap: 'wrap',
                             boxSizing: 'border-box',
                             padding: '2%'
-                        }}>
+                        }}
+                    >
                         <Box as="div" mr="5%" color={textcolor}>
                             <Chart
                                 type="donut"
@@ -226,7 +230,8 @@ export default function Stats({
                             as="div"
                             border="2px"
                             borderRadius="12px"
-                            borderColor="rgb(226, 232, 240)">
+                            borderColor="rgb(226, 232, 240)"
+                        >
                             <StatGroup p={5}>
                                 <Stat size="lg" p={5}>
                                     <StatLabel fontSize="lg" fontWeight="bold">

@@ -21,7 +21,8 @@ export default function ComingSoon() {
                 variant="outline"
                 onClick={() => {
                     router.push('/dashboard');
-                }}>
+                }}
+            >
                 Dashboard
             </Button>
         </Box>

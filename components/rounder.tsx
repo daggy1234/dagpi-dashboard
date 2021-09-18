@@ -15,7 +15,8 @@ const Card = (props) => {
                 pb={{ base: '10', md: '20' }}
                 borderRadius="lg"
                 textAlign="justify"
-                overflow="hidden">
+                overflow="hidden"
+            >
                 <Box display="flex" flexDirection="column" mt="20px" mr="20px">
                     <Heading size="lg" isTruncated>
                         {props.title}
@@ -23,7 +24,8 @@ const Card = (props) => {
                             <Badge
                                 fontSize="0.5em"
                                 variant="subtle"
-                                colorScheme={props.api === 'data' ? 'teal' : 'pink'}>
+                                colorScheme={props.api === 'data' ? 'teal' : 'pink'}
+                            >
                                 {props.api}
                             </Badge>
                         </Box>
@@ -99,7 +101,8 @@ export default function Rounder() {
                 circular={true}
                 duration={500}
                 // @ts-ignore
-                plugins={plugins}>
+                plugins={plugins}
+            >
                 {titles.map((object, index) => (
                     <Card
                         title={object.title}

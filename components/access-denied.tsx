@@ -21,7 +21,8 @@ export default function AccessDenied() {
                 onClick={(e) => {
                     e.preventDefault();
                     signIn('discord');
-                }}>
+                }}
+            >
                 Sign In
             </Button>
         </Box>

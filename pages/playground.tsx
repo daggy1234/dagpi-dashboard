@@ -95,7 +95,8 @@ const ImagePlayground = ({ token }) => {
                     fontSize={{ base: '3xl', md: '4xl' }}
                     fontWeight="bold"
                     lineHeight="shorter"
-                    color={useColorModeValue('gray.900', 'white')}>
+                    color={useColorModeValue('gray.900', 'white')}
+                >
                     Image Playground
                 </chakra.h1>
                 <chakra.p mb={5} color="gray.500" fontSize={{ md: 'lg' }}>
@@ -134,7 +135,8 @@ const ImagePlayground = ({ token }) => {
                                     actions.setSubmitting(false);
                                     actions.resetForm();
                                     Setmanipulating(false);
-                                }}>
+                                }}
+                            >
                                 {(props) => (
                                     <Form>
                                         <Stack
@@ -142,7 +144,8 @@ const ImagePlayground = ({ token }) => {
                                             py={5}
                                             bg={useColorModeValue('gray.100', 'gray.700')}
                                             spacing={6}
-                                            p={{ sm: 6 }}>
+                                            p={{ sm: 6 }}
+                                        >
                                             <Heading size="md">Specify the Image</Heading>
                                             <Field name="feature">
                                                 {({ field, form }) => (
@@ -152,7 +155,8 @@ const ImagePlayground = ({ token }) => {
                                                             form.touched.feature
                                                         }
                                                         name="feature"
-                                                        isRequired>
+                                                        isRequired
+                                                    >
                                                         <FormLabel>Choose API Feature</FormLabel>
                                                         <FormErrorMessage>
                                                             {form.errors.feature}
@@ -160,12 +164,14 @@ const ImagePlayground = ({ token }) => {
                                                         <Select
                                                             placeholder="Select Feature"
                                                             id="feature"
-                                                            {...field}>
+                                                            {...field}
+                                                        >
                                                             {features.map((value, index) => {
                                                                 return (
                                                                     <option
                                                                         key={index}
-                                                                        value={value}>
+                                                                        value={value}
+                                                                    >
                                                                         {value}
                                                                     </option>
                                                                 );
@@ -182,7 +188,8 @@ const ImagePlayground = ({ token }) => {
                                                                 form.errors.url && form.touched.url
                                                             }
                                                             as={GridItem}
-                                                            colSpan={[3, 2]}>
+                                                            colSpan={[3, 2]}
+                                                        >
                                                             <FormLabel
                                                                 fontSize="sm"
                                                                 fontWeight="md"
@@ -190,7 +197,8 @@ const ImagePlayground = ({ token }) => {
                                                                 color={useColorModeValue(
                                                                     'gray.700',
                                                                     'gray.50'
-                                                                )}>
+                                                                )}
+                                                            >
                                                                 Image
                                                             </FormLabel>
                                                             <FormErrorMessage>
@@ -220,7 +228,8 @@ const ImagePlayground = ({ token }) => {
                                                     'gray.500'
                                                 )}
                                                 borderStyle="dashed"
-                                                rounded="md">
+                                                rounded="md"
+                                            >
                                                 <Stack spacing={1} textAlign="center">
                                                     <Icon
                                                         mx="auto"
@@ -232,7 +241,8 @@ const ImagePlayground = ({ token }) => {
                                                         stroke="currentColor"
                                                         fill="none"
                                                         viewBox="0 0 48 48"
-                                                        aria-hidden="true">
+                                                        aria-hidden="true"
+                                                    >
                                                         <path
                                                             d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
                                                             strokeWidth="2"
@@ -246,7 +256,8 @@ const ImagePlayground = ({ token }) => {
                                                             'gray.600',
                                                             'gray.400'
                                                         )}
-                                                        alignItems="baseline">
+                                                        alignItems="baseline"
+                                                    >
                                                         <chakra.label
                                                             htmlFor="file-upload"
                                                             cursor="pointer"
@@ -262,7 +273,8 @@ const ImagePlayground = ({ token }) => {
                                                                     'brand.400',
                                                                     'brand.300'
                                                                 )
-                                                            }}>
+                                                            }}
+                                                        >
                                                             <span>Paste the Image Url</span>
                                                         </chakra.label>
                                                     </Flex>
@@ -271,7 +283,8 @@ const ImagePlayground = ({ token }) => {
                                                         color={useColorModeValue(
                                                             'gray.500',
                                                             'gray.50'
-                                                        )}>
+                                                        )}
+                                                    >
                                                         PNG, JPG, GIF up to 10MB
                                                     </Text>
                                                 </Stack>
@@ -279,7 +292,8 @@ const ImagePlayground = ({ token }) => {
                                             <Button
                                                 colorScheme="blue"
                                                 isLoading={props.isSubmitting}
-                                                type="submit">
+                                                type="submit"
+                                            >
                                                 Submit
                                             </Button>
                                         </Stack>
@@ -292,10 +306,8 @@ const ImagePlayground = ({ token }) => {
                         <Box py={5}>
                             <Box
                                 borderTop="solid 1px"
-                                borderTopColor={useColorModeValue(
-                                    'gray.200',
-                                    'whiteAlpha.200'
-                                )}></Box>
+                                borderTopColor={useColorModeValue('gray.200', 'whiteAlpha.200')}
+                            ></Box>
                         </Box>
                     </Box>
                 </Box>
@@ -315,7 +327,8 @@ const ImagePlayground = ({ token }) => {
                         <SyntaxHighlighter
                             padding="10"
                             language="json"
-                            style={useColorModeValue(docco, atomOneDark)}>
+                            style={useColorModeValue(docco, atomOneDark)}
+                        >
                             {url}
                         </SyntaxHighlighter>
                     ) : (
@@ -350,7 +363,8 @@ const DataPlayground = ({ token }) => {
             direction={{ base: 'column', md: 'row' }}
             px={4}
             paddingTop={10}
-            paddingEnd={32}>
+            paddingEnd={32}
+        >
             <Flex direction="column" w={{ base: '100%', md: '50%', xl: '40%' }}>
                 <chakra.p
                     mb={2}
@@ -358,7 +372,8 @@ const DataPlayground = ({ token }) => {
                     fontWeight="semibold"
                     letterSpacing="wide"
                     color="gray.400"
-                    textTransform="uppercase">
+                    textTransform="uppercase"
+                >
                     Playground
                 </chakra.p>
                 <chakra.h1
@@ -366,7 +381,8 @@ const DataPlayground = ({ token }) => {
                     fontSize={{ base: '3xl', md: '4xl' }}
                     fontWeight="bold"
                     lineHeight="shorter"
-                    color={useColorModeValue('gray.900', 'white')}>
+                    color={useColorModeValue('gray.900', 'white')}
+                >
                     Data Playground
                 </chakra.h1>
                 <chakra.p mb={5} color="gray.500" fontSize={{ md: 'lg' }}>
@@ -403,7 +419,8 @@ const DataPlayground = ({ token }) => {
                                     actions.setSubmitting(false);
                                     actions.resetForm();
                                     Setmanipulating(false);
-                                }}>
+                                }}
+                            >
                                 {(props) => (
                                     <Form>
                                         <Stack
@@ -411,7 +428,8 @@ const DataPlayground = ({ token }) => {
                                             py={5}
                                             bg={useColorModeValue('gray.100', 'gray.700')}
                                             spacing={6}
-                                            p={{ sm: 6 }}>
+                                            p={{ sm: 6 }}
+                                        >
                                             <Field name="feature">
                                                 {({ field, form }) => (
                                                     <FormControl
@@ -420,7 +438,8 @@ const DataPlayground = ({ token }) => {
                                                             form.touched.feature
                                                         }
                                                         name="feature"
-                                                        isRequired>
+                                                        isRequired
+                                                    >
                                                         <FormLabel>Choose Api Feature</FormLabel>
                                                         <FormErrorMessage>
                                                             {form.errors.feature}
@@ -428,12 +447,14 @@ const DataPlayground = ({ token }) => {
                                                         <Select
                                                             placeholder="Select Feature"
                                                             id="feature"
-                                                            {...field}>
+                                                            {...field}
+                                                        >
                                                             {features.map((value, index) => {
                                                                 return (
                                                                     <option
                                                                         key={index}
-                                                                        value={value}>
+                                                                        value={value}
+                                                                    >
                                                                         {value}
                                                                     </option>
                                                                 );
@@ -445,7 +466,8 @@ const DataPlayground = ({ token }) => {
                                             <Button
                                                 colorScheme="blue"
                                                 isLoading={props.isSubmitting}
-                                                type="submit">
+                                                type="submit"
+                                            >
                                                 Submit
                                             </Button>
                                         </Stack>
@@ -458,10 +480,8 @@ const DataPlayground = ({ token }) => {
                         <Box py={5}>
                             <Box
                                 borderTop="solid 1px"
-                                borderTopColor={useColorModeValue(
-                                    'gray.200',
-                                    'whiteAlpha.200'
-                                )}></Box>
+                                borderTopColor={useColorModeValue('gray.200', 'whiteAlpha.200')}
+                            ></Box>
                         </Box>
                     </Box>
                 </Box>
@@ -484,7 +504,8 @@ const DataPlayground = ({ token }) => {
                             <SyntaxHighlighter
                                 wrapLongLines
                                 language="json"
-                                style={useColorModeValue(docco, atomOneDark)}>
+                                style={useColorModeValue(docco, atomOneDark)}
+                            >
                                 {json}
                             </SyntaxHighlighter>
                         </Box>
@@ -517,7 +538,8 @@ export default function Playground() {
                                 onChange={(v) => {
                                     setValue(v.toString());
                                 }}
-                                value={value}>
+                                value={value}
+                            >
                                 <Stack direction="row">
                                     <Radio value="1">Image</Radio>
                                     <Radio value="2">Data</Radio>
@@ -530,7 +552,8 @@ export default function Playground() {
                             w={{ base: '100%', md: '60%' }}
                             mb={5}
                             mt={5}
-                            direction={{ base: 'column', md: 'row' }}>
+                            direction={{ base: 'column', md: 'row' }}
+                        >
                             <FormLabel>
                                 Enter your token if you have one! Othewrise you will have a heavily
                                 ratelimited playground.

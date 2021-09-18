@@ -53,7 +53,8 @@ export default function MyDrawer({ isOpen, onClose }) {
                                     color="purple.500"
                                     bg="purple.100"
                                     _hover={{ bg: 'purple.500', color: 'white' }}
-                                    border="1px">
+                                    border="1px"
+                                >
                                     Dashboard
                                 </Button>
                             </Link>
@@ -87,7 +88,8 @@ export default function MyDrawer({ isOpen, onClose }) {
                                             onClick={(e) => {
                                                 e.preventDefault();
                                                 signOut();
-                                            }}>
+                                            }}
+                                        >
                                             Logout
                                         </Button>
                                     </Collapse>
@@ -100,7 +102,8 @@ export default function MyDrawer({ isOpen, onClose }) {
                                     onClick={(e) => {
                                         e.preventDefault();
                                         signIn('discord');
-                                    }}>
+                                    }}
+                                >
                                     Login
                                 </Button>
                             )}

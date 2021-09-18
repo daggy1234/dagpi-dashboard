@@ -42,7 +42,8 @@ const Property = (props: PropertyProps) => {
             px="6"
             py="4"
             _even={{ bg: useColorModeValue('gray.50', 'gray.600') }}
-            {...flexProps}>
+            {...flexProps}
+        >
             <Box as="dt" minWidth="180px">
                 {label}
             </Box>

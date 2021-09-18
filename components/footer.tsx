@@ -16,7 +16,8 @@ function BiSvg(props) {
             style={{ display: 'inline', marginLeft: '10px' }}
             width={40}
             viewBox="0 0 800 480"
-            {...props}>
+            {...props}
+        >
             <g fillRule="evenodd">
                 <path fill="#d60270" d="M0 0h800v192H0z" />
                 <path fill="#9b4f96" d="M0 192h800v96H0z" />
@@ -35,7 +36,8 @@ function Indian(props) {
             style={{ display: 'inline', marginLeft: '10px' }}
             width={40}
             viewBox="0 0 512 512"
-            {...props}>
+            {...props}
+        >
             <path
                 fill="#ff705b"
                 d="M216.27 154.856l7.406-28.24-10.783-3.694-21.268-32.513 13.206-3.234-6.761-11.867 19.551-40.135-15.862-9.55-35.808 1.894-43.996-19.289-22.746 13.617 15.395 13.495.79 31.79 24.857 27.068-20.163 36.347-.122 6.516-25.119 27.606 73.192 10.97 71.211-10.97z"

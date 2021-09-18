@@ -142,7 +142,8 @@ const CreateTokenModal: React.FC<CreateTokenModalProps> = (props) => {
                             initialValues={{
                                 name: '',
                                 consent: false
-                            }}>
+                            }}
+                        >
                             {(props) => (
                                 <Form>
                                     <Stack direction="column" spacing={3}>
@@ -152,7 +153,8 @@ const CreateTokenModal: React.FC<CreateTokenModalProps> = (props) => {
                                                     isInvalid={
                                                         form.errors.name && form.touched.name
                                                     }
-                                                    isRequired>
+                                                    isRequired
+                                                >
                                                     <FormLabel htmlFor="name">Token Name</FormLabel>
                                                     <Input
                                                         ref={initialRef}
@@ -174,7 +176,8 @@ const CreateTokenModal: React.FC<CreateTokenModalProps> = (props) => {
                                                 <FormControl
                                                     isInvalid={
                                                         form.errors.consent && form.touched.consent
-                                                    }>
+                                                    }
+                                                >
                                                     <Flex>
                                                         <Checkbox {...field} id="consent" />
                                                         <FormLabel ml={3} htmlFor="consent">
@@ -197,7 +200,8 @@ const CreateTokenModal: React.FC<CreateTokenModalProps> = (props) => {
                                                 isLoading={props.isSubmitting}
                                                 size="lg"
                                                 colorScheme="blackAlpha"
-                                                type="submit">
+                                                type="submit"
+                                            >
                                                 Submit
                                             </Button>
                                         </Box>
@@ -238,7 +242,8 @@ const Table: React.FC<TableProps> = (props) => {
                 borderStyle="solid"
                 borderWidth={data.length == 0 ? null : { base: null, md: '1px' }}
                 borderColor={useColorModeValue('gray.200', 'rgba(255, 255, 255, 0.16)')}
-                bg={{ sm: useColorModeValue('white', 'gray.800') }}>
+                bg={{ sm: useColorModeValue('white', 'gray.800') }}
+            >
                 {data.length == 0 ? (
                     <Box textAlign="center">
                         <Heading>You Have no tokens</Heading>
@@ -252,7 +257,8 @@ const Table: React.FC<TableProps> = (props) => {
                             <Flex
                                 key={pid}
                                 direction={{ base: 'row', sm: 'column' }}
-                                bg={useColorModeValue('white', 'gray.800')}>
+                                bg={useColorModeValue('white', 'gray.800')}
+                            >
                                 {useBreakpointValue({ base: true, sm: pid === 0 }) && (
                                     <SimpleGrid
                                         spacingY={3}
@@ -267,29 +273,34 @@ const Table: React.FC<TableProps> = (props) => {
                                         color={useColorModeValue('gray.500', 'gray.400')}
                                         bg={useColorModeValue('gray.50', 'inherit')}
                                         py={{ base: 1, sm: 4 }}
-                                        px={{ base: 2, sm: 10 }}>
+                                        px={{ base: 2, sm: 10 }}
+                                    >
                                         <Text
                                             fontWeight="bold"
                                             textTransform="uppercase"
-                                            fontSize="sm">
+                                            fontSize="sm"
+                                        >
                                             Name
                                         </Text>
                                         <Text
                                             fontWeight="bold"
                                             textTransform="uppercase"
-                                            fontSize="sm">
+                                            fontSize="sm"
+                                        >
                                             Created
                                         </Text>
                                         <Text
                                             fontWeight="bold"
                                             textTransform="uppercase"
-                                            fontSize="sm">
+                                            fontSize="sm"
+                                        >
                                             Token
                                         </Text>
                                         <Text
                                             fontWeight="bold"
                                             textTransform="uppercase"
-                                            fontSize="sm">
+                                            fontSize="sm"
+                                        >
                                             Actions
                                         </Text>
                                     </SimpleGrid>
@@ -307,7 +318,8 @@ const Table: React.FC<TableProps> = (props) => {
                                     )}
                                     borderColor={useColorModeValue('gray.200', 'gray.700')}
                                     py={4}
-                                    px={10}>
+                                    px={10}
+                                >
                                     <span>
                                         <Text>{token.name}</Text>
                                     </span>
@@ -324,7 +336,8 @@ const Table: React.FC<TableProps> = (props) => {
                                                     size="md"
                                                     variant="solid"
                                                     leftIcon={<Icon as={AiTwotoneLock} />}
-                                                    colorScheme="purple">
+                                                    colorScheme="purple"
+                                                >
                                                     Show Token
                                                 </Button>
                                             </PopoverTrigger>
@@ -347,7 +360,8 @@ const Table: React.FC<TableProps> = (props) => {
                                                                 copy(token.token);
                                                                 handleClick();
                                                             }}
-                                                            size="sm">
+                                                            size="sm"
+                                                        >
                                                             {buttonText}
                                                         </Button>
                                                     </PopoverFooter>
@@ -366,7 +380,8 @@ const Table: React.FC<TableProps> = (props) => {
                                                     }}
                                                     variant="solid"
                                                     colorScheme="blue"
-                                                    size="sm">
+                                                    size="sm"
+                                                >
                                                     <Icon as={BsBoxArrowUpRight} />
                                                 </Button>
                                             </Tooltip>
@@ -380,7 +395,8 @@ const Table: React.FC<TableProps> = (props) => {
                                                     }}
                                                     variant="solid"
                                                     colorScheme="green"
-                                                    size="sm">
+                                                    size="sm"
+                                                >
                                                     <Icon as={AiFillEdit} />
                                                 </Button>
                                             </Tooltip>
@@ -394,14 +410,16 @@ const Table: React.FC<TableProps> = (props) => {
                                                     }}
                                                     variant="solid"
                                                     colorScheme="red"
-                                                    size="sm">
+                                                    size="sm"
+                                                >
                                                     <Icon as={BsFillTrashFill} />
                                                 </Button>
                                             </Tooltip>
                                             {props.cli_button && (
                                                 <Tooltip
                                                     label="CLI Export Token"
-                                                    aria-label="A tooltip">
+                                                    aria-label="A tooltip"
+                                                >
                                                     <Button
                                                         onClick={async () => {
                                                             try {
@@ -442,7 +460,8 @@ const Table: React.FC<TableProps> = (props) => {
                                                         }}
                                                         variant="solid"
                                                         colorScheme="pink"
-                                                        size="sm">
+                                                        size="sm"
+                                                    >
                                                         <Icon as={BsFillTerminalFill} />
                                                     </Button>
                                                 </Tooltip>
@@ -483,7 +502,8 @@ const AlertWindow = ({ isOpen, cancelRef, onClose, isSuccess, setdes }) => {
                                 setdes(true);
                                 onClose();
                             }}
-                            colorScheme="red">
+                            colorScheme="red"
+                        >
                             Proceed
                         </Button>
                     </AlertDialogFooter>
@@ -607,7 +627,8 @@ export default function Page({ cli_redirect }) {
                         <Button
                             onClick={discolosure.onOpen}
                             colorScheme="blue"
-                            leftIcon={<Icon as={GrAdd} />}>
+                            leftIcon={<Icon as={GrAdd} />}
+                        >
                             Create Token
                         </Button>
                     </Flex>
@@ -628,7 +649,8 @@ export default function Page({ cli_redirect }) {
                                         }
                                         variant="solid"
                                         colorScheme="pink"
-                                        size="sm">
+                                        size="sm"
+                                    >
                                         <Icon as={BsFillTerminalFill} />
                                     </Button>
                                 </AlertDescription>

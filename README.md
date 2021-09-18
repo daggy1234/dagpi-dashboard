@@ -14,7 +14,7 @@
 
 -   Prettier
 
--         Formik + Yup
+-           Formik + Yup
 
 -   Stripe CHeckout
 

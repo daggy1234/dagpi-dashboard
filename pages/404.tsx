@@ -12,7 +12,8 @@ const NotFoundPage = () => {
                 justifyContent="center"
                 textAlign="center"
                 padding="10%"
-                color={color}>
+                color={color}
+            >
                 <Heading py={4} as="h1" size="xl">
                     404: NOT FOUND
                 </Heading>
@@ -24,7 +25,8 @@ const NotFoundPage = () => {
                     py={4}
                     size="lg"
                     leftIcon={<AiFillHome />}
-                    colorScheme="purple">
+                    colorScheme="purple"
+                >
                     Home
                 </Button>
             </Box>

@@ -42,7 +42,8 @@ const CallToActionWithAnnotation: React.FC<FancyCtaProps> = (props) => {
                     as={Box}
                     textAlign={'center'}
                     spacing={{ base: 8, md: 14 }}
-                    py={{ base: 15, md: 36 }}>
+                    py={{ base: 15, md: 36 }}
+                >
                     <Heading fontWeight={800} fontSize={{ base: '4xl', md: '6xl' }}>
                         {props.title}{' '}
                         <Text as={'span'} color={'purple.400'}>
@@ -68,7 +69,8 @@ const CallToActionWithAnnotation: React.FC<FancyCtaProps> = (props) => {
                         spacing={3}
                         align={'center'}
                         alignSelf={'center'}
-                        position={'relative'}>
+                        position={'relative'}
+                    >
                         <Button
                             colorScheme="purple"
                             onClick={() => {
@@ -77,7 +79,8 @@ const CallToActionWithAnnotation: React.FC<FancyCtaProps> = (props) => {
                             rounded={'full'}
                             fontSize={{ base: 15, md: 20 }}
                             px={{ base: 6, md: 12 }}
-                            py={2}>
+                            py={2}
+                        >
                             {props.button}
                         </Button>
                         <Box>
@@ -95,7 +98,8 @@ const CallToActionWithAnnotation: React.FC<FancyCtaProps> = (props) => {
                                 position={'absolute'}
                                 right={{ base: '-100px', md: '-125px' }}
                                 top={'-15px'}
-                                transform={'rotate(10deg)'}>
+                                transform={'rotate(10deg)'}
+                            >
                                 {props.fancy}
                             </Text>
                         </Box>

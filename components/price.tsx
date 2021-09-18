@@ -29,7 +29,8 @@ export const Card: React.FC<CardProps> = (props) => {
             border={isPopular ? '2px #B794F4 solid' : ''}
             maxW="md"
             width="100%"
-            {...rest}>
+            {...rest}
+        >
             {isPopular && (
                 <Flex
                     bg={mode('purple.500', 'purple.200')}
@@ -42,13 +43,15 @@ export const Card: React.FC<CardProps> = (props) => {
                     transform="translateX(-50%)"
                     borderRadius="0.5em"
                     justifyContent="center"
-                    alignItems="center">
+                    alignItems="center"
+                >
                     <Text
                         fontSize="xs"
                         textTransform="uppercase"
                         fontWeight="bold"
                         letterSpacing="wider"
-                        color={mode('white', 'gray.800')}>
+                        color={mode('white', 'gray.800')}
+                    >
                         Popular
                     </Text>
                 </Flex>
@@ -86,7 +89,8 @@ export const PricingCard = (props: PricingCardProps) => {
                 justify="center"
                 fontWeight="extrabold"
                 color={accentColor}
-                my="8">
+                my="8"
+            >
                 <Heading size="3xl" fontWeight="inherit" lineHeight="0.9em">
                     {price}
                 </Heading>

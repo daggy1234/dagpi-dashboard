@@ -75,7 +75,8 @@ function SplitWithImage() {
                         bg={useColorModeValue('blue.50', 'blue.900')}
                         p={2}
                         alignSelf={'flex-start'}
-                        rounded={'md'}>
+                        rounded={'md'}
+                    >
                         Donate to Dagpi
                     </Text>
                     <Heading>Running an api is hard</Heading>
@@ -204,13 +205,15 @@ export default function Page() {
                     color="white"
                     borderRadius="1rem"
                     px="2rem"
-                    maxWidth="64rem">
+                    maxWidth="64rem"
+                >
                     {data ? (
                         <PayPalScriptProvider
                             options={{
                                 'client-id': process.env.NEXT_PUBLIC_PYAPAL_C,
                                 currency: 'USD'
-                            }}>
+                            }}
+                        >
                             <Modal isOpen={isOpen} onClose={onClose}>
                                 <ModalOverlay />
                                 <ModalContent>
@@ -234,7 +237,8 @@ export default function Page() {
                                                         parseFloat(state),
                                                         data.status ? data.currency.code : 'USD'
                                                     )
-                                                }>
+                                                }
+                                            >
                                                 Secure Checkout
                                             </Button>
                                             <Box my={4}>
@@ -351,14 +355,16 @@ export default function Page() {
                                     my={3}
                                     fontWeight="600"
                                     color="rgba(255, 255, 255, 0.8)"
-                                    fontSize="1.25rem">{`Enter amount to donate in ${
+                                    fontSize="1.25rem"
+                                >{`Enter amount to donate in ${
                                     data.status ? data.currency.name : 'US Dollar'
                                 }`}</Text>
                                 <form
                                     onSubmit={(event) => {
                                         onOpen();
                                         event.preventDefault();
-                                    }}>
+                                    }}
+                                >
                                     <Flex w="100%" py={8}>
                                         <Box position="relative" width="100%" px={2}>
                                             <FormControl id="amount" color="black">
@@ -387,7 +393,8 @@ export default function Page() {
                                             position="relative"
                                             type="submit"
                                             px={10}
-                                            colorScheme="yellow">
+                                            colorScheme="yellow"
+                                        >
                                             Donate
                                         </Button>
                                     </Flex>

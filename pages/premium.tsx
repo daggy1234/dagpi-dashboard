@@ -124,7 +124,8 @@ export default function Page() {
                                 maxW="7xl"
                                 mx="auto"
                                 justifyItems="center"
-                                alignItems="center">
+                                alignItems="center"
+                            >
                                 <PricingCard
                                     data={{
                                         price: '$1',
@@ -144,7 +145,8 @@ export default function Page() {
                                                 CheckoutDonation('/api/payments/stripe-sub', 0)
                                             }
                                             variant="outline"
-                                            borderWidth="2px">
+                                            borderWidth="2px"
+                                        >
                                             Buy now
                                         </ActionButton>
                                     }
@@ -171,7 +173,8 @@ export default function Page() {
                                         <ActionButton
                                             onClick={() =>
                                                 CheckoutDonation('/api/payments/stripe-sub', 1)
-                                            }>
+                                            }
+                                        >
                                             Buy now
                                         </ActionButton>
                                     }
@@ -197,7 +200,8 @@ export default function Page() {
                                                 CheckoutDonation('/api/payments/stripe-sub', 2)
                                             }
                                             variant="outline"
-                                            borderWidth="2px">
+                                            borderWidth="2px"
+                                        >
                                             Buy now
                                         </ActionButton>
                                     }
@@ -210,30 +214,35 @@ export default function Page() {
                             px={8}
                             rounded="lg"
                             py={12}
-                            mx="auto">
+                            mx="auto"
+                        >
                             <Box
                                 w={{ base: 'full', md: 11 / 12, xl: 9 / 12 }}
                                 mx="auto"
                                 textAlign="left"
                                 py={12}
-                                pr={{ md: 20 }}>
+                                pr={{ md: 20 }}
+                            >
                                 <chakra.h2
                                     fontSize={{ base: '3xl', sm: '4xl' }}
                                     fontWeight="extrabold"
                                     lineHeight="shorter"
                                     color={useColorModeValue('white', 'gray.100')}
-                                    mb={6}>
+                                    mb={6}
+                                >
                                     <chakra.span display="block">Not convinced?</chakra.span>
                                     <chakra.span
                                         display="block"
-                                        color={useColorModeValue('white', 'purple.200')}>
+                                        color={useColorModeValue('white', 'purple.200')}
+                                    >
                                         Try dagpi free tier!
                                     </chakra.span>
                                 </chakra.h2>
                                 <chakra.p
                                     mb={6}
                                     fontSize="lg"
-                                    color={useColorModeValue('gray.200', 'gray.300')}>
+                                    color={useColorModeValue('gray.200', 'gray.300')}
+                                >
                                     Completely free with no credit card required, start using dagpi
                                     with some great features! When you&apos;re ready you can always
                                     update!
@@ -241,18 +250,21 @@ export default function Page() {
                                 <Stack
                                     direction={{ base: 'column', sm: 'row' }}
                                     mb={{ base: 4, md: 8 }}
-                                    spacing={2}></Stack>
+                                    spacing={2}
+                                ></Stack>
                             </Box>
                             <Box
                                 as="section"
                                 maxW="5xl"
                                 mx="auto"
                                 py="12"
-                                px={{ base: '0', md: '8' }}>
+                                px={{ base: '0', md: '8' }}
+                            >
                                 <SimpleGrid
                                     columns={{ base: 1, md: 2 }}
                                     spacingX="10"
-                                    spacingY={{ base: '8', md: '14' }}>
+                                    spacingY={{ base: '8', md: '14' }}
+                                >
                                     <Feature title="Performant and easy api" icon={<FcFlashOn />}>
                                         Enjoy the ease of dagpi! Use any of our amazing sdk&apos;s
                                         to easily inetgrate
@@ -263,13 +275,15 @@ export default function Page() {
                                     </Feature>
                                     <Feature
                                         title="Incredible statistics"
-                                        icon={<FcDoughnutChart />}>
+                                        icon={<FcDoughnutChart />}
+                                    >
                                         Enjoy amazing free user statistics at no additional cost!
                                         Right from the dashboard
                                     </Feature>
                                     <Feature
                                         title="0$, no credit card"
-                                        icon={<FcSalesPerformance />}>
+                                        icon={<FcSalesPerformance />}
+                                    >
                                         Enjoy free tier at an incredibly low cost! No credit card
                                         required
                                     </Feature>
@@ -289,7 +303,8 @@ export default function Page() {
                             variant="outline"
                             onClick={() => {
                                 router.push('/billing');
-                            }}>
+                            }}
+                        >
                             Billing for Subscription
                         </Button>
                     </Box>

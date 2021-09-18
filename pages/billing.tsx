@@ -465,7 +465,16 @@ export default function Page() {
                     </Box>
                     <Box px={{ base: 1, md: 8 }}>
                         <Divider mt={10} mb={7} />
+                        <Flex>
                         <Heading>Donations</Heading>
+                        {big && <Spacer />}
+                            <Button
+                                onClick={() => router.push('/donate')}
+                                colorScheme="purple"
+                                leftIcon={<Icon as={BsArrowLeftShort} />}>
+                                Donate
+                            </Button>
+                        </Flex>
                         {data.items.length != 0 && (
                             <Box as="section" p="10">
                                 <Box maxW="7xl" mx="auto" px={{ base: '1', md: '12' }}>
