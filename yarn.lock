@@ -2504,10 +2504,10 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
-dagpijs@^1.1.4:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/dagpijs/-/dagpijs-1.1.5.tgz#4c414359f5ada4816c971e866fcb238547ed036d"
-  integrity sha512-Jhgb5p2N0pJMpz60KJaThbPWuGM5658hEbh06RVexCWBVlCyOQOXdYzwaqAhpInvvL7TSaJ9ydzfeQB3pgZuSg==
+dagpijs@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/dagpijs/-/dagpijs-2.0.1.tgz#9ea02defbd1f0462e8e95530e884d3f2bfbecaaf"
+  integrity sha512-yRPX8w6vq36nZ++rfkeVWeAENpHGmCPA0xacg/RY+lcPlkw+o6HQctC8S8T1m6pPUcIQaVWHXR4UfRN+hHBSAg==
   dependencies:
     axios "^0.21.1"
 

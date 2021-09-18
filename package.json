@@ -33,7 +33,7 @@
         "aws-sdk": "^2.842.0",
         "coinbase-commerce-node": "^1.0.4",
         "copy-to-clipboard": "^3.3.1",
-        "dagpijs": "^1.1.4",
+        "dagpijs": "^2.0.1",
         "date-fns": "^2.16.1",
         "formik": "^2.2.6",
         "framer-motion": "4",
