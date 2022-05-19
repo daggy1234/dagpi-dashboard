@@ -39,7 +39,7 @@ interface App {
 }
 
 const validation = Yup.object().shape({
-    user: Yup.string().length(18, 'UserID must be proper').required('Req'),
+    user: Yup.string().required('Req'),
     name: Yup.string().required('Required'),
     url: Yup.string()
         .required('Required')
