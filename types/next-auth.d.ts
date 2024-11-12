@@ -1,5 +1,3 @@
-import NextAuth from 'next-auth';
-
 declare module 'next-auth' {
     interface Session {
         user: {
@@ -15,6 +13,40 @@ declare module 'next-auth' {
         accessToken: string;
         client_id: string;
     }
+
+    interface Profile {
+        id: string;
+        username: string;
+        avatar: string;
+        discriminator: string;
+        public_flags: string;
+        flags: string;
+        locale: string;
+        mfa_enabled: boolean;
+        email: string;
+        verified: boolean;
+        image_url: string;
+    }
+    interface Token {
+        profile_id: string;
+        joined_dagpi: string;
+        client_id: string;
+        profile: Profile;
+    }
+
+    interface Account {
+        provider: string;
+        type: string;
+        id: string;
+        accessToken: string;
+        accessTokenExpires: string;
+        refreshToken: string;
+        access_token: string;
+        expires_in: number;
+        refresh_token: string;
+        scope: string;
+        token_type: string;
+    }
 }
 
 declare module 'next-auth/jwt' {
@@ -25,32 +57,8 @@ declare module 'next-auth/jwt' {
         sub: string;
         client_id: string;
         joined_dagpi: string;
-        profile: {
-            id: string;
-            username: string;
-            avatar: string;
-            discriminator: string;
-            public_flags: string;
-            flags: string;
-            locale: string;
-            mfa_enabled: boolean;
-            email: string;
-            verified: boolean;
-            image_url: string;
-        };
-        account: {
-            provider: string;
-            type: string;
-            id: string;
-            accessToken: string;
-            accessTokenExpires: any;
-            refreshToken: string;
-            access_token: string;
-            expires_in: number;
-            refresh_token: string;
-            scope: string;
-            token_type: string;
-        };
+        profile: Profile;
+        account: Account;
         iat: number;
         exp: number;
     }

@@ -1,20 +1,23 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Client } from 'dagpijs';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const body = JSON.parse(req.body);
-    let dc;
+    const { method }: { method: string } = body;
+    let dc: Client;
     try {
         if (body.token) {
             dc = new Client(body.token);
         } else {
-            dc = new Client(process.env.DAGPI_TOKEN);
+            dc = new Client(process.env.DAGPI_TOKEN || '');
         }
-        const json = await dc[body.method]();
+        // @ts-expect-error poor typing
+        const json: any = await dc[method]();
         res.send({
-            json: json
+            json
         });
-    } catch (error) {
+    } catch (error: any) {
         res.send({
             response: error.toString(),
             status: error.status,

@@ -1,15 +1,17 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/client';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { getSession } from 'next-auth/react';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_KEY, {
-    apiVersion: '2020-08-27'
+const stripe = new Stripe(process.env.STRIPE_KEY || 'A', {
+    apiVersion: '2024-04-10'
 });
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const session = await getSession({ req });
+    // eslint-disable-next-line prettier/prettier
+    // @ts-expect-error the typing is not returning right sessioN???
+    const session: Session | null = await getSession({ req });
     const { amount } = req.body;
-    if (req.method != 'POST') {
+    if (req.method !== 'POST') {
         return res.status(405).send({ message: 'Not Posted' });
     }
     if (!session) {
@@ -29,11 +31,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const rl = [60, 90, 120];
 
     console.log(sp);
-    const customer = {};
-    if (customers['data'].length === 0) {
-        customer['customer_email'] = session.user.email;
+    let customer;
+    if (customers.data.length === 0) {
+        customer = { customer_email: session.user.email };
     } else {
-        customer['customer'] = customers['data'][0].id;
+        customer = { customer: customers.data[0].id };
     }
     const pi = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
@@ -60,7 +62,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         cancel_url: `${process.env.NEXTAUTH_URL}/post-payment?status=cancel`,
         ...customer
     });
-    res.status(200).send({ session: pi.id });
+    return res.status(200).send({ session: pi.id });
     // res.send({
     //     message: 'soon'
     // });

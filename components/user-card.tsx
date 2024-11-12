@@ -1,5 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
 import { Box, Image, List, ListIcon, ListItem, useColorModeValue } from '@chakra-ui/react';
-import React from 'react';
 import { AiFillTag, AiOutlineMail } from 'react-icons/ai';
 import { FaDiscord } from 'react-icons/fa';
 import { GoSignIn } from 'react-icons/go';
@@ -14,7 +14,7 @@ interface UserCardProps {
     created: string;
 }
 
-const UserCard: React.FC<UserCardProps> = (props) => {
+const UserCard: React.FC<UserCardProps> = (props: UserCardProps) => {
     return (
         <Box
             bg={useColorModeValue('white', 'gray.800')}
@@ -23,14 +23,13 @@ const UserCard: React.FC<UserCardProps> = (props) => {
             borderWidth="2px"
             borderRadius="lg"
             maxW={{ md: '2xl' }}
-            rounded={{ md: 'lg' }}
-        >
+            rounded={{ md: 'lg' }}>
             <Box w={{ md: '40%' }}>
                 <Box height={64} rounded={{ md: 'lg' }} bgSize="cover">
                     <Image
                         boxSize="2xs"
                         objectFit="cover"
-                        name={props.name}
+                        alt={props.name || ''}
                         src={`${props.image}?size=1024`}
                     />
                 </Box>

@@ -1,4 +1,5 @@
 import { Box, Stack, Text, useColorModeValue, VisuallyHidden } from '@chakra-ui/react';
+import { useMemo } from 'react';
 import { IconContext } from 'react-icons';
 import { AiFillGithub, AiOutlineMail } from 'react-icons/ai';
 import { BsFillLockFill } from 'react-icons/bs';
@@ -6,18 +7,17 @@ import { FaMoneyBillWaveAlt } from 'react-icons/fa';
 import { TiDocument } from 'react-icons/ti';
 
 import Link from './Link';
+import NextLink from './NextLink';
 import DiscordLogo from './svg/discord-logo';
 
-function BiSvg(props) {
+function BiSvg() {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             height={80}
             style={{ display: 'inline', marginLeft: '10px' }}
             width={40}
-            viewBox="0 0 800 480"
-            {...props}
-        >
+            viewBox="0 0 800 480">
             <g fillRule="evenodd">
                 <path fill="#d60270" d="M0 0h800v192H0z" />
                 <path fill="#9b4f96" d="M0 192h800v96H0z" />
@@ -28,16 +28,14 @@ function BiSvg(props) {
     );
 }
 
-function Indian(props) {
+function Indian() {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             height={80}
             style={{ display: 'inline', marginLeft: '10px' }}
             width={40}
-            viewBox="0 0 512 512"
-            {...props}
-        >
+            viewBox="0 0 512 512">
             <path
                 fill="#ff705b"
                 d="M216.27 154.856l7.406-28.24-10.783-3.694-21.268-32.513 13.206-3.234-6.761-11.867 19.551-40.135-15.862-9.55-35.808 1.894-43.996-19.289-22.746 13.617 15.395 13.495.79 31.79 24.857 27.068-20.163 36.347-.122 6.516-25.119 27.606 73.192 10.97 71.211-10.97z"
@@ -68,11 +66,19 @@ function Indian(props) {
     );
 }
 
-import NextLink from './NextLink';
-const Icon = (props) => {
+interface IconProps {
+    color: string;
+    name: string;
+    children: React.ReactNode;
+}
+
+const Icon = (props: IconProps) => {
+    const { color, name, children } = props;
+    const iconValue = useMemo(() => ({ color, className: name, size: '2em' }), [color, name]);
+
     return (
-        <IconContext.Provider value={{ color: props.color, className: props.name, size: '2em' }}>
-            <div>{props.children}</div>
+        <IconContext.Provider value={iconValue}>
+            <div>{children}</div>
         </IconContext.Provider>
     );
 };

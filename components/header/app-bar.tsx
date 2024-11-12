@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
     Box,
     Button,
@@ -17,29 +18,29 @@ import {
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { signIn, signOut, useSession } from 'next-auth/client';
-import { FaChevronDown } from 'react-icons/fa';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { FaChevronDown, FaMoon, FaSun } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md';
 
 import ExtLink from '../Link';
 import styles from '../link.module.scss';
 import NextLink from '../NextLink';
-const MenuItems = ({ children }) => (
+
+const MenuItems = ({ children }: { children: React.ReactNode }) => (
     <Heading
         as="h2"
         size="md"
         mt={{ base: 4, md: 0 }}
         display="block"
         textAlign="center"
-        color="white"
-    >
+        color="white">
         {children}
     </Heading>
 );
 
-export default function AppBar({ onOpen, ...rest }) {
-    const [session, loading] = useSession();
+export default function AppBar({ onOpen, ...rest }: { onOpen: () => void }) {
+    const { data: session, status } = useSession();
+    const loading = status === 'loading';
     const { toggleColorMode: toggleMode } = useColorMode();
     const text = useColorModeValue('dark', 'light');
     const SwitchIcon = useColorModeValue(FaMoon, FaSun);
@@ -54,21 +55,19 @@ export default function AppBar({ onOpen, ...rest }) {
             padding="1.5rem"
             bg={useColorModeValue('purple.500', 'purple.900')}
             color="white"
-            {...rest}
-        >
+            {...rest}>
             <Flex align="left" mr={5}>
                 <Box mt={{ base: '0px', sm: '0px' }} boxSize="20">
-                    <Image priority={true} height={120} width={100} alt="Dagpi" src="/dagpi.png" />
+                    <Image priority height={120} width={100} alt="Dagpi" src="/dagpi.png" />
                 </Box>
                 <Heading
                     ml="-10px"
                     mt={{ base: '20px', md: '20px' }}
                     as="h1"
                     size="xl"
-                    letterSpacing={'-.1rem'}
-                >
-                    <Link href="/">
-                        <a className={styles.nodec}>agpi</a>
+                    letterSpacing="-.1rem">
+                    <Link className={styles.nodec} href="/">
+                        agpi
                     </Link>
                 </Heading>
             </Flex>
@@ -93,8 +92,7 @@ export default function AppBar({ onOpen, ...rest }) {
                     fill="white"
                     width="12px"
                     viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
+                    xmlns="http://www.w3.org/2000/svg">
                     <title>Menu</title>
                     <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
                 </svg>
@@ -104,8 +102,7 @@ export default function AppBar({ onOpen, ...rest }) {
                 width={{ base: 'full', lg: 'auto' }}
                 alignItems="center"
                 spacing={4}
-                flexShrink={1}
-            >
+                flexShrink={1}>
                 <IconButton
                     size="md"
                     _hover={{}}
@@ -149,8 +146,7 @@ export default function AppBar({ onOpen, ...rest }) {
                                 leftIcon={<MdDashboard />}
                                 color="white"
                                 _hover={{ color: 'purple.500', bg: 'white' }}
-                                border="1px"
-                            >
+                                border="1px">
                                 Dashboard
                             </Button>
                         </Link>
@@ -168,24 +164,24 @@ export default function AppBar({ onOpen, ...rest }) {
                                 _hover={{}}
                                 color="white"
                                 colorScheme="purple"
-                                rightIcon={<FaChevronDown />}
-                            >
+                                rightIcon={<FaChevronDown />}>
                                 <CImage
                                     boxSize="2rem"
                                     borderRadius="full"
-                                    src={session.user.image}
-                                    alt={session.user.name}
+                                    src={session?.user?.image || ''}
+                                    alt={session?.user?.name || 'User'}
                                 />
                             </MenuButton>
                             <MenuList>
                                 <MenuGroup isTruncated textAlign="left" color={bw} title="Id">
-                                    <MenuItem color={bw}>{session.user.id}</MenuItem>
+                                    {/* @ts-ignore */}
+                                    <MenuItem color={bw}>{session.id || 'id'}</MenuItem>
                                 </MenuGroup>
                                 <MenuGroup textAlign="left" color={bw} title="Name">
-                                    <MenuItem color={bw}>{session.user.name}</MenuItem>
+                                    <MenuItem color={bw}>{session?.user?.name}</MenuItem>
                                 </MenuGroup>
                                 <MenuGroup textAlign="left" color={bw} title="Email">
-                                    <MenuItem color={bw}>{session.user.email}</MenuItem>
+                                    <MenuItem color={bw}>{session?.user?.email}</MenuItem>
                                 </MenuGroup>
                                 <MenuDivider />
                                 <MenuItem
@@ -196,8 +192,7 @@ export default function AppBar({ onOpen, ...rest }) {
                                     onClick={(e) => {
                                         e.preventDefault();
                                         signOut();
-                                    }}
-                                >
+                                    }}>
                                     Logout
                                 </MenuItem>
                             </MenuList>
@@ -214,8 +209,7 @@ export default function AppBar({ onOpen, ...rest }) {
                                 onClick={(e) => {
                                     e.preventDefault();
                                     signIn('discord');
-                                }}
-                            >
+                                }}>
                                 Login
                             </Button>
                         </Box>

@@ -1,18 +1,17 @@
 import { NextSeo } from 'next-seo';
-import React from 'react';
 
-import siteConfig from '../config/site-config';
+import siteConfig from '../seo-config';
 
-const SEO = ({ title, description, url }) => (
+const SEO = ({ title, description, url }: { title: string; description: string; url: string }) => (
     <NextSeo
         title={title}
         description={description}
         openGraph={{
             type: 'website',
             locale: 'en_US',
-            url: url,
-            title: title,
-            description: description,
+            url,
+            title,
+            description,
             site_name: 'Dagpi: A fast and easy to use API',
             images: [
                 {

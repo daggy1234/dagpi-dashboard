@@ -1,3 +1,6 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { StatLabelProps, StatNumberProps, StatProps } from '@chakra-ui/react';
 import {
     Box,
     Button,
@@ -11,22 +14,18 @@ import {
     Stack,
     Stat as ChakraStat,
     StatLabel as ChakraStatLabel,
-    StatLabelProps,
     StatNumber as ChakraStatNumber,
-    StatNumberProps,
-    StatProps,
     Text,
     useBreakpointValue,
     useColorModeValue,
-    VStack
+    VStack,
+    Spinner
 } from '@chakra-ui/react';
-import format from 'date-fns/format';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import subDays from 'date-fns/subDays';
+import { formatDistanceToNow, subDays, format } from 'date-fns';
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/react';
+import type React from 'react';
 import { useEffect, useState } from 'react';
-import React from 'react';
 import { BsArrowLeftShort, BsFillBriefcaseFill } from 'react-icons/bs';
 import { FaCcStripe, FaPaypal } from 'react-icons/fa';
 import { RiBillFill } from 'react-icons/ri';
@@ -39,14 +38,8 @@ import SEO from '../components/seo';
 import CODES from '../lib/curr';
 
 interface Donation {
-    id: number;
-    client_id: string;
-    charge_id: string;
-    amount: number;
-    currency: string;
-    provider: string;
+    usdp: number;
     created_at: string;
-    receipt?: string;
 }
 
 interface TableProps {
@@ -82,7 +75,7 @@ export const Stat = (props: StatProps) => (
 );
 
 const Table: React.FC<TableProps> = (props) => {
-    const data = props.items;
+    const { items: data } = props;
     const router = useRouter();
     return (
         <Flex w="full" p={{ base: 5, md: 50 }} alignItems="center" justifyContent="center">
@@ -91,10 +84,10 @@ const Table: React.FC<TableProps> = (props) => {
                 w="full"
                 spacing={{ base: 6, md: 0 }}
                 borderStyle="solid"
-                borderWidth={data.length == 0 ? null : { base: null, md: '1px' }}
+                borderWidth={data.length === 0 ? '0px' : { base: '0px', md: '1px' }}
                 borderColor={useColorModeValue('gray.200', 'rgba(255, 255, 255, 0.16)')}
                 bg={{ sm: useColorModeValue('white', 'gray.800') }}>
-                {data.length == 0 ? (
+                {data.length === 0 ? (
                     <VStack m={3} textAlign="center" spacing={3}>
                         <Heading fontSize={{ base: 'lg', md: '2xl' }}>
                             You haven&apos;t purchased premium
@@ -111,7 +104,7 @@ const Table: React.FC<TableProps> = (props) => {
                     data.map((donation, pid) => {
                         return (
                             <Flex
-                                key={pid}
+                                key={donation.id}
                                 direction={{ base: 'row', sm: 'column' }}
                                 bg={useColorModeValue('white', 'gray.800')}>
                                 {useBreakpointValue({ base: true, sm: pid === 0 }) && (
@@ -119,9 +112,9 @@ const Table: React.FC<TableProps> = (props) => {
                                         spacingY={3}
                                         borderStyle="solid"
                                         borderBottom="1px"
-                                        borderRight={{ base: '1px', md: null }}
-                                        borderLeft={{ base: '1px', md: null }}
-                                        borderTop={{ base: '1px', md: null }}
+                                        borderRight={{ base: '1px', md: '0px' }}
+                                        borderLeft={{ base: '1px', md: '0px' }}
+                                        borderTop={{ base: '1px', md: '0px' }}
                                         borderColor={useColorModeValue('gray.200', 'gray.700')}
                                         columns={{ base: 1, sm: 5 }}
                                         w={{ base: 100, sm: 'full' }}
@@ -166,8 +159,8 @@ const Table: React.FC<TableProps> = (props) => {
                                     columns={{ base: 1, sm: 5 }}
                                     borderStyle="solid"
                                     borderBottom="1px"
-                                    borderRight={{ base: '1px', md: null }}
-                                    borderTop={{ base: '1px', md: null }}
+                                    borderRight={{ base: '1px', md: '0px' }}
+                                    borderTop={{ base: '1px', md: '0px' }}
                                     color={useColorModeValue(
                                         'gray.800',
                                         'rgba(255, 255, 255, 0.92)'
@@ -187,12 +180,16 @@ const Table: React.FC<TableProps> = (props) => {
                                     </span>
                                     <span>
                                         <Text>
-                                            {CODES[donation.currency.toUpperCase()]}
+                                            {
+                                                CODES[
+                                                    donation.currency.toUpperCase() as keyof typeof CODES
+                                                ]
+                                            }
                                             {donation.amount}.00
                                         </Text>
                                     </span>
                                     <span>
-                                        {donation.provider != 'stripe' ? (
+                                        {donation.provider !== 'stripe' ? (
                                             <Button
                                                 fontWeight="bold"
                                                 leftIcon={<Icon as={FaPaypal} color="#253b80" />}
@@ -222,8 +219,8 @@ const Table: React.FC<TableProps> = (props) => {
                                             rightIcon={<Icon as={RiBillFill} />}
                                             onClick={() =>
                                                 router.push(
-                                                    donation.provider == 'stripe'
-                                                        ? donation.receipt
+                                                    donation.provider === 'stripe'
+                                                        ? donation.receipt?.toString() || ''
                                                         : `https://www.paypal.com/myaccount/transactions/print-details/${donation.charge_id}`
                                                 )
                                             }>
@@ -244,7 +241,7 @@ function makeDateFancy(date: Date): string {
     return `${format(date, 'eee, PPPpp')} (${formatDistanceToNow(date, { addSuffix: true })})`;
 }
 
-const GenPortal = async (customer) => {
+const GenPortal = async (customer: any) => {
     // const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUB);
     //
 
@@ -261,18 +258,62 @@ const GenPortal = async (customer) => {
             })
         });
         const session = await response.json();
-        const url = session.url;
+        const { url } = session;
         window.location.href = url;
     }
 };
 
+interface Subscription {
+    customer: string;
+    subscription: {
+        subscription_id: string;
+        subscription_start: string;
+        subscription_end: string;
+        active: boolean;
+        cancelled: boolean;
+        ratelimit: number;
+        price_id: string;
+    };
+}
+
+interface Price {
+    id: string;
+    unit_amount: number;
+    product: {
+        name: string;
+        description: string;
+    };
+    price: {
+        id: string;
+        active: boolean;
+        type: string;
+        unit_amount: number;
+        currency: string;
+    };
+}
+
+interface Donation {
+    id: number;
+    client_id: string;
+    charge_id: string;
+    amount: number;
+    currency: string;
+    provider: string;
+    created_at: string;
+    receipt?: string;
+}
+interface Donations {
+    items: Donation[];
+}
+
 export default function Page() {
     const big = useBreakpointValue({ base: false, md: true });
-    const [session, loading] = useSession();
+    const { data: session, status } = useSession();
+    const loading = status === 'loading';
     const router = useRouter();
-    const [data, SetData] = useState(null);
-    const [subscription, SetSubscription] = useState(null);
-    const [price, priceData] = useState(null);
+    const [data, SetData] = useState<Donations | null>(null);
+    const [subscription, SetSubscription] = useState<Subscription | null>(null);
+    const [price, priceData] = useState<Price | null>(null);
 
     useEffect(() => {
         const json = async () => {
@@ -303,7 +344,7 @@ export default function Page() {
         subscription_data();
     }, [session]);
 
-    if (typeof window !== 'undefined' && loading) return null;
+    if (loading) return <Spinner />;
 
     if (!session) {
         return (
@@ -344,110 +385,104 @@ export default function Page() {
                     <Box rounded="md" p={6} bg={useColorModeValue('gray.100', 'inherit')}>
                         <Heading ml={{ base: 0, md: 12 }}>Premium</Heading>
                         {subscription.customer && subscription.subscription && price ? (
-                            <>
-                                <Flex
-                                    direction={{ base: 'column', md: 'row' }}
-                                    py={{ base: 0, md: 10 }}
-                                    px={{ base: 0, md: 20 }}>
-                                    <Box
-                                        w={{ base: '100%', md: '35%' }}
-                                        bg={useColorModeValue('white', 'gray.800')}
-                                        alignItems="center"
-                                        rounded="lg"
-                                        overflow="hidden"
-                                        my={3}>
-                                        <Box py={6} px={6}>
-                                            <chakra.h1
-                                                fontSize="xl"
-                                                fontWeight="bold"
-                                                color={useColorModeValue('gray.800', 'white')}>
-                                                {price.product.name}
+                            <Flex
+                                direction={{ base: 'column', md: 'row' }}
+                                py={{ base: 0, md: 10 }}
+                                px={{ base: 0, md: 20 }}>
+                                <Box
+                                    w={{ base: '100%', md: '35%' }}
+                                    bg={useColorModeValue('white', 'gray.800')}
+                                    alignItems="center"
+                                    rounded="lg"
+                                    overflow="hidden"
+                                    my={3}>
+                                    <Box py={6} px={6}>
+                                        <chakra.h1
+                                            fontSize="xl"
+                                            fontWeight="bold"
+                                            color={useColorModeValue('gray.800', 'white')}>
+                                            {price.product.name}
+                                        </chakra.h1>
+
+                                        <chakra.p
+                                            py={2}
+                                            color={useColorModeValue('gray.700', 'gray.400')}>
+                                            {price.product.description}
+                                        </chakra.p>
+
+                                        <Flex
+                                            alignItems="center"
+                                            mt={4}
+                                            color={useColorModeValue('gray.700', 'gray.200')}>
+                                            <Icon as={BsFillBriefcaseFill} h={6} w={6} mr={2} />
+
+                                            <chakra.h1 px={2} fontSize="md">
+                                                {subscription.subscription.ratelimit} req/s
                                             </chakra.h1>
+                                        </Flex>
 
-                                            <chakra.p
-                                                py={2}
-                                                color={useColorModeValue('gray.700', 'gray.400')}>
-                                                {price.product.description}
-                                            </chakra.p>
+                                        <Flex
+                                            alignItems="center"
+                                            mt={4}
+                                            color={useColorModeValue('gray.700', 'gray.200')}>
+                                            <Icon as={RiBillFill} h={6} w={6} mr={2} />
 
-                                            <Flex
-                                                alignItems="center"
-                                                mt={4}
-                                                color={useColorModeValue('gray.700', 'gray.200')}>
-                                                <Icon as={BsFillBriefcaseFill} h={6} w={6} mr={2} />
-
-                                                <chakra.h1 px={2} fontSize="md">
-                                                    {subscription.subscription.ratelimit} req/s
-                                                </chakra.h1>
-                                            </Flex>
-
-                                            <Flex
-                                                alignItems="center"
-                                                mt={4}
-                                                color={useColorModeValue('gray.700', 'gray.200')}>
-                                                <Icon as={RiBillFill} h={6} w={6} mr={2} />
-
-                                                <chakra.h1 px={2} fontSize="medium">
-                                                    {`${
-                                                        price.price.unit_amount / 100
-                                                    }.00$ per month`}
-                                                </chakra.h1>
-                                            </Flex>
-                                            <Button
-                                                m="5%"
-                                                size="lg"
-                                                onClick={() => GenPortal(subscription.customer)}
-                                                colorScheme="purple">
-                                                Manage Subscription
-                                            </Button>
-                                        </Box>
+                                            <chakra.h1 px={2} fontSize="medium">
+                                                {`${price.price.unit_amount / 100}.00$ per month`}
+                                            </chakra.h1>
+                                        </Flex>
+                                        <Button
+                                            m="5%"
+                                            size="lg"
+                                            onClick={() => GenPortal(subscription.customer)}
+                                            colorScheme="purple">
+                                            Manage Subscription
+                                        </Button>
                                     </Box>
-                                    <FancyCard
-                                        title="Subscription Info"
-                                        properties={[
-                                            [
-                                                'Subscription Id',
-                                                subscription.subscription.subscription_id
-                                            ],
-                                            [
-                                                'Billing Start',
-                                                makeDateFancy(
-                                                    new Date(
-                                                        subscription.subscription.subscription_start
-                                                    )
+                                </Box>
+                                <FancyCard
+                                    title="Subscription Info"
+                                    properties={[
+                                        [
+                                            'Subscription Id',
+                                            subscription.subscription.subscription_id
+                                        ],
+                                        [
+                                            'Subscribed from',
+                                            makeDateFancy(
+                                                new Date(
+                                                    subscription.subscription.subscription_start
                                                 )
-                                            ],
-                                            [
-                                                'Billing End',
-                                                makeDateFancy(
-                                                    subDays(
-                                                        new Date(
-                                                            subscription.subscription.subscription_end
-                                                        ),
-                                                        2
-                                                    )
-                                                )
-                                            ],
-                                            [
-                                                'Subscription End',
-                                                makeDateFancy(
+                                            )
+                                        ],
+                                        [
+                                            'Billing End',
+                                            makeDateFancy(
+                                                subDays(
                                                     new Date(
                                                         subscription.subscription.subscription_end
-                                                    )
+                                                    ),
+                                                    2
                                                 )
-                                            ],
-                                            [
-                                                'Status',
-                                                subscription.subscription.active
-                                                    ? 'Active'
-                                                    : subscription.subscription.cancelled
-                                                    ? 'Cancelled'
-                                                    : 'Inactive'
-                                            ]
-                                        ]}
-                                    />
-                                </Flex>
-                            </>
+                                            )
+                                        ],
+                                        [
+                                            'Subscription End',
+                                            makeDateFancy(
+                                                new Date(subscription.subscription.subscription_end)
+                                            )
+                                        ],
+                                        [
+                                            'Status',
+                                            subscription.subscription.active
+                                                ? 'Active'
+                                                : subscription.subscription.cancelled
+                                                  ? 'Cancelled'
+                                                  : 'Inactive'
+                                        ]
+                                    ]}
+                                />
+                            </Flex>
                         ) : (
                             <VStack m={5} textAlign="center">
                                 <Heading fontSize={{ base: 'lg', md: '2xl' }}>
@@ -466,8 +501,8 @@ export default function Page() {
                     <Box px={{ base: 1, md: 8 }}>
                         <Divider mt={10} mb={7} />
                         <Flex>
-                        <Heading>Donations</Heading>
-                        {big && <Spacer />}
+                            <Heading>Donations</Heading>
+                            {big && <Spacer />}
                             <Button
                                 onClick={() => router.push('/donate')}
                                 colorScheme="purple"
@@ -475,7 +510,7 @@ export default function Page() {
                                 Donate
                             </Button>
                         </Flex>
-                        {data.items.length != 0 && (
+                        {data.items.length !== 0 && (
                             <Box as="section" p="10">
                                 <Box maxW="7xl" mx="auto" px={{ base: '1', md: '12' }}>
                                     <SimpleGrid columns={{ base: 1, md: 3 }} spacing="6">

@@ -2,6 +2,7 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+
 export default function Page() {
     return (
         <Layout>

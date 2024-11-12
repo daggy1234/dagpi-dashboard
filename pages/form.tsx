@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-useless-escape */
 import {
     AlertDialog,
@@ -10,6 +11,7 @@ import {
     Checkbox,
     Flex,
     FormControl,
+    Spinner,
     FormErrorMessage,
     FormLabel,
     Heading,
@@ -20,14 +22,14 @@ import {
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import Router from 'next/router';
-import { useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/react';
 import React from 'react';
 import * as Yup from 'yup';
 
 import AccessDenied from '../components/access-denied';
 import Layout from '../components/layout';
 import NextLink from '../components/NextLink';
-import App from './_app';
+import { bool } from 'aws-sdk/clients/signer';
 
 interface App {
     user: string;
@@ -55,7 +57,18 @@ const validation = Yup.object().shape({
     terms: Yup.boolean().required().oneOf([true], 'Please accept our terms')
 });
 
-const Alert = ({ isOpen, cancelRef, onClose, isSuccess }) => {
+const Alert = ({
+    isOpen,
+    cancelRef,
+    onClose,
+    isSuccess
+}: {
+    isOpen: bool;
+    isSuccess: bool;
+    onClose: () => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    cancelRef: React.MutableRefObject<any>;
+}) => {
     return (
         <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={cancelRef}>
             <AlertDialogOverlay>
@@ -70,8 +83,7 @@ const Alert = ({ isOpen, cancelRef, onClose, isSuccess }) => {
                         <Button
                             onClick={onClose}
                             colorScheme={isSuccess ? 'green' : 'red'}
-                            ref={cancelRef}
-                        >
+                            ref={cancelRef}>
                             Ok
                         </Button>
                     </AlertDialogFooter>
@@ -81,12 +93,12 @@ const Alert = ({ isOpen, cancelRef, onClose, isSuccess }) => {
     );
 };
 export default function FormikExample() {
-    const [session, loading] = useSession();
+    const { data: session, status } = useSession();
     const [isOpen, setIsOpen] = React.useState(false);
     const [success, setSuccess] = React.useState(true);
     const onClose = () => setIsOpen(false);
     const cancelRef = React.useRef();
-    if (typeof window !== 'undefined' && loading) return null;
+    if (status === 'loading') return <Spinner />;
     if (!session) {
         return (
             <Layout>
@@ -102,7 +114,8 @@ export default function FormikExample() {
                     <Heading>Submit this form to add an app!</Heading>
                     <Formik
                         initialValues={{
-                            user: session.user.id,
+                            // @ts-expect-error id exixts
+                            user: session?.user?.id,
                             name: '',
                             url: '',
                             description: '',
@@ -131,15 +144,13 @@ export default function FormikExample() {
                                     Router.push('/');
                                 }
                             }, 1000);
-                        }}
-                    >
-                        {(props) => (
+                        }}>
+                        {(props: { isSubmitting: bool }) => (
                             <Form>
                                 <Field name="user">
-                                    {({ field, form }) => (
+                                    {({ field, form }: any) => (
                                         <FormControl
-                                            isInvalid={form.errors.user && form.touched.user}
-                                        >
+                                            isInvalid={form.errors.user && form.touched.user}>
                                             <FormLabel htmlFor="user">UserId: </FormLabel>
                                             <Input
                                                 {...field}
@@ -147,7 +158,8 @@ export default function FormikExample() {
                                                 placeholder="user"
                                                 size="lg"
                                                 isReadOnly
-                                                value={session.user.id}
+                                                // @ts-expect-error id exixts
+                                                value={session?.user?.id}
                                                 errorBorderColor="crimson"
                                                 focusBorderColor="purple.400"
                                             />
@@ -156,10 +168,9 @@ export default function FormikExample() {
                                     )}
                                 </Field>
                                 <Field name="name">
-                                    {({ field, form }) => (
+                                    {({ field, form }: any) => (
                                         <FormControl
-                                            isInvalid={form.errors.name && form.touched.name}
-                                        >
+                                            isInvalid={form.errors.name && form.touched.name}>
                                             <FormLabel htmlFor="name">App Name</FormLabel>
                                             <Input
                                                 {...field}
@@ -174,10 +185,9 @@ export default function FormikExample() {
                                     )}
                                 </Field>
                                 <Field name="url">
-                                    {({ field, form }) => (
+                                    {({ field, form }: any) => (
                                         <FormControl
-                                            isInvalid={form.errors.url && form.touched.url}
-                                        >
+                                            isInvalid={form.errors.url && form.touched.url}>
                                             <FormLabel htmlFor="url">
                                                 A URL to locate the app. This can be a website, bot
                                                 listing or invite link.
@@ -195,12 +205,11 @@ export default function FormikExample() {
                                     )}
                                 </Field>
                                 <Field name="description">
-                                    {({ field, form }) => (
+                                    {({ field, form }: any) => (
                                         <FormControl
                                             isInvalid={
                                                 form.errors.description && form.touched.description
-                                            }
-                                        >
+                                            }>
                                             <FormLabel htmlFor="description">
                                                 Describe Your App
                                             </FormLabel>
@@ -218,10 +227,9 @@ export default function FormikExample() {
                                     )}
                                 </Field>
                                 <Field name="prefix">
-                                    {({ field, form }) => (
+                                    {({ field, form }: any) => (
                                         <FormControl
-                                            isInvalid={form.errors.prefix && form.touched.prefix}
-                                        >
+                                            isInvalid={form.errors.prefix && form.touched.prefix}>
                                             <FormLabel htmlFor="prefix">
                                                 if your app is a bot, state it&apos;s prefix. This
                                                 is optional
@@ -241,10 +249,9 @@ export default function FormikExample() {
                                     )}
                                 </Field>
                                 <Field name="terms">
-                                    {({ field, form }) => (
+                                    {({ field, form }: any) => (
                                         <FormControl
-                                            isInvalid={form.errors.terms && form.touched.terms}
-                                        >
+                                            isInvalid={form.errors.terms && form.touched.terms}>
                                             <HStack>
                                                 <Checkbox {...field} id="terms" />
                                                 <FormLabel htmlFor="terms">
@@ -264,8 +271,7 @@ export default function FormikExample() {
                                     colorScheme="purple"
                                     isLoading={props.isSubmitting}
                                     size="lg"
-                                    type="submit"
-                                >
+                                    type="submit">
                                     Submit
                                 </Button>
                             </Form>

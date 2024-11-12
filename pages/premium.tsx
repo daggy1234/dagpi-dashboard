@@ -1,20 +1,21 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { ButtonProps } from '@chakra-ui/react';
 import {
     Box,
     Button,
-    ButtonProps,
     chakra,
     Flex,
     Heading,
     SimpleGrid,
+    Spinner,
     Stack,
     Text,
     useColorModeValue
 } from '@chakra-ui/react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useRouter } from 'next/router';
-import { signIn } from 'next-auth/client';
-import { useSession } from 'next-auth/client';
-import React from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import type React from 'react';
 import { useEffect, useState } from 'react';
 import { BsBarChart, BsBarChartFill } from 'react-icons/bs';
 import { FcBullish, FcDoughnutChart, FcFlashOn, FcSalesPerformance } from 'react-icons/fc';
@@ -23,6 +24,7 @@ import { GiNetworkBars } from 'react-icons/gi';
 import Layout from '../components/layout';
 import { PricingCard } from '../components/price';
 import SEO from '../components/seo';
+
 const ActionButton = (props: ButtonProps) => (
     <Button colorScheme="purple" size="lg" w="full" fontWeight="extrabold" py="8" {...props} />
 );
@@ -51,30 +53,34 @@ export const Feature = (props: FeatureProps) => {
 };
 
 export default function Page() {
-    const [session, loading] = useSession();
+    const { data: session, status } = useSession();
+    const loading = status === 'loading';
     const [subscription, SetSubscription] = useState(null);
     const router = useRouter();
 
     const CheckoutDonation = async (url: string, amount: number) => {
         // alert(`Item with id: ${amount} to be checked out!`);
-        const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUB);
+        const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUB || '');
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                amount: amount
+                amount
             })
         });
         console.log(response);
         if (response.status === 401) {
             signIn('discord');
         } else {
-            const session = await response.json();
-            console.log(session);
+            if (!stripe) {
+                return alert('error creating stripe object, please try again later or contact us');
+            }
+            const sessionResp = await response.json();
+            console.log(sessionResp);
             const result = await stripe.redirectToCheckout({
-                sessionId: session.session
+                sessionId: sessionResp.session
             });
 
             if (result.error) {
@@ -83,16 +89,14 @@ export default function Page() {
         }
     };
 
-    function isThereNoSub(inp): boolean {
+    function isThereNoSub(inp: any): boolean {
         if (!inp) {
             return true;
-        } else {
-            if (inp.error) {
-                return true;
-            } else {
-                return inp.data == false;
-            }
         }
+        if (inp.error) {
+            return true;
+        }
+        return inp.data === false;
     }
 
     useEffect(() => {
@@ -105,7 +109,7 @@ export default function Page() {
         subscription_data();
     }, [session]);
 
-    if (typeof window !== 'undefined' && loading) return null;
+    if (loading) return <Spinner />;
 
     return (
         <Layout>
@@ -124,8 +128,7 @@ export default function Page() {
                                 maxW="7xl"
                                 mx="auto"
                                 justifyItems="center"
-                                alignItems="center"
-                            >
+                                alignItems="center">
                                 <PricingCard
                                     data={{
                                         price: '$1',
@@ -145,8 +148,7 @@ export default function Page() {
                                                 CheckoutDonation('/api/payments/stripe-sub', 0)
                                             }
                                             variant="outline"
-                                            borderWidth="2px"
-                                        >
+                                            borderWidth="2px">
                                             Buy now
                                         </ActionButton>
                                     }
@@ -173,8 +175,7 @@ export default function Page() {
                                         <ActionButton
                                             onClick={() =>
                                                 CheckoutDonation('/api/payments/stripe-sub', 1)
-                                            }
-                                        >
+                                            }>
                                             Buy now
                                         </ActionButton>
                                     }
@@ -200,8 +201,7 @@ export default function Page() {
                                                 CheckoutDonation('/api/payments/stripe-sub', 2)
                                             }
                                             variant="outline"
-                                            borderWidth="2px"
-                                        >
+                                            borderWidth="2px">
                                             Buy now
                                         </ActionButton>
                                     }
@@ -214,35 +214,30 @@ export default function Page() {
                             px={8}
                             rounded="lg"
                             py={12}
-                            mx="auto"
-                        >
+                            mx="auto">
                             <Box
                                 w={{ base: 'full', md: 11 / 12, xl: 9 / 12 }}
                                 mx="auto"
                                 textAlign="left"
                                 py={12}
-                                pr={{ md: 20 }}
-                            >
+                                pr={{ md: 20 }}>
                                 <chakra.h2
                                     fontSize={{ base: '3xl', sm: '4xl' }}
                                     fontWeight="extrabold"
                                     lineHeight="shorter"
                                     color={useColorModeValue('white', 'gray.100')}
-                                    mb={6}
-                                >
+                                    mb={6}>
                                     <chakra.span display="block">Not convinced?</chakra.span>
                                     <chakra.span
                                         display="block"
-                                        color={useColorModeValue('white', 'purple.200')}
-                                    >
+                                        color={useColorModeValue('white', 'purple.200')}>
                                         Try dagpi free tier!
                                     </chakra.span>
                                 </chakra.h2>
                                 <chakra.p
                                     mb={6}
                                     fontSize="lg"
-                                    color={useColorModeValue('gray.200', 'gray.300')}
-                                >
+                                    color={useColorModeValue('gray.200', 'gray.300')}>
                                     Completely free with no credit card required, start using dagpi
                                     with some great features! When you&apos;re ready you can always
                                     update!
@@ -251,20 +246,18 @@ export default function Page() {
                                     direction={{ base: 'column', sm: 'row' }}
                                     mb={{ base: 4, md: 8 }}
                                     spacing={2}
-                                ></Stack>
+                                />
                             </Box>
                             <Box
                                 as="section"
                                 maxW="5xl"
                                 mx="auto"
                                 py="12"
-                                px={{ base: '0', md: '8' }}
-                            >
+                                px={{ base: '0', md: '8' }}>
                                 <SimpleGrid
                                     columns={{ base: 1, md: 2 }}
                                     spacingX="10"
-                                    spacingY={{ base: '8', md: '14' }}
-                                >
+                                    spacingY={{ base: '8', md: '14' }}>
                                     <Feature title="Performant and easy api" icon={<FcFlashOn />}>
                                         Enjoy the ease of dagpi! Use any of our amazing sdk&apos;s
                                         to easily inetgrate
@@ -275,15 +268,13 @@ export default function Page() {
                                     </Feature>
                                     <Feature
                                         title="Incredible statistics"
-                                        icon={<FcDoughnutChart />}
-                                    >
+                                        icon={<FcDoughnutChart />}>
                                         Enjoy amazing free user statistics at no additional cost!
                                         Right from the dashboard
                                     </Feature>
                                     <Feature
                                         title="0$, no credit card"
-                                        icon={<FcSalesPerformance />}
-                                    >
+                                        icon={<FcSalesPerformance />}>
                                         Enjoy free tier at an incredibly low cost! No credit card
                                         required
                                     </Feature>
@@ -303,8 +294,7 @@ export default function Page() {
                             variant="outline"
                             onClick={() => {
                                 router.push('/billing');
-                            }}
-                        >
+                            }}>
                             Billing for Subscription
                         </Button>
                     </Box>

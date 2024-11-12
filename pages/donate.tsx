@@ -23,12 +23,11 @@ import {
     useDisclosure,
     VStack
 } from '@chakra-ui/react';
-import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/client';
-import { signIn } from 'next-auth/client';
-import { ReactElement, useEffect, useState } from 'react';
+import { useSession, signIn } from 'next-auth/react';
+import type { ReactElement } from 'react';
+import { useEffect, useState } from 'react';
 import { FaRegCreditCard } from 'react-icons/fa';
 import { HiCheckCircle } from 'react-icons/hi';
 import {
@@ -43,7 +42,6 @@ import {
 import Layout from '../components/layout';
 import Loading from '../components/loading';
 import SEO from '../components/seo';
-import styles from '../styles/paypal.module.scss';
 
 interface FeatureProps {
     text: string;
@@ -53,8 +51,8 @@ interface FeatureProps {
 
 const Feature = ({ text, icon, iconBg }: FeatureProps) => {
     return (
-        <Stack py={2} direction={'row'} align={'center'}>
-            <Flex w={8} h={8} align={'center'} justify={'center'} rounded={'full'} bg={iconBg}>
+        <Stack py={2} direction="row" align="center">
+            <Flex w={8} h={8} align="center" justify="center" rounded="full" bg={iconBg}>
                 {icon}
             </Flex>
             <Text fontWeight={600}>{text}</Text>
@@ -64,105 +62,104 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
 
 function SplitWithImage() {
     return (
-        <Container maxW={'5xl'} py={12}>
+        <Container maxW="5xl" py={12}>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                 <Stack spacing={4}>
                     <Text
-                        textTransform={'uppercase'}
-                        color={'blue.400'}
+                        textTransform="uppercase"
+                        color="blue.400"
                         fontWeight={600}
-                        fontSize={'sm'}
+                        fontSize="sm"
                         bg={useColorModeValue('blue.50', 'blue.900')}
                         p={2}
-                        alignSelf={'flex-start'}
-                        rounded={'md'}
-                    >
+                        alignSelf="flex-start"
+                        rounded="md">
                         Donate to Dagpi
                     </Text>
                     <Heading>Running an api is hard</Heading>
-                    <Text color={'gray.500'} fontSize={'lg'}>
+                    <Text color="gray.500" fontSize="lg">
                         We love running dagpi! But running it is time consuming and expensive.
                         Although premium exists, if you want to support my work please do donate
                     </Text>
                     <Stack direction={{ base: 'column', md: 'row' }} spacing={{ base: 0, md: 6 }}>
                         <Flex direction="column">
                             <Feature
-                                icon={
-                                    <Icon as={IoAnalyticsSharp} color={'yellow.500'} w={5} h={5} />
-                                }
+                                icon={<Icon as={IoAnalyticsSharp} color="yellow.500" w={5} h={5} />}
                                 iconBg={useColorModeValue('yellow.100', 'yellow.900')}
-                                text={'Statistic Collection'}
+                                text="Statistic Collection"
                             />
                             <Feature
-                                icon={<Icon as={IoLogoBitcoin} color={'green.500'} w={5} h={5} />}
+                                icon={<Icon as={IoLogoBitcoin} color="green.500" w={5} h={5} />}
                                 iconBg={useColorModeValue('green.100', 'green.900')}
-                                text={'Server Costs'}
+                                text="Server Costs"
                             />
                             <Feature
-                                icon={
-                                    <Icon as={IoConstructSharp} color={'purple.500'} w={5} h={5} />
-                                }
+                                icon={<Icon as={IoConstructSharp} color="purple.500" w={5} h={5} />}
                                 iconBg={useColorModeValue('purple.100', 'purple.900')}
-                                text={'Constant Updates'}
+                                text="Constant Updates"
                             />
                         </Flex>
-                        <Flex direction="column" spacing={4}>
+                        <VStack spacing={4}>
                             <Feature
                                 icon={
-                                    <Icon
-                                        as={IoCodeSlashOutline}
-                                        color={'orange.500'}
-                                        w={5}
-                                        h={5}
-                                    />
+                                    <Icon as={IoCodeSlashOutline} color="orange.500" w={5} h={5} />
                                 }
                                 iconBg={useColorModeValue('orange.100', 'orange.900')}
-                                text={'Sdk maintanence'}
+                                text="Sdk maintanence"
                             />
                             <Feature
-                                icon={<Icon as={IoGitBranchSharp} color={'pink.500'} w={5} h={5} />}
+                                icon={<Icon as={IoGitBranchSharp} color="pink.500" w={5} h={5} />}
                                 iconBg={useColorModeValue('pink.100', 'pink.900')}
-                                text={'Open Sourcing'}
+                                text="Open Sourcing"
                             />
                             <Feature
-                                icon={
-                                    <Icon as={IoChatboxEllipses} color={'blue.500'} w={5} h={5} />
-                                }
+                                icon={<Icon as={IoChatboxEllipses} color="blue.500" w={5} h={5} />}
                                 iconBg={useColorModeValue('blue.100', 'blue.900')}
-                                text={'Chat Support'}
+                                text="Chat Support"
                             />
-                        </Flex>
+                        </VStack>
                     </Stack>
                 </Stack>
                 <Flex>
-                    <Image rounded={'md'} alt={'feature image'} src={'/svg/donate.svg'} />
+                    <Image rounded="md" alt="feature image" src="/svg/donate.svg" />
                 </Flex>
             </SimpleGrid>
         </Container>
     );
 }
+interface Data {
+    currency: {
+        code: string;
+        name: string;
+        symbol: string;
+    };
+    status: boolean;
+}
 
 export default function Page() {
     const [state, setState] = useState('');
-    const [session, loading] = useSession();
-    const [ppa, sppa] = useState(false);
-    const router = useRouter();
-    const [data, SetData] = useState(null);
+    const { data: session } = useSession();
+    const [data, SetData] = useState<Data | null>(null);
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const CheckoutDonation = async (url: string, amount: number, currency: string) => {
         // alert(`${amount}$ to be donated!`);
-        const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUB);
+        const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUB || 'ERROR');
+        if (!stripe) {
+            alert('Stripe failed to load');
+            return;
+        }
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                amount: amount,
-                currency: currency
+                amount,
+                currency
             })
         });
+        console.log(response);
         if (response.status === 401) {
             signIn('discord');
         } else {
@@ -205,15 +202,15 @@ export default function Page() {
                     color="white"
                     borderRadius="1rem"
                     px="2rem"
-                    maxWidth="64rem"
-                >
+                    maxWidth="64rem">
                     {data ? (
-                        <PayPalScriptProvider
-                            options={{
-                                'client-id': process.env.NEXT_PUBLIC_PYAPAL_C,
-                                currency: 'USD'
-                            }}
-                        >
+                        // <PayPalScriptProvider
+                        //     options={{
+                        //         'client-id': process.env.NEXT_PUBLIC_PYAPAL_C,
+                        //         currency: 'USD'
+                        //     }}
+                        // >
+                        <>
                             <Modal isOpen={isOpen} onClose={onClose}>
                                 <ModalOverlay />
                                 <ModalContent>
@@ -222,7 +219,7 @@ export default function Page() {
                                         donation
                                     </ModalHeader>
                                     <ModalBody mx="auto">
-                                        <Box mx="auto" justifySelf="center" justify="center">
+                                        <Box mx="auto" justifySelf="center">
                                             <Button
                                                 leftIcon={<Icon as={FaRegCreditCard} />}
                                                 bgGradient="linear(to-r, #a960ee, #90e0ff)"
@@ -231,17 +228,16 @@ export default function Page() {
                                                 my={4}
                                                 _hover={{ opacity: '0.8' }}
                                                 size="lg"
-                                                onClick={() =>
+                                                onClick={async () =>
                                                     CheckoutDonation(
                                                         '/api/payments/donation',
                                                         parseFloat(state),
                                                         data.status ? data.currency.code : 'USD'
                                                     )
-                                                }
-                                            >
+                                                }>
                                                 Secure Checkout
                                             </Button>
-                                            <Box my={4}>
+                                            {/* <Box my={4}>
                                                 {ppa ? (
                                                     <Button
                                                         className={styles.paypalButton}
@@ -336,8 +332,8 @@ export default function Page() {
                                                             ]
                                                         });
                                                     }}
-                                                />
-                                            </Box>
+                                                /> 
+                                            </Box> */}
                                         </Box>
                                     </ModalBody>
                                     <ModalFooter>
@@ -355,16 +351,14 @@ export default function Page() {
                                     my={3}
                                     fontWeight="600"
                                     color="rgba(255, 255, 255, 0.8)"
-                                    fontSize="1.25rem"
-                                >{`Enter amount to donate in ${
+                                    fontSize="1.25rem">{`Enter amount to donate in ${
                                     data.status ? data.currency.name : 'US Dollar'
                                 }`}</Text>
                                 <form
                                     onSubmit={(event) => {
                                         onOpen();
                                         event.preventDefault();
-                                    }}
-                                >
+                                    }}>
                                     <Flex w="100%" py={8}>
                                         <Box position="relative" width="100%" px={2}>
                                             <FormControl id="amount" color="black">
@@ -393,8 +387,7 @@ export default function Page() {
                                             position="relative"
                                             type="submit"
                                             px={10}
-                                            colorScheme="yellow"
-                                        >
+                                            colorScheme="yellow">
                                             Donate
                                         </Button>
                                     </Flex>
@@ -416,8 +409,9 @@ export default function Page() {
                                     </Box>
                                 </Flex>
                             </VStack>
-                        </PayPalScriptProvider>
+                        </>
                     ) : (
+                        // </PayPalScriptProvider>
                         <Loading />
                     )}
                 </Box>

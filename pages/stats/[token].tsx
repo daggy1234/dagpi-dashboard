@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     Box,
     Button,
@@ -27,12 +28,12 @@ import {
     useToast,
     VStack
 } from '@chakra-ui/react';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import dynamic from 'next/dynamic';
 import ErrorPage from 'next/error';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/react';
 import React from 'react';
 import { BiArrowBack, BiTimeFive } from 'react-icons/bi';
 import { FiChevronDown } from 'react-icons/fi';
@@ -47,7 +48,8 @@ const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 export default function Stats({
     data
 }: InferGetServerSidePropsType<typeof getServerSideProps>): JSX.Element {
-    const [session, loading] = useSession();
+    const { data: session, status } = useSession();
+    const loading = status === 'loading';
     const router = useRouter();
     const gw = useBreakpointValue({ base: '100%', md: '25%' });
     const textcolor = useColorModeValue('black', 'white');
@@ -82,7 +84,7 @@ export default function Stats({
             duration: 3000,
             isClosable: false
         });
-        router.push({ pathname: `/stats/${data.token}`, query: { token: data.token, tp: tp } });
+        router.push({ pathname: `/stats/${data.token}`, query: { token: data.token, tp } });
     };
 
     if (!data.present && !data.token) {
@@ -120,8 +122,7 @@ export default function Stats({
                                 rightIcon={<FiChevronDown />}
                                 mr={2}
                                 size="lg"
-                                as={Button}
-                            >
+                                as={Button}>
                                 Time Period
                             </MenuButton>
                             <MenuList>
@@ -177,8 +178,7 @@ export default function Stats({
                                 rightIcon={<FiChevronDown />}
                                 mr={2}
                                 size="lg"
-                                as={Button}
-                            >
+                                as={Button}>
                                 Time Period
                             </MenuButton>
                             <MenuList>
@@ -192,8 +192,7 @@ export default function Stats({
                                 alignSelf="flex-end"
                                 colorScheme="purple"
                                 size="lg"
-                                leftIcon={<BiArrowBack />}
-                            >
+                                leftIcon={<BiArrowBack />}>
                                 Dashboard
                             </Button>
                         </Link>
@@ -205,8 +204,7 @@ export default function Stats({
                             flexWrap: 'wrap',
                             boxSizing: 'border-box',
                             padding: '2%'
-                        }}
-                    >
+                        }}>
                         <Box as="div" mr="5%" color={textcolor}>
                             <Chart
                                 type="donut"
@@ -230,8 +228,7 @@ export default function Stats({
                             as="div"
                             border="2px"
                             borderRadius="12px"
-                            borderColor="rgb(226, 232, 240)"
-                        >
+                            borderColor="rgb(226, 232, 240)">
                             <StatGroup p={5}>
                                 <Stat size="lg" p={5}>
                                     <StatLabel fontSize="lg" fontWeight="bold">
@@ -366,7 +363,7 @@ export default function Stats({
                                         enabled: false
                                     },
                                     fill: {
-                                        type: 'solid',
+                                        type: 'solid'
                                     }
                                 }}
                                 height="300px"
@@ -417,7 +414,7 @@ export default function Stats({
                                 </Tr>
                             </Thead>
                             <Tbody>
-                                {data.data.ua.map((item, key) => (
+                                {data.data.ua.map((item: any, key: number) => (
                                     <Tr key={key}>
                                         <Td>{item[0]}</Td>
                                         <Td isNumeric>{item[1]}</Td>
@@ -433,9 +430,9 @@ export default function Stats({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const token = context.params.token;
-    const tp = context.query.tp;
-    if (token.length != 64) {
+    const token = context?.params?.token || '';
+    const tp = context?.query?.tp;
+    if (token.length !== 64) {
         return {
             notFound: true
         };
@@ -447,9 +444,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         };
     }
 
-    const res = await fetch(process.env.NEXTAUTH_URL + '/api/routes/base-stat', {
+    const res = await fetch(`${process.env.NEXTAUTH_URL || ''}/api/routes/base-stat`, {
         method: 'POST',
-        body: JSON.stringify({ token: token, tp: tp })
+        body: JSON.stringify({ token, tp })
     });
     const data = await res.json();
     if (!data) {

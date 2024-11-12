@@ -1,5 +1,5 @@
 import { Box, Button, Heading } from '@chakra-ui/react';
-import { signIn } from 'next-auth/client';
+import { signIn } from 'next-auth/react';
 
 import SEO from './seo';
 export default function AccessDenied() {
@@ -21,8 +21,7 @@ export default function AccessDenied() {
                 onClick={(e) => {
                     e.preventDefault();
                     signIn('discord');
-                }}
-            >
+                }}>
                 Sign In
             </Button>
         </Box>

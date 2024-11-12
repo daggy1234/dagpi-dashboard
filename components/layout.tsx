@@ -1,9 +1,14 @@
 import { Box } from '@chakra-ui/react';
+import type { ReactNode } from 'react';
 
 import Footer from './footer';
 import Header from './header/header';
 
-export default function Layout({ children }) {
+interface LayoutProps {
+    children: ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
     return (
         <>
             <Header />

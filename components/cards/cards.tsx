@@ -1,12 +1,25 @@
+/* eslint-disable @next/next/no-img-element */
 import { Box } from '@chakra-ui/react';
 
 import styles from './card.module.scss';
-function Card(props) {
+
+interface LibProps {
+    link: string;
+    title: string;
+    image: string;
+    language: string;
+    async: string;
+    coverage: string;
+    author: string;
+}
+
+function Card(props: LibProps) {
+    const { language, async, title, image, link, author, coverage } = props;
     return (
         <Box className={styles.card}>
             <header className={styles.cardHeader}>
                 <h2>
-                    <a href={props.link}>{props.title}</a>
+                    <a href={link}>{title}</a>
                 </h2>
             </header>
 
@@ -17,24 +30,24 @@ function Card(props) {
                         height="40px"
                         width="40px"
                         className={styles.authorAvatarImg}
-                        src={props.image}
-                        alt={props.title}
+                        src={image}
+                        alt={title}
                     />
                 </span>
                 <svg className={styles.halfCircle} viewBox="0 0 106 57">
-                    <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+                    <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4" />
                 </svg>
 
                 <div className="author-name">
                     <div className="author-name-prefix">Author</div>
-                    {props.author}
+                    {author}
                 </div>
             </div>
 
             <div className={styles.tags}>
-                <span>{props.language}</span>
-                <span>{props.async}</span>
-                <span>coverage: {props.coverage}</span>
+                <span>{language}</span>
+                <span>{async}</span>
+                <span>coverage: {coverage}</span>
             </div>
         </Box>
     );

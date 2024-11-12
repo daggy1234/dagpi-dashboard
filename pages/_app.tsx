@@ -1,14 +1,14 @@
 import './styles.scss';
 
 import { ChakraProvider } from '@chakra-ui/react';
-import { AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
-import { Provider } from 'next-auth/client';
+import { SessionProvider } from 'next-auth/react';
 import { DefaultSeo } from 'next-seo';
 import { useEffect } from 'react';
-
-import siteConfig from '../config/site-config';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import siteConfig from '../seo-config';
 import * as gtag from '../lib/analytics';
 
 // interface BaseBreakpointConfig extends Record<string, string> {
@@ -43,7 +43,7 @@ import * as gtag from '../lib/analytics';
 
 export default function App({ Component, pageProps }: AppProps) {
     useEffect(() => {
-        const handleRouteChange = (url) => {
+        const handleRouteChange = (url: string) => {
             gtag.pageview(url);
         };
         Router.events.on('routeChangeComplete', handleRouteChange);
@@ -70,12 +70,12 @@ export default function App({ Component, pageProps }: AppProps) {
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
             </Head>
-            <Provider options={{ clientMaxAge: 0, keepAlive: 0 }} session={pageProps.session}>
+            <SessionProvider session={pageProps.session}>
                 <ChakraProvider>
                     <DefaultSeo {...siteConfig.seo} />
                     <Component {...pageProps} />
                 </ChakraProvider>
-            </Provider>
+            </SessionProvider>
         </>
     );
 }

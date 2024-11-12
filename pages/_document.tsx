@@ -1,12 +1,16 @@
+/* eslint-disable react/no-danger */
 import { ColorModeScript } from '@chakra-ui/react';
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 
 import { GA_TRACKING_ID } from '../lib/analytics';
+
 export default class MyDocument extends NextDocument {
-    static async getInitialProps(ctx) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    static async getInitialProps(ctx: any) {
         const initialProps = await NextDocument.getInitialProps(ctx);
         return { ...initialProps };
     }
+
     render() {
         return (
             <Html lang="en">

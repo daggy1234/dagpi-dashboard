@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Client } from 'dagpijs';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const body = JSON.parse(req.body);
@@ -8,17 +9,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         if (body.token) {
             dc = new Client(body.token);
         } else {
-            dc = new Client(process.env.DAGPI_TOKEN);
+            dc = new Client(process.env.DAGPI_TOKEN || '');
         }
         const img = await dc.image_process(body.method, {
             url: body.url
         });
         res.send({
             format: img.format,
-            image: `data:image/${img.format};base64,` + img.image.toString('base64'),
+            image: `data:image/${img.format};base64,${img.image.toString('base64')}`,
             time: img.process_time
         });
-    } catch (error) {
+    } catch (error: any) {
         res.send({ response: error.toString(), status: error.status });
     }
 };

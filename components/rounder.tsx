@@ -1,9 +1,18 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable react/destructuring-assignment */
 import { Badge, Box, Container, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react';
 import { AutoPlay, Fade } from '@egjs/flicking-plugins';
 import Flicking from '@egjs/react-flicking';
 import Image from 'next/image';
 
-const Card = (props) => {
+interface Obj {
+    title: string;
+    api: string;
+    body: string;
+    url: string;
+}
+
+const Card = (props: Obj) => {
     return (
         <Container>
             <Flex
@@ -15,8 +24,7 @@ const Card = (props) => {
                 pb={{ base: '10', md: '20' }}
                 borderRadius="lg"
                 textAlign="justify"
-                overflow="hidden"
-            >
+                overflow="hidden">
                 <Box display="flex" flexDirection="column" mt="20px" mr="20px">
                     <Heading size="lg" isTruncated>
                         {props.title}
@@ -24,8 +32,7 @@ const Card = (props) => {
                             <Badge
                                 fontSize="0.5em"
                                 variant="subtle"
-                                colorScheme={props.api === 'data' ? 'teal' : 'pink'}
-                            >
+                                colorScheme={props.api === 'data' ? 'teal' : 'pink'}>
                                 {props.api}
                             </Badge>
                         </Box>
@@ -43,13 +50,6 @@ const Card = (props) => {
         </Container>
     );
 };
-
-interface Obj {
-    title: string;
-    api: string;
-    body: string;
-    url: string;
-}
 
 export default function Rounder() {
     // @ts-ignore
@@ -95,22 +95,30 @@ export default function Rounder() {
     return (
         <Box mt="100px" mb="150px">
             <Flicking
-                collectStatistics={false}
+                // collectStatistics={false}
                 className="flicking"
+                viewportTag="div"
+                cameraTag="div"
+                cameraClass=""
+                renderOnSameKey={false}
+                align="center"
                 style={{ paddingBottom: '15%' }}
-                circular={true}
+                circular
+                horizontal
                 duration={500}
                 // @ts-ignore
-                plugins={plugins}
-            >
-                {titles.map((object, index) => (
-                    <Card
-                        title={object.title}
-                        api={object.api}
-                        body={object.body}
-                        url={object.url}
-                        key={index}
-                    />
+                plugins={plugins}>
+                {titles.map((object) => (
+                    // <Box bg="gray.100" p={10}>Hello</Box>
+                    <Box>
+                        <Card
+                            title={object.title}
+                            api={object.api}
+                            body={object.body}
+                            url={object.url}
+                            key={object.title}
+                        />
+                    </Box>
                 ))}
             </Flicking>
         </Box>

@@ -1,6 +1,9 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable eqeqeq */
 import { Button, Container, Heading, Icon, Text } from '@chakra-ui/react';
-import { GetServerSideProps } from 'next';
+import type { GetServerSideProps } from 'next';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 import { HiCheckCircle } from 'react-icons/hi';
 import { RiErrorWarningFill } from 'react-icons/ri';
 import { TiCancel } from 'react-icons/ti';
@@ -8,7 +11,7 @@ import { TiCancel } from 'react-icons/ti';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-export default function Page({ props }) {
+export default function Page({ props }: { props: { id: string; status: string } }) {
     const BilUrl = async () => {
         // const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUB);
         const response = await fetch('/api/payments/billing', {
@@ -21,7 +24,7 @@ export default function Page({ props }) {
             })
         });
         const session = await response.json();
-        const url = session.url;
+        const { url } = session;
         window.location.href = url;
     };
     console.log(props);
@@ -32,8 +35,8 @@ export default function Page({ props }) {
                 description={`Dagpi Payment currently ${props.status}`}
                 url="https://dagpi.xyz/dashboard"
             />
-            <Container my="5%" maxW={null} mx="auto" textAlign="center" justifySelf="center">
-                {props.status == 'success' ? (
+            <Container my="5%" mx="auto" textAlign="center" justifySelf="center">
+                {props.status === 'success' ? (
                     <>
                         <Icon as={HiCheckCircle} color="green" fontSize="10em" />
                         <Heading size="2xl" m="2%">
@@ -82,11 +85,10 @@ export default function Page({ props }) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const status = context.query.status ? context.query.status : '';
-    let q = context.query.session_id;
-    q = q ? q : null;
+    const q = context.query.session_id || null;
     const props = {
         id: q,
-        status: status
+        status
     };
     if (!['success', 'cancel', 'error'].includes(status.toString())) {
         return {

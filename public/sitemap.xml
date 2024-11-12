@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://localhost:3000/</loc>
+        <loc>undefined/</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/billing</loc>
+        <loc>undefined/billing</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/dashboard</loc>
+        <loc>undefined/dashboard</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/donate</loc>
+        <loc>undefined/donate</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/form</loc>
+        <loc>undefined/form</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/playground</loc>
+        <loc>undefined/playground</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/post-payment</loc>
+        <loc>undefined/post-payment</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/premium</loc>
+        <loc>undefined/premium</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/privacy</loc>
+        <loc>undefined/privacy</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/terms</loc>
+        <loc>undefined/terms</loc>
     </url>
 
     <url>
-        <loc>http://localhost:3000/tokens</loc>
+        <loc>undefined/tokens</loc>
     </url>
 </urlset>

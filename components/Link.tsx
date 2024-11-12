@@ -1,11 +1,16 @@
+import type { ReactNode } from 'react';
+
 import styles from './link.module.scss';
 
-export default function ExtLink({ url, children }) {
+interface ExtProps {
+    url: string;
+    children: ReactNode;
+}
+
+export default function ExtLink({ url, children }: ExtProps) {
     return (
-        <>
-            <a href={url} className={styles.link}>
-                {children}
-            </a>
-        </>
+        <a href={url} className={styles.link}>
+            {children}
+        </a>
     );
 }

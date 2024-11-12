@@ -1,4 +1,13 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+interface elmType {
+    user_agent: string;
+    timestamp: number;
+    route: string;
+    api: string;
+}
 
 function genAll(sample: number, tp: number) {
     const n = new Date().getTime();
@@ -13,10 +22,10 @@ function genAll(sample: number, tp: number) {
     return ts;
 }
 
-function GenCounter(data) {
+function GenCounter<T>(data: T[]): [T, number][] {
     const unique = [...new Set(data)];
-    const uas = [];
-    unique.map((elm) => uas.push([elm, data.filter((el) => el == elm).length]));
+    const uas: [T, number][] = [];
+    unique.map((elm) => uas.push([elm, data.filter((el: T) => el === elm).length]));
     return uas;
 }
 
@@ -26,7 +35,7 @@ function GenCounterBub(sample: number, data, obj) {
     unique.map((elm) => {
         const newa = [];
         obj.map((ob) => {
-            if (ob.route == elm) {
+            if (ob.route === elm) {
                 newa.push(Math.round((ob.timestamp * 1000) / sample) * sample);
             }
         });
@@ -39,10 +48,10 @@ function GenCounterBub(sample: number, data, obj) {
     return uas;
 }
 
-function GenSplit(data) {
+function GenSplit(data: string[]) {
     const out = GenCounter(data);
-    if (out.length == 1) {
-        if (out[0][0] == 'image') {
+    if (out.length === 1) {
+        if (out[0][0] === 'image') {
             out.push(['data', 0]);
         } else {
             out.push(['image', 0]);
@@ -56,7 +65,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     let tp: number;
     let url: string;
     let sample: number;
-    const case_s: number = parseInt(bod.tp);
+    const case_s: number = parseInt(bod.tp, 10);
     switch (case_s) {
         case 1:
             tp = 24 * 60 * 60 * 1000;
@@ -75,21 +84,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             break;
         default:
             tp = 4;
+            url = '';
             break;
     }
 
-    if (tp == 4) {
+    if (tp === 4) {
         return res.send({ data: 'no data', got: false, present: false });
     }
     const resp = await fetch(url, {
         headers: {
-            Authorization: process.env.TOKEN,
+            Authorization: process.env.TOKEN || '',
             'Content-Type': 'application/json'
         }
     });
-    if (resp.status == 200) {
+    if (resp.status === 200) {
         const js = await resp.json();
-        if (js.data.length == 0) {
+        if (js.data.length === 0) {
             return res.send({
                 tp: bod.tp,
                 token: bod.token,
@@ -99,19 +109,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             });
         }
         const arr = js.data;
-        const timea = arr.map((elm) =>
+        const timea = arr.map((elm: elmType) =>
             new Date(Math.round((elm.timestamp * 1000) / sample) * sample).getTime()
         );
-        const uas = GenCounter(arr.map((elm) => elm.user_agent));
-        const routc = GenCounter(arr.map((elm) => elm.route));
+        const uas = GenCounter(arr.map((elm: elmType) => elm.user_agent));
+        const routc = GenCounter(arr.map((elm: elmType) => elm.route));
         const bubd = GenCounterBub(
             sample,
-            arr.map((elm) => elm.route),
+            arr.map((elm: elmType) => elm.route),
             arr
         );
-        const routpref = GenSplit(arr.map((elm) => elm.api));
+        const routpref = GenSplit(arr.map((elm: elmType) => elm.api));
         let times = GenCounter(timea.concat(genAll(sample, tp)));
-        const routes = [];
+        const routes: string[] = [];
         const rout_num = [];
         const tarr = routc.map((elm) => {
             routes.push(elm[0]);
@@ -135,7 +145,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 routes: { labels: routes, series: rout_num },
                 tree: tarr,
                 bubbles: bubd,
-                times: times
+                times
             },
             got: true,
             present: true
