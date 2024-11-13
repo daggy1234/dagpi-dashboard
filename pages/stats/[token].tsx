@@ -444,7 +444,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         };
     }
 
-    const res = await fetch(`${process.env.NEXTAUTH_URL || ''}/api/routes/base-stat`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL || ''}/api/routes/base-stat`, {
         method: 'POST',
         body: JSON.stringify({ token, tp })
     });

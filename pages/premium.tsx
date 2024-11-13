@@ -61,7 +61,7 @@ export default function Page() {
     const CheckoutDonation = async (url: string, amount: number) => {
         // alert(`Item with id: ${amount} to be checked out!`);
         const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUB || '');
-        const response = await fetch(url, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}${url}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

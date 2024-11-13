@@ -175,7 +175,7 @@ export default function AppBar({ onOpen, ...rest }: { onOpen: () => void }) {
                             <MenuList>
                                 <MenuGroup isTruncated textAlign="left" color={bw} title="Id">
                                     {/* @ts-ignore */}
-                                    <MenuItem color={bw}>{session.id || 'id'}</MenuItem>
+                                    <MenuItem color={bw}>{session?.user?.id || 'id'}</MenuItem>
                                 </MenuGroup>
                                 <MenuGroup textAlign="left" color={bw} title="Name">
                                     <MenuItem color={bw}>{session?.user?.name}</MenuItem>
@@ -187,7 +187,6 @@ export default function AppBar({ onOpen, ...rest }: { onOpen: () => void }) {
                                 <MenuItem
                                     as={Button}
                                     colorScheme="pink"
-                                    variant="solid"
                                     border="1px"
                                     onClick={(e) => {
                                         e.preventDefault();

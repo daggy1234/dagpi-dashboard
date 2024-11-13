@@ -12,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const { id } = req.body;
     const portalsession = await stripe.billingPortal.sessions.create({
         customer: id,
-        return_url: `${process.env.NEXTAUTH_URL}/billing`
+        return_url: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/billing`
     });
     return res.send({
         url: portalsession.url

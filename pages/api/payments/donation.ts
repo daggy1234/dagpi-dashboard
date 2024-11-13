@@ -73,9 +73,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             }
         ],
 
-        success_url: `${process.env.NEXTAUTH_URL}/post-payment?status=success&session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/post-payment?status=success&session_id={CHECKOUT_SESSION_ID}`,
 
-        cancel_url: `${process.env.NEXTAUTH_URL}/post-payment?status=cancel`,
+        cancel_url: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/post-payment?status=cancel`,
         ...customer
     });
     return res.status(200).send({ session: pi.id });

@@ -118,14 +118,17 @@ const CreateTokenModal: React.FC<CreateTokenModalProps> = (Pprops) => {
                         validationSchema={validation}
                         onSubmit={(values, actions) => {
                             setTimeout(async () => {
-                                const resp = await fetch('/api/routes/cli-create', {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({
-                                        name: values.name,
-                                        user
-                                    })
-                                });
+                                const resp = await fetch(
+                                    `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/routes/cli-create`,
+                                    {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({
+                                            name: values.name,
+                                            user
+                                        })
+                                    }
+                                );
                                 const js = await resp.json();
                                 if (js.status === 200) {
                                     actions.setSubmitting(false);
@@ -550,7 +553,9 @@ export default function Page({ cli_redirect }: { cli_redirect: boolean }) {
 
     useEffect(() => {
         const json = async () => {
-            const tokens = await fetch('/api/routes/cli-get');
+            const tokens = await fetch(
+                `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/routes/cli-get`
+            );
             const tok_obj = await tokens.json();
             SetData(tok_obj);
         };

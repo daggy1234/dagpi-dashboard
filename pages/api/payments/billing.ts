@@ -16,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
     const portalsession = await stripe.billingPortal.sessions.create({
         customer: session.customer.toString(),
-        return_url: `${process.env.NEXTAUTH_URL}/dashboard`
+        return_url: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/dashboard`
     });
     return res.send({
         url: portalsession.url

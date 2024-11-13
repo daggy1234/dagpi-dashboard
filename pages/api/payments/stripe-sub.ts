@@ -9,6 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_KEY || 'A', {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const bod = req.body;
+    const reqM = req.method;
     const nreq = req;
     nreq.method = 'GET';
     nreq.body = null;
@@ -16,7 +17,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     // @ts-expect-error the typing is not returning right sessioN???
     const session: Session | null = await getSession({ req: nreq });
     const { amount } = bod;
-    if (req.method !== 'POST') {
+    if (reqM !== 'POST') {
         return res.status(405).send({ message: 'Not Posted' });
     }
     if (!session) {
@@ -62,9 +63,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             }
         ],
 
-        success_url: `${process.env.NEXTAUTH_URL}/post-payment?session_id={CHECKOUT_SESSION_ID}&=status=success`,
+        success_url: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/post-payment?session_id={CHECKOUT_SESSION_ID}&=status=success`,
 
-        cancel_url: `${process.env.NEXTAUTH_URL}/post-payment?status=cancel`,
+        cancel_url: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/post-payment?status=cancel`,
         ...customer
     });
     return res.status(200).send({ session: pi.id });
