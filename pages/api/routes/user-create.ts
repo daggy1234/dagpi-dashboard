@@ -11,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         body: req.body
     });
     console.log(resp);
-    if (resp.status === 500) {
+    if (resp.status === 401) {
         const resa = await fetch(
             `${process.env.CENTRAL_SERVER}/user/${JSON.parse(req.body).user}`,
             {

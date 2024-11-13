@@ -53,6 +53,8 @@ const options = {
         //     return Promise.resolve(session);
         // },
         async session({ session, token, user }: { session: Session; token: Token; user: any }) {
+            console.log(token);
+            console.log('session');
             // session.user = {};
             // session.user.name = `${session.name}`;
             session.user.id = token.profile.id;
@@ -75,6 +77,8 @@ const options = {
             account: Account;
             profile: Profile;
         }): Promise<JWT | boolean> {
+            console.log(token);
+            console.log('jwt');
             if (profile) {
                 const r = await fetch(
                     `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/routes/user-create`,
@@ -116,4 +120,4 @@ const options = {
 export { options as authOptions };
 
 // @ts-ignore
-export default (req: NextApiRequest, res: NextApiResponse) => NextAuth({ req, res, options });
+export default NextAuth(options);

@@ -337,7 +337,7 @@ export default function Page() {
                                 <Stack spacing={3} maxW="md" direction="column">
                                     <Button
                                         leftIcon={<Icon as={FaTerminal} />}
-                                        colorScheme="twitter"
+                                        colorScheme="blue"
                                         onClick={() => router.push('/tokens')}
                                         size="lg">
                                         CLI Tokens
@@ -345,7 +345,7 @@ export default function Page() {
                                     <Button
                                         leftIcon={<Icon as={FaWallet} />}
                                         onClick={() => router.push('/billing')}
-                                        colorScheme="whatsapp"
+                                        colorScheme="green"
                                         size="lg">
                                         Billing
                                     </Button>

@@ -504,7 +504,7 @@ interface DataType {
     items: CliToken[];
 }
 
-export default function Page({ cli_redirect }: { cli_redirect: { cli_redirect: boolean } }) {
+export default function Page({ cli_redirect }: { cli_redirect: boolean }) {
     const big = useBreakpointValue({ base: false, md: true });
     const { data: session, status } = useSession();
     const loading = status === 'loading';
@@ -618,7 +618,7 @@ export default function Page({ cli_redirect }: { cli_redirect: { cli_redirect: b
                         </Button>
                     </Flex>
                     <Divider mt={10} mb={7} />
-                    {cli_redirect.cli_redirect && (
+                    {cli_redirect && (
                         <Alert status="info">
                             <AlertIcon />
                             <Box flex="1">
@@ -646,11 +646,9 @@ export default function Page({ cli_redirect }: { cli_redirect: { cli_redirect: b
                         items={data.items}
                         setIsOpen={setIsOpen}
                         setEdit={setEdit}
-                        cli_button={cli_redirect.cli_redirect}
+                        cli_button={cli_redirect}
                     />
-                    {cli_redirect.cli_redirect
-                        ? 'This will result in CLI redirect'
-                        : 'Just stay here'}
+                    {cli_redirect ? 'This will result in CLI redirect' : 'Just stay here'}
                 </Box>
             </Layout>
         </>
@@ -665,12 +663,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     } else {
         redirect = false;
     }
-
-    return {
-        props: {
+    console.log(redirect ? 'CLI REDIRECT' : 'NO CLI REDIRECT');
+    console.log(
+        JSON.stringify({
             cli_redirect_props: {
                 cli_redirect: redirect
             }
+        })
+    );
+    return {
+        props: {
+            cli_redirect: redirect
         }
     };
 };
