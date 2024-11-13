@@ -40,3 +40,5 @@ This is deployed on Vercel. You can fork the repo and run your own
 ### Thanks
 
 To everyone in the Reactiflux Discord who helped me. As well as dagpi users and stuff.
+
+sentry
