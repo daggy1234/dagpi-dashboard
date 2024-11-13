@@ -31,6 +31,7 @@
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
         "@paypal/react-paypal-js": "^6.0.1",
+        "@sentry/nextjs": "^8",
         "@stripe/stripe-js": "^3.3.0",
         "@vercel/speed-insights": "^1.0.10",
         "D": "^1.0.0",

@@ -110,3 +110,6 @@ dist
 .DS_Store
 index.html
 .env*.local
+
+# Sentry Config File
+.env.sentry-build-plugin
