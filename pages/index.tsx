@@ -1,6 +1,6 @@
+import type { BoxProps } from '@chakra-ui/react';
 import {
     Box,
-    BoxProps,
     Button,
     Container,
     Flex,
@@ -14,7 +14,8 @@ import {
 } from '@chakra-ui/react';
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import type React from 'react';
+import type { IconType } from 'react-icons';
 import { AiFillHeart, AiOutlineUser } from 'react-icons/ai';
 import { BiCodeCurly, BiTime } from 'react-icons/bi';
 import { BsLightningFill } from 'react-icons/bs';
@@ -33,8 +34,7 @@ import Gallery from '../components/galleryCard';
 import Layout from '../components/layout';
 import Rounder from '../components/rounder';
 import SEO from '../components/seo';
-import styles from '../styles/feature.module.scss';
-import { IconType } from 'react-icons';
+import styles from '../styles/feature.module.css';
 // import textstyle from '../styles/gradient.module.scss';
 
 type StatBoxProps = BoxProps & {
@@ -97,181 +97,172 @@ export default function Page() {
     const mobile = useBreakpointValue({ base: true, sm: true, lg: false, xl: false });
     const partcolor = useColorModeValue('#CBD5E0', '#4A5568');
     return (
-        <>
-            <Layout>
-                <Head>
-                    <title>Dagpi</title>
-                    <meta property="og:title" content="Dagpi" key="title" />
-                </Head>
-                <SEO
-                    title="Dagpi"
-                    url="https://dagpi.xyz"
-                    description="A fast and easy to use API. Enjoy powerful image manipulation and high quality datasets with reliability and security."
-                />
-                <Flex
-                    maxW="760px"
-                    mx="auto"
-                    mt="100px"
-                    align="center"
+        <Layout>
+            <Head>
+                <title>Dagpi</title>
+                <meta property="og:title" content="Dagpi" key="title" />
+            </Head>
+            <SEO
+                title="Dagpi"
+                url="https://dagpi.xyz"
+                description="A fast and easy to use API. Enjoy powerful image manipulation and high quality datasets with reliability and security."
+            />
+            <Flex
+                maxW="760px"
+                mx="auto"
+                mt="100px"
+                align="center"
+                justify="center"
+                direction="column"
+                textAlign="center">
+                <Heading
+                    size="3xl"
+                    letterSpacing="tight"
+                    fontWeight="bold"
+                    mb="16px"
+                    lineHeight="1.2">
+                    A
+                    <Box
+                        as="span"
+                        bgClip="text"
+                        bgGradient="linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%)">
+                        {' '}
+                        Powerful and Fast{' '}
+                    </Box>
+                    API that can do amazing things.
+                </Heading>
+
+                <Text opacity={0.7} fontSize={{ base: 'lg', lg: 'xl' }} mt="6">
+                    Built with a variety of languages to maximise performance, Dagpi is fast and
+                    reliable
+                </Text>
+
+                <Stack
+                    mt="10"
+                    spacing="4"
                     justify="center"
-                    direction="column"
-                    textAlign="center">
-                    <Heading
-                        size="3xl"
-                        letterSpacing="tight"
-                        fontWeight="bold"
-                        mb="16px"
-                        lineHeight="1.2">
-                        A
-                        <Box
-                            as="span"
-                            bgClip="text"
-                            bgGradient="linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%)">
-                            {' '}
-                            Powerful and Fast{' '}
-                        </Box>
-                        API that can do amazing things.
-                    </Heading>
-
-                    <Text opacity={0.7} fontSize={{ base: 'lg', lg: 'xl' }} mt="6">
-                        Built with a variety of languages to maximise performance, Dagpi is fast and
-                        reliable
-                    </Text>
-
-                    <Stack
-                        mt="10"
-                        spacing="4"
-                        justify="center"
-                        direction={{ base: 'column', sm: 'row' }}>
-                        <Link href="/dashboard">
-                            <Button
-                                h="4rem"
-                                px="40px"
-                                fontSize="1.2rem"
-                                size="lg"
-                                colorScheme="purple"
-                                rightIcon={<FaArrowRight fontSize="0.8em" />}>
-                                Get Started
-                            </Button>
-                        </Link>
+                    direction={{ base: 'column', sm: 'row' }}>
+                    <Link href="/dashboard">
                         <Button
-                            size="lg"
-                            ml={{ base: '0px', sm: '20px' }}
                             h="4rem"
-                            as="a"
                             px="40px"
-                            href="https://dagpi.docs.apiary.io"
                             fontSize="1.2rem"
-                            leftIcon={<SiReadthedocs size="1.5em" />}>
-                            Docs
+                            size="lg"
+                            colorScheme="purple"
+                            rightIcon={<FaArrowRight fontSize="0.8em" />}>
+                            Get Started
                         </Button>
-                    </Stack>
+                    </Link>
+                    <Button
+                        size="lg"
+                        ml={{ base: '0px', sm: '20px' }}
+                        h="4rem"
+                        as="a"
+                        px="40px"
+                        href="https://dagpi.docs.apiary.io"
+                        fontSize="1.2rem"
+                        leftIcon={<SiReadthedocs size="1.5em" />}>
+                        Docs
+                    </Button>
+                </Stack>
+            </Flex>
+            <Box mt="200px">
+                <Flex px={{ base: 5, md: 20 }} w="full" justifyContent="center" alignItems="center">
+                    <Box
+                        bg={useColorModeValue('white', 'gray.800')}
+                        px={{ base: 2, md: 8 }}
+                        py={{ base: 5, md: 0 }}
+                        mx="auto">
+                        <Gallery
+                            image="/svg/photo.svg"
+                            title="Easiest Image Manipulation Ever"
+                            description="Powered by powerful networking APIs, Dagpi saves you from having to run resource intensive image manipulation on your own hardware. Simply utilise our services and our SDKs for easy image manipulation. No assembly required."
+                            reverse={false}
+                            buttonLink="/playground"
+                            buttonText="Image Playground"
+                        />
+                        <Gallery
+                            image="/svg/collection.svg"
+                            title="A curated collection of data at your fingertips"
+                            description="From roasts, jokes, and pickup lines, to entire countries, waifus, and full fledged game data. Add a new degree of user engagement with our vast data archive."
+                            reverse
+                            buttonLink="/playground"
+                            buttonText="Data Playground"
+                        />
+                        <Gallery
+                            image="/svg/analytics.svg"
+                            title="Powerful Statistics"
+                            description="Our rich and informative dashboard features not only full administrative access, but also boasts of a wealth of metrics that are visualised for your understanding."
+                            reverse={false}
+                            buttonLink="/dashboard"
+                            buttonText="Dashboard"
+                        />
+                    </Box>
                 </Flex>
-                <Box mt="200px">
-                    <Flex
-                        px={{ base: 5, md: 20 }}
-                        w="full"
-                        justifyContent="center"
-                        alignItems="center">
-                        <Box
-                            bg={useColorModeValue('white', 'gray.800')}
-                            px={{ base: 2, md: 8 }}
-                            py={{ base: 5, md: 0 }}
-                            mx="auto">
-                            <Gallery
-                                image="/svg/photo.svg"
-                                title="Easiest Image Manipulation Ever"
-                                description="Powered by powerful networking APIs, Dagpi saves you from having to run resource intensive image manipulation on your own hardware. Simply utilise our services and our SDKs for easy image manipulation. No assembly required."
-                                reverse={false}
-                                buttonLink="/playground"
-                                buttonText="Image Playground"
-                            />
-                            <Gallery
-                                image="/svg/collection.svg"
-                                title="A curated collection of data at your fingertips"
-                                description="From roasts, jokes, and pickup lines, to entire countries, waifus, and full fledged game data. Add a new degree of user engagement with our vast data archive."
-                                reverse={true}
-                                buttonLink="/playground"
-                                buttonText="Data Playground"
-                            />
-                            <Gallery
-                                image="/svg/analytics.svg"
-                                title="Powerful Statistics"
-                                description="Our rich and informative dashboard features not only full administrative access, but also boasts of a wealth of metrics that are visualised for your understanding."
-                                reverse={false}
-                                buttonLink="/dashboard"
-                                buttonText="Dashboard"
-                            />
-                        </Box>
-                    </Flex>
-                </Box>
-                <Box
-                    as="section"
-                    pb="50px"
-                    mt="100px"
-                    bg={useColorModeValue('gray.50', 'gray.600')}>
-                    <Container py="120px" maxW="1280px">
-                        <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
-                            <Heading as="h2" mb="5" pt="5">
-                                All the characteristics of a Modern API
-                            </Heading>
-                        </Box>
-                        <SimpleGrid columns={{ base: 1, md: 3 }} gap={10} spacingX={{ md: 12 }}>
-                            <Feature icon={BsLightningFill} title="Fast">
-                                Dagpi is lightning quick, using the fastest web development
-                                framework available
-                            </Feature>
-                            <Feature icon={RiSecurePaymentLine} title="Secure">
-                                Cloudflare HTTPS is used for top-tier, industry standard security
-                            </Feature>
-                            <Feature icon={TiSpanner} title="Easy to Use">
-                                With plenty of documentation, Dagpi is a breeze to implement
-                            </Feature>
-                            <Feature icon={DiGithubBadge} title="Open Source">
-                                All source code is publicly available for viewing and contributions{' '}
-                                <Text color="pink.500">
-                                    <AiFillHeart />
-                                </Text>
-                            </Feature>
-                            <Feature icon={BiCodeCurly} title="Wrappers in Major Languages">
-                                API wrappers are provided in numerous major languages for user
-                                convenience
-                            </Feature>
-                            <Feature icon={FaDiscord} title="Active Community">
-                                Dagpi boasts an active community on Discord that&apos;s always
-                                willing to lend a hand
-                            </Feature>
-                        </SimpleGrid>
-                    </Container>
-                </Box>
+            </Box>
+            <Box as="section" pb="50px" mt="100px" bg={useColorModeValue('gray.50', 'gray.600')}>
+                <Container py="120px" maxW="1280px">
+                    <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
+                        <Heading as="h2" mb="5" pt="5">
+                            All the characteristics of a Modern API
+                        </Heading>
+                    </Box>
+                    <SimpleGrid columns={{ base: 1, md: 3 }} gap={10} spacingX={{ md: 12 }}>
+                        <Feature icon={BsLightningFill} title="Fast">
+                            Dagpi is lightning quick, using the fastest web development framework
+                            available
+                        </Feature>
+                        <Feature icon={RiSecurePaymentLine} title="Secure">
+                            Cloudflare HTTPS is used for top-tier, industry standard security
+                        </Feature>
+                        <Feature icon={TiSpanner} title="Easy to Use">
+                            With plenty of documentation, Dagpi is a breeze to implement
+                        </Feature>
+                        <Feature icon={DiGithubBadge} title="Open Source">
+                            All source code is publicly available for viewing and contributions{' '}
+                            <Text color="pink.500">
+                                <AiFillHeart />
+                            </Text>
+                        </Feature>
+                        <Feature icon={BiCodeCurly} title="Wrappers in Major Languages">
+                            API wrappers are provided in numerous major languages for user
+                            convenience
+                        </Feature>
+                        <Feature icon={FaDiscord} title="Active Community">
+                            Dagpi boasts an active community on Discord that&apos;s always willing
+                            to lend a hand
+                        </Feature>
+                    </SimpleGrid>
+                </Container>
+            </Box>
 
-                {/* <Box mt="100px" textAlign="center" alignItems="center">
+            {/* <Box mt="100px" textAlign="center" alignItems="center">
                     <Heading>Features</Heading>
                     <Rounder />
                 </Box>   */}
 
-                <Flex
-                    justifyContent="center"
-                    mt="100px"
-                    mb="100px"
-                    as="section"
-                    bg={useColorModeValue('purple.600', 'purple.900')}>
-                    <Box py="7.5rem" maxW="1280px" color="white">
-                        <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
-                            <Heading as="h3" size="2xl" textStyle="heading" mb="5">
-                                The Numbers
-                            </Heading>
-                        </Box>
-                        <Stack direction={{ base: 'column', lg: 'row' }}>
-                            <StatBox icon={AiOutlineUser} title="300+" description="Active Users" />
-                            <StatBox icon={IoIosSpeedometer} title="<50ms" description="Ping" />
-                            <StatBox icon={BiTime} title="99%" description="Uptime" />
-                            <StatBox icon={FaDiscord} title="250+" description="Discord Members" />
-                        </Stack>
+            <Flex
+                justifyContent="center"
+                mt="100px"
+                mb="100px"
+                as="section"
+                bg={useColorModeValue('purple.600', 'purple.900')}>
+                <Box py="7.5rem" maxW="1280px" color="white">
+                    <Box maxW="760px" mx="auto" textAlign="center" mb="56px">
+                        <Heading as="h3" size="2xl" textStyle="heading" mb="5">
+                            The Numbers
+                        </Heading>
                     </Box>
-                </Flex>
+                    <Stack direction={{ base: 'column', lg: 'row' }}>
+                        <StatBox icon={AiOutlineUser} title="300+" description="Active Users" />
+                        <StatBox icon={IoIosSpeedometer} title="<50ms" description="Ping" />
+                        <StatBox icon={BiTime} title="99%" description="Uptime" />
+                        <StatBox icon={FaDiscord} title="250+" description="Discord Members" />
+                    </Stack>
+                </Box>
+            </Flex>
 
-                {/* {!mobile ? (
+            {/* {!mobile ? (
                     <div className={styles.container}>
                         <Particles
                             id="tsparticles"
@@ -396,21 +387,20 @@ export default function Page() {
                 ) : (
                     <br />
                 )} */}
-                <CallToActionWithAnnotation
-                    title="Extras for"
-                    color="Power Users"
-                    fancy="Starts at only $1"
-                    description="Are the free tier limits preventing you from scaling your application? With our various premium tiers, we have the right tier for your current useage."
-                    button="Get Premium"
-                />
-                <Box maxW="760px" mt="50px" mx="auto" textAlign="center" mb="56px">
-                    <Heading as="h3" size="2xl" textStyle="heading" mb="5">
-                        API Wrappers
-                    </Heading>
-                </Box>
-                <Cards />
-                <DiscordStrip mt="100px" />
-            </Layout>
-        </>
+            <CallToActionWithAnnotation
+                title="Extras for"
+                color="Power Users"
+                fancy="Starts at only $1"
+                description="Are the free tier limits preventing you from scaling your application? With our various premium tiers, we have the right tier for your current useage."
+                button="Get Premium"
+            />
+            <Box maxW="760px" mt="50px" mx="auto" textAlign="center" mb="56px">
+                <Heading as="h3" size="2xl" textStyle="heading" mb="5">
+                    API Wrappers
+                </Heading>
+            </Box>
+            <Cards />
+            <DiscordStrip mt="100px" />
+        </Layout>
     );
 }

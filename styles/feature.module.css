@@ -1,14 +1,15 @@
 .feature {
     z-index: 1;
     box-shadow: 10px black;
-    &:hover {
-        border-style: solid;
-        border-width: 2px;
-        border-color: #6b46c1;
-        transform: translateY(-10px);
-        transition: 0.2s;
-        //transform: scale(1.15);
-    }
+}
+
+.feature:hover {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #6b46c1;
+    transform: translateY(-10px);
+    transition: 0.2s;
+    /* transform: scale(1.15); */
 }
 
 .container {

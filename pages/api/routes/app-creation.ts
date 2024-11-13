@@ -1,13 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import type { Session } from 'next-auth';
 import { getSession } from 'next-auth/react';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     // eslint-disable-next-line prettier/prettier
     // @ts-expect-error the typing is not returning right sessioN???
     const session: Session | null = await getSession({ req });
-    if (!session) {
+
+    console.log(session);
+    if (!session || !session.user) {
         return res.send({ status: 400 });
     }
+    console.log('why fail?');
     const resp = await fetch(`${process.env.CENTRAL_SERVER}/app/`, {
         method: 'POST',
         headers: {
@@ -100,4 +104,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     res.send({ data: 'kk', status: resp.status });
-};
+}

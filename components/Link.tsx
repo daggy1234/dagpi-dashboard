@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import styles from './link.module.scss';
+import styles from './link.module.css';
 
 interface ExtProps {
     url: string;

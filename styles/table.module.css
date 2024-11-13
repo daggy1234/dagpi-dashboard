@@ -1,0 +1,24 @@
+.apptable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.apptable th,
+.apptable td {
+    padding: 1%;
+}
+
+.apptable th {
+    color: black;
+    text-align: left;
+    border-bottom: 5px solid gray;
+}
+
+.apptable td {
+    text-align: left;
+    align-items: left;
+}
+
+.tablediv {
+    overflow-x: auto;
+}

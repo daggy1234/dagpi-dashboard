@@ -23,7 +23,7 @@ import { FaChevronDown, FaMoon, FaSun } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md';
 
 import ExtLink from '../Link';
-import styles from '../link.module.scss';
+import styles from '../link.module.css';
 import NextLink from '../NextLink';
 
 const MenuItems = ({ children }: { children: React.ReactNode }) => (

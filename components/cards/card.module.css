@@ -75,29 +75,32 @@
 
 .cardHeader {
     margin-bottom: auto;
-    span {
-        text-decoration: none;
-        font-weight: bold;
-    }
-    p {
-        font-size: 14px;
-        margin: 0 0 1rem;
-        color: white;
-    }
-    h2 {
-        font-size: 2rem;
-        margin: 0.25rem 0 auto;
-        text-decoration: none;
-        cursor: pointer;
-        background: white;
-        text-shadow: none;
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
-        background-clip: text;
-        border-color: black;
-    }
+}
+
+.cardHeader span {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cardHeader p {
+    font-size: 14px;
+    margin: 0 0 1rem;
+    color: white;
+}
+
+.cardHeader h2 {
+    font-size: 2rem;
+    margin: 0.25rem 0 auto;
+    text-decoration: none;
+    cursor: pointer;
+    background: white;
+    text-shadow: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background-clip: text;
+    border-color: black;
 }
 
 .tags {
@@ -105,16 +108,17 @@
     padding: 0.5rem 0 1rem;
     line-height: 2;
     margin-bottom: 0;
-    span {
-        font-style: normal;
-        font-weight: 700;
-        font-size: 0.5rem;
-        color: white;
-        text-transform: uppercase;
-        font-size: 0.66rem;
-        border: 3px solid whitesmoke;
-        border-radius: 2rem;
-        padding: 0.2rem 0.85rem 0.25rem;
-        position: relative;
-    }
+}
+
+.tags span {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.5rem;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.66rem;
+    border: 3px solid whitesmoke;
+    border-radius: 2rem;
+    padding: 0.2rem 0.85rem 0.25rem;
+    position: relative;
 }

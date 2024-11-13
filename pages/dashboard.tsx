@@ -51,7 +51,7 @@ import Loading from '../components/loading';
 import SEO from '../components/seo';
 import DiscordLogo from '../components/svg/discord-logo';
 import UseCard from '../components/user-card';
-import styles from '../styles/table.module.scss';
+import styles from '../styles/table.module.css';
 
 const StatBox = (props: { color: string; children: React.ReactNode; padding: string }) => {
     const { color, children, padding } = props;

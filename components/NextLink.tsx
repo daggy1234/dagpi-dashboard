@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import styles from './link.module.scss';
+import styles from './link.module.css';
 
 export default function NextLink({ url, children }: { url: string; children: React.ReactNode }) {
     return (

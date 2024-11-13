@@ -7,7 +7,6 @@ import { url } from 'inspector';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { Session, Token, Profile, Account } from 'next-auth';
 import NextAuth from 'next-auth';
-
 import type { JWT } from 'next-auth/jwt';
 import DiscordProvider from 'next-auth/providers/discord';
 
@@ -16,7 +15,8 @@ import DiscordProvider from 'next-auth/providers/discord';
 
 const provider = 'oauth';
 
-const options = {
+// @ts-ignore
+export default NextAuth({
     // https://next-auth.js.org/configuration/providers
     providers: [
         DiscordProvider({
@@ -53,8 +53,6 @@ const options = {
         //     return Promise.resolve(session);
         // },
         async session({ session, token, user }: { session: Session; token: Token; user: any }) {
-            console.log(token);
-            console.log('session');
             // session.user = {};
             // session.user.name = `${session.name}`;
             session.user.id = token.profile.id;
@@ -62,6 +60,7 @@ const options = {
             // session.refreshToken = session.account.refresh_token;
             // session.accessToken = session.account.access_token;
             session.client_id = token.client_id;
+            console.log(session);
             return session;
         },
         async jwt({
@@ -77,8 +76,6 @@ const options = {
             account: Account;
             profile: Profile;
         }): Promise<JWT | boolean> {
-            console.log(token);
-            console.log('jwt');
             if (profile) {
                 const r = await fetch(
                     `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/routes/user-create`,
@@ -115,9 +112,4 @@ const options = {
     // }
 
     // Enable debug messages in the console if you are having problems
-};
-
-export { options as authOptions };
-
-// @ts-ignore
-export default NextAuth(options);
+});

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Box } from '@chakra-ui/react';
 
-import styles from './card.module.scss';
+import styles from './card.module.css';
 
 interface LibProps {
     link: string;
