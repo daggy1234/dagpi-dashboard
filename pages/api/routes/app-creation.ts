@@ -60,6 +60,37 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             }
         ]
     };
+
+    const resp_token_add = await fetch(`https://central.dagpi.xyz/tokens/${session.user.id}`, {
+        method: 'POST',
+        headers: {
+            Authorization: process.env.TOKEN || 'A',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token: process.env.TOKEN || '' })
+    });
+
+    if (resp_token_add.status !== 200) {
+        console.error(`Error adding token.`);
+        return res.send({ data: 'kk', status: resp_token_add.status });
+    }
+
+    console.log(`Token successfully added.`);
+    const patchResp = await fetch(`https://central.dagpi.xyz/app/${t.app.uu}`, {
+        method: 'PATCH',
+        headers: {
+            Authorization: process.env.TOKEN || 'A',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token: process.env.TOKEN || '' })
+    });
+
+    if (patchResp.status !== 200) {
+        console.error(`Error patching app.`);
+        return res.send({ data: 'kk', status: patchResp.status });
+    }
+
+    console.log(`App successfully patched.`);
     await fetch(process.env.APPHOOK || '', {
         method: 'POST',
         headers: {
@@ -67,5 +98,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
         body: JSON.stringify(pjso)
     });
-    return res.send({ data: 'kk', status: resp.status });
+
+    res.send({ data: 'kk', status: resp.status });
 };
