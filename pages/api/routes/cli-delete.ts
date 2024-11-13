@@ -3,10 +3,14 @@ import type { Session } from 'next-auth';
 import { getSession } from 'next-auth/react';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+    const boda = req.body;
+    const nreq = req;
+    nreq.method = 'GET';
+    nreq.body = null;
     // eslint-disable-next-line prettier/prettier
     // @ts-expect-error the typing is not returning right sessioN???
-    const session: Session | null = await getSession({ req });
-    const bod = JSON.parse(req.body);
+    const session: Session | null = await getSession({ req: nreq });
+    const bod = JSON.parse(boda);
     if (!session) {
         return res.send({ status: 400 });
     }

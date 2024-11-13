@@ -3,10 +3,14 @@ import type { Session } from 'next-auth';
 import { getSession } from 'next-auth/react';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    const bod = req.body;
+    const nreq = req;
+    nreq.method = 'GET';
+    nreq.body = null;
+    console.log(bod);
     // eslint-disable-next-line prettier/prettier
     // @ts-expect-error the typing is not returning right sessioN???
-    const session: Session | null = await getSession({ req });
-
+    const session: Session | null = await getSession({ req: nreq });
     console.log(session);
     if (!session || !session.user) {
         return res.send({ status: 400 });
@@ -18,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             Authorization: process.env.TOKEN || 'A',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(req.body)
+        body: JSON.stringify(bod)
     });
     if (resp.status !== 200) {
         return res.send({ data: 'kk', status: resp.status });
@@ -49,7 +53,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     },
                     {
                         name: 'prefix',
-                        value: req.body.prefix ? req.body.prefix : 'Nan',
+                        value: bod.prefix ? bod.prefix : 'Nan',
                         inline: true
                     }
                 ],
